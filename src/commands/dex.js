@@ -1,10 +1,11 @@
 'use strict';
 
 const {
-  SlashCommandBuilder, EmbedBuilder,
+  SlashCommandBuilder, EmbedBuilder, AttachmentBuilder,
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
   StringSelectMenuBuilder,
 } = require('discord.js');
+const sharp = require('sharp');
 const { searchPokemon, GAME_CONFIGS } = require('../utils/dexSearch');
 const { translate }                   = require('../utils/i18n');
 const { TYPE_EMOJI }                  = require('../utils/buildEmbed');
@@ -77,6 +78,42 @@ function calcWeaknesses(typesEn) {
 function statBar(val, max = 255) {
   const filled = Math.round((val / max) * 20);
   return '█'.repeat(filled) + '░'.repeat(20 - filled);
+}
+
+// ── Stat chart image ─────────────────────────────────────────────────────────
+const STAT_ROWS = [
+  { key: 'hp',              label: 'HP',  color: '#FF5959' },
+  { key: 'attack',          label: 'Atk', color: '#F5AC78' },
+  { key: 'defense',         label: 'Def', color: '#FAE078' },
+  { key: 'special-attack',  label: 'SpA', color: '#9DB7F5' },
+  { key: 'special-defense', label: 'SpD', color: '#A7DB8D' },
+  { key: 'speed',           label: 'Spe', color: '#FA92B2' },
+];
+
+async function buildStatImage(stats, bst) {
+  const W = 400, H = 258;
+  const BAR_X = 88, BAR_W = 288, BAR_H = 14;
+  const START_Y = 64, ROW_H = 32;
+
+  const rows = STAT_ROWS.map((r, i) => {
+    const val  = stats[r.key] ?? 0;
+    const barW = Math.max(0, Math.round(val / 255 * BAR_W));
+    const y    = START_Y + i * ROW_H;
+    return `
+      <text x="20" y="${y}" font-family="monospace" font-size="13" fill="#CCCCCC">${r.label}</text>
+      <text x="${BAR_X - 8}" y="${y}" font-family="monospace" font-size="13" fill="#CCCCCC" text-anchor="end">${val}</text>
+      <rect x="${BAR_X}" y="${y - 12}" width="${BAR_W}" height="${BAR_H}" fill="#2A2A3A" rx="3"/>
+      ${barW > 0 ? `<rect x="${BAR_X}" y="${y - 12}" width="${barW}" height="${BAR_H}" fill="${r.color}" rx="3"/>` : ''}`;
+  }).join('');
+
+  const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+    <rect width="${W}" height="${H}" fill="#12121C" rx="10"/>
+    <text x="20" y="24" font-family="sans-serif" font-size="13" fill="#888888">種族値　総計 ${bst}</text>
+    <line x1="20" y1="34" x2="${W - 20}" y2="34" stroke="#333333" stroke-width="1"/>
+    ${rows}
+  </svg>`;
+
+  return sharp(Buffer.from(svg)).png().toBuffer();
 }
 
 // ── Detail embed for one Pokémon ──────────────────────────────────────────────
@@ -298,6 +335,18 @@ module.exports = {
       return;
     }
 
-    await interaction.reply({ embeds: [buildDetailEmbed(poke)], flags: 64 });
+    const embed = buildDetailEmbed(poke);
+    const s     = poke.stats ?? {};
+    const bst   = Object.values(s).reduce((a, v) => a + (v || 0), 0);
+
+    try {
+      const imgBuf = await buildStatImage(s, bst);
+      const file   = new AttachmentBuilder(imgBuf, { name: 'stats.png' });
+      embed.setImage('attachment://stats.png');
+      await interaction.reply({ embeds: [embed], files: [file], flags: 64 });
+    } catch {
+      // Image generation failed — fall back to text-only
+      await interaction.reply({ embeds: [embed], flags: 64 });
+    }
   },
 };
