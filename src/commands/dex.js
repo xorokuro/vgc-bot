@@ -139,7 +139,7 @@ function buildDetailEmbed(poke, lang = 'zh') {
     ? poke.name_en.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join('-')
     : '';
   const dexNum  = poke.id ? `#${String(poke.id).padStart(4, '0')}` : '';
-  const title   = lang === 'en' ? `${enName}  ${dexNum}` : `${zhName}  ${dexNum}`;
+  const title   = lang === 'zh' ? `${zhName}  ${dexNum}` : `${enName}  ${dexNum}`;
 
   // Types
   const typeStr = (poke.types_en || []).map(t => typeEmoji(t)).join('  ');
@@ -179,10 +179,10 @@ function buildDetailEmbed(poke, lang = 'zh') {
     .setColor(COLOR)
     .setTitle(title)
     .addFields(
-      { name: `屬性 ${L.type}`,           value: typeStr || '—', inline: false },
+      { name: `${L.type}`,                  value: typeStr || '—', inline: false },
       { name: `⚔️ ${L.stats}  BST: ${bst}`, value: statLines,   inline: false },
-      { name: `💡 ${L.ability}`,           value: abilityLines || '—', inline: false },
-      { name: `🛡️ ${L.weakness}`,          value: weakRows || L.noWeak, inline: false },
+      { name: `💡 ${L.ability}`,            value: abilityLines || '—', inline: false },
+      { name: `🛡️ ${L.weakness}`,           value: weakRows || L.noWeak, inline: false },
     );
 }
 
