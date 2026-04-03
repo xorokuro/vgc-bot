@@ -140,7 +140,7 @@ function buildDetailEmbed(poke) {
     ['SpD',  s['special-defense']??0],
     ['Spe',  s.speed            ?? 0],
   ].map(([label, val]) =>
-    `\`${label.padEnd(3)}\` \`${String(val).padStart(3)}\`  ${statBar(val)}`,
+    `\`${label.padEnd(3)}\` \`${String(val).padStart(3)}\``,
   ).join('\n');
 
   // Abilities
