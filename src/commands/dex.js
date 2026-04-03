@@ -131,15 +131,35 @@ const DEX_LABELS = {
   en: { type: 'Type', stats: 'Base Stats', ability: 'Abilities', weakness: 'Weaknesses', noWeak: 'No special weaknesses', hidden: '[Hidden]' },
 };
 
+// ── Resolve display name for a Pokémon in the requested language ──────────────
+// For zh: use name_zh (already includes form description in Chinese).
+// For en: formatted English name (e.g. "Vulpix-Alola").
+// For ja: translate the base species name via trilingual.json, then append the
+//         form suffix in English if present (e.g. "ロコン (Alola)").
+function getPokeDisplayName(poke, lang) {
+  const nameEn    = poke.name_en || '';
+  const speciesEn = poke.species_en_name || nameEn;
+  const cap       = w => w.charAt(0).toUpperCase() + w.slice(1);
+
+  if (lang === 'zh') return poke.name_zh || nameEn;
+
+  const formattedEn = nameEn.split('-').map(cap).join('-');
+  if (lang === 'en') return formattedEn;
+
+  // Japanese: translate species, append form if any
+  const speciesFormatted = speciesEn.split('-').map(cap).join(' ');
+  const jaSpecies = translate(speciesFormatted, 'pokemon', 'ja');
+  const hasForm   = nameEn.length > speciesEn.length && nameEn.startsWith(speciesEn + '-');
+  if (!hasForm) return jaSpecies;
+  const formStr = nameEn.slice(speciesEn.length + 1).split('-').map(cap).join(' ');
+  return `${jaSpecies} (${formStr})`;
+}
+
 // ── Detail embed for one Pokémon ──────────────────────────────────────────────
 function buildDetailEmbed(poke, lang = 'zh') {
   const L      = DEX_LABELS[lang] ?? DEX_LABELS.zh;
-  const zhName = poke.name_zh || poke.name_en || '?';
-  const enName = poke.name_en
-    ? poke.name_en.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join('-')
-    : '';
-  const dexNum  = poke.id ? `#${String(poke.id).padStart(4, '0')}` : '';
-  const title   = lang === 'zh' ? `${zhName}  ${dexNum}` : `${enName}  ${dexNum}`;
+  const dexNum = poke.id ? `#${String(poke.id).padStart(4, '0')}` : '';
+  const title  = `${getPokeDisplayName(poke, lang)}  ${dexNum}`;
 
   // Types
   const typeStr = (poke.types_en || []).map(t => typeEmoji(t)).join('  ');
