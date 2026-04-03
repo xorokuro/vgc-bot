@@ -1,0 +1,1608 @@
+{
+  "ability": {
+    "dragon's maw": {
+      "en": "Dragon's Maw",
+      "ja": "りゅうのあぎと",
+      "zh": "龍顎"
+    },
+    "anger shell": {
+      "en": "Anger Shell",
+      "ja": "いかりのこうら",
+      "zh": "いかりのこうら"
+    },
+    "armor tail": {
+      "en": "Armor Tail",
+      "ja": "テイルアーマー",
+      "zh": "テイルアーマー"
+    },
+    "beads of ruin": {
+      "en": "Beads of Ruin",
+      "ja": "わざわいのたま",
+      "zh": "わざわいのたま"
+    },
+    "commander": {
+      "en": "Commander",
+      "ja": "しれいとう",
+      "zh": "しれいとう"
+    },
+    "costar": {
+      "en": "Costar",
+      "ja": "きょうえん",
+      "zh": "きょうえん"
+    },
+    "cud chew": {
+      "en": "Cud Chew",
+      "ja": "はんすう",
+      "zh": "はんすう"
+    },
+    "earth eater": {
+      "en": "Earth Eater",
+      "ja": "どしょく",
+      "zh": "どしょく"
+    },
+    "electromorphosis": {
+      "en": "Electromorphosis",
+      "ja": "でんきにかえる",
+      "zh": "でんきにかえる"
+    },
+    "embody aspect (cornerstone)": {
+      "en": "Embody Aspect (Cornerstone)",
+      "ja": "おもかげやどし",
+      "zh": "面影輝映"
+    },
+    "embody aspect (hearthflame)": {
+      "en": "Embody Aspect (Hearthflame)",
+      "ja": "おもかげやどし",
+      "zh": "面影輝映"
+    },
+    "embody aspect (teal)": {
+      "en": "Embody Aspect (Teal)",
+      "ja": "おもかげやどし",
+      "zh": "面影輝映"
+    },
+    "embody aspect (wellspring)": {
+      "en": "Embody Aspect (Wellspring)",
+      "ja": "おもかげやどし",
+      "zh": "面影輝映"
+    },
+    "good as gold": {
+      "en": "Good as Gold",
+      "ja": "おうごんのからだ",
+      "zh": "おうごんのからだ"
+    },
+    "guard dog": {
+      "en": "Guard Dog",
+      "ja": "ばんけん",
+      "zh": "ばんけん"
+    },
+    "hadron engine": {
+      "en": "Hadron Engine",
+      "ja": "ハドロンエンジン",
+      "zh": "ハドロンエンジン"
+    },
+    "hospitality": {
+      "en": "Hospitality",
+      "ja": "おもてなし",
+      "zh": "款待"
+    },
+    "lingering aroma": {
+      "en": "Lingering Aroma",
+      "ja": "とれないにおい",
+      "zh": "とれないにおい"
+    },
+    "mind's eye": {
+      "en": "Mind's Eye",
+      "ja": "しんがん",
+      "zh": "心眼"
+    },
+    "mycelium might": {
+      "en": "Mycelium Might",
+      "ja": "きんしのちから",
+      "zh": "きんしのちから"
+    },
+    "opportunist": {
+      "en": "Opportunist",
+      "ja": "びんじょう",
+      "zh": "びんじょう"
+    },
+    "orichalcum pulse": {
+      "en": "Orichalcum Pulse",
+      "ja": "ひひいろのこどう",
+      "zh": "ひひいろのこどう"
+    },
+    "poison puppeteer": {
+      "en": "Poison Puppeteer",
+      "ja": "どくくぐつ",
+      "zh": "毒傀儡"
+    },
+    "protosynthesis": {
+      "en": "Protosynthesis",
+      "ja": "こだいかっせい",
+      "zh": "こだいかっせい"
+    },
+    "purifying salt": {
+      "en": "Purifying Salt",
+      "ja": "きよめのしお",
+      "zh": "きよめのしお"
+    },
+    "quark drive": {
+      "en": "Quark Drive",
+      "ja": "クォークチャージ",
+      "zh": "クォークチャージ"
+    },
+    "rocky payload": {
+      "en": "Rocky Payload",
+      "ja": "いわはこび",
+      "zh": "いわはこび"
+    },
+    "seed sower": {
+      "en": "Seed Sower",
+      "ja": "こぼれダネ",
+      "zh": "こぼれダネ"
+    },
+    "sharpness": {
+      "en": "Sharpness",
+      "ja": "きれあじ",
+      "zh": "きれあじ"
+    },
+    "supersweet syrup": {
+      "en": "Supersweet Syrup",
+      "ja": "Supersweet Syrup",
+      "zh": "甘露之蜜"
+    },
+    "supreme overlord": {
+      "en": "Supreme Overlord",
+      "ja": "そうだいしょう",
+      "zh": "そうだいしょう"
+    },
+    "sword of ruin": {
+      "en": "Sword of Ruin",
+      "ja": "わざわいのつるぎ",
+      "zh": "わざわいのつるぎ"
+    },
+    "tablets of ruin": {
+      "en": "Tablets of Ruin",
+      "ja": "わざわいのおふだ",
+      "zh": "わざわいのおふだ"
+    },
+    "tera shell": {
+      "en": "Tera Shell",
+      "ja": "テラスシェル",
+      "zh": "太晶甲殼"
+    },
+    "tera shift": {
+      "en": "Tera Shift",
+      "ja": "テラスチェンジ",
+      "zh": "太晶變形"
+    },
+    "teraform zero": {
+      "en": "Teraform Zero",
+      "ja": "ゼロフォーミング",
+      "zh": "歸零化境"
+    },
+    "thermal exchange": {
+      "en": "Thermal Exchange",
+      "ja": "ねつこうかん",
+      "zh": "ねつこうかん"
+    },
+    "toxic chain": {
+      "en": "Toxic Chain",
+      "ja": "どくのくさり",
+      "zh": "毒鎖鏈"
+    },
+    "toxic debris": {
+      "en": "Toxic Debris",
+      "ja": "どくげしょう",
+      "zh": "どくげしょう"
+    },
+    "vessel of ruin": {
+      "en": "Vessel of Ruin",
+      "ja": "わざわいのうつわ",
+      "zh": "わざわいのうつわ"
+    },
+    "well-baked body": {
+      "en": "Well-Baked Body",
+      "ja": "こんがりボディ",
+      "zh": "こんがりボディ"
+    },
+    "wind power": {
+      "en": "Wind Power",
+      "ja": "ふうりょくでんき",
+      "zh": "ふうりょくでんき"
+    },
+    "wind rider": {
+      "en": "Wind Rider",
+      "ja": "かぜのり",
+      "zh": "かぜのり"
+    },
+    "zero to hero": {
+      "en": "Zero to Hero",
+      "ja": "マイティチェンジ",
+      "zh": "マイティチェンジ"
+    }
+  },
+  "move": {
+    "land's wrath": {
+      "en": "Land's Wrath",
+      "ja": "グランドフォース",
+      "zh": "大地神力"
+    },
+    "let's snuggle forever": {
+      "en": "Let's Snuggle Forever",
+      "ja": "ぽかぼかフレンドタイム",
+      "zh": "親密無間大亂揍"
+    },
+    "nature's madness": {
+      "en": "Nature's Madness",
+      "ja": "しぜんのいかり",
+      "zh": "自然之怒"
+    },
+    "aqua cutter": {
+      "en": "Aqua Cutter",
+      "ja": "アクアカッター",
+      "zh": "水波刀"
+    },
+    "alluring voice": {
+      "en": "Alluring Voice",
+      "ja": "みわくのボイス",
+      "zh": "魅誘之聲"
+    },
+    "aqua step": {
+      "en": "Aqua Step",
+      "ja": "アクアステップ",
+      "zh": "流水旋舞"
+    },
+    "armor cannon": {
+      "en": "Armor Cannon",
+      "ja": "アーマーキャノン",
+      "zh": "铠农炮"
+    },
+    "axe kick": {
+      "en": "Axe Kick",
+      "ja": "かかとおとし",
+      "zh": "下压踢"
+    },
+    "barb barrage": {
+      "en": "Barb Barrage",
+      "ja": "どくばりセンボン",
+      "zh": "毒千针"
+    },
+    "bitter blade": {
+      "en": "Bitter Blade",
+      "ja": "むねんのつるぎ",
+      "zh": "悔念剑"
+    },
+    "bitter malice": {
+      "en": "Bitter Malice",
+      "ja": "うらみつらみ",
+      "zh": "冤冤相报"
+    },
+    "blazing torque": {
+      "en": "Blazing Torque",
+      "ja": "バーンアクセル",
+      "zh": "灼热暴冲"
+    },
+    "bleakwind storm": {
+      "en": "Bleakwind Storm",
+      "ja": "こがらしあらし",
+      "zh": "枯叶风暴"
+    },
+    "blood moon": {
+      "en": "Blood Moon",
+      "ja": "ブラッドムーン",
+      "zh": "ブラッドムーン"
+    },
+    "ceaseless edge": {
+      "en": "Ceaseless Edge",
+      "ja": "ひけん・ちえなみ",
+      "zh": "秘剑・千重涛"
+    },
+    "chilling water": {
+      "en": "Chilling Water",
+      "ja": "ひやみず",
+      "zh": "泼冷水"
+    },
+    "chloroblast": {
+      "en": "Chloroblast",
+      "ja": "クロロブラスト",
+      "zh": "叶绿爆震"
+    },
+    "collision course": {
+      "en": "Collision Course",
+      "ja": "アクセルブレイク",
+      "zh": "全开猛撞"
+    },
+    "combat torque": {
+      "en": "Combat Torque",
+      "ja": "ファイトアクセル",
+      "zh": "格斗暴冲"
+    },
+    "comeuppance": {
+      "en": "Comeuppance",
+      "ja": "ほうふく",
+      "zh": "复仇"
+    },
+    "double shock": {
+      "en": "Double Shock",
+      "ja": "でんこうそうげき",
+      "zh": "电光双击"
+    },
+    "dire claw": {
+      "en": "Dire Claw",
+      "ja": "フェイタルクロー",
+      "zh": "克命爪"
+    },
+    "electro drift": {
+      "en": "Electro Drift",
+      "ja": "イナズマドライブ",
+      "zh": "闪电猛冲"
+    },
+    "electro shot": {
+      "en": "Electro Shot",
+      "ja": "エレクトロビーム",
+      "zh": "電光束"
+    },
+    "esper wing": {
+      "en": "Esper Wing",
+      "ja": "オーラウイング",
+      "zh": "气场之翼"
+    },
+    "fickle beam": {
+      "en": "Fickle Beam",
+      "ja": "きまぐレーザー",
+      "zh": "隨機光"
+    },
+    "flower trick": {
+      "en": "Flower Trick",
+      "ja": "トリックフラワー",
+      "zh": "千变万花"
+    },
+    "gigaton hammer": {
+      "en": "Gigaton Hammer",
+      "ja": "デカハンマー",
+      "zh": "巨力锤"
+    },
+    "glaive rush": {
+      "en": "Glaive Rush",
+      "ja": "きょけんとつげき",
+      "zh": "巨剑突击"
+    },
+    "hard press": {
+      "en": "Hard Press",
+      "ja": "ハードプレス",
+      "zh": "硬壓"
+    },
+    "headlong rush": {
+      "en": "Headlong Rush",
+      "ja": "ぶちかまし",
+      "zh": "突飞猛扑"
+    },
+    "hydro steam": {
+      "en": "Hydro Steam",
+      "ja": "ハイドロスチーム",
+      "zh": "水蒸氣"
+    },
+    "hyper drill": {
+      "en": "Hyper Drill",
+      "ja": "ハイパードリル",
+      "zh": "强力钻"
+    },
+    "ice spinner": {
+      "en": "Ice Spinner",
+      "ja": "アイススピナー",
+      "zh": "冰旋"
+    },
+    "infernal parade": {
+      "en": "Infernal Parade",
+      "ja": "ひゃっきやこう",
+      "zh": "群魔乱舞"
+    },
+    "ivy cudgel": {
+      "en": "Ivy Cudgel",
+      "ja": "ツタこんぼう",
+      "zh": "ツタこんぼう"
+    },
+    "jet punch": {
+      "en": "Jet Punch",
+      "ja": "ジェットパンチ",
+      "zh": "喷射拳"
+    },
+    "kowtow cleave": {
+      "en": "Kowtow Cleave",
+      "ja": "ドゲザン",
+      "zh": "仆刀"
+    },
+    "last respects": {
+      "en": "Last Respects",
+      "ja": "おはかまいり",
+      "zh": "扫墓"
+    },
+    "lumina crash": {
+      "en": "Lumina Crash",
+      "ja": "ルミナコリジョン",
+      "zh": "琉光冲激"
+    },
+    "magical torque": {
+      "en": "Magical Torque",
+      "ja": "マジカルアクセル",
+      "zh": "魔法暴冲"
+    },
+    "make it rain": {
+      "en": "Make It Rain",
+      "ja": "ゴールドラッシュ",
+      "zh": "淘金潮"
+    },
+    "malignant chain": {
+      "en": "Malignant Chain",
+      "ja": "じゃどくのくさり",
+      "zh": "邪毒鎖鏈"
+    },
+    "matcha gotcha": {
+      "en": "Matcha Gotcha",
+      "ja": "シャカシャカほう",
+      "zh": "シャカシャカほう"
+    },
+    "mighty cleave": {
+      "en": "Mighty Cleave",
+      "ja": "パワフルエッジ",
+      "zh": "強刃攻擊"
+    },
+    "mortal spin": {
+      "en": "Mortal Spin",
+      "ja": "キラースピン",
+      "zh": "晶光转转"
+    },
+    "mountain gale": {
+      "en": "Mountain Gale",
+      "ja": "ひょうざんおろし",
+      "zh": "冰山风"
+    },
+    "mystical power": {
+      "en": "Mystical Power",
+      "ja": "しんぴのちから",
+      "zh": "神秘之力"
+    },
+    "noxious torque": {
+      "en": "Noxious Torque",
+      "ja": "ポイズンアクセル",
+      "zh": "剧毒暴冲"
+    },
+    "order up": {
+      "en": "Order Up",
+      "ja": "いっちょうあがり",
+      "zh": "上菜"
+    },
+    "population bomb": {
+      "en": "Population Bomb",
+      "ja": "ネズミざん",
+      "zh": "鼠数儿"
+    },
+    "pounce": {
+      "en": "Pounce",
+      "ja": "とびつく",
+      "zh": "虫扑"
+    },
+    "psychic noise": {
+      "en": "Psychic Noise",
+      "ja": "サイコノイズ",
+      "zh": "精神噪音"
+    },
+    "psyblade": {
+      "en": "Psyblade",
+      "ja": "サイコブレイド ",
+      "zh": "精神劍"
+    },
+    "psyshield bash": {
+      "en": "Psyshield Bash",
+      "ja": "バリアーラッシュ",
+      "zh": "屏障猛攻"
+    },
+    "rage fist": {
+      "en": "Rage Fist",
+      "ja": "ふんどのこぶし",
+      "zh": "愤怒之拳"
+    },
+    "raging bull": {
+      "en": "Raging Bull",
+      "ja": "レイジングブル",
+      "zh": "怒牛"
+    },
+    "raging fury": {
+      "en": "Raging Fury",
+      "ja": "だいふんげき",
+      "zh": "大愤慨"
+    },
+    "ruination": {
+      "en": "Ruination",
+      "ja": "カタストロフィ",
+      "zh": "大灾难"
+    },
+    "salt cure": {
+      "en": "Salt Cure",
+      "ja": "しおづけ",
+      "zh": "盐腌"
+    },
+    "sandsear storm": {
+      "en": "Sandsear Storm",
+      "ja": "ねっさのあらし",
+      "zh": "热沙风暴"
+    },
+    "spin out": {
+      "en": "Spin Out",
+      "ja": "ホイールスピン",
+      "zh": "疾速转轮"
+    },
+    "springtide storm": {
+      "en": "Springtide Storm",
+      "ja": "はるのあらし",
+      "zh": "阳春风暴"
+    },
+    "stone axe": {
+      "en": "Stone Axe",
+      "ja": "がんせきアックス",
+      "zh": "岩斧"
+    },
+    "supercell slam": {
+      "en": "Supercell Slam",
+      "ja": "サンダーダイブ",
+      "zh": "閃電強襲"
+    },
+    "syrup bomb": {
+      "en": "Syrup Bomb",
+      "ja": "みずあめボム",
+      "zh": "みずあめボム"
+    },
+    "tachyon cutter": {
+      "en": "Tachyon Cutter",
+      "ja": "タキオンカッター",
+      "zh": "迅子利刃"
+    },
+    "temper flare": {
+      "en": "Temper Flare",
+      "ja": "やけっぱち",
+      "zh": "豁出去"
+    },
+    "tera blast": {
+      "en": "Tera Blast",
+      "ja": "テラバースト",
+      "zh": "太晶爆发"
+    },
+    "tera starstorm": {
+      "en": "Tera Starstorm",
+      "ja": "テラクラスター",
+      "zh": "晶光星群"
+    },
+    "thunderclap": {
+      "en": "Thunderclap",
+      "ja": "じんらい",
+      "zh": "迅雷"
+    },
+    "torch song": {
+      "en": "Torch Song",
+      "ja": "フレアソング",
+      "zh": "闪焰高歌"
+    },
+    "trailblaze": {
+      "en": "Trailblaze",
+      "ja": "くさわけ",
+      "zh": "起草"
+    },
+    "triple arrows": {
+      "en": "Triple Arrows",
+      "ja": "３ぼんのや",
+      "zh": "三连箭"
+    },
+    "triple dive": {
+      "en": "Triple Dive",
+      "ja": "トリプルダイブ",
+      "zh": "三连钻"
+    },
+    "twin beam": {
+      "en": "Twin Beam",
+      "ja": "ツインビーム",
+      "zh": "双光束"
+    },
+    "upper hand": {
+      "en": "Upper Hand",
+      "ja": "はやてがえし",
+      "zh": "快手還擊"
+    },
+    "wave crash": {
+      "en": "Wave Crash",
+      "ja": "ウェーブタックル",
+      "zh": "波动冲"
+    },
+    "wicked torque": {
+      "en": "Wicked Torque",
+      "ja": "ダークアクセル",
+      "zh": "黑暗暴冲"
+    },
+    "wildbolt storm": {
+      "en": "Wildbolt Storm",
+      "ja": "かみなりあらし",
+      "zh": "鸣雷风暴"
+    }
+  },
+  "item": {
+    "king's rock": {
+      "en": "King's Rock",
+      "ja": "おうじゃのしるし",
+      "zh": "王者之證"
+    },
+    "poke ball": {
+      "en": "Poke Ball",
+      "ja": "モンスターボール",
+      "zh": "精靈球"
+    },
+    "stick": {
+      "en": "Stick",
+      "ja": "ながねぎ",
+      "zh": "大蔥"
+    },
+    "up-grade": {
+      "en": "Up-Grade",
+      "ja": "アップグレード",
+      "zh": "升級資料"
+    },
+    "altarianite": {
+      "en": "Altarianite",
+      "ja": "チルタリスナイト",
+      "zh": "七夕青鳥進化石"
+    },
+    "audinite": {
+      "en": "Audinite",
+      "ja": "タブンネナイト",
+      "zh": "差不多娃娃進化石"
+    },
+    "beedrillite": {
+      "en": "Beedrillite",
+      "ja": "スピアナイト",
+      "zh": "大針蜂進化石"
+    },
+    "cameruptite": {
+      "en": "Cameruptite",
+      "ja": "バクーダナイト",
+      "zh": "噴火駝進化石"
+    },
+    "diancite": {
+      "en": "Diancite",
+      "ja": "ディアンシナイト",
+      "zh": "蒂安希進化石"
+    },
+    "galladite": {
+      "en": "Galladite",
+      "ja": "エルレイドナイト",
+      "zh": "艾路雷朵進化石"
+    },
+    "glalitite": {
+      "en": "Glalitite",
+      "ja": "オニゴーリナイト",
+      "zh": "冰鬼護進化石"
+    },
+    "latiasite": {
+      "en": "Latiasite",
+      "ja": "ラティアスナイト",
+      "zh": "拉帝亞斯進化石"
+    },
+    "latiosite": {
+      "en": "Latiosite",
+      "ja": "ラティオスナイト",
+      "zh": "拉帝歐斯進化石"
+    },
+    "lopunnite": {
+      "en": "Lopunnite",
+      "ja": "ミミロップナイト",
+      "zh": "長耳兔進化石"
+    },
+    "metagrossite": {
+      "en": "Metagrossite",
+      "ja": "メタグロスナイト",
+      "zh": "巨金怪進化石"
+    },
+    "pidgeotite": {
+      "en": "Pidgeotite",
+      "ja": "ピジョットナイト",
+      "zh": "大比鳥進化石"
+    },
+    "sablenite": {
+      "en": "Sablenite",
+      "ja": "ヤミラミナイト",
+      "zh": "勾魂眼進化石"
+    },
+    "salamencite": {
+      "en": "Salamencite",
+      "ja": "ボーマンダナイト",
+      "zh": "暴飛龍進化石"
+    },
+    "sceptilite": {
+      "en": "Sceptilite",
+      "ja": "ジュカインナイト",
+      "zh": "蜥蜴王進化石"
+    },
+    "sharpedonite": {
+      "en": "Sharpedonite",
+      "ja": "サメハダナイト",
+      "zh": "巨牙鯊進化石"
+    },
+    "slowbronite": {
+      "en": "Slowbronite",
+      "ja": "ヤドランナイト",
+      "zh": "呆殼獸進化石"
+    },
+    "steelixite": {
+      "en": "Steelixite",
+      "ja": "ハガネールナイト",
+      "zh": "大鋼蛇進化石"
+    },
+    "swampertite": {
+      "en": "Swampertite",
+      "ja": "ラグラージナイト",
+      "zh": "巨沼怪進化石"
+    },
+    "adrenaline orb": {
+      "en": "Adrenaline Orb",
+      "ja": "ビビリだま",
+      "zh": "膽怯球"
+    },
+    "beast ball": {
+      "en": "Beast Ball",
+      "ja": "ウルトラボール",
+      "zh": "究極球"
+    },
+    "bottle cap": {
+      "en": "Bottle Cap",
+      "ja": "ぎんのおうかん",
+      "zh": "銀色王冠"
+    },
+    "bug memory": {
+      "en": "Bug Memory",
+      "ja": "バグメモリ",
+      "zh": "蟲子記憶碟"
+    },
+    "dark memory": {
+      "en": "Dark Memory",
+      "ja": "ダークメモリ",
+      "zh": "黑暗記憶碟"
+    },
+    "dragon memory": {
+      "en": "Dragon Memory",
+      "ja": "ドラゴンメモリ",
+      "zh": "龍記憶碟"
+    },
+    "electric memory": {
+      "en": "Electric Memory",
+      "ja": "エレクトロメモリ",
+      "zh": "電子記憶碟"
+    },
+    "electric seed": {
+      "en": "Electric Seed",
+      "ja": "エレキシード",
+      "zh": "電氣種子"
+    },
+    "fairy memory": {
+      "en": "Fairy Memory",
+      "ja": "フェアリーメモリ",
+      "zh": "妖精記憶碟"
+    },
+    "fighting memory": {
+      "en": "Fighting Memory",
+      "ja": "ファイトメモリ",
+      "zh": "戰鬥記憶碟"
+    },
+    "fire memory": {
+      "en": "Fire Memory",
+      "ja": "ファイヤーメモリ",
+      "zh": "火焰記憶碟"
+    },
+    "flying memory": {
+      "en": "Flying Memory",
+      "ja": "フライングメモリ",
+      "zh": "飛翔記憶碟"
+    },
+    "ghost memory": {
+      "en": "Ghost Memory",
+      "ja": "ゴーストメモリ",
+      "zh": "幽靈記憶碟"
+    },
+    "gold bottle cap": {
+      "en": "Gold Bottle Cap",
+      "ja": "きんのおうかん",
+      "zh": "金色王冠"
+    },
+    "grass memory": {
+      "en": "Grass Memory",
+      "ja": "グラスメモリ",
+      "zh": "青草記憶碟"
+    },
+    "grassy seed": {
+      "en": "Grassy Seed",
+      "ja": "グラスシード",
+      "zh": "青草種子"
+    },
+    "ground memory": {
+      "en": "Ground Memory",
+      "ja": "グラウンドメモリ",
+      "zh": "大地記憶碟"
+    },
+    "ice memory": {
+      "en": "Ice Memory",
+      "ja": "アイスメモリ",
+      "zh": "冰雪記憶碟"
+    },
+    "ice stone": {
+      "en": "Ice Stone",
+      "ja": "こおりのいし",
+      "zh": "冰之石"
+    },
+    "misty seed": {
+      "en": "Misty Seed",
+      "ja": "ミストシード",
+      "zh": "薄霧種子"
+    },
+    "poison memory": {
+      "en": "Poison Memory",
+      "ja": "ポイズンメモリ",
+      "zh": "毒記憶碟"
+    },
+    "protective pads": {
+      "en": "Protective Pads",
+      "ja": "ぼうごパット",
+      "zh": "部位護具"
+    },
+    "psychic memory": {
+      "en": "Psychic Memory",
+      "ja": "サイキックメモリ",
+      "zh": "精神記憶碟"
+    },
+    "psychic seed": {
+      "en": "Psychic Seed",
+      "ja": "サイコシード",
+      "zh": "精神種子"
+    },
+    "rock memory": {
+      "en": "Rock Memory",
+      "ja": "ロックメモリ",
+      "zh": "岩石記憶碟"
+    },
+    "steel memory": {
+      "en": "Steel Memory",
+      "ja": "スチールメモリ",
+      "zh": "鋼鐵記憶碟"
+    },
+    "terrain extender": {
+      "en": "Terrain Extender",
+      "ja": "グランドコート",
+      "zh": "大地膜"
+    },
+    "water memory": {
+      "en": "Water Memory",
+      "ja": "ウオーターメモリ",
+      "zh": "清水記憶碟"
+    },
+    "berry sweet": {
+      "en": "Berry Sweet",
+      "ja": "ベリーアメざいく",
+      "zh": "野莓糖飾"
+    },
+    "blunder policy": {
+      "en": "Blunder Policy",
+      "ja": "からぶりほけん",
+      "zh": "打空保險"
+    },
+    "chipped pot": {
+      "en": "Chipped Pot",
+      "ja": "かけたポット",
+      "zh": "缺損的茶壺"
+    },
+    "clover sweet": {
+      "en": "Clover Sweet",
+      "ja": "よつばアメざいく",
+      "zh": "幸運草糖飾"
+    },
+    "cracked pot": {
+      "en": "Cracked Pot",
+      "ja": "われたポット",
+      "zh": "破裂的茶壺"
+    },
+    "eject pack": {
+      "en": "Eject Pack",
+      "ja": "だっしゅつパック",
+      "zh": "避難背包"
+    },
+    "flower sweet": {
+      "en": "Flower Sweet",
+      "ja": "おはなアメざいく",
+      "zh": "花朵糖飾"
+    },
+    "fossilized bird": {
+      "en": "Fossilized Bird",
+      "ja": "カセキのトリ",
+      "zh": "化石鳥"
+    },
+    "fossilized dino": {
+      "en": "Fossilized Dino",
+      "ja": "カセキのクビナガ",
+      "zh": "化石海獸"
+    },
+    "fossilized drake": {
+      "en": "Fossilized Drake",
+      "ja": "カセキのリュウ",
+      "zh": "化石龍"
+    },
+    "fossilized fish": {
+      "en": "Fossilized Fish",
+      "ja": "カセキのサカナ",
+      "zh": "化石魚"
+    },
+    "galarica cuff": {
+      "en": "Galarica Cuff",
+      "ja": "ガラナツブレス",
+      "zh": "伽勒荳蔻手環"
+    },
+    "galarica wreath": {
+      "en": "Galarica Wreath",
+      "ja": "ガラナツリース",
+      "zh": "伽勒荳蔻花圈"
+    },
+    "heavy-duty boots": {
+      "en": "Heavy-Duty Boots",
+      "ja": "あつぞこブーツ",
+      "zh": "厚底靴"
+    },
+    "love sweet": {
+      "en": "Love Sweet",
+      "ja": "ハートアメざいく",
+      "zh": "愛心糖飾"
+    },
+    "ribbon sweet": {
+      "en": "Ribbon Sweet",
+      "ja": "リボンアメざいく",
+      "zh": "蝴蝶結糖飾"
+    },
+    "room service": {
+      "en": "Room Service",
+      "ja": "ルームサービス",
+      "zh": "客房服務"
+    },
+    "rusted shield": {
+      "en": "Rusted Shield",
+      "ja": "くちたたて",
+      "zh": "腐朽的盾"
+    },
+    "rusted sword": {
+      "en": "Rusted Sword",
+      "ja": "くちたけん",
+      "zh": "腐朽的劍"
+    },
+    "star sweet": {
+      "en": "Star Sweet",
+      "ja": "スターアメざいく",
+      "zh": "星星糖飾"
+    },
+    "strawberry sweet": {
+      "en": "Strawberry Sweet",
+      "ja": "いちごアメざいく",
+      "zh": "草莓糖飾"
+    },
+    "sweet apple": {
+      "en": "Sweet Apple",
+      "ja": "あまーいりんご",
+      "zh": "甜甜蘋果"
+    },
+    "tart apple": {
+      "en": "Tart Apple",
+      "ja": "すっぱいりんご",
+      "zh": "酸酸蘋果"
+    },
+    "throat spray": {
+      "en": "Throat Spray",
+      "ja": "のどスプレー",
+      "zh": "爽喉噴霧"
+    },
+    "tr00": {
+      "en": "TR00",
+      "ja": "わざレコード００",
+      "zh": "招式紀錄００"
+    },
+    "tr01": {
+      "en": "TR01",
+      "ja": "わざレコード０１",
+      "zh": "招式紀錄０１"
+    },
+    "tr02": {
+      "en": "TR02",
+      "ja": "わざレコード０２",
+      "zh": "招式紀錄０２"
+    },
+    "tr03": {
+      "en": "TR03",
+      "ja": "わざレコード０３",
+      "zh": "招式紀錄０３"
+    },
+    "tr04": {
+      "en": "TR04",
+      "ja": "わざレコード０４",
+      "zh": "招式紀錄０４"
+    },
+    "tr05": {
+      "en": "TR05",
+      "ja": "わざレコード０５",
+      "zh": "招式紀錄０５"
+    },
+    "tr06": {
+      "en": "TR06",
+      "ja": "わざレコード０６",
+      "zh": "招式紀錄０６"
+    },
+    "tr07": {
+      "en": "TR07",
+      "ja": "わざレコード０７",
+      "zh": "招式紀錄０７"
+    },
+    "tr08": {
+      "en": "TR08",
+      "ja": "わざレコード０８",
+      "zh": "招式紀錄０８"
+    },
+    "tr09": {
+      "en": "TR09",
+      "ja": "わざレコード０９",
+      "zh": "招式紀錄０９"
+    },
+    "tr10": {
+      "en": "TR10",
+      "ja": "わざレコード１０",
+      "zh": "招式紀錄１０"
+    },
+    "tr11": {
+      "en": "TR11",
+      "ja": "わざレコード１１",
+      "zh": "招式紀錄１１"
+    },
+    "tr12": {
+      "en": "TR12",
+      "ja": "わざレコード１２",
+      "zh": "招式紀錄１２"
+    },
+    "tr13": {
+      "en": "TR13",
+      "ja": "わざレコード１３",
+      "zh": "招式紀錄１３"
+    },
+    "tr14": {
+      "en": "TR14",
+      "ja": "わざレコード１４",
+      "zh": "招式紀錄１４"
+    },
+    "tr15": {
+      "en": "TR15",
+      "ja": "わざレコード１５",
+      "zh": "招式紀錄１５"
+    },
+    "tr16": {
+      "en": "TR16",
+      "ja": "わざレコード１６",
+      "zh": "招式紀錄１６"
+    },
+    "tr17": {
+      "en": "TR17",
+      "ja": "わざレコード１７",
+      "zh": "招式紀錄１７"
+    },
+    "tr18": {
+      "en": "TR18",
+      "ja": "わざレコード１８",
+      "zh": "招式紀錄１８"
+    },
+    "tr19": {
+      "en": "TR19",
+      "ja": "わざレコード１９",
+      "zh": "招式紀錄１９"
+    },
+    "tr20": {
+      "en": "TR20",
+      "ja": "わざレコード２０",
+      "zh": "招式紀錄２０"
+    },
+    "tr21": {
+      "en": "TR21",
+      "ja": "わざレコード２１",
+      "zh": "招式紀錄２１"
+    },
+    "tr22": {
+      "en": "TR22",
+      "ja": "わざレコード２２",
+      "zh": "招式紀錄２２"
+    },
+    "tr23": {
+      "en": "TR23",
+      "ja": "わざレコード２３",
+      "zh": "招式紀錄２３"
+    },
+    "tr24": {
+      "en": "TR24",
+      "ja": "わざレコード２４",
+      "zh": "招式紀錄２４"
+    },
+    "tr25": {
+      "en": "TR25",
+      "ja": "わざレコード２５",
+      "zh": "招式紀錄２５"
+    },
+    "tr26": {
+      "en": "TR26",
+      "ja": "わざレコード２６",
+      "zh": "招式紀錄２６"
+    },
+    "tr27": {
+      "en": "TR27",
+      "ja": "わざレコード２７",
+      "zh": "招式紀錄２７"
+    },
+    "tr28": {
+      "en": "TR28",
+      "ja": "わざレコード２８",
+      "zh": "招式紀錄２８"
+    },
+    "tr29": {
+      "en": "TR29",
+      "ja": "わざレコード２９",
+      "zh": "招式紀錄２９"
+    },
+    "tr30": {
+      "en": "TR30",
+      "ja": "わざレコード３０",
+      "zh": "招式紀錄３０"
+    },
+    "tr31": {
+      "en": "TR31",
+      "ja": "わざレコード３１",
+      "zh": "招式紀錄３１"
+    },
+    "tr32": {
+      "en": "TR32",
+      "ja": "わざレコード３２",
+      "zh": "招式紀錄３２"
+    },
+    "tr33": {
+      "en": "TR33",
+      "ja": "わざレコード３３",
+      "zh": "招式紀錄３３"
+    },
+    "tr34": {
+      "en": "TR34",
+      "ja": "わざレコード３４",
+      "zh": "招式紀錄３４"
+    },
+    "tr35": {
+      "en": "TR35",
+      "ja": "わざレコード３５",
+      "zh": "招式紀錄３５"
+    },
+    "tr36": {
+      "en": "TR36",
+      "ja": "わざレコード３６",
+      "zh": "招式紀錄３６"
+    },
+    "tr37": {
+      "en": "TR37",
+      "ja": "わざレコード３７",
+      "zh": "招式紀錄３７"
+    },
+    "tr38": {
+      "en": "TR38",
+      "ja": "わざレコード３８",
+      "zh": "招式紀錄３８"
+    },
+    "tr39": {
+      "en": "TR39",
+      "ja": "わざレコード３９",
+      "zh": "招式紀錄３９"
+    },
+    "tr40": {
+      "en": "TR40",
+      "ja": "わざレコード４０",
+      "zh": "招式紀錄４０"
+    },
+    "tr41": {
+      "en": "TR41",
+      "ja": "わざレコード４１",
+      "zh": "招式紀錄４１"
+    },
+    "tr42": {
+      "en": "TR42",
+      "ja": "わざレコード４２",
+      "zh": "招式紀錄４２"
+    },
+    "tr43": {
+      "en": "TR43",
+      "ja": "わざレコード４３",
+      "zh": "招式紀錄４３"
+    },
+    "tr44": {
+      "en": "TR44",
+      "ja": "わざレコード４４",
+      "zh": "招式紀錄４４"
+    },
+    "tr45": {
+      "en": "TR45",
+      "ja": "わざレコード４５",
+      "zh": "招式紀錄４５"
+    },
+    "tr46": {
+      "en": "TR46",
+      "ja": "わざレコード４６",
+      "zh": "招式紀錄４６"
+    },
+    "tr47": {
+      "en": "TR47",
+      "ja": "わざレコード４７",
+      "zh": "招式紀錄４７"
+    },
+    "tr48": {
+      "en": "TR48",
+      "ja": "わざレコード４８",
+      "zh": "招式紀錄４８"
+    },
+    "tr49": {
+      "en": "TR49",
+      "ja": "わざレコード４９",
+      "zh": "招式紀錄４９"
+    },
+    "tr50": {
+      "en": "TR50",
+      "ja": "わざレコード５０",
+      "zh": "招式紀錄５０"
+    },
+    "tr51": {
+      "en": "TR51",
+      "ja": "わざレコード５１",
+      "zh": "招式紀錄５１"
+    },
+    "tr52": {
+      "en": "TR52",
+      "ja": "わざレコード５２",
+      "zh": "招式紀錄５２"
+    },
+    "tr53": {
+      "en": "TR53",
+      "ja": "わざレコード５３",
+      "zh": "招式紀錄５３"
+    },
+    "tr54": {
+      "en": "TR54",
+      "ja": "わざレコード５４",
+      "zh": "招式紀錄５４"
+    },
+    "tr55": {
+      "en": "TR55",
+      "ja": "わざレコード５５",
+      "zh": "招式紀錄５５"
+    },
+    "tr56": {
+      "en": "TR56",
+      "ja": "わざレコード５６",
+      "zh": "招式紀錄５６"
+    },
+    "tr57": {
+      "en": "TR57",
+      "ja": "わざレコード５７",
+      "zh": "招式紀錄５７"
+    },
+    "tr58": {
+      "en": "TR58",
+      "ja": "わざレコード５８",
+      "zh": "招式紀錄５８"
+    },
+    "tr59": {
+      "en": "TR59",
+      "ja": "わざレコード５９",
+      "zh": "招式紀錄５９"
+    },
+    "tr60": {
+      "en": "TR60",
+      "ja": "わざレコード６０",
+      "zh": "招式紀錄６０"
+    },
+    "tr61": {
+      "en": "TR61",
+      "ja": "わざレコード６１",
+      "zh": "招式紀錄６１"
+    },
+    "tr62": {
+      "en": "TR62",
+      "ja": "わざレコード６２",
+      "zh": "招式紀錄６２"
+    },
+    "tr63": {
+      "en": "TR63",
+      "ja": "わざレコード６３",
+      "zh": "招式紀錄６３"
+    },
+    "tr64": {
+      "en": "TR64",
+      "ja": "わざレコード６４",
+      "zh": "招式紀錄６４"
+    },
+    "tr65": {
+      "en": "TR65",
+      "ja": "わざレコード６５",
+      "zh": "招式紀錄６５"
+    },
+    "tr66": {
+      "en": "TR66",
+      "ja": "わざレコード６６",
+      "zh": "招式紀錄６６"
+    },
+    "tr67": {
+      "en": "TR67",
+      "ja": "わざレコード６７",
+      "zh": "招式紀錄６７"
+    },
+    "tr68": {
+      "en": "TR68",
+      "ja": "わざレコード６８",
+      "zh": "招式紀錄６８"
+    },
+    "tr69": {
+      "en": "TR69",
+      "ja": "わざレコード６９",
+      "zh": "招式紀錄６９"
+    },
+    "tr70": {
+      "en": "TR70",
+      "ja": "わざレコード７０",
+      "zh": "招式紀錄７０"
+    },
+    "tr71": {
+      "en": "TR71",
+      "ja": "わざレコード７１",
+      "zh": "招式紀錄７１"
+    },
+    "tr72": {
+      "en": "TR72",
+      "ja": "わざレコード７２",
+      "zh": "招式紀錄７２"
+    },
+    "tr73": {
+      "en": "TR73",
+      "ja": "わざレコード７３",
+      "zh": "招式紀錄７３"
+    },
+    "tr74": {
+      "en": "TR74",
+      "ja": "わざレコード７４",
+      "zh": "招式紀錄７４"
+    },
+    "tr75": {
+      "en": "TR75",
+      "ja": "わざレコード７５",
+      "zh": "招式紀錄７５"
+    },
+    "tr76": {
+      "en": "TR76",
+      "ja": "わざレコード７６",
+      "zh": "招式紀錄７６"
+    },
+    "tr77": {
+      "en": "TR77",
+      "ja": "わざレコード７７",
+      "zh": "招式紀錄７７"
+    },
+    "tr78": {
+      "en": "TR78",
+      "ja": "わざレコード７８",
+      "zh": "招式紀錄７８"
+    },
+    "tr79": {
+      "en": "TR79",
+      "ja": "わざレコード７９",
+      "zh": "招式紀錄７９"
+    },
+    "tr80": {
+      "en": "TR80",
+      "ja": "わざレコード８０",
+      "zh": "招式紀錄８０"
+    },
+    "tr81": {
+      "en": "TR81",
+      "ja": "わざレコード８１",
+      "zh": "招式紀錄８１"
+    },
+    "tr82": {
+      "en": "TR82",
+      "ja": "わざレコード８２",
+      "zh": "招式紀錄８２"
+    },
+    "tr83": {
+      "en": "TR83",
+      "ja": "わざレコード８３",
+      "zh": "招式紀錄８３"
+    },
+    "tr84": {
+      "en": "TR84",
+      "ja": "わざレコード８４",
+      "zh": "招式紀錄８４"
+    },
+    "tr85": {
+      "en": "TR85",
+      "ja": "わざレコード８５",
+      "zh": "招式紀錄８５"
+    },
+    "tr86": {
+      "en": "TR86",
+      "ja": "わざレコード８６",
+      "zh": "招式紀錄８６"
+    },
+    "tr87": {
+      "en": "TR87",
+      "ja": "わざレコード８７",
+      "zh": "招式紀錄８７"
+    },
+    "tr88": {
+      "en": "TR88",
+      "ja": "わざレコード８８",
+      "zh": "招式紀錄８８"
+    },
+    "tr89": {
+      "en": "TR89",
+      "ja": "わざレコード８９",
+      "zh": "招式紀錄８９"
+    },
+    "tr90": {
+      "en": "TR90",
+      "ja": "わざレコード９０",
+      "zh": "招式紀錄９０"
+    },
+    "tr91": {
+      "en": "TR91",
+      "ja": "わざレコード９１",
+      "zh": "招式紀錄９１"
+    },
+    "tr92": {
+      "en": "TR92",
+      "ja": "わざレコード９２",
+      "zh": "招式紀錄９２"
+    },
+    "tr93": {
+      "en": "TR93",
+      "ja": "わざレコード９３",
+      "zh": "招式紀錄９３"
+    },
+    "tr94": {
+      "en": "TR94",
+      "ja": "わざレコード９４",
+      "zh": "招式紀錄９４"
+    },
+    "tr95": {
+      "en": "TR95",
+      "ja": "わざレコード９５",
+      "zh": "招式紀錄９５"
+    },
+    "tr96": {
+      "en": "TR96",
+      "ja": "わざレコード９６",
+      "zh": "招式紀錄９６"
+    },
+    "tr97": {
+      "en": "TR97",
+      "ja": "わざレコード９７",
+      "zh": "招式紀錄９７"
+    },
+    "tr98": {
+      "en": "TR98",
+      "ja": "わざレコード９８",
+      "zh": "招式紀錄９８"
+    },
+    "tr99": {
+      "en": "TR99",
+      "ja": "わざレコード９９",
+      "zh": "招式紀錄９９"
+    },
+    "utility umbrella": {
+      "en": "Utility Umbrella",
+      "ja": "ばんのうがさ",
+      "zh": "萬能傘"
+    },
+    "ability shield": {
+      "en": "Ability Shield",
+      "ja": "とくせいガード",
+      "zh": "特性护具"
+    },
+    "adamant crystal": {
+      "en": "Adamant Crystal",
+      "ja": "だいこんごうだま",
+      "zh": "大金刚宝玉"
+    },
+    "auspicious armor": {
+      "en": "Auspicious Armor",
+      "ja": "イワイノヨロイ",
+      "zh": "庆祝之铠"
+    },
+    "booster energy": {
+      "en": "Booster Energy",
+      "ja": "ブーストエナジー",
+      "zh": "驱劲能量"
+    },
+    "clear amulet": {
+      "en": "Clear Amulet",
+      "ja": "クリアチャーム",
+      "zh": "清净坠饰"
+    },
+    "cornerstone mask": {
+      "en": "Cornerstone Mask",
+      "ja": "いしずえのめん",
+      "zh": "いしずえのめん"
+    },
+    "covert cloak": {
+      "en": "Covert Cloak",
+      "ja": "おんみつマント",
+      "zh": "密探斗篷"
+    },
+    "fairy feather": {
+      "en": "Fairy Feather",
+      "ja": "ようせいのハネ",
+      "zh": "ようせいのハネ"
+    },
+    "griseous core": {
+      "en": "Griseous Core",
+      "ja": "だいはっきんだま",
+      "zh": "大白金宝玉"
+    },
+    "hearthflame mask": {
+      "en": "Hearthflame Mask",
+      "ja": "かまどのめん",
+      "zh": "かまどのめん"
+    },
+    "loaded dice": {
+      "en": "Loaded Dice",
+      "ja": "いかさまダイス",
+      "zh": "机变骰子"
+    },
+    "lustrous globe": {
+      "en": "Lustrous Globe",
+      "ja": "だいしらたま",
+      "zh": "大白宝玉"
+    },
+    "malicious armor": {
+      "en": "Malicious Armor",
+      "ja": "ノロイノヨロイ",
+      "zh": "咒术之铠"
+    },
+    "masterpiece teacup": {
+      "en": "Masterpiece Teacup",
+      "ja": "ボンサクのちゃわん",
+      "zh": "ボンサクのちゃわん"
+    },
+    "mirror herb": {
+      "en": "Mirror Herb",
+      "ja": "ものまねハーブ",
+      "zh": "模仿香草"
+    },
+    "punching glove": {
+      "en": "Punching Glove",
+      "ja": "パンチグローブ",
+      "zh": "拳击手套"
+    },
+    "strange ball": {
+      "en": "Strange Ball",
+      "ja": "ストレンジボール",
+      "zh": "奇异球"
+    },
+    "syrupy apple": {
+      "en": "Syrupy Apple",
+      "ja": "みついりりんご",
+      "zh": "みついりりんご"
+    },
+    "unremarkable teacup": {
+      "en": "Unremarkable Teacup",
+      "ja": "ボンサクのちゃわん",
+      "zh": "ボンサクのちゃわん"
+    },
+    "wellspring mask": {
+      "en": "Wellspring Mask",
+      "ja": "いどのめん",
+      "zh": "いどのめん"
+    }
+  }
+}

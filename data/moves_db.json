@@ -1,0 +1,5487 @@
+{
+  "衝衝猛攻": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "堅堅固守": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "啦啦療癒": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "千萬伏特": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 195,
+    "name_en": "10,000,000 Volt Thunderbolt",
+    "name_zh": "千萬伏特"
+  },
+  "吸取": {
+    "type": "grass",
+    "category": "special",
+    "power": 20,
+    "name_en": "Absorb",
+    "name_zh": "吸取"
+  },
+  "衝岩": {
+    "type": "rock",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Accelerock",
+    "name_zh": "衝岩"
+  },
+  "溶解液": {
+    "type": "poison",
+    "category": "special",
+    "power": 40,
+    "name_en": "Acid",
+    "name_zh": "溶解液"
+  },
+  "溶化": {
+    "type": "poison",
+    "category": "status"
+  },
+  "強酸劇毒滅絕雨": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Acid Downpour",
+    "name_zh": "強酸劇毒滅絕雨"
+  },
+  "酸液炸彈": {
+    "type": "poison",
+    "category": "special",
+    "power": 40,
+    "name_en": "Acid Spray",
+    "name_zh": "酸液炸彈"
+  },
+  "雜技": {
+    "type": "flying",
+    "category": "physical",
+    "power": 55,
+    "name_en": "Acrobatics",
+    "name_zh": "雜技"
+  },
+  "點穴": {
+    "type": "normal",
+    "category": "status"
+  },
+  "歸無之光": {
+    "type": "dragon",
+    "category": "special",
+    "power": 160,
+    "name_en": "Prismatic Laser",
+    "name_zh": "歸無之光"
+  },
+  "燕返": {
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Aerial Ace",
+    "name_zh": "燕返"
+  },
+  "氣旋攻擊": {
+    "type": "flying",
+    "category": "special",
+    "power": 100,
+    "name_en": "Aeroblast",
+    "name_zh": "氣旋攻擊"
+  },
+  "您先請": {
+    "type": "normal",
+    "category": "status"
+  },
+  "高速移動": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "空氣利刃": {
+    "type": "flying",
+    "category": "special",
+    "power": 60,
+    "name_en": "Air Cutter",
+    "name_zh": "空氣利刃"
+  },
+  "空氣斬": {
+    "type": "flying",
+    "category": "special",
+    "power": 75,
+    "name_en": "Air Slash",
+    "name_zh": "空氣斬"
+  },
+  "全力無雙激烈拳": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "All-Out Pummeling",
+    "name_zh": "全力無雙激烈拳"
+  },
+  "交換場地": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "瞬間失憶": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "擲錨": {
+    "type": "steel",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Anchor Shot",
+    "name_zh": "擲錨"
+  },
+  "原始之力": {
+    "type": "rock",
+    "category": "special",
+    "power": 60,
+    "name_en": "Ancient Power",
+    "name_zh": "原始之力"
+  },
+  "蘋果酸": {
+    "type": "grass",
+    "category": "special",
+    "power": 80,
+    "name_en": "Apple Acid",
+    "name_zh": "蘋果酸"
+  },
+  "水波刀": {
+    "type": "water",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Aqua Cutter",
+    "name_zh": "水波刀"
+  },
+  "水流噴射": {
+    "type": "water",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Aqua Jet",
+    "name_zh": "水流噴射"
+  },
+  "水流環": {
+    "type": "water",
+    "category": "status"
+  },
+  "流水旋舞": {
+    "type": "water",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Aqua Step",
+    "name_zh": "流水旋舞"
+  },
+  "水流尾": {
+    "type": "water",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Aqua Tail",
+    "name_zh": "水流尾"
+  },
+  "猛推": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Arm Thrust",
+    "name_zh": "猛推"
+  },
+  "鎧農炮": {
+    "type": "fire",
+    "category": "special",
+    "power": 120,
+    "name_en": "Armor Cannon",
+    "name_zh": "鎧農炮"
+  },
+  "芳香治療": {
+    "type": "grass",
+    "category": "status"
+  },
+  "芳香薄霧": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "借助": {
+    "type": "normal",
+    "category": "status"
+  },
+  "惡意追擊": {
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Assurance",
+    "name_zh": "惡意追擊"
+  },
+  "驚嚇": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Astonish",
+    "name_zh": "驚嚇"
+  },
+  "星碎": {
+    "type": "ghost",
+    "category": "special",
+    "power": 120,
+    "name_en": "Astral Barrage",
+    "name_zh": "星碎"
+  },
+  "攻擊指令": {
+    "type": "bug",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Attack Order",
+    "name_zh": "攻擊指令"
+  },
+  "迷人": {
+    "type": "normal",
+    "category": "status"
+  },
+  "波導彈": {
+    "type": "fighting",
+    "category": "special",
+    "power": 80,
+    "name_en": "Aura Sphere",
+    "name_zh": "波導彈"
+  },
+  "氣場輪": {
+    "type": "electric",
+    "category": "physical",
+    "power": 110,
+    "name_en": "Aura Wheel",
+    "name_zh": "氣場輪"
+  },
+  "極光束": {
+    "type": "ice",
+    "category": "special",
+    "power": 65,
+    "name_en": "Aurora Beam",
+    "name_zh": "極光束"
+  },
+  "極光幕": {
+    "type": "ice",
+    "category": "status"
+  },
+  "身體輕量化": {
+    "type": "steel",
+    "category": "status"
+  },
+  "雪崩": {
+    "type": "ice",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Avalanche",
+    "name_zh": "雪崩"
+  },
+  "下壓踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Axe Kick",
+    "name_zh": "下壓踢"
+  },
+  "圓瞳": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "壞壞領域": {
+    "type": "dark",
+    "category": "special",
+    "power": 90,
+    "name_en": "Baddy Bad",
+    "name_zh": "壞壞領域"
+  },
+  "碉堡": {
+    "type": "poison",
+    "category": "status"
+  },
+  "毒千針": {
+    "type": "poison",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Barb Barrage",
+    "name_zh": "毒千針"
+  },
+  "投球": {
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Barrage",
+    "name_zh": "投球"
+  },
+  "屏障": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "接棒": {
+    "type": "normal",
+    "category": "status"
+  },
+  "鳥嘴加農炮": {
+    "type": "flying",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Beak Blast",
+    "name_zh": "鳥嘴加農炮"
+  },
+  "圍攻": {
+    "type": "dark",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Beat Up",
+    "name_zh": "圍攻"
+  },
+  "巨獸彈": {
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Behemoth Bash",
+    "name_zh": "巨獸彈"
+  },
+  "巨獸斬": {
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Behemoth Blade",
+    "name_zh": "巨獸斬"
+  },
+  "打嗝": {
+    "type": "poison",
+    "category": "special",
+    "power": 120,
+    "name_en": "Belch",
+    "name_zh": "打嗝"
+  },
+  "腹鼓": {
+    "type": "normal",
+    "category": "status"
+  },
+  "傳遞禮物": {
+    "type": "normal",
+    "category": "status"
+  },
+  "忍耐": {
+    "type": "normal",
+    "category": "physical"
+  },
+  "綁緊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Bind",
+    "name_zh": "綁緊"
+  },
+  "咬住": {
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Bite",
+    "name_zh": "咬住"
+  },
+  "悔念劍": {
+    "type": "fire",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Bitter Blade",
+    "name_zh": "悔念劍"
+  },
+  "冤冤相報": {
+    "type": "ghost",
+    "category": "special",
+    "power": 70,
+    "name_en": "Burning Jealousy",
+    "name_zh": "冤冤相報"
+  },
+  "黑洞吞噬萬物滅": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Black Hole Eclipse",
+    "name_zh": "黑洞吞噬萬物滅"
+  },
+  "爆炸烈焰": {
+    "type": "fire",
+    "category": "special",
+    "power": 150,
+    "name_en": "Blast Burn",
+    "name_zh": "爆炸烈焰"
+  },
+  "火焰踢": {
+    "type": "fire",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Blaze Kick",
+    "name_zh": "火焰踢"
+  },
+  "灼熱暴衝": {
+    "type": "fire",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Blazing Torque",
+    "name_zh": "灼熱暴衝"
+  },
+  "枯葉風暴": {
+    "type": "flying",
+    "category": "special",
+    "power": 100,
+    "name_en": "Bleakwind Storm",
+    "name_zh": "枯葉風暴"
+  },
+  "暴風雪": {
+    "type": "ice",
+    "category": "special",
+    "power": 110,
+    "name_en": "Blizzard",
+    "name_zh": "暴風雪"
+  },
+  "擋路": {
+    "type": "normal",
+    "category": "status"
+  },
+  "血月": {
+    "type": "normal",
+    "category": "special",
+    "power": 140,
+    "name_en": "Blood Moon",
+    "name_zh": "血月"
+  },
+  "絢爛繽紛花怒放": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Bloom Doom",
+    "name_zh": "絢爛繽紛花怒放"
+  },
+  "青焰": {
+    "type": "fire",
+    "category": "special",
+    "power": 130,
+    "name_en": "Blue Flare",
+    "name_zh": "青焰"
+  },
+  "撲擊": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Body Press",
+    "name_zh": "撲擊"
+  },
+  "泰山壓頂": {
+    "type": "normal",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Body Slam",
+    "name_zh": "泰山壓頂"
+  },
+  "電喙": {
+    "type": "electric",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Bolt Beak",
+    "name_zh": "電喙"
+  },
+  "雷擊": {
+    "type": "electric",
+    "category": "physical",
+    "power": 130,
+    "name_en": "Bolt Strike",
+    "name_zh": "雷擊"
+  },
+  "骨棒": {
+    "type": "ground",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Bone Club",
+    "name_zh": "骨棒"
+  },
+  "骨棒亂打": {
+    "type": "ground",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Bone Rush",
+    "name_zh": "骨棒亂打"
+  },
+  "骨頭回力鏢": {
+    "type": "ground",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Bonemerang",
+    "name_zh": "骨頭回力鏢"
+  },
+  "爆音波": {
+    "type": "normal",
+    "category": "special",
+    "power": 140,
+    "name_en": "Boomburst",
+    "name_zh": "爆音波"
+  },
+  "彈跳": {
+    "type": "flying",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Bounce",
+    "name_zh": "彈跳"
+  },
+  "活活氣泡": {
+    "type": "water",
+    "category": "special",
+    "power": 90,
+    "name_en": "Bouncy Bubble",
+    "name_zh": "活活氣泡"
+  },
+  "木枝突刺": {
+    "type": "grass",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Branch Poke",
+    "name_zh": "木枝突刺"
+  },
+  "勇鳥猛攻": {
+    "type": "flying",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Brave Bird",
+    "name_zh": "勇鳥猛攻"
+  },
+  "廣域破壞": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Breaking Swipe",
+    "name_zh": "廣域破壞"
+  },
+  "究極無敵大衝撞": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Breakneck Blitz",
+    "name_zh": "究極無敵大衝撞"
+  },
+  "劈瓦": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Brick Break",
+    "name_zh": "劈瓦"
+  },
+  "鹽水": {
+    "type": "water",
+    "category": "special",
+    "power": 65,
+    "name_en": "Brine",
+    "name_zh": "鹽水"
+  },
+  "狂舞揮打": {
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Brutal Swing",
+    "name_zh": "狂舞揮打"
+  },
+  "泡沫": {
+    "type": "water",
+    "category": "special",
+    "power": 40,
+    "name_en": "Bubble",
+    "name_zh": "泡沫"
+  },
+  "泡沫光線": {
+    "type": "water",
+    "category": "special",
+    "power": 65,
+    "name_en": "Bubble Beam",
+    "name_zh": "泡沫光線"
+  },
+  "蟲咬": {
+    "type": "bug",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Bug Bite",
+    "name_zh": "蟲咬"
+  },
+  "蟲鳴": {
+    "type": "bug",
+    "category": "special",
+    "power": 90,
+    "name_en": "Bug Buzz",
+    "name_zh": "蟲鳴"
+  },
+  "健美": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "重踏": {
+    "type": "ground",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Bulldoze",
+    "name_zh": "重踏"
+  },
+  "子彈拳": {
+    "type": "steel",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Bullet Punch",
+    "name_zh": "子彈拳"
+  },
+  "種子機關槍": {
+    "type": "grass",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Bullet Seed",
+    "name_zh": "種子機關槍"
+  },
+  "燃盡": {
+    "type": "fire",
+    "category": "special",
+    "power": 130,
+    "name_en": "Burn Up",
+    "name_zh": "燃盡"
+  },
+  "妒火": {
+    "type": "fire",
+    "category": "special",
+    "power": 70,
+    "name_en": "Burning Jealousy",
+    "name_zh": "妒火"
+  },
+  "麻麻電擊": {
+    "type": "electric",
+    "category": "special",
+    "power": 90,
+    "name_en": "Buzzy Buzz",
+    "name_zh": "麻麻電擊"
+  },
+  "冥想": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "保護色": {
+    "type": "normal",
+    "category": "status"
+  },
+  "誘惑": {
+    "type": "normal",
+    "category": "status"
+  },
+  "皮卡皮卡必殺擊": {
+    "type": "electric",
+    "category": "physical",
+    "power": 210,
+    "name_en": "Catastropika",
+    "name_zh": "皮卡皮卡必殺擊"
+  },
+  "秘劍・千重濤": {
+    "type": "dark",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Secret Sword",
+    "name_zh": "秘劍・千重濤"
+  },
+  "慶祝": {
+    "type": "normal",
+    "category": "status"
+  },
+  "充電": {
+    "type": "electric",
+    "category": "status"
+  },
+  "充電光束": {
+    "type": "electric",
+    "category": "special",
+    "power": 50,
+    "name_en": "Charge Beam",
+    "name_zh": "充電光束"
+  },
+  "撒嬌": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "喋喋不休": {
+    "type": "flying",
+    "category": "special",
+    "power": 65,
+    "name_en": "Chatter",
+    "name_zh": "喋喋不休"
+  },
+  "潑冷水": {
+    "type": "water",
+    "category": "special",
+    "power": 50,
+    "name_en": "Chilling Water",
+    "name_zh": "潑冷水"
+  },
+  "冷笑話": {
+    "type": "ice",
+    "category": "status"
+  },
+  "逐步擊破": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Chip Away",
+    "name_zh": "逐步擊破"
+  },
+  "葉綠爆震": {
+    "type": "grass",
+    "category": "special",
+    "power": 150,
+    "name_en": "Chloroblast",
+    "name_zh": "葉綠爆震"
+  },
+  "巴投": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Circle Throw",
+    "name_zh": "巴投"
+  },
+  "貝殼夾擊": {
+    "type": "water",
+    "category": "physical",
+    "power": 35,
+    "name_en": "Clamp",
+    "name_zh": "貝殼夾擊"
+  },
+  "鱗片噪音": {
+    "type": "dragon",
+    "category": "special",
+    "power": 110,
+    "name_en": "Clanging Scales",
+    "name_zh": "鱗片噪音"
+  },
+  "魂舞烈音爆": {
+    "type": "dragon",
+    "category": "status"
+  },
+  "熾魂熱舞烈音爆": {
+    "type": "dragon",
+    "category": "special",
+    "power": 185,
+    "name_en": "Clangorous Soulblaze",
+    "name_zh": "熾魂熱舞烈音爆"
+  },
+  "清除之煙": {
+    "type": "poison",
+    "category": "special",
+    "power": 50,
+    "name_en": "Clear Smog",
+    "name_zh": "清除之煙"
+  },
+  "近身戰": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Close Combat",
+    "name_zh": "近身戰"
+  },
+  "指導": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "盤蜷": {
+    "type": "poison",
+    "category": "status"
+  },
+  "全開猛撞": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Collision Course",
+    "name_zh": "全開猛撞"
+  },
+  "格鬥暴衝": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Combat Torque",
+    "name_zh": "格鬥暴衝"
+  },
+  "連續拳": {
+    "type": "normal",
+    "category": "physical",
+    "power": 18,
+    "name_en": "Comet Punch",
+    "name_zh": "連續拳"
+  },
+  "復仇": {
+    "type": "dark",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Comeuppance",
+    "name_zh": "復仇"
+  },
+  "密語": {
+    "type": "normal",
+    "category": "status"
+  },
+  "奇異之光": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "念力": {
+    "type": "psychic",
+    "category": "special",
+    "power": 50,
+    "name_en": "Confusion",
+    "name_zh": "念力"
+  },
+  "纏繞": {
+    "type": "normal",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Constrict",
+    "name_zh": "纏繞"
+  },
+  "毀天滅地巨岩墜": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Continental Crush",
+    "name_zh": "毀天滅地巨岩墜"
+  },
+  "紋理": {
+    "type": "normal",
+    "category": "status"
+  },
+  "紋理２": {
+    "type": "normal",
+    "category": "status"
+  },
+  "仿效": {
+    "type": "normal",
+    "category": "status"
+  },
+  "核心懲罰者": {
+    "type": "dragon",
+    "category": "special",
+    "power": 100,
+    "name_en": "Core Enforcer",
+    "name_zh": "核心懲罰者"
+  },
+  "超絕螺旋連擊": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Corkscrew Crash",
+    "name_zh": "超絕螺旋連擊"
+  },
+  "腐蝕氣體": {
+    "type": "poison",
+    "category": "status"
+  },
+  "宇宙力量": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "棉花防守": {
+    "type": "grass",
+    "category": "status"
+  },
+  "棉孢子": {
+    "type": "grass",
+    "category": "status"
+  },
+  "雙倍奉還": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Counter",
+    "name_zh": "雙倍奉還"
+  },
+  "換場": {
+    "type": "normal",
+    "category": "status"
+  },
+  "渴望": {
+    "type": "normal",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Covet",
+    "name_zh": "渴望"
+  },
+  "蟹鉗錘": {
+    "type": "water",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Crabhammer",
+    "name_zh": "蟹鉗錘"
+  },
+  "戲法防守": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "十字劈": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Cross Chop",
+    "name_zh": "十字劈"
+  },
+  "十字毒刃": {
+    "type": "poison",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Cross Poison",
+    "name_zh": "十字毒刃"
+  },
+  "咬碎": {
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Crunch",
+    "name_zh": "咬碎"
+  },
+  "撕裂爪": {
+    "type": "normal",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Crush Claw",
+    "name_zh": "撕裂爪"
+  },
+  "捏碎": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Crush Grip",
+    "name_zh": "捏碎"
+  },
+  "詛咒": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "居合斬": {
+    "type": "normal",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Cut",
+    "name_zh": "居合斬"
+  },
+  "惡之波動": {
+    "type": "dark",
+    "category": "special",
+    "power": 80,
+    "name_en": "Dark Pulse",
+    "name_zh": "惡之波動"
+  },
+  "暗黑洞": {
+    "type": "dark",
+    "category": "status"
+  },
+  "ＤＤ金勾臂": {
+    "type": "dark",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Darkest Lariat",
+    "name_zh": "ＤＤ金勾臂"
+  },
+  "魔法閃耀": {
+    "type": "fairy",
+    "category": "special",
+    "power": 80,
+    "name_en": "Dazzling Gleam",
+    "name_zh": "魔法閃耀"
+  },
+  "裝飾": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "防禦指令": {
+    "type": "bug",
+    "category": "status"
+  },
+  "變圓": {
+    "type": "normal",
+    "category": "status"
+  },
+  "清除濃霧": {
+    "type": "flying",
+    "category": "status"
+  },
+  "同命": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "看穿": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "究極巨龍震天地": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Devastating Drake",
+    "name_zh": "究極巨龍震天地"
+  },
+  "鑽石風暴": {
+    "type": "rock",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Diamond Storm",
+    "name_zh": "鑽石風暴"
+  },
+  "挖洞": {
+    "type": "ground",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Dig",
+    "name_zh": "挖洞"
+  },
+  "克命爪": {
+    "type": "poison",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Dire Claw",
+    "name_zh": "克命爪"
+  },
+  "定身法": {
+    "type": "normal",
+    "category": "status"
+  },
+  "魅惑之聲": {
+    "type": "fairy",
+    "category": "special",
+    "power": 40,
+    "name_en": "Disarming Voice",
+    "name_zh": "魅惑之聲"
+  },
+  "放電": {
+    "type": "electric",
+    "category": "special",
+    "power": 80,
+    "name_en": "Discharge",
+    "name_zh": "放電"
+  },
+  "潛水": {
+    "type": "water",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Dive",
+    "name_zh": "潛水"
+  },
+  "迷昏拳": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Dizzy Punch",
+    "name_zh": "迷昏拳"
+  },
+  "描繪": {
+    "type": "normal",
+    "category": "status"
+  },
+  "破滅之願": {
+    "type": "steel",
+    "category": "special",
+    "power": 140,
+    "name_en": "Doom Desire",
+    "name_zh": "破滅之願"
+  },
+  "二連擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 35,
+    "name_en": "Double Hit",
+    "name_zh": "二連擊"
+  },
+  "鋼拳雙擊": {
+    "type": "steel",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Double Iron Bash",
+    "name_zh": "鋼拳雙擊"
+  },
+  "二連踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Double Kick",
+    "name_zh": "二連踢"
+  },
+  "電光雙擊": {
+    "type": "electric",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Double Shock",
+    "name_zh": "電光雙擊"
+  },
+  "連環巴掌": {
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Double Slap",
+    "name_zh": "連環巴掌"
+  },
+  "影子分身": {
+    "type": "normal",
+    "category": "status"
+  },
+  "捨身衝撞": {
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Double-Edge",
+    "name_zh": "捨身衝撞"
+  },
+  "流星群": {
+    "type": "dragon",
+    "category": "special",
+    "power": 130,
+    "name_en": "Draco Meteor",
+    "name_zh": "流星群"
+  },
+  "畫龍點睛": {
+    "type": "flying",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Dragon Ascent",
+    "name_zh": "畫龍點睛"
+  },
+  "龍息": {
+    "type": "dragon",
+    "category": "special",
+    "power": 60,
+    "name_en": "Dragon Breath",
+    "name_zh": "龍息"
+  },
+  "龍爪": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Dragon Claw",
+    "name_zh": "龍爪"
+  },
+  "龍之舞": {
+    "type": "dragon",
+    "category": "status"
+  },
+  "龍箭": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Dragon Darts",
+    "name_zh": "龍箭"
+  },
+  "巨龍威能": {
+    "type": "dragon",
+    "category": "special",
+    "power": 150,
+    "name_en": "Dragon Energy",
+    "name_zh": "巨龍威能"
+  },
+  "龍錘": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Dragon Hammer",
+    "name_zh": "龍錘"
+  },
+  "龍之波動": {
+    "type": "dragon",
+    "category": "special",
+    "power": 85,
+    "name_en": "Dragon Pulse",
+    "name_zh": "龍之波動"
+  },
+  "龍之怒": {
+    "type": "dragon",
+    "category": "special",
+    "power": 1,
+    "name_en": "Dragon Rage",
+    "name_zh": "龍之怒"
+  },
+  "龍之俯衝": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Dragon Rush",
+    "name_zh": "龍之俯衝"
+  },
+  "龍尾": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Dragon Tail",
+    "name_zh": "龍尾"
+  },
+  "吸取拳": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Drain Punch",
+    "name_zh": "吸取拳"
+  },
+  "吸取之吻": {
+    "type": "fairy",
+    "category": "special",
+    "power": 50,
+    "name_en": "Draining Kiss",
+    "name_zh": "吸取之吻"
+  },
+  "食夢": {
+    "type": "psychic",
+    "category": "special",
+    "power": 100,
+    "name_en": "Dream Eater",
+    "name_zh": "食夢"
+  },
+  "啄鑽": {
+    "type": "flying",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Drill Peck",
+    "name_zh": "啄鑽"
+  },
+  "直衝鑽": {
+    "type": "ground",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Drill Run",
+    "name_zh": "直衝鑽"
+  },
+  "鼓擊": {
+    "type": "grass",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Drum Beating",
+    "name_zh": "鼓擊"
+  },
+  "二連劈": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Dual Chop",
+    "name_zh": "二連劈"
+  },
+  "雙翼": {
+    "type": "flying",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Dual Wingbeat",
+    "name_zh": "雙翼"
+  },
+  "極巨炮": {
+    "type": "dragon",
+    "category": "special",
+    "power": 100,
+    "name_en": "Dynamax Cannon",
+    "name_zh": "極巨炮"
+  },
+  "爆裂拳": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Dynamic Punch",
+    "name_zh": "爆裂拳"
+  },
+  "大地之力": {
+    "type": "ground",
+    "category": "special",
+    "power": 90,
+    "name_en": "Earth Power",
+    "name_zh": "大地之力"
+  },
+  "地震": {
+    "type": "ground",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Earthquake",
+    "name_zh": "地震"
+  },
+  "回聲": {
+    "type": "normal",
+    "category": "special",
+    "power": 40,
+    "name_en": "Echoed Voice",
+    "name_zh": "回聲"
+  },
+  "怪異電波": {
+    "type": "electric",
+    "category": "status"
+  },
+  "詭異咒語": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Eerie Spell",
+    "name_zh": "詭異咒語"
+  },
+  "炸蛋": {
+    "type": "normal",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Egg Bomb",
+    "name_zh": "炸蛋"
+  },
+  "電氣場地": {
+    "type": "electric",
+    "category": "status"
+  },
+  "輸電": {
+    "type": "electric",
+    "category": "status"
+  },
+  "電球": {
+    "type": "electric",
+    "category": "special",
+    "power": 1,
+    "name_en": "Electro Ball",
+    "name_zh": "電球"
+  },
+  "閃電猛衝": {
+    "type": "electric",
+    "category": "special",
+    "power": 100,
+    "name_en": "Electro Drift",
+    "name_zh": "閃電猛衝"
+  },
+  "電網": {
+    "type": "electric",
+    "category": "special",
+    "power": 55,
+    "name_en": "Electroweb",
+    "name_zh": "電網"
+  },
+  "查封": {
+    "type": "dark",
+    "category": "status"
+  },
+  "火花": {
+    "type": "fire",
+    "category": "special",
+    "power": 40,
+    "name_en": "Ember",
+    "name_zh": "火花"
+  },
+  "再來一次": {
+    "type": "normal",
+    "category": "status"
+  },
+  "蠻幹": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Endeavor",
+    "name_zh": "蠻幹"
+  },
+  "挺住": {
+    "type": "normal",
+    "category": "status"
+  },
+  "能量球": {
+    "type": "grass",
+    "category": "special",
+    "power": 90,
+    "name_en": "Energy Ball",
+    "name_zh": "能量球"
+  },
+  "找夥伴": {
+    "type": "normal",
+    "category": "status"
+  },
+  "噴火": {
+    "type": "fire",
+    "category": "special",
+    "power": 150,
+    "name_en": "Eruption",
+    "name_zh": "噴火"
+  },
+  "氣場之翼": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Aura Wing",
+    "name_zh": "氣場之翼"
+  },
+  "無極光束": {
+    "type": "dragon",
+    "category": "special",
+    "power": 160,
+    "name_en": "Eternabeam",
+    "name_zh": "無極光束"
+  },
+  "廣域戰力": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Expanding Force",
+    "name_zh": "廣域戰力"
+  },
+  "大爆炸": {
+    "type": "normal",
+    "category": "physical",
+    "power": 250,
+    "name_en": "Explosion",
+    "name_zh": "大爆炸"
+  },
+  "神通力": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Extrasensory",
+    "name_zh": "神通力"
+  },
+  "九彩昇華齊聚頂": {
+    "type": "normal",
+    "category": "status"
+  },
+  "神速": {
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Extreme Speed",
+    "name_zh": "神速"
+  },
+  "硬撐": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Facade",
+    "name_zh": "硬撐"
+  },
+  "妖精之鎖": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "妖精之風": {
+    "type": "fairy",
+    "category": "special",
+    "power": 40,
+    "name_en": "Fairy Wind",
+    "name_zh": "妖精之風"
+  },
+  "擊掌奇襲": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Fake Out",
+    "name_zh": "擊掌奇襲"
+  },
+  "假哭": {
+    "type": "dark",
+    "category": "status"
+  },
+  "假跪真撞": {
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "name_en": "False Surrender",
+    "name_zh": "假跪真撞"
+  },
+  "點到為止": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "False Swipe",
+    "name_zh": "點到為止"
+  },
+  "羽毛舞": {
+    "type": "flying",
+    "category": "status"
+  },
+  "佯攻": {
+    "type": "normal",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Feint",
+    "name_zh": "佯攻"
+  },
+  "出奇一擊": {
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Feint Attack",
+    "name_zh": "出奇一擊"
+  },
+  "致命針刺": {
+    "type": "bug",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Fell Stinger",
+    "name_zh": "致命針刺"
+  },
+  "火之舞": {
+    "type": "fire",
+    "category": "special",
+    "power": 80,
+    "name_en": "Fiery Dance",
+    "name_zh": "火之舞"
+  },
+  "怒火中燒": {
+    "type": "dark",
+    "category": "special",
+    "power": 90,
+    "name_en": "Fiery Wrath",
+    "name_zh": "怒火中燒"
+  },
+  "甩肉": {
+    "type": "normal",
+    "category": "status"
+  },
+  "搏命": {
+    "type": "fighting",
+    "category": "special",
+    "power": 1,
+    "name_en": "Final Gambit",
+    "name_zh": "搏命"
+  },
+  "大字爆炎": {
+    "type": "fire",
+    "category": "special",
+    "power": 110,
+    "name_en": "Fire Blast",
+    "name_zh": "大字爆炎"
+  },
+  "火焰牙": {
+    "type": "fire",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Fire Fang",
+    "name_zh": "火焰牙"
+  },
+  "火焰鞭": {
+    "type": "fire",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Fire Lash",
+    "name_zh": "火焰鞭"
+  },
+  "火之誓約": {
+    "type": "fire",
+    "category": "special",
+    "power": 80,
+    "name_en": "Fire Pledge",
+    "name_zh": "火之誓約"
+  },
+  "火焰拳": {
+    "type": "fire",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Fire Punch",
+    "name_zh": "火焰拳"
+  },
+  "火焰旋渦": {
+    "type": "fire",
+    "category": "special",
+    "power": 35,
+    "name_en": "Fire Spin",
+    "name_zh": "火焰旋渦"
+  },
+  "迎頭一擊": {
+    "type": "bug",
+    "category": "physical",
+    "power": 90,
+    "name_en": "First Impression",
+    "name_zh": "迎頭一擊"
+  },
+  "鰓咬": {
+    "type": "water",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Fishious Rend",
+    "name_zh": "鰓咬"
+  },
+  "地裂": {
+    "type": "ground",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Fissure",
+    "name_zh": "地裂"
+  },
+  "抓狂": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Flail",
+    "name_zh": "抓狂"
+  },
+  "烈焰濺射": {
+    "type": "fire",
+    "category": "special",
+    "power": 70,
+    "name_en": "Flame Burst",
+    "name_zh": "烈焰濺射"
+  },
+  "蓄能焰襲": {
+    "type": "fire",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Flame Charge",
+    "name_zh": "蓄能焰襲"
+  },
+  "火焰輪": {
+    "type": "fire",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Flame Wheel",
+    "name_zh": "火焰輪"
+  },
+  "噴射火焰": {
+    "type": "fire",
+    "category": "special",
+    "power": 90,
+    "name_en": "Flamethrower",
+    "name_zh": "噴射火焰"
+  },
+  "閃焰衝鋒": {
+    "type": "fire",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Flare Blitz",
+    "name_zh": "閃焰衝鋒"
+  },
+  "閃光": {
+    "type": "normal",
+    "category": "status"
+  },
+  "加農光炮": {
+    "type": "steel",
+    "category": "special",
+    "power": 80,
+    "name_en": "Flash Cannon",
+    "name_zh": "加農光炮"
+  },
+  "吹捧": {
+    "type": "dark",
+    "category": "status"
+  },
+  "花朵加農炮": {
+    "type": "fairy",
+    "category": "special",
+    "power": 130,
+    "name_en": "Fleur Cannon",
+    "name_zh": "花朵加農炮"
+  },
+  "投擲": {
+    "type": "dark",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Fling",
+    "name_zh": "投擲"
+  },
+  "快速折返": {
+    "type": "water",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Flip Turn",
+    "name_zh": "快速折返"
+  },
+  "飄飄墜落": {
+    "type": "flying",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Floaty Fall",
+    "name_zh": "飄飄墜落"
+  },
+  "花療": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "鮮花防守": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "千變萬花": {
+    "type": "grass",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Flower Trick",
+    "name_zh": "千變萬花"
+  },
+  "飛翔": {
+    "type": "flying",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Fly",
+    "name_zh": "飛翔"
+  },
+  "飛身重壓": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Flying Press",
+    "name_zh": "飛身重壓"
+  },
+  "真氣彈": {
+    "type": "fighting",
+    "category": "special",
+    "power": 120,
+    "name_en": "Focus Blast",
+    "name_zh": "真氣彈"
+  },
+  "聚氣": {
+    "type": "normal",
+    "category": "status"
+  },
+  "真氣拳": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 150,
+    "name_en": "Focus Punch",
+    "name_zh": "真氣拳"
+  },
+  "看我嘛": {
+    "type": "normal",
+    "category": "status"
+  },
+  "發勁": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Force Palm",
+    "name_zh": "發勁"
+  },
+  "識破": {
+    "type": "normal",
+    "category": "status"
+  },
+  "森林詛咒": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "欺詐": {
+    "type": "dark",
+    "category": "physical",
+    "power": 95,
+    "name_en": "Foul Play",
+    "name_zh": "欺詐"
+  },
+  "冰凍伏特": {
+    "type": "ice",
+    "category": "physical",
+    "power": 140,
+    "name_en": "Freeze Shock",
+    "name_zh": "冰凍伏特"
+  },
+  "冷凍乾燥": {
+    "type": "ice",
+    "category": "special",
+    "power": 70,
+    "name_en": "Freeze-Dry",
+    "name_zh": "冷凍乾燥"
+  },
+  "冰冷視線": {
+    "type": "psychic",
+    "category": "special",
+    "power": 90,
+    "name_en": "Freezing Glare",
+    "name_zh": "冰冷視線"
+  },
+  "冰冰霜凍": {
+    "type": "ice",
+    "category": "special",
+    "power": 90,
+    "name_en": "Freezy Frost",
+    "name_zh": "冰冰霜凍"
+  },
+  "瘋狂植物": {
+    "type": "grass",
+    "category": "special",
+    "power": 150,
+    "name_en": "Frenzy Plant",
+    "name_zh": "瘋狂植物"
+  },
+  "冰息": {
+    "type": "ice",
+    "category": "special",
+    "power": 60,
+    "name_en": "Frost Breath",
+    "name_zh": "冰息"
+  },
+  "遷怒": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Frustration",
+    "name_zh": "遷怒"
+  },
+  "亂擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Fury Attack",
+    "name_zh": "亂擊"
+  },
+  "連斬": {
+    "type": "bug",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Fury Cutter",
+    "name_zh": "連斬"
+  },
+  "亂抓": {
+    "type": "normal",
+    "category": "physical",
+    "power": 18,
+    "name_en": "Fury Swipes",
+    "name_zh": "亂抓"
+  },
+  "交錯閃電": {
+    "type": "electric",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Fusion Bolt",
+    "name_zh": "交錯閃電"
+  },
+  "交錯火焰": {
+    "type": "fire",
+    "category": "special",
+    "power": 100,
+    "name_en": "Fusion Flare",
+    "name_zh": "交錯火焰"
+  },
+  "預知未來": {
+    "type": "psychic",
+    "category": "special",
+    "power": 120,
+    "name_en": "Future Sight",
+    "name_zh": "預知未來"
+  },
+  "胃液": {
+    "type": "poison",
+    "category": "status"
+  },
+  "齒輪飛盤": {
+    "type": "steel",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Gear Grind",
+    "name_zh": "齒輪飛盤"
+  },
+  "輔助齒輪": {
+    "type": "steel",
+    "category": "status"
+  },
+  "起源超新星大爆炸": {
+    "type": "psychic",
+    "category": "special",
+    "power": 185,
+    "name_en": "Genesis Supernova",
+    "name_zh": "起源超新星大爆炸"
+  },
+  "大地掌控": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "終極吸取": {
+    "type": "grass",
+    "category": "special",
+    "power": 75,
+    "name_en": "Giga Drain",
+    "name_zh": "終極吸取"
+  },
+  "終極衝擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 150,
+    "name_en": "Giga Impact",
+    "name_zh": "終極衝擊"
+  },
+  "巨力锤": {
+    "type": "steel",
+    "category": "physical",
+    "power": 160,
+    "name_en": "Gigaton Hammer",
+    "name_zh": "巨力锤"
+  },
+  "終極伏特狂雷閃": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Gigavolt Havoc",
+    "name_zh": "終極伏特狂雷閃"
+  },
+  "雪矛": {
+    "type": "ice",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Glacial Lance",
+    "name_zh": "雪矛"
+  },
+  "冰封世界": {
+    "type": "ice",
+    "category": "special",
+    "power": 65,
+    "name_en": "Glaciate",
+    "name_zh": "冰封世界"
+  },
+  "巨劍突擊": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Glaive Rush",
+    "name_zh": "巨劍突擊"
+  },
+  "大蛇瞪眼": {
+    "type": "normal",
+    "category": "status"
+  },
+  "嘩嘩氣場": {
+    "type": "psychic",
+    "category": "special",
+    "power": 90,
+    "name_en": "Glitzy Glow",
+    "name_zh": "嘩嘩氣場"
+  },
+  "打草結": {
+    "type": "grass",
+    "category": "special",
+    "power": 1,
+    "name_en": "Grass Knot",
+    "name_zh": "打草結"
+  },
+  "草之誓約": {
+    "type": "grass",
+    "category": "special",
+    "power": 80,
+    "name_en": "Grass Pledge",
+    "name_zh": "草之誓約"
+  },
+  "草笛": {
+    "type": "grass",
+    "category": "status"
+  },
+  "青草滑梯": {
+    "type": "grass",
+    "category": "physical",
+    "power": 55,
+    "name_en": "Grassy Glide",
+    "name_zh": "青草滑梯"
+  },
+  "青草場地": {
+    "type": "grass",
+    "category": "status"
+  },
+  "萬有引力": {
+    "type": "grass",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Grav Apple",
+    "name_zh": "萬有引力"
+  },
+  "重力": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "叫聲": {
+    "type": "normal",
+    "category": "status"
+  },
+  "生長": {
+    "type": "normal",
+    "category": "status"
+  },
+  "怨念": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "防守平分": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "防守互換": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "巨人衛士・阿羅拉": {
+    "type": "fairy",
+    "category": "special"
+  },
+  "斷頭鉗": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Guillotine",
+    "name_zh": "斷頭鉗"
+  },
+  "垃圾射擊": {
+    "type": "poison",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Gunk Shot",
+    "name_zh": "垃圾射擊"
+  },
+  "起風": {
+    "type": "flying",
+    "category": "special",
+    "power": 40,
+    "name_en": "Gust",
+    "name_zh": "起風"
+  },
+  "陀螺球": {
+    "type": "steel",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Gyro Ball",
+    "name_zh": "陀螺球"
+  },
+  "冰雹": {
+    "type": "ice",
+    "category": "status"
+  },
+  "臂錘": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Hammer Arm",
+    "name_zh": "臂錘"
+  },
+  "歡樂時光": {
+    "type": "normal",
+    "category": "status"
+  },
+  "變硬": {
+    "type": "normal",
+    "category": "status"
+  },
+  "黑霧": {
+    "type": "ice",
+    "category": "status"
+  },
+  "爆炸頭突擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Head Charge",
+    "name_zh": "爆炸頭突擊"
+  },
+  "雙刃頭錘": {
+    "type": "rock",
+    "category": "physical",
+    "power": 150,
+    "name_en": "Head Smash",
+    "name_zh": "雙刃頭錘"
+  },
+  "頭錘": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Headbutt",
+    "name_zh": "頭錘"
+  },
+  "突飛猛撲": {
+    "type": "ground",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Headlong Rush",
+    "name_zh": "突飛猛撲"
+  },
+  "治癒鈴聲": {
+    "type": "normal",
+    "category": "status"
+  },
+  "回復封鎖": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "回復指令": {
+    "type": "bug",
+    "category": "status"
+  },
+  "治癒波動": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "治癒之願": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "愛心印章": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Heart Stamp",
+    "name_zh": "愛心印章"
+  },
+  "心靈互換": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "高溫重壓": {
+    "type": "fire",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Heat Crash",
+    "name_zh": "高溫重壓"
+  },
+  "熱風": {
+    "type": "fire",
+    "category": "special",
+    "power": 95,
+    "name_en": "Heat Wave",
+    "name_zh": "熱風"
+  },
+  "重磅衝撞": {
+    "type": "steel",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Heavy Slam",
+    "name_zh": "重磅衝撞"
+  },
+  "幫助": {
+    "type": "normal",
+    "category": "status"
+  },
+  "禍不單行": {
+    "type": "ghost",
+    "category": "special",
+    "power": 65,
+    "name_en": "Hex",
+    "name_zh": "禍不單行"
+  },
+  "覺醒力量": {
+    "type": "normal",
+    "category": "special",
+    "power": 60,
+    "name_en": "Hidden Power",
+    "name_zh": "覺醒力量"
+  },
+  "十萬馬力": {
+    "type": "ground",
+    "category": "physical",
+    "power": 95,
+    "name_en": "High Horsepower",
+    "name_zh": "十萬馬力"
+  },
+  "飛膝踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 130,
+    "name_en": "High Jump Kick",
+    "name_zh": "飛膝踢"
+  },
+  "手下留情": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Hold Back",
+    "name_zh": "手下留情"
+  },
+  "牽手": {
+    "type": "normal",
+    "category": "status"
+  },
+  "磨爪": {
+    "type": "dark",
+    "category": "status"
+  },
+  "角撞": {
+    "type": "normal",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Horn Attack",
+    "name_zh": "角撞"
+  },
+  "角鑽": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Horn Drill",
+    "name_zh": "角鑽"
+  },
+  "木角": {
+    "type": "grass",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Horn Leech",
+    "name_zh": "木角"
+  },
+  "長嚎": {
+    "type": "normal",
+    "category": "status"
+  },
+  "暴風": {
+    "type": "flying",
+    "category": "special",
+    "power": 110,
+    "name_en": "Hurricane",
+    "name_zh": "暴風"
+  },
+  "加農水炮": {
+    "type": "water",
+    "category": "special",
+    "power": 150,
+    "name_en": "Hydro Cannon",
+    "name_zh": "加農水炮"
+  },
+  "水炮": {
+    "type": "water",
+    "category": "special",
+    "power": 110,
+    "name_en": "Hydro Pump",
+    "name_zh": "水炮"
+  },
+  "水蒸氣": {
+    "type": "water",
+    "category": "special",
+    "power": 80,
+    "name_en": "Hydro Steam",
+    "name_zh": "水蒸氣"
+  },
+  "超級水流大漩渦": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Hydro Vortex",
+    "name_zh": "超級水流大漩渦"
+  },
+  "破壞光線": {
+    "type": "normal",
+    "category": "special",
+    "power": 150,
+    "name_en": "Hyper Beam",
+    "name_zh": "破壞光線"
+  },
+  "强力钻": {
+    "type": "normal",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Hyper Drill",
+    "name_zh": "强力钻"
+  },
+  "必殺門牙": {
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Hyper Fang",
+    "name_zh": "必殺門牙"
+  },
+  "巨聲": {
+    "type": "normal",
+    "category": "special",
+    "power": 90,
+    "name_en": "Hyper Voice",
+    "name_zh": "巨聲"
+  },
+  "異次元猛攻": {
+    "type": "dark",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Hyperspace Fury",
+    "name_zh": "異次元猛攻"
+  },
+  "異次元洞": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Hyperspace Hole",
+    "name_zh": "異次元洞"
+  },
+  "催眠術": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "冰球": {
+    "type": "ice",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Ice Ball",
+    "name_zh": "冰球"
+  },
+  "冰凍光束": {
+    "type": "ice",
+    "category": "special",
+    "power": 90,
+    "name_en": "Ice Beam",
+    "name_zh": "冰凍光束"
+  },
+  "極寒冷焰": {
+    "type": "ice",
+    "category": "special",
+    "power": 140,
+    "name_en": "Ice Burn",
+    "name_zh": "極寒冷焰"
+  },
+  "冰凍牙": {
+    "type": "ice",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Ice Fang",
+    "name_zh": "冰凍牙"
+  },
+  "冰錘": {
+    "type": "ice",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Ice Hammer",
+    "name_zh": "冰錘"
+  },
+  "冰凍拳": {
+    "type": "ice",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Ice Punch",
+    "name_zh": "冰凍拳"
+  },
+  "冰礫": {
+    "type": "ice",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Ice Shard",
+    "name_zh": "冰礫"
+  },
+  "冰旋": {
+    "type": "ice",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Ice Spinner",
+    "name_zh": "冰旋"
+  },
+  "冰柱墜擊": {
+    "type": "ice",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Icicle Crash",
+    "name_zh": "冰柱墜擊"
+  },
+  "冰錐": {
+    "type": "ice",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Icicle Spear",
+    "name_zh": "冰錐"
+  },
+  "冰凍之風": {
+    "type": "ice",
+    "category": "special",
+    "power": 55,
+    "name_en": "Icy Wind",
+    "name_zh": "冰凍之風"
+  },
+  "封印": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "燒盡": {
+    "type": "fire",
+    "category": "special",
+    "power": 60,
+    "name_en": "Incinerate",
+    "name_zh": "燒盡"
+  },
+  "群魔乱舞": {
+    "type": "ghost",
+    "category": "special",
+    "power": 60,
+    "name_en": "Infernal Parade",
+    "name_zh": "群魔乱舞"
+  },
+  "煉獄": {
+    "type": "fire",
+    "category": "special",
+    "power": 100,
+    "name_en": "Inferno",
+    "name_zh": "煉獄"
+  },
+  "超強極限爆焰彈": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Inferno Overdrive",
+    "name_zh": "超強極限爆焰彈"
+  },
+  "死纏爛打": {
+    "type": "bug",
+    "category": "special",
+    "power": 20,
+    "name_en": "Infestation",
+    "name_zh": "死纏爛打"
+  },
+  "扎根": {
+    "type": "grass",
+    "category": "status"
+  },
+  "號令": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "等離子浴": {
+    "type": "electric",
+    "category": "status"
+  },
+  "鐵壁": {
+    "type": "steel",
+    "category": "status"
+  },
+  "鐵頭": {
+    "type": "steel",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Iron Head",
+    "name_zh": "鐵頭"
+  },
+  "鐵尾": {
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Iron Tail",
+    "name_zh": "鐵尾"
+  },
+  "棘藤棒": {
+    "type": "grass",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Ivy Cudgel",
+    "name_zh": "棘藤棒"
+  },
+  "緊咬不放": {
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Jaw Lock",
+    "name_zh": "緊咬不放"
+  },
+  "噴射拳": {
+    "type": "water",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Jet Punch",
+    "name_zh": "噴射拳"
+  },
+  "制裁光礫": {
+    "type": "normal",
+    "category": "special",
+    "power": 100,
+    "name_en": "Judgment",
+    "name_zh": "制裁光礫"
+  },
+  "飛踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Jump Kick",
+    "name_zh": "飛踢"
+  },
+  "叢林治療": {
+    "type": "grass",
+    "category": "status"
+  },
+  "空手劈": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Karate Chop",
+    "name_zh": "空手劈"
+  },
+  "折彎湯匙": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "王者盾牌": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "拍落": {
+    "type": "dark",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Knock Off",
+    "name_zh": "拍落"
+  },
+  "仆斬": {
+    "type": "dark",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Kowtow Cleave",
+    "name_zh": "仆斬"
+  },
+  "大地神力": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "磨礪": {
+    "type": "normal",
+    "category": "status"
+  },
+  "洩憤": {
+    "type": "dark",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Lash Out",
+    "name_zh": "洩憤"
+  },
+  "珍藏": {
+    "type": "normal",
+    "category": "physical",
+    "power": 140,
+    "name_en": "Last Resort",
+    "name_zh": "珍藏"
+  },
+  "掃墓": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Last Respects",
+    "name_zh": "掃墓"
+  },
+  "噴煙": {
+    "type": "fire",
+    "category": "special",
+    "power": 80,
+    "name_en": "Lava Plume",
+    "name_zh": "噴煙"
+  },
+  "葉刃": {
+    "type": "grass",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Leaf Blade",
+    "name_zh": "葉刃"
+  },
+  "飛葉風暴": {
+    "type": "grass",
+    "category": "special",
+    "power": 130,
+    "name_en": "Leaf Storm",
+    "name_zh": "飛葉風暴"
+  },
+  "青草攪拌器": {
+    "type": "grass",
+    "category": "special",
+    "power": 65,
+    "name_en": "Leaf Tornado",
+    "name_zh": "青草攪拌器"
+  },
+  "樹葉": {
+    "type": "grass",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Leafage",
+    "name_zh": "樹葉"
+  },
+  "吸血": {
+    "type": "bug",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Leech Life",
+    "name_zh": "吸血"
+  },
+  "寄生種子": {
+    "type": "grass",
+    "category": "status"
+  },
+  "瞪眼": {
+    "type": "normal",
+    "category": "status"
+  },
+  "親密無間大亂揍": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "舌舔": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Lick",
+    "name_zh": "舌舔"
+  },
+  "生命水滴": {
+    "type": "water",
+    "category": "status"
+  },
+  "光牆": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "焚天滅世熾光爆": {
+    "type": "psychic",
+    "category": "special",
+    "power": 200,
+    "name_en": "Light That Burns the Sky",
+    "name_zh": "焚天滅世熾光爆"
+  },
+  "破滅之光": {
+    "type": "fairy",
+    "category": "special",
+    "power": 140,
+    "name_en": "Light of Ruin",
+    "name_zh": "破滅之光"
+  },
+  "水流裂破": {
+    "type": "water",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Liquidation",
+    "name_zh": "水流裂破"
+  },
+  "鎖定": {
+    "type": "normal",
+    "category": "status"
+  },
+  "惡魔之吻": {
+    "type": "normal",
+    "category": "status"
+  },
+  "踢倒": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Low Kick",
+    "name_zh": "踢倒"
+  },
+  "下盤踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Low Sweep",
+    "name_zh": "下盤踢"
+  },
+  "幸運咒語": {
+    "type": "normal",
+    "category": "status"
+  },
+  "琉光衝激": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Lumina Crash",
+    "name_zh": "琉光衝激"
+  },
+  "新月祈禱": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "新月舞": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "猛撲": {
+    "type": "bug",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Lunge",
+    "name_zh": "猛撲"
+  },
+  "潔淨光芒": {
+    "type": "psychic",
+    "category": "special",
+    "power": 95,
+    "name_en": "Luster Purge",
+    "name_zh": "潔淨光芒"
+  },
+  "音速拳": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Mach Punch",
+    "name_zh": "音速拳"
+  },
+  "魔法反射": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "魔法粉": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "魔法空間": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "魔法葉": {
+    "type": "grass",
+    "category": "special",
+    "power": 60,
+    "name_en": "Magical Leaf",
+    "name_zh": "魔法葉"
+  },
+  "魔法暴衝": {
+    "type": "fairy",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Magical Torque",
+    "name_zh": "魔法暴衝"
+  },
+  "熔岩風暴": {
+    "type": "fire",
+    "category": "special",
+    "power": 100,
+    "name_en": "Magma Storm",
+    "name_zh": "熔岩風暴"
+  },
+  "磁鐵炸彈": {
+    "type": "steel",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Magnet Bomb",
+    "name_zh": "磁鐵炸彈"
+  },
+  "電磁飄浮": {
+    "type": "electric",
+    "category": "status"
+  },
+  "磁場操控": {
+    "type": "electric",
+    "category": "status"
+  },
+  "震級": {
+    "type": "ground",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Magnitude",
+    "name_zh": "震級"
+  },
+  "淘金潮": {
+    "type": "steel",
+    "category": "special",
+    "power": 120,
+    "name_en": "Make It Rain",
+    "name_zh": "淘金潮"
+  },
+  "極惡飛躍粉碎擊": {
+    "type": "dark",
+    "category": "physical",
+    "power": 180,
+    "name_en": "Malicious Moonsault",
+    "name_zh": "極惡飛躍粉碎擊"
+  },
+  "掀榻榻米": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "刷刷茶炮": {
+    "type": "grass",
+    "category": "special",
+    "power": 80,
+    "name_en": "Matcha Gotcha",
+    "name_zh": "刷刷茶炮"
+  },
+  "極巨飛衝": {
+    "type": "flying",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Airstream",
+    "name_zh": "極巨飛衝"
+  },
+  "極巨惡霸": {
+    "type": "dark",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Darkness",
+    "name_zh": "極巨惡霸"
+  },
+  "極巨火爆": {
+    "type": "fire",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Max Flare",
+    "name_zh": "極巨火爆"
+  },
+  "極巨蟲蠱": {
+    "type": "bug",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Flutterby",
+    "name_zh": "極巨蟲蠱"
+  },
+  "極巨水流": {
+    "type": "water",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Geyser",
+    "name_zh": "極巨水流"
+  },
+  "極巨防壁": {
+    "type": "normal",
+    "category": "status"
+  },
+  "極巨寒冰": {
+    "type": "ice",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Hailstorm",
+    "name_zh": "極巨寒冰"
+  },
+  "極巨拳鬥": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Knuckle",
+    "name_zh": "極巨拳鬥"
+  },
+  "極巨閃電": {
+    "type": "electric",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Lightning",
+    "name_zh": "極巨閃電"
+  },
+  "極巨超能": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Mindstorm",
+    "name_zh": "極巨超能"
+  },
+  "極巨酸毒": {
+    "type": "poison",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Ooze",
+    "name_zh": "極巨酸毒"
+  },
+  "極巨草原": {
+    "type": "grass",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Overgrowth",
+    "name_zh": "極巨草原"
+  },
+  "極巨幽魂": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Phantasm",
+    "name_zh": "極巨幽魂"
+  },
+  "極巨大地": {
+    "type": "ground",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Quake",
+    "name_zh": "極巨大地"
+  },
+  "極巨岩石": {
+    "type": "rock",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Rockfall",
+    "name_zh": "極巨岩石"
+  },
+  "極巨妖精": {
+    "type": "fairy",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Starfall",
+    "name_zh": "極巨妖精"
+  },
+  "極巨鋼鐵": {
+    "type": "steel",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Steelspike",
+    "name_zh": "極巨鋼鐵"
+  },
+  "極巨攻擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Strike",
+    "name_zh": "極巨攻擊"
+  },
+  "極巨龍騎": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Max Wyrmwind",
+    "name_zh": "極巨龍騎"
+  },
+  "搶先一步": {
+    "type": "normal",
+    "category": "status"
+  },
+  "黑色目光": {
+    "type": "normal",
+    "category": "status"
+  },
+  "瑜伽姿勢": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "超級吸取": {
+    "type": "grass",
+    "category": "special",
+    "power": 40,
+    "name_en": "Mega Drain",
+    "name_zh": "超級吸取"
+  },
+  "百萬噸重踢": {
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Mega Kick",
+    "name_zh": "百萬噸重踢"
+  },
+  "百萬噸重拳": {
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Mega Punch",
+    "name_zh": "百萬噸重拳"
+  },
+  "超級角擊": {
+    "type": "bug",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Megahorn",
+    "name_zh": "超級角擊"
+  },
+  "臨別禮物": {
+    "type": "dark",
+    "category": "status"
+  },
+  "月華飛濺落靈霄": {
+    "type": "ghost",
+    "category": "special",
+    "power": 200,
+    "name_en": "Menacing Moonraze Maelstrom",
+    "name_zh": "月華飛濺落靈霄"
+  },
+  "金屬爆炸": {
+    "type": "steel",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Metal Burst",
+    "name_zh": "金屬爆炸"
+  },
+  "金屬爪": {
+    "type": "steel",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Metal Claw",
+    "name_zh": "金屬爪"
+  },
+  "金屬音": {
+    "type": "steel",
+    "category": "status"
+  },
+  "流星突擊": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 150,
+    "name_en": "Meteor Assault",
+    "name_zh": "流星突擊"
+  },
+  "流星光束": {
+    "type": "rock",
+    "category": "special",
+    "power": 120,
+    "name_en": "Meteor Beam",
+    "name_zh": "流星光束"
+  },
+  "彗星拳": {
+    "type": "steel",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Meteor Mash",
+    "name_zh": "彗星拳"
+  },
+  "揮指": {
+    "type": "normal",
+    "category": "status"
+  },
+  "喝牛奶": {
+    "type": "normal",
+    "category": "status"
+  },
+  "模仿": {
+    "type": "normal",
+    "category": "status"
+  },
+  "驚爆大頭": {
+    "type": "fire",
+    "category": "special",
+    "power": 150,
+    "name_en": "Mind Blown",
+    "name_zh": "驚爆大頭"
+  },
+  "心之眼": {
+    "type": "normal",
+    "category": "status"
+  },
+  "變小": {
+    "type": "normal",
+    "category": "status"
+  },
+  "奇跡之眼": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "鏡面反射": {
+    "type": "psychic",
+    "category": "special",
+    "power": 1,
+    "name_en": "Mirror Coat",
+    "name_zh": "鏡面反射"
+  },
+  "鸚鵡學舌": {
+    "type": "flying",
+    "category": "status"
+  },
+  "鏡光射擊": {
+    "type": "steel",
+    "category": "special",
+    "power": 65,
+    "name_en": "Mirror Shot",
+    "name_zh": "鏡光射擊"
+  },
+  "白霧": {
+    "type": "ice",
+    "category": "status"
+  },
+  "薄霧球": {
+    "type": "psychic",
+    "category": "special",
+    "power": 95,
+    "name_en": "Mist Ball",
+    "name_zh": "薄霧球"
+  },
+  "薄霧炸裂": {
+    "type": "fairy",
+    "category": "special",
+    "power": 100,
+    "name_en": "Misty Explosion",
+    "name_zh": "薄霧炸裂"
+  },
+  "薄霧場地": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "月亮之力": {
+    "type": "fairy",
+    "category": "special",
+    "power": 95,
+    "name_en": "Moonblast",
+    "name_zh": "月亮之力"
+  },
+  "暗影之光": {
+    "type": "ghost",
+    "category": "special",
+    "power": 100,
+    "name_en": "Moongeist Beam",
+    "name_zh": "暗影之光"
+  },
+  "月光": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "晨光": {
+    "type": "normal",
+    "category": "status"
+  },
+  "晶光轉轉": {
+    "type": "poison",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Mortal Spin",
+    "name_zh": "晶光轉轉"
+  },
+  "冰山風": {
+    "type": "ice",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Mountain Gale",
+    "name_zh": "冰山風"
+  },
+  "泥巴炸彈": {
+    "type": "ground",
+    "category": "special",
+    "power": 65,
+    "name_en": "Mud Bomb",
+    "name_zh": "泥巴炸彈"
+  },
+  "泥巴射擊": {
+    "type": "ground",
+    "category": "special",
+    "power": 55,
+    "name_en": "Mud Shot",
+    "name_zh": "泥巴射擊"
+  },
+  "玩泥巴": {
+    "type": "ground",
+    "category": "status"
+  },
+  "擲泥": {
+    "type": "ground",
+    "category": "special",
+    "power": 20,
+    "name_en": "Mud-Slap",
+    "name_zh": "擲泥"
+  },
+  "濁流": {
+    "type": "water",
+    "category": "special",
+    "power": 90,
+    "name_en": "Muddy Water",
+    "name_zh": "濁流"
+  },
+  "多屬性攻擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Multi-Attack",
+    "name_zh": "多屬性攻擊"
+  },
+  "魔法火焰": {
+    "type": "fire",
+    "category": "special",
+    "power": 75,
+    "name_en": "Mystical Fire",
+    "name_zh": "魔法火焰"
+  },
+  "神秘之力": {
+    "type": "psychic",
+    "category": "special",
+    "power": 70,
+    "name_en": "Mystical Power",
+    "name_zh": "神秘之力"
+  },
+  "詭計": {
+    "type": "dark",
+    "category": "status"
+  },
+  "自然之恩": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Natural Gift",
+    "name_zh": "自然之恩"
+  },
+  "自然之力": {
+    "type": "normal",
+    "category": "status"
+  },
+  "自然之怒": {
+    "type": "unknown",
+    "category": "unknown"
+  },
+  "尖刺臂": {
+    "type": "grass",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Needle Arm",
+    "name_zh": "尖刺臂"
+  },
+  "無盡暗夜之誘惑": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Never-Ending Nightmare",
+    "name_zh": "無盡暗夜之誘惑"
+  },
+  "暗黑爆破": {
+    "type": "dark",
+    "category": "special",
+    "power": 85,
+    "name_en": "Night Daze",
+    "name_zh": "暗黑爆破"
+  },
+  "黑夜魔影": {
+    "type": "ghost",
+    "category": "special",
+    "power": 1,
+    "name_en": "Night Shade",
+    "name_zh": "黑夜魔影"
+  },
+  "暗襲要害": {
+    "type": "dark",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Night Slash",
+    "name_zh": "暗襲要害"
+  },
+  "惡夢": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "背水一戰": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "戰吼": {
+    "type": "normal",
+    "category": "status"
+  },
+  "劇毒暴衝": {
+    "type": "poison",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Noxious Torque",
+    "name_zh": "劇毒暴衝"
+  },
+  "蹭蹭臉頰": {
+    "type": "electric",
+    "category": "physical",
+    "power": 20,
+    "name_en": "Nuzzle",
+    "name_zh": "蹭蹭臉頰"
+  },
+  "死亡之翼": {
+    "type": "flying",
+    "category": "special",
+    "power": 80,
+    "name_en": "Oblivion Wing",
+    "name_zh": "死亡之翼"
+  },
+  "攔堵": {
+    "type": "dark",
+    "category": "status"
+  },
+  "海神莊嚴交響樂": {
+    "type": "water",
+    "category": "special",
+    "power": 195,
+    "name_en": "Oceanic Operetta",
+    "name_zh": "海神莊嚴交響樂"
+  },
+  "章魚桶炮": {
+    "type": "water",
+    "category": "special",
+    "power": 65,
+    "name_en": "Octazooka",
+    "name_zh": "章魚桶炮"
+  },
+  "蛸固": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "氣味偵測": {
+    "type": "normal",
+    "category": "status"
+  },
+  "奇異之風": {
+    "type": "ghost",
+    "category": "special",
+    "power": 60,
+    "name_en": "Ominous Wind",
+    "name_zh": "奇異之風"
+  },
+  "上菜": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Order Up",
+    "name_zh": "上菜"
+  },
+  "根源波動": {
+    "type": "water",
+    "category": "special",
+    "power": 110,
+    "name_en": "Origin Pulse",
+    "name_zh": "根源波動"
+  },
+  "逆鱗": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Outrage",
+    "name_zh": "逆鱗"
+  },
+  "破音": {
+    "type": "electric",
+    "category": "special",
+    "power": 80,
+    "name_en": "Overdrive",
+    "name_zh": "破音"
+  },
+  "過熱": {
+    "type": "fire",
+    "category": "special",
+    "power": 130,
+    "name_en": "Overheat",
+    "name_zh": "過熱"
+  },
+  "分擔痛楚": {
+    "type": "normal",
+    "category": "status"
+  },
+  "拋物面充電": {
+    "type": "electric",
+    "category": "special",
+    "power": 65,
+    "name_en": "Parabolic Charge",
+    "name_zh": "拋物面充電"
+  },
+  "拋下狠話": {
+    "type": "dark",
+    "category": "status"
+  },
+  "聚寶功": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Pay Day",
+    "name_zh": "聚寶功"
+  },
+  "以牙還牙": {
+    "type": "dark",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Payback",
+    "name_zh": "以牙還牙"
+  },
+  "啄": {
+    "type": "flying",
+    "category": "physical",
+    "power": 35,
+    "name_en": "Peck",
+    "name_zh": "啄"
+  },
+  "滅亡之歌": {
+    "type": "normal",
+    "category": "status"
+  },
+  "落英繽紛": {
+    "type": "grass",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Petal Blizzard",
+    "name_zh": "落英繽紛"
+  },
+  "花瓣舞": {
+    "type": "grass",
+    "category": "special",
+    "power": 120,
+    "name_en": "Petal Dance",
+    "name_zh": "花瓣舞"
+  },
+  "潛靈奇襲": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Phantom Force",
+    "name_zh": "潛靈奇襲"
+  },
+  "光子噴湧": {
+    "type": "psychic",
+    "category": "special",
+    "power": 100,
+    "name_en": "Photon Geyser",
+    "name_zh": "光子噴湧"
+  },
+  "閃閃雷光": {
+    "type": "electric",
+    "category": "special",
+    "power": 90,
+    "name_en": "Pollen Puff",
+    "name_zh": "閃閃雷光"
+  },
+  "飛彈針": {
+    "type": "bug",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Pin Missile",
+    "name_zh": "飛彈針"
+  },
+  "等離子閃電拳": {
+    "type": "electric",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Plasma Fists",
+    "name_zh": "等離子閃電拳"
+  },
+  "和睦相處": {
+    "type": "normal",
+    "category": "status"
+  },
+  "嬉鬧": {
+    "type": "fairy",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Play Rough",
+    "name_zh": "嬉鬧"
+  },
+  "啄食": {
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Pluck",
+    "name_zh": "啄食"
+  },
+  "劇毒牙": {
+    "type": "poison",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Poison Fang",
+    "name_zh": "劇毒牙"
+  },
+  "毒瓦斯": {
+    "type": "poison",
+    "category": "status"
+  },
+  "毒擊": {
+    "type": "poison",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Poison Jab",
+    "name_zh": "毒擊"
+  },
+  "毒粉": {
+    "type": "poison",
+    "category": "status"
+  },
+  "毒針": {
+    "type": "poison",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Poison Sting",
+    "name_zh": "毒針"
+  },
+  "毒尾": {
+    "type": "poison",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Poison Tail",
+    "name_zh": "毒尾"
+  },
+  "花粉團": {
+    "type": "bug",
+    "category": "special",
+    "power": 90,
+    "name_en": "Pollen Puff",
+    "name_zh": "花粉團"
+  },
+  "靈騷": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 110,
+    "name_en": "Poltergeist",
+    "name_zh": "靈騷"
+  },
+  "鼠數兒": {
+    "type": "normal",
+    "category": "physical",
+    "power": 20,
+    "name_en": "Population Bomb",
+    "name_zh": "鼠數兒"
+  },
+  "蟲撲": {
+    "type": "bug",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Pounce",
+    "name_zh": "蟲撲"
+  },
+  "拍擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Pound",
+    "name_zh": "拍擊"
+  },
+  "粉塵": {
+    "type": "bug",
+    "category": "status"
+  },
+  "細雪": {
+    "type": "ice",
+    "category": "special",
+    "power": 40,
+    "name_en": "Powder Snow",
+    "name_zh": "細雪"
+  },
+  "力量寶石": {
+    "type": "rock",
+    "category": "special",
+    "power": 80,
+    "name_en": "Power Gem",
+    "name_zh": "力量寶石"
+  },
+  "力量转换": {
+    "type": "normal",
+    "category": "status"
+  },
+  "力量平分": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "力量互換": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "力量戲法": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "囂張": {
+    "type": "dark",
+    "category": "physical",
+    "power": 20,
+    "name_en": "Power Trip",
+    "name_zh": "囂張"
+  },
+  "強力鞭打": {
+    "type": "grass",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Power Whip",
+    "name_zh": "強力鞭打"
+  },
+  "增強拳": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Power-Up Punch",
+    "name_zh": "增強拳"
+  },
+  "斷崖之劍": {
+    "type": "ground",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Precipice Blades",
+    "name_zh": "斷崖之劍"
+  },
+  "禮物": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Present",
+    "name_zh": "禮物"
+  },
+  "稜鏡鐳射": {
+    "type": "psychic",
+    "category": "special",
+    "power": 160,
+    "name_en": "Prismatic Laser",
+    "name_zh": "稜鏡鐳射"
+  },
+  "守住": {
+    "type": "normal",
+    "category": "status"
+  },
+  "幻象光線": {
+    "type": "psychic",
+    "category": "special",
+    "power": 65,
+    "name_en": "Psybeam",
+    "name_zh": "幻象光線"
+  },
+  "精神劍": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Psyblade",
+    "name_zh": "精神劍"
+  },
+  "自我暗示": {
+    "type": "normal",
+    "category": "status"
+  },
+  "精神強念": {
+    "type": "psychic",
+    "category": "special",
+    "power": 90,
+    "name_en": "Psychic",
+    "name_zh": "精神強念"
+  },
+  "精神之牙": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Psychic Fangs",
+    "name_zh": "精神之牙"
+  },
+  "精神場地": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "精神突進": {
+    "type": "psychic",
+    "category": "special",
+    "power": 140,
+    "name_en": "Psycho Boost",
+    "name_zh": "精神突進"
+  },
+  "精神利刃": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Psycho Cut",
+    "name_zh": "精神利刃"
+  },
+  "精神轉移": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "屏障猛攻": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Psychic Fangs",
+    "name_zh": "屏障猛攻"
+  },
+  "精神衝擊": {
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "name_en": "Psyshock",
+    "name_zh": "精神衝擊"
+  },
+  "精神擊破": {
+    "type": "psychic",
+    "category": "special",
+    "power": 100,
+    "name_en": "Psystrike",
+    "name_zh": "精神擊破"
+  },
+  "精神波": {
+    "type": "psychic",
+    "category": "special",
+    "power": 1,
+    "name_en": "Psywave",
+    "name_zh": "精神波"
+  },
+  "認真起來大爆擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 210,
+    "name_en": "Pulverizing Pancake",
+    "name_zh": "認真起來大爆擊"
+  },
+  "懲罰": {
+    "type": "dark",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Punishment",
+    "name_zh": "懲罰"
+  },
+  "淨化": {
+    "type": "poison",
+    "category": "status"
+  },
+  "追打": {
+    "type": "dark",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Pursuit",
+    "name_zh": "追打"
+  },
+  "火焰球": {
+    "type": "fire",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Pyro Ball",
+    "name_zh": "火焰球"
+  },
+  "延後": {
+    "type": "dark",
+    "category": "status"
+  },
+  "電光一閃": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Quick Attack",
+    "name_zh": "電光一閃"
+  },
+  "快速防守": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "蝶舞": {
+    "type": "bug",
+    "category": "status"
+  },
+  "憤怒": {
+    "type": "normal",
+    "category": "physical",
+    "power": 20,
+    "name_en": "Rage",
+    "name_zh": "憤怒"
+  },
+  "憤怒之拳": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Rage Fist",
+    "name_zh": "憤怒之拳"
+  },
+  "憤怒粉": {
+    "type": "bug",
+    "category": "status"
+  },
+  "怒牛": {
+    "type": "normal",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Raging Bull",
+    "name_zh": "怒牛"
+  },
+  "大憤慨": {
+    "type": "fire",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Raging Fury",
+    "name_zh": "大憤慨"
+  },
+  "求雨": {
+    "type": "water",
+    "category": "status"
+  },
+  "高速旋轉": {
+    "type": "normal",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Rapid Spin",
+    "name_zh": "高速旋轉"
+  },
+  "飛葉快刀": {
+    "type": "grass",
+    "category": "physical",
+    "power": 55,
+    "name_en": "Razor Leaf",
+    "name_zh": "飛葉快刀"
+  },
+  "貝殼刃": {
+    "type": "water",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Razor Shell",
+    "name_zh": "貝殼刃"
+  },
+  "旋風刀": {
+    "type": "normal",
+    "category": "special",
+    "power": 80,
+    "name_en": "Razor Wind",
+    "name_zh": "旋風刀"
+  },
+  "自我再生": {
+    "type": "normal",
+    "category": "status"
+  },
+  "回收利用": {
+    "type": "normal",
+    "category": "status"
+  },
+  "反射壁": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "鏡面屬性": {
+    "type": "normal",
+    "category": "status"
+  },
+  "煥然一新": {
+    "type": "normal",
+    "category": "status"
+  },
+  "古老之歌": {
+    "type": "normal",
+    "category": "special",
+    "power": 75,
+    "name_en": "Relic Song",
+    "name_zh": "古老之歌"
+  },
+  "睡覺": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "報仇": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Retaliate",
+    "name_zh": "報仇"
+  },
+  "報恩": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Return",
+    "name_zh": "報恩"
+  },
+  "覺醒之舞": {
+    "type": "normal",
+    "category": "special",
+    "power": 90,
+    "name_en": "Revelation Dance",
+    "name_zh": "覺醒之舞"
+  },
+  "報復": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Revenge",
+    "name_zh": "報復"
+  },
+  "起死回生": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Reversal",
+    "name_zh": "起死回生"
+  },
+  "復生祈禱": {
+    "type": "normal",
+    "category": "status"
+  },
+  "電力上升": {
+    "type": "electric",
+    "category": "special",
+    "power": 70,
+    "name_en": "Rising Voltage",
+    "name_zh": "電力上升"
+  },
+  "吼叫": {
+    "type": "normal",
+    "category": "status"
+  },
+  "時光咆哮": {
+    "type": "dragon",
+    "category": "special",
+    "power": 150,
+    "name_en": "Roar of Time",
+    "name_zh": "時光咆哮"
+  },
+  "岩石爆擊": {
+    "type": "rock",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Rock Blast",
+    "name_zh": "岩石爆擊"
+  },
+  "攀岩": {
+    "type": "normal",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Rock Climb",
+    "name_zh": "攀岩"
+  },
+  "岩石打磨": {
+    "type": "rock",
+    "category": "status"
+  },
+  "岩崩": {
+    "type": "rock",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Rock Slide",
+    "name_zh": "岩崩"
+  },
+  "碎岩": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Rock Smash",
+    "name_zh": "碎岩"
+  },
+  "落石": {
+    "type": "rock",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Rock Throw",
+    "name_zh": "落石"
+  },
+  "岩石封鎖": {
+    "type": "rock",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Rock Tomb",
+    "name_zh": "岩石封鎖"
+  },
+  "岩石炮": {
+    "type": "rock",
+    "category": "physical",
+    "power": 150,
+    "name_en": "Rock Wrecker",
+    "name_zh": "岩石炮"
+  },
+  "扮演": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "迴旋踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Rolling Kick",
+    "name_zh": "迴旋踢"
+  },
+  "滾動": {
+    "type": "rock",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Rollout",
+    "name_zh": "滾動"
+  },
+  "羽棲": {
+    "type": "flying",
+    "category": "status"
+  },
+  "耕地": {
+    "type": "ground",
+    "category": "status"
+  },
+  "輪唱": {
+    "type": "normal",
+    "category": "special",
+    "power": 60,
+    "name_en": "Round",
+    "name_zh": "輪唱"
+  },
+  "大災難": {
+    "type": "dark",
+    "category": "special",
+    "power": 1,
+    "name_en": "Ruination",
+    "name_zh": "大災難"
+  },
+  "神聖之火": {
+    "type": "fire",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Sacred Fire",
+    "name_zh": "神聖之火"
+  },
+  "聖劍": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Sacred Sword",
+    "name_zh": "聖劍"
+  },
+  "神秘守護": {
+    "type": "normal",
+    "category": "status"
+  },
+  "鹽醃": {
+    "type": "rock",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Salt Cure",
+    "name_zh": "鹽醃"
+  },
+  "潑沙": {
+    "type": "ground",
+    "category": "status"
+  },
+  "流沙地獄": {
+    "type": "ground",
+    "category": "physical",
+    "power": 35,
+    "name_en": "Sand Tomb",
+    "name_zh": "流沙地獄"
+  },
+  "熱沙風暴": {
+    "type": "ground",
+    "category": "special",
+    "power": 100,
+    "name_en": "Sandsear Storm",
+    "name_zh": "熱沙風暴"
+  },
+  "沙暴": {
+    "type": "rock",
+    "category": "status"
+  },
+  "茁茁轟炸": {
+    "type": "grass",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Sappy Seed",
+    "name_zh": "茁茁轟炸"
+  },
+  "絕對捕食迴旋斬": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Savage Spin-Out",
+    "name_zh": "絕對捕食迴旋斬"
+  },
+  "熱水": {
+    "type": "water",
+    "category": "special",
+    "power": 80,
+    "name_en": "Scald",
+    "name_zh": "熱水"
+  },
+  "鱗射": {
+    "type": "dragon",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Scale Shot",
+    "name_zh": "鱗射"
+  },
+  "鬼面": {
+    "type": "normal",
+    "category": "status"
+  },
+  "熱沙大地": {
+    "type": "ground",
+    "category": "special",
+    "power": 70,
+    "name_en": "Scorching Sands",
+    "name_zh": "熱沙大地"
+  },
+  "抓": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Scratch",
+    "name_zh": "抓"
+  },
+  "刺耳聲": {
+    "type": "normal",
+    "category": "status"
+  },
+  "火焰彈": {
+    "type": "fire",
+    "category": "special",
+    "power": 100,
+    "name_en": "Searing Shot",
+    "name_zh": "火焰彈"
+  },
+  "日光迴旋下蒼穹": {
+    "type": "steel",
+    "category": "physical",
+    "power": 200,
+    "name_en": "Searing Sunraze Smash",
+    "name_zh": "日光迴旋下蒼穹"
+  },
+  "秘密之力": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Secret Power",
+    "name_zh": "秘密之力"
+  },
+  "神秘之劍": {
+    "type": "fighting",
+    "category": "special",
+    "power": 85,
+    "name_en": "Secret Sword",
+    "name_zh": "神秘之劍"
+  },
+  "種子炸彈": {
+    "type": "grass",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Seed Bomb",
+    "name_zh": "種子炸彈"
+  },
+  "種子閃光": {
+    "type": "grass",
+    "category": "special",
+    "power": 120,
+    "name_en": "Seed Flare",
+    "name_zh": "種子閃光"
+  },
+  "地球上投": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Seismic Toss",
+    "name_zh": "地球上投"
+  },
+  "自爆": {
+    "type": "normal",
+    "category": "physical",
+    "power": 200,
+    "name_en": "Self-Destruct",
+    "name_zh": "自爆"
+  },
+  "暗影球": {
+    "type": "ghost",
+    "category": "special",
+    "power": 80,
+    "name_en": "Shadow Ball",
+    "name_zh": "暗影球"
+  },
+  "暗影之骨": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Shadow Bone",
+    "name_zh": "暗影之骨"
+  },
+  "暗影爪": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Shadow Claw",
+    "name_zh": "暗影爪"
+  },
+  "暗影潛襲": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Shadow Force",
+    "name_zh": "暗影潛襲"
+  },
+  "暗影拳": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Shadow Punch",
+    "name_zh": "暗影拳"
+  },
+  "影子偷襲": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Shadow Sneak",
+    "name_zh": "影子偷襲"
+  },
+  "稜角化": {
+    "type": "normal",
+    "category": "status"
+  },
+  "至高精神破壞波": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Shattered Psyche",
+    "name_zh": "至高精神破壞波"
+  },
+  "斷尾": {
+    "type": "normal",
+    "category": "status"
+  },
+  "絕對零度": {
+    "type": "ice",
+    "category": "special",
+    "power": 1,
+    "name_en": "Sheer Cold",
+    "name_zh": "絕對零度"
+  },
+  "臂貝武器": {
+    "type": "poison",
+    "category": "special",
+    "power": 90,
+    "name_en": "Shell Side Arm",
+    "name_zh": "臂貝武器"
+  },
+  "破殼": {
+    "type": "normal",
+    "category": "status"
+  },
+  "陷阱甲殼": {
+    "type": "fire",
+    "category": "special",
+    "power": 150,
+    "name_en": "Shell Trap",
+    "name_zh": "陷阱甲殼"
+  },
+  "閉關": {
+    "type": "steel",
+    "category": "status"
+  },
+  "換檔": {
+    "type": "steel",
+    "category": "status"
+  },
+  "電擊波": {
+    "type": "electric",
+    "category": "special",
+    "power": 60,
+    "name_en": "Shock Wave",
+    "name_zh": "電擊波"
+  },
+  "集沙": {
+    "type": "ground",
+    "category": "status"
+  },
+  "信號光束": {
+    "type": "bug",
+    "category": "special",
+    "power": 75,
+    "name_en": "Signal Beam",
+    "name_zh": "信號光束"
+  },
+  "線阱": {
+    "type": "bug",
+    "category": "status"
+  },
+  "銀色旋風": {
+    "type": "bug",
+    "category": "special",
+    "power": 60,
+    "name_en": "Silver Wind",
+    "name_zh": "銀色旋風"
+  },
+  "單純光束": {
+    "type": "normal",
+    "category": "status"
+  },
+  "唱歌": {
+    "type": "normal",
+    "category": "status"
+  },
+  "遮天蔽日暗影箭": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 180,
+    "name_en": "Sinister Arrow Raid",
+    "name_zh": "遮天蔽日暗影箭"
+  },
+  "熊熊火爆": {
+    "type": "fire",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Sizzly Slide",
+    "name_zh": "熊熊火爆"
+  },
+  "寫生": {
+    "type": "normal",
+    "category": "status"
+  },
+  "特性互換": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "爬擊": {
+    "type": "bug",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Skitter Smack",
+    "name_zh": "爬擊"
+  },
+  "火箭頭錘": {
+    "type": "normal",
+    "category": "physical",
+    "power": 130,
+    "name_en": "Skull Bash",
+    "name_zh": "火箭頭錘"
+  },
+  "神鳥猛擊": {
+    "type": "flying",
+    "category": "physical",
+    "power": 140,
+    "name_en": "Sky Attack",
+    "name_zh": "神鳥猛擊"
+  },
+  "自由落體": {
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Sky Drop",
+    "name_zh": "自由落體"
+  },
+  "衝天拳": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 85,
+    "name_en": "Sky Uppercut",
+    "name_zh": "衝天拳"
+  },
+  "偷懶": {
+    "type": "normal",
+    "category": "status"
+  },
+  "摔打": {
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Slam",
+    "name_zh": "摔打"
+  },
+  "劈開": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Slash",
+    "name_zh": "劈開"
+  },
+  "催眠粉": {
+    "type": "grass",
+    "category": "status"
+  },
+  "夢話": {
+    "type": "normal",
+    "category": "status"
+  },
+  "污泥攻擊": {
+    "type": "poison",
+    "category": "special",
+    "power": 65,
+    "name_en": "Sludge",
+    "name_zh": "污泥攻擊"
+  },
+  "污泥炸彈": {
+    "type": "poison",
+    "category": "special",
+    "power": 90,
+    "name_en": "Sludge Bomb",
+    "name_zh": "污泥炸彈"
+  },
+  "污泥波": {
+    "type": "poison",
+    "category": "special",
+    "power": 95,
+    "name_en": "Sludge Wave",
+    "name_zh": "污泥波"
+  },
+  "擊落": {
+    "type": "rock",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Smack Down",
+    "name_zh": "擊落"
+  },
+  "修長之角": {
+    "type": "steel",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Smart Strike",
+    "name_zh": "修長之角"
+  },
+  "清醒": {
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Smelling Salts",
+    "name_zh": "清醒"
+  },
+  "濁霧": {
+    "type": "poison",
+    "category": "special",
+    "power": 30,
+    "name_en": "Smog",
+    "name_zh": "濁霧"
+  },
+  "煙幕": {
+    "type": "normal",
+    "category": "status"
+  },
+  "捕獸夾": {
+    "type": "grass",
+    "category": "physical",
+    "power": 35,
+    "name_en": "Snap Trap",
+    "name_zh": "捕獸夾"
+  },
+  "大聲咆哮": {
+    "type": "dark",
+    "category": "special",
+    "power": 55,
+    "name_en": "Snarl",
+    "name_zh": "大聲咆哮"
+  },
+  "搶奪": {
+    "type": "dark",
+    "category": "status"
+  },
+  "狙擊": {
+    "type": "water",
+    "category": "special",
+    "power": 80,
+    "name_en": "Snipe Shot",
+    "name_zh": "狙擊"
+  },
+  "打鼾": {
+    "type": "normal",
+    "category": "special",
+    "power": 50,
+    "name_en": "Snore",
+    "name_zh": "打鼾"
+  },
+  "雪景": {
+    "type": "ice",
+    "category": "status"
+  },
+  "浸水": {
+    "type": "water",
+    "category": "status"
+  },
+  "生蛋": {
+    "type": "normal",
+    "category": "status"
+  },
+  "日光束": {
+    "type": "grass",
+    "category": "special",
+    "power": 120,
+    "name_en": "Solar Beam",
+    "name_zh": "日光束"
+  },
+  "日光刃": {
+    "type": "grass",
+    "category": "physical",
+    "power": 125,
+    "name_en": "Solar Blade",
+    "name_zh": "日光刃"
+  },
+  "音爆": {
+    "type": "normal",
+    "category": "special",
+    "power": 1,
+    "name_en": "Sonic Boom",
+    "name_zh": "音爆"
+  },
+  "七星奪魂腿": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 195,
+    "name_en": "Soul-Stealing 7-Star Strike",
+    "name_zh": "七星奪魂腿"
+  },
+  "亞空裂斬": {
+    "type": "dragon",
+    "category": "special",
+    "power": 100,
+    "name_en": "Spacial Rend",
+    "name_zh": "亞空裂斬"
+  },
+  "電光": {
+    "type": "electric",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Spark",
+    "name_zh": "電光"
+  },
+  "泡影的詠歎調": {
+    "type": "water",
+    "category": "special",
+    "power": 90,
+    "name_en": "Sparkling Aria",
+    "name_zh": "泡影的詠歎調"
+  },
+  "亮亮風暴": {
+    "type": "fairy",
+    "category": "special",
+    "power": 90,
+    "name_en": "Sparkly Swirl",
+    "name_zh": "亮亮風暴"
+  },
+  "暗影偷盜": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Spectral Thief",
+    "name_zh": "暗影偷盜"
+  },
+  "速度互換": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "辣椒精華": {
+    "type": "grass",
+    "category": "status"
+  },
+  "蛛網": {
+    "type": "bug",
+    "category": "status"
+  },
+  "尖刺加農炮": {
+    "type": "normal",
+    "category": "physical",
+    "power": 20,
+    "name_en": "Spike Cannon",
+    "name_zh": "尖刺加農炮"
+  },
+  "撒菱": {
+    "type": "ground",
+    "category": "status"
+  },
+  "尖刺防守": {
+    "type": "grass",
+    "category": "status"
+  },
+  "疾速转轮": {
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Spin Out",
+    "name_zh": "疾速转轮"
+  },
+  "靈魂衝擊": {
+    "type": "fairy",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Spirit Break",
+    "name_zh": "靈魂衝擊"
+  },
+  "縫影": {
+    "type": "ghost",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Spirit Shackle",
+    "name_zh": "縫影"
+  },
+  "噴出": {
+    "type": "normal",
+    "category": "special",
+    "power": 1,
+    "name_en": "Spit Up",
+    "name_zh": "噴出"
+  },
+  "怨恨": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "躍起": {
+    "type": "normal",
+    "category": "status"
+  },
+  "狼嘯石牙颶風暴": {
+    "type": "rock",
+    "category": "physical",
+    "power": 190,
+    "name_en": "Splintered Stormshards",
+    "name_zh": "狼嘯石牙颶風暴"
+  },
+  "滔滔衝浪": {
+    "type": "water",
+    "category": "special",
+    "power": 90,
+    "name_en": "Splishy Splash",
+    "name_zh": "滔滔衝浪"
+  },
+  "蘑菇孢子": {
+    "type": "grass",
+    "category": "status"
+  },
+  "聚光燈": {
+    "type": "normal",
+    "category": "status"
+  },
+  "陽春風暴": {
+    "type": "fairy",
+    "category": "special",
+    "power": 100,
+    "name_en": "Springtide Storm",
+    "name_zh": "陽春風暴"
+  },
+  "隱形岩": {
+    "type": "rock",
+    "category": "status"
+  },
+  "蒸汽爆炸": {
+    "type": "water",
+    "category": "special",
+    "power": 110,
+    "name_en": "Steam Eruption",
+    "name_zh": "蒸汽爆炸"
+  },
+  "瘋狂滾壓": {
+    "type": "bug",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Steamroller",
+    "name_zh": "瘋狂滾壓"
+  },
+  "鐵蹄光線": {
+    "type": "steel",
+    "category": "special",
+    "power": 140,
+    "name_en": "Steel Beam",
+    "name_zh": "鐵蹄光線"
+  },
+  "鐵滾輪": {
+    "type": "steel",
+    "category": "physical",
+    "power": 130,
+    "name_en": "Steel Roller",
+    "name_zh": "鐵滾輪"
+  },
+  "鋼翼": {
+    "type": "steel",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Steel Wing",
+    "name_zh": "鋼翼"
+  },
+  "黏黏網": {
+    "type": "bug",
+    "category": "status"
+  },
+  "蓄力": {
+    "type": "normal",
+    "category": "status"
+  },
+  "駕雷馭電戲衝浪": {
+    "type": "electric",
+    "category": "special",
+    "power": 175,
+    "name_en": "Stoked Sparksurfer",
+    "name_zh": "駕雷馭電戲衝浪"
+  },
+  "踩踏": {
+    "type": "normal",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Stomp",
+    "name_zh": "踩踏"
+  },
+  "跺腳": {
+    "type": "ground",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Stomping Tantrum",
+    "name_zh": "跺腳"
+  },
+  "岩斧": {
+    "type": "rock",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Stone Axe",
+    "name_zh": "岩斧"
+  },
+  "尖石攻擊": {
+    "type": "rock",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Stone Edge",
+    "name_zh": "尖石攻擊"
+  },
+  "輔助力量": {
+    "type": "psychic",
+    "category": "special",
+    "power": 20,
+    "name_en": "Stored Power",
+    "name_zh": "輔助力量"
+  },
+  "山嵐摔": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Storm Throw",
+    "name_zh": "山嵐摔"
+  },
+  "神奇蒸汽": {
+    "type": "fairy",
+    "category": "special",
+    "power": 90,
+    "name_en": "Strange Steam",
+    "name_zh": "神奇蒸汽"
+  },
+  "怪力": {
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Strength",
+    "name_zh": "怪力"
+  },
+  "吸取力量": {
+    "type": "grass",
+    "category": "status"
+  },
+  "吐絲": {
+    "type": "bug",
+    "category": "status"
+  },
+  "掙扎": {
+    "type": "normal",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Struggle",
+    "name_zh": "掙扎"
+  },
+  "蟲之抵抗": {
+    "type": "bug",
+    "category": "special",
+    "power": 50,
+    "name_en": "Struggle Bug",
+    "name_zh": "蟲之抵抗"
+  },
+  "大快朵頤": {
+    "type": "normal",
+    "category": "status"
+  },
+  "麻痺粉": {
+    "type": "grass",
+    "category": "status"
+  },
+  "地獄翻滾": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Submission",
+    "name_zh": "地獄翻滾"
+  },
+  "替身": {
+    "type": "normal",
+    "category": "status"
+  },
+  "激狂大地萬里冰": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Subzero Slammer",
+    "name_zh": "激狂大地萬里冰"
+  },
+  "突襲": {
+    "type": "dark",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Sucker Punch",
+    "name_zh": "突襲"
+  },
+  "大晴天": {
+    "type": "fire",
+    "category": "status"
+  },
+  "流星閃衝": {
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Sunsteel Strike",
+    "name_zh": "流星閃衝"
+  },
+  "憤怒門牙": {
+    "type": "normal",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Super Fang",
+    "name_zh": "憤怒門牙"
+  },
+  "蠻力": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Superpower",
+    "name_zh": "蠻力"
+  },
+  "超音波": {
+    "type": "normal",
+    "category": "status"
+  },
+  "極速俯衝轟烈撞": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Supersonic Skystrike",
+    "name_zh": "極速俯衝轟烈撞"
+  },
+  "衝浪": {
+    "type": "water",
+    "category": "special",
+    "power": 90,
+    "name_en": "Surf",
+    "name_zh": "衝浪"
+  },
+  "水流連打": {
+    "type": "water",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Surging Strikes",
+    "name_zh": "水流連打"
+  },
+  "虛張聲勢": {
+    "type": "normal",
+    "category": "status"
+  },
+  "吞下": {
+    "type": "normal",
+    "category": "status"
+  },
+  "天使之吻": {
+    "type": "fairy",
+    "category": "status"
+  },
+  "甜甜香氣": {
+    "type": "normal",
+    "category": "status"
+  },
+  "高速星星": {
+    "type": "normal",
+    "category": "special",
+    "power": 60,
+    "name_en": "Swift",
+    "name_zh": "高速星星"
+  },
+  "掉包": {
+    "type": "dark",
+    "category": "status"
+  },
+  "劍舞": {
+    "type": "normal",
+    "category": "status"
+  },
+  "同步干擾": {
+    "type": "psychic",
+    "category": "special",
+    "power": 120,
+    "name_en": "Synchronoise",
+    "name_zh": "同步干擾"
+  },
+  "光合作用": {
+    "type": "grass",
+    "category": "status"
+  },
+  "糖漿炸彈": {
+    "type": "grass",
+    "category": "special",
+    "power": 60,
+    "name_en": "Syrup Bomb",
+    "name_zh": "糖漿炸彈"
+  },
+  "撞擊": {
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "name_en": "Tackle",
+    "name_zh": "撞擊"
+  },
+  "螢火": {
+    "type": "bug",
+    "category": "status"
+  },
+  "掃尾拍打": {
+    "type": "normal",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Tail Slap",
+    "name_zh": "掃尾拍打"
+  },
+  "搖尾巴": {
+    "type": "normal",
+    "category": "status"
+  },
+  "順風": {
+    "type": "flying",
+    "category": "status"
+  },
+  "猛撞": {
+    "type": "normal",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Take Down",
+    "name_zh": "猛撞"
+  },
+  "勇氣填充": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "瀝青射擊": {
+    "type": "rock",
+    "category": "status"
+  },
+  "挑釁": {
+    "type": "dark",
+    "category": "status"
+  },
+  "淚眼汪汪": {
+    "type": "normal",
+    "category": "status"
+  },
+  "茶會": {
+    "type": "normal",
+    "category": "status"
+  },
+  "高科技光炮": {
+    "type": "normal",
+    "category": "special",
+    "power": 120,
+    "name_en": "Techno Blast",
+    "name_zh": "高科技光炮"
+  },
+  "地隆嘯天大終結": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Tectonic Rage",
+    "name_zh": "地隆嘯天大終結"
+  },
+  "搖晃舞": {
+    "type": "normal",
+    "category": "status"
+  },
+  "意念移物": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "瞬間移動": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "太晶爆發": {
+    "type": "normal",
+    "category": "special",
+    "power": 80,
+    "name_en": "Tera Blast",
+    "name_zh": "太晶爆發"
+  },
+  "大地波動": {
+    "type": "normal",
+    "category": "special",
+    "power": 50,
+    "name_en": "Terrain Pulse",
+    "name_zh": "大地波動"
+  },
+  "小偷": {
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Thief",
+    "name_zh": "小偷"
+  },
+  "千箭齊發": {
+    "type": "ground",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Thousand Arrows",
+    "name_zh": "千箭齊發"
+  },
+  "千波激盪": {
+    "type": "ground",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Thousand Waves",
+    "name_zh": "千波激盪"
+  },
+  "大鬧一番": {
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Thrash",
+    "name_zh": "大鬧一番"
+  },
+  "地獄突刺": {
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Throat Chop",
+    "name_zh": "地獄突刺"
+  },
+  "打雷": {
+    "type": "electric",
+    "category": "special",
+    "power": 110,
+    "name_en": "Thunder",
+    "name_zh": "打雷"
+  },
+  "雷電囚籠": {
+    "type": "electric",
+    "category": "special",
+    "power": 80,
+    "name_en": "Thunder Cage",
+    "name_zh": "雷電囚籠"
+  },
+  "雷電牙": {
+    "type": "electric",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Thunder Fang",
+    "name_zh": "雷電牙"
+  },
+  "雷電拳": {
+    "type": "electric",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Thunder Punch",
+    "name_zh": "雷電拳"
+  },
+  "電擊": {
+    "type": "electric",
+    "category": "special",
+    "power": 40,
+    "name_en": "Thunder Shock",
+    "name_zh": "電擊"
+  },
+  "電磁波": {
+    "type": "electric",
+    "category": "status"
+  },
+  "十萬伏特": {
+    "type": "electric",
+    "category": "special",
+    "power": 90,
+    "name_en": "Thunderbolt",
+    "name_zh": "十萬伏特"
+  },
+  "雷鳴蹴擊": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Thunderous Kick",
+    "name_zh": "雷鳴蹴擊"
+  },
+  "搔癢": {
+    "type": "normal",
+    "category": "status"
+  },
+  "大掃除": {
+    "type": "normal",
+    "category": "status"
+  },
+  "顛倒": {
+    "type": "dark",
+    "category": "status"
+  },
+  "閃焰高歌": {
+    "type": "fire",
+    "category": "special",
+    "power": 80,
+    "name_en": "Torch Song",
+    "name_zh": "閃焰高歌"
+  },
+  "無理取鬧": {
+    "type": "dark",
+    "category": "status"
+  },
+  "劇毒": {
+    "type": "poison",
+    "category": "status"
+  },
+  "毒菱": {
+    "type": "poison",
+    "category": "status"
+  },
+  "毒絲": {
+    "type": "poison",
+    "category": "status"
+  },
+  "起草": {
+    "type": "grass",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Trailblaze",
+    "name_zh": "起草"
+  },
+  "變身": {
+    "type": "normal",
+    "category": "status"
+  },
+  "三重攻擊": {
+    "type": "normal",
+    "category": "special",
+    "power": 80,
+    "name_en": "Tri Attack",
+    "name_zh": "三重攻擊"
+  },
+  "戲法": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "戲法空間": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "萬聖夜": {
+    "type": "ghost",
+    "category": "status"
+  },
+  "三連箭": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Triple Arrows",
+    "name_zh": "三連箭"
+  },
+  "三旋擊": {
+    "type": "ice",
+    "category": "physical",
+    "power": 20,
+    "name_en": "Triple Axel",
+    "name_zh": "三旋擊"
+  },
+  "三連鑽": {
+    "type": "water",
+    "category": "physical",
+    "power": 30,
+    "name_en": "Triple Dive",
+    "name_zh": "三連鑽"
+  },
+  "三連踢": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 10,
+    "name_en": "Triple Kick",
+    "name_zh": "三連踢"
+  },
+  "熱帶踢": {
+    "type": "grass",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Trop Kick",
+    "name_zh": "熱帶踢"
+  },
+  "王牌": {
+    "type": "normal",
+    "category": "special",
+    "power": 1,
+    "name_en": "Trump Card",
+    "name_zh": "王牌"
+  },
+  "雙光束": {
+    "type": "psychic",
+    "category": "special",
+    "power": 40,
+    "name_en": "Twin Beam",
+    "name_zh": "雙光束"
+  },
+  "雙針": {
+    "type": "bug",
+    "category": "physical",
+    "power": 25,
+    "name_en": "Twineedle",
+    "name_zh": "雙針"
+  },
+  "可愛星星飛天撞": {
+    "type": "unknown",
+    "category": "unknown",
+    "power": 1,
+    "name_en": "Twinkle Tackle",
+    "name_zh": "可愛星星飛天撞"
+  },
+  "龍捲風": {
+    "type": "dragon",
+    "category": "special",
+    "power": 40,
+    "name_en": "Twister",
+    "name_zh": "龍捲風"
+  },
+  "急速折返": {
+    "type": "bug",
+    "category": "physical",
+    "power": 70,
+    "name_en": "U-turn",
+    "name_zh": "急速折返"
+  },
+  "吵鬧": {
+    "type": "normal",
+    "category": "special",
+    "power": 90,
+    "name_en": "Uproar",
+    "name_zh": "吵鬧"
+  },
+  "Ｖ熱焰": {
+    "type": "fire",
+    "category": "physical",
+    "power": 180,
+    "name_en": "V-create",
+    "name_zh": "Ｖ熱焰"
+  },
+  "真空波": {
+    "type": "fighting",
+    "category": "special",
+    "power": 40,
+    "name_en": "Vacuum Wave",
+    "name_zh": "真空波"
+  },
+  "砰砰擊破": {
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Tera Starstorm",
+    "name_zh": "晶光星群"
+  },
+  "毒液陷阱": {
+    "type": "poison",
+    "category": "status"
+  },
+  "毒液衝擊": {
+    "type": "poison",
+    "category": "special",
+    "power": 65,
+    "name_en": "Venoshock",
+    "name_zh": "毒液衝擊"
+  },
+  "勝利之舞": {
+    "type": "fighting",
+    "category": "status"
+  },
+  "藤鞭": {
+    "type": "grass",
+    "category": "physical",
+    "power": 45,
+    "name_en": "Vine Whip",
+    "name_zh": "藤鞭"
+  },
+  "夾住": {
+    "type": "normal",
+    "category": "physical",
+    "power": 55,
+    "name_en": "Vise Grip",
+    "name_zh": "夾住"
+  },
+  "借力摔": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Vital Throw",
+    "name_zh": "借力摔"
+  },
+  "伏特替換": {
+    "type": "electric",
+    "category": "special",
+    "power": 70,
+    "name_en": "Volt Switch",
+    "name_zh": "伏特替換"
+  },
+  "伏特攻擊": {
+    "type": "electric",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Volt Tackle",
+    "name_zh": "伏特攻擊"
+  },
+  "喚醒巴掌": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 70,
+    "name_en": "Wake-Up Slap",
+    "name_zh": "喚醒巴掌"
+  },
+  "水槍": {
+    "type": "water",
+    "category": "special",
+    "power": 40,
+    "name_en": "Water Gun",
+    "name_zh": "水槍"
+  },
+  "水之誓約": {
+    "type": "water",
+    "category": "special",
+    "power": 80,
+    "name_en": "Water Pledge",
+    "name_zh": "水之誓約"
+  },
+  "水之波動": {
+    "type": "water",
+    "category": "special",
+    "power": 60,
+    "name_en": "Water Pulse",
+    "name_zh": "水之波動"
+  },
+  "飛水手裡劍": {
+    "type": "water",
+    "category": "special",
+    "power": 15,
+    "name_en": "Water Shuriken",
+    "name_zh": "飛水手裡劍"
+  },
+  "玩水": {
+    "type": "water",
+    "category": "status"
+  },
+  "噴水": {
+    "type": "water",
+    "category": "special",
+    "power": 150,
+    "name_en": "Water Spout",
+    "name_zh": "噴水"
+  },
+  "攀瀑": {
+    "type": "water",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Waterfall",
+    "name_zh": "攀瀑"
+  },
+  "波動衝": {
+    "type": "water",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Wave Crash",
+    "name_zh": "波動衝"
+  },
+  "氣象球": {
+    "type": "normal",
+    "category": "special",
+    "power": 50,
+    "name_en": "Weather Ball",
+    "name_zh": "氣象球"
+  },
+  "潮旋": {
+    "type": "water",
+    "category": "special",
+    "power": 35,
+    "name_en": "Whirlpool",
+    "name_zh": "潮旋"
+  },
+  "吹飛": {
+    "type": "normal",
+    "category": "status"
+  },
+  "暗冥強擊": {
+    "type": "dark",
+    "category": "physical",
+    "power": 75,
+    "name_en": "Wicked Blow",
+    "name_zh": "暗冥強擊"
+  },
+  "黑暗暴衝": {
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Wicked Torque",
+    "name_zh": "黑暗暴衝"
+  },
+  "廣域防守": {
+    "type": "rock",
+    "category": "status"
+  },
+  "瘋狂伏特": {
+    "type": "electric",
+    "category": "physical",
+    "power": 90,
+    "name_en": "Wild Charge",
+    "name_zh": "瘋狂伏特"
+  },
+  "鳴雷風暴": {
+    "type": "electric",
+    "category": "special",
+    "power": 100,
+    "name_en": "Wildbolt Storm",
+    "name_zh": "鳴雷風暴"
+  },
+  "鬼火": {
+    "type": "fire",
+    "category": "status"
+  },
+  "翅膀攻擊": {
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "name_en": "Wing Attack",
+    "name_zh": "翅膀攻擊"
+  },
+  "祈願": {
+    "type": "normal",
+    "category": "status"
+  },
+  "縮入殼中": {
+    "type": "water",
+    "category": "status"
+  },
+  "奇妙空間": {
+    "type": "psychic",
+    "category": "status"
+  },
+  "木槌": {
+    "type": "grass",
+    "category": "physical",
+    "power": 120,
+    "name_en": "Wood Hammer",
+    "name_zh": "木槌"
+  },
+  "自我激勵": {
+    "type": "normal",
+    "category": "status"
+  },
+  "煩惱種子": {
+    "type": "grass",
+    "category": "status"
+  },
+  "緊束": {
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "name_en": "Wrap",
+    "name_zh": "緊束"
+  },
+  "絞緊": {
+    "type": "normal",
+    "category": "special",
+    "power": 1,
+    "name_en": "Wring Out",
+    "name_zh": "絞緊"
+  },
+  "十字剪": {
+    "type": "bug",
+    "category": "physical",
+    "power": 80,
+    "name_en": "X-Scissor",
+    "name_zh": "十字剪"
+  },
+  "哈欠": {
+    "type": "normal",
+    "category": "status"
+  },
+  "電磁炮": {
+    "type": "electric",
+    "category": "special",
+    "power": 120,
+    "name_en": "Zap Cannon",
+    "name_zh": "電磁炮"
+  },
+  "意念頭錘": {
+    "type": "psychic",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Zen Headbutt",
+    "name_zh": "意念頭錘"
+  },
+  "麻麻刺刺": {
+    "type": "electric",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Zing Zap",
+    "name_zh": "麻麻刺刺"
+  },
+  "電電加速": {
+    "type": "electric",
+    "category": "physical",
+    "power": 50,
+    "name_en": "Zippy Zap",
+    "name_zh": "電電加速"
+  },
+  "電光束": {
+    "type": "electric",
+    "category": "special",
+    "power": 120,
+    "name_en": "Zap Cannon",
+    "name_zh": "電光束"
+  },
+  "強刃攻擊": {
+    "type": "rock",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Stone Edge",
+    "name_zh": "強刃攻擊"
+  },
+  "迅子利刃": {
+    "type": "steel",
+    "category": "special",
+    "power": 50,
+    "name_en": "Tachyon Cutter",
+    "name_zh": "迅子利刃"
+  },
+  "精神噪音": {
+    "type": "psychic",
+    "category": "special",
+    "power": 75,
+    "name_en": "Psychic Noise",
+    "name_zh": "精神噪音"
+  },
+  "快手還擊": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Upper Hand",
+    "name_zh": "快手還擊"
+  },
+  "閃電強襲": {
+    "type": "electric",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Supercell Slam",
+    "name_zh": "閃電強襲"
+  },
+  "硬壓": {
+    "type": "steel",
+    "category": "physical",
+    "power": 1,
+    "name_en": "Hard Press",
+    "name_zh": "硬壓"
+  },
+  "龍聲鼓舞": {
+    "type": "dragon",
+    "category": "status"
+  },
+  "魅誘之聲": {
+    "type": "fairy",
+    "category": "special",
+    "power": 80,
+    "name_en": "Alluring Voice",
+    "name_zh": "魅誘之聲"
+  },
+  "豁出去": {
+    "type": "fire",
+    "category": "physical"
+  },
+  "火焰守護": {
+    "type": "fire",
+    "category": "status"
+  },
+  "迅雷": {
+    "type": "electric",
+    "category": "special",
+    "power": 70,
+    "name_en": "Thunderclap",
+    "name_zh": "迅雷"
+  },
+  "邪毒鎖鏈": {
+    "type": "poison",
+    "category": "special",
+    "power": 100,
+    "name_en": "Malignant Chain",
+    "name_zh": "邪毒鎖鏈"
+  },
+  "隨機光": {
+    "type": "dragon",
+    "category": "special"
+  }
+}

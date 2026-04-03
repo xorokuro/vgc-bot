@@ -1,0 +1,3281 @@
+[
+  {
+    "name": "Amoonguss",
+    "score": 5281,
+    "damageMoves": [
+      "Pollen Puff",
+      "Clear Smog",
+      "Sludge Bomb",
+      "Giga Drain"
+    ],
+    "allMoves": [
+      "Pollen Puff",
+      "Clear Smog",
+      "Sludge Bomb",
+      "Giga Drain",
+      "Foul Play",
+      "Leaf Storm",
+      "Grass Knot",
+      "Energy Ball"
+    ],
+    "abilities": [
+      "Regenerator",
+      "Effect Spore"
+    ],
+    "items": [
+      "Rocky Helmet",
+      "Sitrus Berry",
+      "Mental Herb",
+      "Black Sludge"
+    ],
+    "natures": [
+      "Relaxed",
+      "Bold",
+      "Sassy",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Water",
+      "Dark",
+      "Fire",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Indeedee-F",
+    "score": 5130,
+    "damageMoves": [
+      "Psychic",
+      "Dazzling Gleam",
+      "Shadow Ball",
+      "Psyshock"
+    ],
+    "allMoves": [
+      "Psychic",
+      "Dazzling Gleam",
+      "Shadow Ball",
+      "Psyshock",
+      "Hyper Voice",
+      "Fake Out"
+    ],
+    "abilities": [
+      "Psychic Surge",
+      "Synchronize",
+      "Own Tempo"
+    ],
+    "items": [
+      "Rocky Helmet",
+      "Safety Goggles",
+      "Focus Sash",
+      "Eject Button"
+    ],
+    "natures": [
+      "Bold",
+      "Relaxed",
+      "Calm",
+      "Sassy"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Water",
+      "Grass",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Dragonite",
+    "score": 4983,
+    "damageMoves": [
+      "Extreme Speed",
+      "Outrage",
+      "Stomping Tantrum",
+      "Aerial Ace"
+    ],
+    "allMoves": [
+      "Extreme Speed",
+      "Outrage",
+      "Stomping Tantrum",
+      "Aerial Ace",
+      "Low Kick",
+      "Scale Shot",
+      "Earthquake",
+      "Iron Head"
+    ],
+    "abilities": [
+      "Multiscale",
+      "Inner Focus"
+    ],
+    "items": [
+      "Choice Band",
+      "Assault Vest",
+      "Weakness Policy",
+      "Life Orb"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Brave",
+      "Modest"
+    ],
+    "teraTypes": [
+      "Normal",
+      "Flying",
+      "Steel",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Farigiraf",
+    "score": 4880,
+    "damageMoves": [
+      "Psychic",
+      "Hyper Voice",
+      "Foul Play",
+      "Dazzling Gleam"
+    ],
+    "allMoves": [
+      "Psychic",
+      "Hyper Voice",
+      "Foul Play",
+      "Dazzling Gleam",
+      "Psyshock",
+      "Shadow Ball",
+      "Expanding Force"
+    ],
+    "abilities": [
+      "Sap Sipper"
+    ],
+    "items": [
+      "Sitrus Berry",
+      "Safety Goggles",
+      "Mental Herb",
+      "Rocky Helmet"
+    ],
+    "natures": [
+      "Bold",
+      "Modest",
+      "Quiet",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Water",
+      "Normal",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Grimmsnarl",
+    "score": 4860,
+    "damageMoves": [
+      "Spirit Break",
+      "Fake Out",
+      "Sucker Punch",
+      "Foul Play"
+    ],
+    "allMoves": [
+      "Spirit Break",
+      "Fake Out",
+      "Sucker Punch",
+      "Foul Play",
+      "False Surrender",
+      "Low Kick",
+      "Play Rough"
+    ],
+    "abilities": [
+      "Prankster",
+      "Frisk",
+      "Pickpocket"
+    ],
+    "items": [
+      "Light Clay",
+      "Roseli Berry",
+      "Lagging Tail",
+      "Focus Sash"
+    ],
+    "natures": [
+      "Careful",
+      "Impish",
+      "Adamant",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Steel",
+      "Dark",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Torkoal",
+    "score": 4709,
+    "damageMoves": [
+      "Eruption",
+      "Earth Power",
+      "Heat Wave",
+      "Solar Beam"
+    ],
+    "allMoves": [
+      "Eruption",
+      "Earth Power",
+      "Heat Wave",
+      "Solar Beam",
+      "Flamethrower",
+      "Weather Ball",
+      "Clear Smog",
+      "Overheat"
+    ],
+    "abilities": [
+      "Drought",
+      "White Smoke",
+      "Shell Armor"
+    ],
+    "items": [
+      "Charcoal",
+      "Choice Specs",
+      "Heat Rock",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Quiet",
+      "Modest",
+      "Relaxed",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Grass",
+      "Flying",
+      "Ghost"
+    ]
+  },
+  {
+    "name": "Annihilape",
+    "score": 4664,
+    "damageMoves": [
+      "Drain Punch",
+      "Final Gambit",
+      "Close Combat",
+      "Shadow Claw"
+    ],
+    "allMoves": [
+      "Drain Punch",
+      "Final Gambit",
+      "Close Combat",
+      "Shadow Claw",
+      "U-turn",
+      "Rock Slide",
+      "Brick Break",
+      "Earthquake"
+    ],
+    "abilities": [
+      "Defiant",
+      "Vital Spirit",
+      "Inner Focus"
+    ],
+    "items": [
+      "Choice Scarf",
+      "Leftovers",
+      "Sitrus Berry",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Careful",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Water",
+      "Steel",
+      "Normal"
+    ]
+  },
+  {
+    "name": "Flutter Mane",
+    "score": 4635,
+    "damageMoves": [
+      "Shadow Ball",
+      "Moonblast",
+      "Dazzling Gleam",
+      "Icy Wind"
+    ],
+    "allMoves": [
+      "Shadow Ball",
+      "Moonblast",
+      "Dazzling Gleam",
+      "Icy Wind",
+      "Power Gem",
+      "Mystical Fire",
+      "Thunderbolt",
+      "Energy Ball"
+    ],
+    "abilities": [],
+    "items": [
+      "Focus Sash",
+      "Choice Specs",
+      "Life Orb",
+      "Pixie Plate"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Bold",
+      "Quiet"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Normal",
+      "Water",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Pelipper",
+    "score": 4555,
+    "damageMoves": [
+      "Hurricane",
+      "Weather Ball",
+      "Hydro Pump",
+      "Surf"
+    ],
+    "allMoves": [
+      "Hurricane",
+      "Weather Ball",
+      "Hydro Pump",
+      "Surf",
+      "Muddy Water",
+      "U-turn",
+      "Ice Beam",
+      "Icy Wind"
+    ],
+    "abilities": [
+      "Drizzle",
+      "Keen Eye",
+      "Rain Dish"
+    ],
+    "items": [
+      "Focus Sash",
+      "Damp Rock",
+      "Rocky Helmet",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Modest",
+      "Timid",
+      "Bold",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Ground",
+      "Grass",
+      "Ghost",
+      "Steel"
+    ]
+  },
+  {
+    "name": "Rillaboom",
+    "score": 4537,
+    "damageMoves": [
+      "Fake Out",
+      "Grassy Glide",
+      "Wood Hammer",
+      "U-turn"
+    ],
+    "allMoves": [
+      "Fake Out",
+      "Grassy Glide",
+      "Wood Hammer",
+      "U-turn",
+      "High Horsepower",
+      "Knock Off",
+      "Drum Beating",
+      "Stomping Tantrum"
+    ],
+    "abilities": [
+      "Grassy Surge",
+      "Overgrow"
+    ],
+    "items": [
+      "Assault Vest",
+      "Miracle Seed",
+      "Choice Band",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Careful",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Grass",
+      "Water",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Dondozo",
+    "score": 4519,
+    "damageMoves": [
+      "Earthquake",
+      "Body Press",
+      "Heavy Slam",
+      "Fissure"
+    ],
+    "allMoves": [
+      "Earthquake",
+      "Body Press",
+      "Heavy Slam",
+      "Fissure",
+      "Rock Slide",
+      "Liquidation",
+      "Bulldoze",
+      "Crunch"
+    ],
+    "abilities": [
+      "Unaware",
+      "Oblivious",
+      "Water Veil"
+    ],
+    "items": [
+      "Leftovers",
+      "Assault Vest",
+      "Rocky Helmet",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Adamant",
+      "Impish",
+      "Careful",
+      "Jolly"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Dragon",
+      "Steel",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Kingambit",
+    "score": 4373,
+    "damageMoves": [
+      "Sucker Punch",
+      "Iron Head",
+      "Low Kick",
+      "Brick Break"
+    ],
+    "allMoves": [
+      "Sucker Punch",
+      "Iron Head",
+      "Low Kick",
+      "Brick Break",
+      "Assurance",
+      "Metal Burst",
+      "Guillotine",
+      "Foul Play"
+    ],
+    "abilities": [
+      "Defiant",
+      "Pressure"
+    ],
+    "items": [
+      "Assault Vest",
+      "Black Glasses",
+      "Safety Goggles",
+      "Life Orb"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Careful",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Dark",
+      "Flying",
+      "Fairy",
+      "Water"
+    ]
+  },
+  {
+    "name": "Iron Hands",
+    "score": 4334,
+    "damageMoves": [
+      "Drain Punch",
+      "Fake Out",
+      "Wild Charge",
+      "Heavy Slam"
+    ],
+    "allMoves": [
+      "Drain Punch",
+      "Fake Out",
+      "Wild Charge",
+      "Heavy Slam",
+      "Low Kick",
+      "Thunder Punch",
+      "Ice Punch",
+      "Volt Switch"
+    ],
+    "abilities": [],
+    "items": [
+      "Assault Vest",
+      "Sitrus Berry",
+      "Leftovers",
+      "Safety Goggles"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Careful",
+      "Sassy"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Water",
+      "Fire",
+      "Bug"
+    ]
+  },
+  {
+    "name": "Volcarona",
+    "score": 4298,
+    "damageMoves": [
+      "Heat Wave",
+      "Fiery Dance",
+      "Giga Drain",
+      "Struggle Bug"
+    ],
+    "allMoves": [
+      "Heat Wave",
+      "Fiery Dance",
+      "Giga Drain",
+      "Struggle Bug",
+      "Bug Buzz",
+      "Flamethrower",
+      "Overheat"
+    ],
+    "abilities": [
+      "Flame Body",
+      "Swarm"
+    ],
+    "items": [
+      "Leftovers",
+      "Rocky Helmet",
+      "Sitrus Berry",
+      "Safety Goggles"
+    ],
+    "natures": [
+      "Bold",
+      "Modest",
+      "Timid",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Water",
+      "Dragon",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Chien-Pao",
+    "score": 4233,
+    "damageMoves": [
+      "Sucker Punch",
+      "Sacred Sword",
+      "Icicle Crash",
+      "Ice Shard"
+    ],
+    "allMoves": [
+      "Sucker Punch",
+      "Sacred Sword",
+      "Icicle Crash",
+      "Ice Shard",
+      "Crunch",
+      "Throat Chop",
+      "Icy Wind",
+      "Lash Out"
+    ],
+    "abilities": [],
+    "items": [
+      "Focus Sash",
+      "Life Orb",
+      "Assault Vest",
+      "Choice Band"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Naive",
+      "Naughty"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Stellar",
+      "Dark",
+      "Ice"
+    ]
+  },
+  {
+    "name": "Gholdengo",
+    "score": 4193,
+    "damageMoves": [
+      "Shadow Ball",
+      "Thunderbolt",
+      "Power Gem",
+      "Dazzling Gleam"
+    ],
+    "allMoves": [
+      "Shadow Ball",
+      "Thunderbolt",
+      "Power Gem",
+      "Dazzling Gleam",
+      "Focus Blast",
+      "Steel Beam",
+      "Thunder",
+      "Psychic"
+    ],
+    "abilities": [],
+    "items": [
+      "Choice Specs",
+      "Leftovers",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Modest",
+      "Timid",
+      "Bold",
+      "Quiet"
+    ],
+    "teraTypes": [
+      "Steel",
+      "Water",
+      "Dragon",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Chi-Yu",
+    "score": 4037,
+    "damageMoves": [
+      "Heat Wave",
+      "Dark Pulse",
+      "Snarl",
+      "Overheat"
+    ],
+    "allMoves": [
+      "Heat Wave",
+      "Dark Pulse",
+      "Snarl",
+      "Overheat",
+      "Flamethrower",
+      "Psychic",
+      "Lava Plume",
+      "Fire Blast"
+    ],
+    "abilities": [],
+    "items": [
+      "Choice Scarf",
+      "Choice Specs",
+      "Focus Sash",
+      "Life Orb"
+    ],
+    "natures": [
+      "Modest",
+      "Timid",
+      "Quiet",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Fire",
+      "Grass",
+      "Water"
+    ]
+  },
+  {
+    "name": "Maushold",
+    "score": 3999,
+    "damageMoves": [
+      "Feint",
+      "Super Fang",
+      "Beat Up",
+      "Bite"
+    ],
+    "allMoves": [
+      "Feint",
+      "Super Fang",
+      "Beat Up",
+      "Bite",
+      "U-turn",
+      "Bullet Seed"
+    ],
+    "abilities": [
+      "Friend Guard",
+      "Technician",
+      "Cheek Pouch"
+    ],
+    "items": [
+      "Wide Lens",
+      "Rocky Helmet",
+      "Safety Goggles",
+      "Focus Sash"
+    ],
+    "natures": [
+      "Jolly",
+      "Impish",
+      "Bold",
+      "Adamant"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Normal",
+      "Ground",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Urshifu-Rapid-Strike",
+    "score": 3980,
+    "damageMoves": [
+      "Surging Strikes",
+      "Close Combat",
+      "Aqua Jet",
+      "U-turn"
+    ],
+    "allMoves": [
+      "Surging Strikes",
+      "Close Combat",
+      "Aqua Jet",
+      "U-turn",
+      "Iron Head",
+      "Drain Punch",
+      "Poison Jab",
+      "Rock Slide"
+    ],
+    "abilities": [
+      "Unseen Fist"
+    ],
+    "items": [
+      "Choice Scarf",
+      "Mystic Water",
+      "Focus Sash",
+      "Choice Band"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Brave",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Water",
+      "Ghost",
+      "Stellar",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Armarouge",
+    "score": 3866,
+    "damageMoves": [
+      "Expanding Force",
+      "Heat Wave",
+      "Aura Sphere",
+      "Energy Ball"
+    ],
+    "allMoves": [
+      "Expanding Force",
+      "Heat Wave",
+      "Aura Sphere",
+      "Energy Ball",
+      "Meteor Beam",
+      "Stored Power",
+      "Psychic",
+      "Clear Smog"
+    ],
+    "abilities": [
+      "Flash Fire",
+      "Weak Armor"
+    ],
+    "items": [
+      "Weakness Policy",
+      "Life Orb",
+      "Focus Sash",
+      "Power Herb"
+    ],
+    "natures": [
+      "Modest",
+      "Quiet",
+      "Timid",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Psychic",
+      "Dark",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Tornadus",
+    "score": 3851,
+    "damageMoves": [
+      "Icy Wind",
+      "Hurricane",
+      "Air Slash",
+      "Foul Play"
+    ],
+    "allMoves": [
+      "Icy Wind",
+      "Hurricane",
+      "Air Slash",
+      "Foul Play",
+      "Dark Pulse",
+      "Heat Wave"
+    ],
+    "abilities": [
+      "Prankster",
+      "Defiant"
+    ],
+    "items": [
+      "Focus Sash",
+      "Mental Herb",
+      "Rocky Helmet",
+      "Sharp Beak"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Bold",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Steel",
+      "Dark",
+      "Ghost",
+      "Flying"
+    ]
+  },
+  {
+    "name": "Ursaluna",
+    "score": 3820,
+    "damageMoves": [
+      "Facade",
+      "Earthquake",
+      "High Horsepower",
+      "Shadow Claw"
+    ],
+    "allMoves": [
+      "Facade",
+      "Earthquake",
+      "High Horsepower",
+      "Shadow Claw",
+      "Drain Punch",
+      "Rock Slide",
+      "Play Rough",
+      "Crunch"
+    ],
+    "abilities": [
+      "Guts",
+      "Bulletproof",
+      "Unnerve"
+    ],
+    "items": [
+      "Flame Orb",
+      "Assault Vest",
+      "Choice Band",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Brave",
+      "Adamant",
+      "Jolly",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Normal",
+      "Fairy",
+      "Dragon"
+    ]
+  },
+  {
+    "name": "Tyranitar",
+    "score": 3781,
+    "damageMoves": [
+      "Rock Slide",
+      "Knock Off",
+      "Low Kick",
+      "Crunch"
+    ],
+    "allMoves": [
+      "Rock Slide",
+      "Knock Off",
+      "Low Kick",
+      "Crunch",
+      "Earthquake",
+      "Ice Punch",
+      "Assurance",
+      "Stone Edge"
+    ],
+    "abilities": [
+      "Sand Stream",
+      "Unnerve"
+    ],
+    "items": [
+      "Assault Vest",
+      "Weakness Policy",
+      "Choice Band",
+      "Focus Sash"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Jolly",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Flying",
+      "Ghost",
+      "Rock",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Iron Bundle",
+    "score": 3728,
+    "damageMoves": [
+      "Freeze-Dry",
+      "Icy Wind",
+      "Hydro Pump",
+      "Blizzard"
+    ],
+    "allMoves": [
+      "Freeze-Dry",
+      "Icy Wind",
+      "Hydro Pump",
+      "Blizzard",
+      "Ice Beam",
+      "Flip Turn",
+      "U-turn",
+      "Fling"
+    ],
+    "abilities": [],
+    "items": [
+      "Focus Sash",
+      "Choice Specs",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Calm",
+      "Naive"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Ice",
+      "Ground",
+      "Water"
+    ]
+  },
+  {
+    "name": "Incineroar",
+    "score": 3717,
+    "damageMoves": [
+      "Fake Out",
+      "Knock Off",
+      "Flare Blitz",
+      "U-turn"
+    ],
+    "allMoves": [
+      "Fake Out",
+      "Knock Off",
+      "Flare Blitz",
+      "U-turn",
+      "Snarl",
+      "Darkest Lariat"
+    ],
+    "abilities": [
+      "Intimidate",
+      "Blaze"
+    ],
+    "items": [
+      "Safety Goggles",
+      "Sitrus Berry",
+      "Assault Vest",
+      "Rocky Helmet"
+    ],
+    "natures": [
+      "Careful",
+      "Impish",
+      "Adamant",
+      "Jolly"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Grass",
+      "Water",
+      "Bug"
+    ]
+  },
+  {
+    "name": "Glimmora",
+    "score": 3707,
+    "damageMoves": [
+      "Power Gem",
+      "Earth Power",
+      "Sludge Bomb",
+      "Meteor Beam"
+    ],
+    "allMoves": [
+      "Power Gem",
+      "Earth Power",
+      "Sludge Bomb",
+      "Meteor Beam",
+      "Energy Ball",
+      "Sludge Wave",
+      "Dazzling Gleam",
+      "Venoshock"
+    ],
+    "abilities": [
+      "Corrosion"
+    ],
+    "items": [
+      "Focus Sash",
+      "Power Herb",
+      "Assault Vest",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Calm",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Water",
+      "Ground",
+      "Flying"
+    ]
+  },
+  {
+    "name": "Sableye",
+    "score": 3699,
+    "damageMoves": [
+      "Fake Out",
+      "Foul Play",
+      "Shadow Sneak",
+      "Snarl"
+    ],
+    "allMoves": [
+      "Fake Out",
+      "Foul Play",
+      "Shadow Sneak",
+      "Snarl",
+      "Knock Off"
+    ],
+    "abilities": [
+      "Prankster",
+      "Keen Eye",
+      "Stall"
+    ],
+    "items": [
+      "Light Clay",
+      "Eject Button",
+      "Focus Sash",
+      "Roseli Berry"
+    ],
+    "natures": [
+      "Careful",
+      "Calm",
+      "Impish",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Steel",
+      "Dark",
+      "Grass",
+      "Normal"
+    ]
+  },
+  {
+    "name": "Ogerpon",
+    "score": 3564,
+    "damageMoves": [
+      "Horn Leech",
+      "Wood Hammer",
+      "Power Whip",
+      "Grassy Glide"
+    ],
+    "allMoves": [
+      "Horn Leech",
+      "Wood Hammer",
+      "Power Whip",
+      "Grassy Glide",
+      "Stomping Tantrum",
+      "Knock Off",
+      "Play Rough",
+      "Quick Attack"
+    ],
+    "abilities": [
+      "Mold Breaker",
+      "Water Absorb",
+      "Sturdy",
+      "Defiant"
+    ],
+    "items": [
+      "Focus Sash",
+      "Rocky Helmet",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Impish",
+      "Lonely"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Water",
+      "Rock",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Urshifu",
+    "score": 3549,
+    "damageMoves": [
+      "Wicked Blow",
+      "Close Combat",
+      "Sucker Punch",
+      "Poison Jab"
+    ],
+    "allMoves": [
+      "Wicked Blow",
+      "Close Combat",
+      "Sucker Punch",
+      "Poison Jab",
+      "U-turn",
+      "Iron Head",
+      "Drain Punch",
+      "Brick Break"
+    ],
+    "abilities": [
+      "Unseen Fist"
+    ],
+    "items": [
+      "Focus Sash",
+      "Choice Band",
+      "Black Glasses",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Brave",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Dark",
+      "Poison",
+      "Ghost",
+      "Stellar"
+    ]
+  },
+  {
+    "name": "Roaring Moon",
+    "score": 3546,
+    "damageMoves": [
+      "Acrobatics",
+      "Knock Off",
+      "Breaking Swipe",
+      "Throat Chop"
+    ],
+    "allMoves": [
+      "Acrobatics",
+      "Knock Off",
+      "Breaking Swipe",
+      "Throat Chop",
+      "Earthquake",
+      "Iron Head",
+      "Jaw Lock",
+      "Rock Slide"
+    ],
+    "abilities": [],
+    "items": [
+      "Choice Band",
+      "Focus Sash",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Impish",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Flying",
+      "Poison",
+      "Fire",
+      "Steel"
+    ]
+  },
+  {
+    "name": "Ursaluna-Bloodmoon",
+    "score": 3535,
+    "damageMoves": [
+      "Earth Power",
+      "Hyper Voice",
+      "Vacuum Wave",
+      "Moonblast"
+    ],
+    "allMoves": [
+      "Earth Power",
+      "Hyper Voice",
+      "Vacuum Wave",
+      "Moonblast",
+      "Snarl",
+      "Mud Shot",
+      "Slash",
+      "Focus Blast"
+    ],
+    "abilities": [],
+    "items": [
+      "Life Orb",
+      "Assault Vest",
+      "Silk Scarf",
+      "Leftovers"
+    ],
+    "natures": [
+      "Modest",
+      "Quiet",
+      "Timid",
+      "Hardy"
+    ],
+    "teraTypes": [
+      "Normal",
+      "Ghost",
+      "Fairy",
+      "Poison"
+    ]
+  },
+  {
+    "name": "Whimsicott",
+    "score": 3459,
+    "damageMoves": [
+      "Moonblast",
+      "Endeavor",
+      "Beat Up"
+    ],
+    "allMoves": [
+      "Moonblast",
+      "Endeavor",
+      "Beat Up"
+    ],
+    "abilities": [
+      "Prankster",
+      "Chlorophyll",
+      "Infiltrator"
+    ],
+    "items": [
+      "Focus Sash",
+      "Mental Herb",
+      "Rocky Helmet",
+      "Eject Button"
+    ],
+    "natures": [
+      "Timid",
+      "Calm",
+      "Bold",
+      "Modest"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Water",
+      "Dark",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Gastrodon",
+    "score": 3448,
+    "damageMoves": [
+      "Earth Power",
+      "Ice Beam",
+      "Muddy Water",
+      "Clear Smog"
+    ],
+    "allMoves": [
+      "Earth Power",
+      "Ice Beam",
+      "Muddy Water",
+      "Clear Smog",
+      "Icy Wind",
+      "Sludge Bomb",
+      "Counter",
+      "Mirror Coat"
+    ],
+    "abilities": [
+      "Storm Drain",
+      "Sticky Hold",
+      "Sand Force"
+    ],
+    "items": [
+      "Leftovers",
+      "Sitrus Berry",
+      "Rocky Helmet",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Bold",
+      "Modest",
+      "Quiet",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Poison",
+      "Fairy",
+      "Water"
+    ]
+  },
+  {
+    "name": "Landorus",
+    "score": 3426,
+    "damageMoves": [
+      "Sludge Bomb",
+      "Earth Power",
+      "Psychic",
+      "U-turn"
+    ],
+    "allMoves": [
+      "Sludge Bomb",
+      "Earth Power",
+      "Psychic",
+      "U-turn",
+      "Crunch",
+      "Grass Knot",
+      "Rock Slide",
+      "Focus Blast"
+    ],
+    "abilities": [
+      "Sheer Force",
+      "Sand Force"
+    ],
+    "items": [
+      "Life Orb",
+      "Choice Scarf",
+      "Focus Sash",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Modest",
+      "Timid",
+      "Quiet",
+      "Jolly"
+    ],
+    "teraTypes": [
+      "Poison",
+      "Water",
+      "Steel",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Talonflame",
+    "score": 3423,
+    "damageMoves": [
+      "Brave Bird",
+      "Flare Blitz",
+      "Feint",
+      "Acrobatics"
+    ],
+    "allMoves": [
+      "Brave Bird",
+      "Flare Blitz",
+      "Feint",
+      "Acrobatics",
+      "Dual Wingbeat",
+      "Hurricane",
+      "U-turn",
+      "Air Slash"
+    ],
+    "abilities": [
+      "Gale Wings",
+      "Flame Body"
+    ],
+    "items": [
+      "Sharp Beak",
+      "Focus Sash",
+      "Life Orb",
+      "Safety Goggles"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Timid",
+      "Modest"
+    ],
+    "teraTypes": [
+      "Flying",
+      "Ghost",
+      "Ground",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Murkrow",
+    "score": 3419,
+    "damageMoves": [
+      "Foul Play",
+      "Snarl",
+      "Brave Bird",
+      "Sucker Punch"
+    ],
+    "allMoves": [
+      "Foul Play",
+      "Snarl",
+      "Brave Bird",
+      "Sucker Punch",
+      "Icy Wind",
+      "U-turn"
+    ],
+    "abilities": [
+      "Prankster",
+      "Super Luck",
+      "Insomnia"
+    ],
+    "items": [
+      "Eviolite",
+      "Focus Sash",
+      "Eject Button",
+      "Life Orb"
+    ],
+    "natures": [
+      "Calm",
+      "Bold",
+      "Impish",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Dark",
+      "Steel",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Ting-Lu",
+    "score": 3410,
+    "damageMoves": [
+      "Stomping Tantrum",
+      "Heavy Slam",
+      "Earthquake",
+      "Throat Chop"
+    ],
+    "allMoves": [
+      "Stomping Tantrum",
+      "Heavy Slam",
+      "Earthquake",
+      "Throat Chop",
+      "Snarl",
+      "Sand Tomb",
+      "Fissure",
+      "Rock Slide"
+    ],
+    "abilities": [],
+    "items": [
+      "Assault Vest",
+      "Leftovers",
+      "Sitrus Berry",
+      "Choice Band"
+    ],
+    "natures": [
+      "Adamant",
+      "Impish",
+      "Careful",
+      "Brave"
+    ],
+    "teraTypes": [
+      "Poison",
+      "Fairy",
+      "Water",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Sneasler",
+    "score": 3175,
+    "damageMoves": [
+      "Close Combat",
+      "Fake Out",
+      "Throat Chop",
+      "Acrobatics"
+    ],
+    "allMoves": [
+      "Close Combat",
+      "Fake Out",
+      "Throat Chop",
+      "Acrobatics",
+      "Rock Slide",
+      "Feint",
+      "Shadow Claw",
+      "Low Kick"
+    ],
+    "abilities": [
+      "Unburden",
+      "Poison Touch",
+      "Pressure"
+    ],
+    "items": [
+      "Focus Sash",
+      "Normal Gem",
+      "White Herb",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Naive",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Dark",
+      "Rock",
+      "Flying",
+      "Stellar"
+    ]
+  },
+  {
+    "name": "Sinistcha",
+    "score": 3154,
+    "damageMoves": [
+      "Shadow Ball",
+      "Scald",
+      "Foul Play",
+      "Hex"
+    ],
+    "allMoves": [
+      "Shadow Ball",
+      "Scald",
+      "Foul Play",
+      "Hex",
+      "Leaf Storm",
+      "Energy Ball"
+    ],
+    "abilities": [
+      "Heatproof"
+    ],
+    "items": [
+      "Rocky Helmet",
+      "Sitrus Berry",
+      "Focus Sash",
+      "Leftovers"
+    ],
+    "natures": [
+      "Bold",
+      "Modest",
+      "Calm",
+      "Relaxed"
+    ],
+    "teraTypes": [
+      "Water",
+      "Fire",
+      "Dark",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Hatterene",
+    "score": 3102,
+    "damageMoves": [
+      "Dazzling Gleam",
+      "Expanding Force",
+      "Psychic",
+      "Mystical Fire"
+    ],
+    "allMoves": [
+      "Dazzling Gleam",
+      "Expanding Force",
+      "Psychic",
+      "Mystical Fire",
+      "Dark Pulse",
+      "Psyshock",
+      "Shadow Ball",
+      "Giga Drain"
+    ],
+    "abilities": [
+      "Magic Bounce",
+      "Healer",
+      "Anticipation"
+    ],
+    "items": [
+      "Life Orb",
+      "Focus Sash",
+      "Sitrus Berry",
+      "Twisted Spoon"
+    ],
+    "natures": [
+      "Quiet",
+      "Modest",
+      "Relaxed",
+      "Sassy"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Psychic",
+      "Water",
+      "Steel"
+    ]
+  },
+  {
+    "name": "Iron Valiant",
+    "score": 3009,
+    "damageMoves": [
+      "Spirit Break",
+      "Moonblast",
+      "Close Combat",
+      "Icy Wind"
+    ],
+    "allMoves": [
+      "Spirit Break",
+      "Moonblast",
+      "Close Combat",
+      "Icy Wind",
+      "Aura Sphere",
+      "Dazzling Gleam",
+      "Shadow Sneak",
+      "Knock Off"
+    ],
+    "abilities": [],
+    "items": [
+      "Focus Sash",
+      "Life Orb",
+      "Choice Scarf",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Jolly",
+      "Timid",
+      "Naive",
+      "Adamant"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Steel",
+      "Fairy",
+      "Dark"
+    ]
+  },
+  {
+    "name": "Raging Bolt",
+    "score": 2974,
+    "damageMoves": [
+      "Thunderbolt",
+      "Draco Meteor",
+      "Dragon Pulse",
+      "Electroweb"
+    ],
+    "allMoves": [
+      "Thunderbolt",
+      "Draco Meteor",
+      "Dragon Pulse",
+      "Electroweb",
+      "Snarl",
+      "Volt Switch",
+      "Weather Ball",
+      "Rising Voltage"
+    ],
+    "abilities": [],
+    "items": [
+      "Assault Vest",
+      "Life Orb",
+      "Leftovers",
+      "Magnet"
+    ],
+    "natures": [
+      "Modest",
+      "Quiet",
+      "Bold",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Electric",
+      "Fairy",
+      "Water",
+      "Grass"
+    ]
+  },
+  {
+    "name": "Cresselia",
+    "score": 2919,
+    "damageMoves": [
+      "Moonblast",
+      "Psychic",
+      "Icy Wind",
+      "Ice Beam"
+    ],
+    "allMoves": [
+      "Moonblast",
+      "Psychic",
+      "Icy Wind",
+      "Ice Beam",
+      "Stored Power",
+      "Dazzling Gleam",
+      "Thunderbolt"
+    ],
+    "abilities": [
+      "Levitate"
+    ],
+    "items": [
+      "Mental Herb",
+      "Safety Goggles",
+      "Rocky Helmet",
+      "Leftovers"
+    ],
+    "natures": [
+      "Bold",
+      "Calm",
+      "Relaxed",
+      "Sassy"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Electric",
+      "Dark",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Sylveon",
+    "score": 2912,
+    "damageMoves": [
+      "Hyper Voice",
+      "Quick Attack",
+      "Hyper Beam",
+      "Shadow Ball"
+    ],
+    "allMoves": [
+      "Hyper Voice",
+      "Quick Attack",
+      "Hyper Beam",
+      "Shadow Ball",
+      "Moonblast",
+      "Psychic",
+      "Psyshock",
+      "Draining Kiss"
+    ],
+    "abilities": [
+      "Pixilate",
+      "Cute Charm"
+    ],
+    "items": [
+      "Choice Specs",
+      "Life Orb",
+      "Leftovers",
+      "Pixie Plate"
+    ],
+    "natures": [
+      "Modest",
+      "Quiet",
+      "Bold",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Fairy",
+      "Water",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Garganacl",
+    "score": 2891,
+    "damageMoves": [
+      "Body Press",
+      "Heavy Slam",
+      "Explosion",
+      "Rock Slide"
+    ],
+    "allMoves": [
+      "Body Press",
+      "Heavy Slam",
+      "Explosion",
+      "Rock Slide",
+      "Earthquake",
+      "Fissure",
+      "Rock Tomb",
+      "Stone Edge"
+    ],
+    "abilities": [
+      "Sturdy",
+      "Clear Body"
+    ],
+    "items": [
+      "Leftovers",
+      "Rocky Helmet",
+      "Sitrus Berry",
+      "Normal Gem"
+    ],
+    "natures": [
+      "Careful",
+      "Impish",
+      "Sassy",
+      "Relaxed"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Poison",
+      "Flying",
+      "Water"
+    ]
+  },
+  {
+    "name": "Oranguru",
+    "score": 2891,
+    "damageMoves": [
+      "Foul Play",
+      "Psychic",
+      "Bulldoze",
+      "Knock Off"
+    ],
+    "allMoves": [
+      "Foul Play",
+      "Psychic",
+      "Bulldoze",
+      "Knock Off",
+      "Expanding Force",
+      "Brick Break",
+      "Endeavor",
+      "Shadow Ball"
+    ],
+    "abilities": [
+      "Inner Focus",
+      "Telepathy",
+      "Symbiosis"
+    ],
+    "items": [
+      "Mental Herb",
+      "Safety Goggles",
+      "Sitrus Berry",
+      "Life Orb"
+    ],
+    "natures": [
+      "Relaxed",
+      "Sassy",
+      "Bold",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Dark",
+      "Grass",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Scizor",
+    "score": 2860,
+    "damageMoves": [
+      "Bullet Punch",
+      "U-turn",
+      "Close Combat",
+      "Dual Wingbeat"
+    ],
+    "allMoves": [
+      "Bullet Punch",
+      "U-turn",
+      "Close Combat",
+      "Dual Wingbeat",
+      "Bug Bite",
+      "Knock Off",
+      "X-Scissor",
+      "Feint"
+    ],
+    "abilities": [
+      "Technician",
+      "Swarm",
+      "Light Metal"
+    ],
+    "items": [
+      "Choice Band",
+      "Life Orb",
+      "Assault Vest",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Jolly",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Water",
+      "Steel",
+      "Fire",
+      "Flying"
+    ]
+  },
+  {
+    "name": "Archaludon",
+    "score": 2860,
+    "damageMoves": [
+      "Flash Cannon",
+      "Body Press",
+      "Draco Meteor",
+      "Dragon Pulse"
+    ],
+    "allMoves": [
+      "Flash Cannon",
+      "Body Press",
+      "Draco Meteor",
+      "Dragon Pulse",
+      "Snarl",
+      "Heavy Slam",
+      "Aura Sphere",
+      "Breaking Swipe"
+    ],
+    "abilities": [
+      "Stamina",
+      "Sturdy",
+      "Stalwart"
+    ],
+    "items": [
+      "Assault Vest",
+      "Power Herb",
+      "Leftovers",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Modest",
+      "Calm",
+      "Bold",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Grass",
+      "Electric",
+      "Flying"
+    ]
+  },
+  {
+    "name": "Gallade",
+    "score": 2822,
+    "damageMoves": [
+      "Sacred Sword",
+      "Psycho Cut",
+      "Leaf Blade",
+      "Night Slash"
+    ],
+    "allMoves": [
+      "Sacred Sword",
+      "Psycho Cut",
+      "Leaf Blade",
+      "Night Slash",
+      "Shadow Sneak",
+      "Feint",
+      "Knock Off",
+      "X-Scissor"
+    ],
+    "abilities": [
+      "Justified",
+      "Steadfast"
+    ],
+    "items": [
+      "Focus Sash",
+      "Scope Lens",
+      "Life Orb",
+      "Razor Claw"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Jolly",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Fire",
+      "Steel",
+      "Dark"
+    ]
+  },
+  {
+    "name": "Smeargle",
+    "score": 2798,
+    "damageMoves": [
+      "Fake Out",
+      "Feint",
+      "Water Shuriken",
+      "Explosion"
+    ],
+    "allMoves": [
+      "Fake Out",
+      "Feint",
+      "Water Shuriken",
+      "Explosion",
+      "Final Gambit",
+      "Mach Punch",
+      "Grass Pledge",
+      "Surging Strikes"
+    ],
+    "abilities": [
+      "Moody",
+      "Technician",
+      "Own Tempo"
+    ],
+    "items": [
+      "Focus Sash",
+      "Choice Scarf",
+      "Mental Herb",
+      "Safety Goggles"
+    ],
+    "natures": [
+      "Jolly",
+      "Timid",
+      "Relaxed",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Grass",
+      "Dark",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Brute Bonnet",
+    "score": 2796,
+    "damageMoves": [
+      "Sucker Punch",
+      "Seed Bomb",
+      "Bullet Seed",
+      "Crunch"
+    ],
+    "allMoves": [
+      "Sucker Punch",
+      "Seed Bomb",
+      "Bullet Seed",
+      "Crunch",
+      "Pollen Puff",
+      "Clear Smog",
+      "Close Combat",
+      "Payback"
+    ],
+    "abilities": [],
+    "items": [
+      "Sitrus Berry",
+      "Rocky Helmet",
+      "Leftovers",
+      "Life Orb"
+    ],
+    "natures": [
+      "Impish",
+      "Adamant",
+      "Brave",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Water",
+      "Fire",
+      "Poison",
+      "Ghost"
+    ]
+  },
+  {
+    "name": "Clefairy",
+    "score": 2747,
+    "damageMoves": [
+      "Moonblast",
+      "Icy Wind",
+      "Endeavor",
+      "Dazzling Gleam"
+    ],
+    "allMoves": [
+      "Moonblast",
+      "Icy Wind",
+      "Endeavor",
+      "Dazzling Gleam",
+      "Knock Off",
+      "Night Shade"
+    ],
+    "abilities": [
+      "Friend Guard",
+      "Magic Guard",
+      "Cute Charm"
+    ],
+    "items": [
+      "Eviolite",
+      "Focus Sash",
+      "Mental Herb",
+      "Rocky Helmet"
+    ],
+    "natures": [
+      "Relaxed",
+      "Sassy",
+      "Bold",
+      "Calm"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Ground",
+      "Water",
+      "Steel"
+    ]
+  },
+  {
+    "name": "Garchomp",
+    "score": 2741,
+    "damageMoves": [
+      "Earthquake",
+      "Dragon Claw",
+      "Rock Slide",
+      "Iron Head"
+    ],
+    "allMoves": [
+      "Earthquake",
+      "Dragon Claw",
+      "Rock Slide",
+      "Iron Head",
+      "Stomping Tantrum",
+      "Outrage",
+      "Poison Jab",
+      "Scale Shot"
+    ],
+    "abilities": [
+      "Rough Skin",
+      "Sand Veil"
+    ],
+    "items": [
+      "Life Orb",
+      "Rocky Helmet",
+      "Choice Band",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Impish",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Steel",
+      "Ground",
+      "Fire",
+      "Water"
+    ]
+  },
+  {
+    "name": "Flamigo",
+    "score": 2730,
+    "damageMoves": [
+      "Close Combat",
+      "Brave Bird",
+      "Acrobatics",
+      "Feint"
+    ],
+    "allMoves": [
+      "Close Combat",
+      "Brave Bird",
+      "Acrobatics",
+      "Feint",
+      "Throat Chop",
+      "Dual Wingbeat",
+      "Endeavor",
+      "Double Kick"
+    ],
+    "abilities": [
+      "Scrappy",
+      "Tangled Feet"
+    ],
+    "items": [
+      "White Herb",
+      "Focus Sash",
+      "Sitrus Berry",
+      "Life Orb"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Impish",
+      "Brave"
+    ],
+    "teraTypes": [
+      "Steel",
+      "Flying",
+      "Ghost",
+      "Fighting"
+    ]
+  },
+  {
+    "name": "Dragapult",
+    "score": 2711,
+    "damageMoves": [
+      "Dragon Darts",
+      "Phantom Force",
+      "U-turn",
+      "Sucker Punch"
+    ],
+    "allMoves": [
+      "Dragon Darts",
+      "Phantom Force",
+      "U-turn",
+      "Sucker Punch",
+      "Outrage",
+      "Shadow Ball",
+      "Draco Meteor",
+      "Psychic Fangs"
+    ],
+    "abilities": [
+      "Clear Body",
+      "Infiltrator",
+      "Cursed Body"
+    ],
+    "items": [
+      "Choice Band",
+      "Focus Sash",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Timid",
+      "Modest"
+    ],
+    "teraTypes": [
+      "Dragon",
+      "Ghost",
+      "Steel",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Tsareena",
+    "score": 2643,
+    "damageMoves": [
+      "Power Whip",
+      "Triple Axel",
+      "High Jump Kick",
+      "Trop Kick"
+    ],
+    "allMoves": [
+      "Power Whip",
+      "Triple Axel",
+      "High Jump Kick",
+      "Trop Kick",
+      "U-turn",
+      "Play Rough",
+      "Knock Off",
+      "Low Kick"
+    ],
+    "abilities": [
+      "Queenly Majesty",
+      "Sweet Veil",
+      "Leaf Guard"
+    ],
+    "items": [
+      "Wide Lens",
+      "Assault Vest",
+      "Sitrus Berry",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Brave",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Ice",
+      "Fire",
+      "Water",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Landorus-Therian",
+    "score": 2639,
+    "damageMoves": [
+      "U-turn",
+      "Rock Slide",
+      "Stomping Tantrum",
+      "Earthquake"
+    ],
+    "allMoves": [
+      "U-turn",
+      "Rock Slide",
+      "Stomping Tantrum",
+      "Earthquake",
+      "Crunch",
+      "Rock Tomb",
+      "Brick Break",
+      "Hammer Arm"
+    ],
+    "abilities": [
+      "Intimidate"
+    ],
+    "items": [
+      "Choice Scarf",
+      "Choice Band",
+      "Assault Vest",
+      "Life Orb"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Careful",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Flying",
+      "Water",
+      "Ground",
+      "Steel"
+    ]
+  },
+  {
+    "name": "Baxcalibur",
+    "score": 2623,
+    "damageMoves": [
+      "Ice Shard",
+      "Icicle Spear",
+      "Icicle Crash",
+      "Earthquake"
+    ],
+    "allMoves": [
+      "Ice Shard",
+      "Icicle Spear",
+      "Icicle Crash",
+      "Earthquake",
+      "Scale Shot",
+      "High Horsepower",
+      "Iron Head",
+      "Breaking Swipe"
+    ],
+    "abilities": [
+      "Ice Body"
+    ],
+    "items": [
+      "Assault Vest",
+      "Life Orb",
+      "Dragon Fang",
+      "Choice Band"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Brave",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Ground",
+      "Poison",
+      "Water",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Scream Tail",
+    "score": 2540,
+    "damageMoves": [
+      "Dazzling Gleam",
+      "Play Rough",
+      "Psychic Fangs",
+      "Expanding Force"
+    ],
+    "allMoves": [
+      "Dazzling Gleam",
+      "Play Rough",
+      "Psychic Fangs",
+      "Expanding Force",
+      "Drain Punch",
+      "Rock Tomb"
+    ],
+    "abilities": [],
+    "items": [
+      "Mental Herb",
+      "Leftovers",
+      "Light Clay",
+      "Sitrus Berry"
+    ],
+    "natures": [
+      "Timid",
+      "Jolly",
+      "Bold",
+      "Modest"
+    ],
+    "teraTypes": [
+      "Dark",
+      "Steel",
+      "Normal",
+      "Water"
+    ]
+  },
+  {
+    "name": "Weezing-Galar",
+    "score": 2535,
+    "damageMoves": [
+      "Strange Steam",
+      "Dazzling Gleam",
+      "Sludge Bomb",
+      "Clear Smog"
+    ],
+    "allMoves": [
+      "Strange Steam",
+      "Dazzling Gleam",
+      "Sludge Bomb",
+      "Clear Smog",
+      "Flamethrower",
+      "Play Rough",
+      "Misty Explosion",
+      "Heat Wave"
+    ],
+    "abilities": [
+      "Neutralizing Gas",
+      "Misty Surge",
+      "Levitate"
+    ],
+    "items": [
+      "Sitrus Berry",
+      "Rocky Helmet",
+      "Choice Specs",
+      "Leftovers"
+    ],
+    "natures": [
+      "Calm",
+      "Bold",
+      "Modest",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Water",
+      "Dark",
+      "Grass",
+      "Flying"
+    ]
+  },
+  {
+    "name": "Calyrex-Shadow",
+    "score": 2460,
+    "damageMoves": [
+      "Astral Barrage",
+      "Psychic",
+      "Expanding Force",
+      "Draining Kiss"
+    ],
+    "allMoves": [
+      "Astral Barrage",
+      "Psychic",
+      "Expanding Force",
+      "Draining Kiss",
+      "Pollen Puff",
+      "Shadow Ball",
+      "Psyshock"
+    ],
+    "abilities": [],
+    "items": [
+      "Focus Sash",
+      "Life Orb",
+      "Choice Specs",
+      "Spell Tag"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Bold",
+      "Quiet"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Fairy",
+      "Dark",
+      "Normal"
+    ]
+  },
+  {
+    "name": "Miraidon",
+    "score": 2457,
+    "damageMoves": [
+      "Volt Switch",
+      "Draco Meteor",
+      "Dazzling Gleam",
+      "Parabolic Charge"
+    ],
+    "allMoves": [
+      "Volt Switch",
+      "Draco Meteor",
+      "Dazzling Gleam",
+      "Parabolic Charge",
+      "Snarl",
+      "Dragon Pulse",
+      "Discharge",
+      "Overheat"
+    ],
+    "abilities": [],
+    "items": [
+      "Choice Specs",
+      "Choice Scarf",
+      "Life Orb",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Modest",
+      "Timid",
+      "Quirky",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Fairy",
+      "Electric",
+      "Fire",
+      "Ghost"
+    ]
+  },
+  {
+    "name": "Mimikyu",
+    "score": 2454,
+    "damageMoves": [
+      "Play Rough",
+      "Shadow Sneak",
+      "Shadow Claw",
+      "Wood Hammer"
+    ],
+    "allMoves": [
+      "Play Rough",
+      "Shadow Sneak",
+      "Shadow Claw",
+      "Wood Hammer",
+      "Drain Punch",
+      "Night Shade"
+    ],
+    "abilities": [
+      "Disguise"
+    ],
+    "items": [
+      "Mental Herb",
+      "Life Orb",
+      "Rocky Helmet",
+      "Safety Goggles"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Jolly",
+      "Relaxed"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Grass",
+      "Fairy",
+      "Normal"
+    ]
+  },
+  {
+    "name": "Thundurus",
+    "score": 2446,
+    "damageMoves": [
+      "Thunderbolt",
+      "Volt Switch",
+      "Electroweb",
+      "Sludge Bomb"
+    ],
+    "allMoves": [
+      "Thunderbolt",
+      "Volt Switch",
+      "Electroweb",
+      "Sludge Bomb",
+      "Snarl",
+      "Dark Pulse",
+      "Knock Off"
+    ],
+    "abilities": [
+      "Prankster",
+      "Defiant"
+    ],
+    "items": [
+      "Sitrus Berry",
+      "Mental Herb",
+      "Rocky Helmet",
+      "Wide Lens"
+    ],
+    "natures": [
+      "Bold",
+      "Timid",
+      "Calm",
+      "Modest"
+    ],
+    "teraTypes": [
+      "Electric",
+      "Steel",
+      "Water",
+      "Dark"
+    ]
+  },
+  {
+    "name": "Calyrex-Ice",
+    "score": 2433,
+    "damageMoves": [
+      "Glacial Lance",
+      "High Horsepower",
+      "Seed Bomb",
+      "Crunch"
+    ],
+    "allMoves": [
+      "Glacial Lance",
+      "High Horsepower",
+      "Seed Bomb",
+      "Crunch",
+      "Close Combat",
+      "Icicle Spear",
+      "Bullet Seed",
+      "Zen Headbutt"
+    ],
+    "abilities": [],
+    "items": [
+      "Leftovers",
+      "Assault Vest",
+      "Never-Melt Ice",
+      "Weakness Policy"
+    ],
+    "natures": [
+      "Adamant",
+      "Brave",
+      "Jolly",
+      "Relaxed"
+    ],
+    "teraTypes": [
+      "Water",
+      "Fire",
+      "Grass",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Basculegion",
+    "score": 2405,
+    "damageMoves": [
+      "Aqua Jet",
+      "Flip Turn",
+      "Liquidation",
+      "Phantom Force"
+    ],
+    "allMoves": [
+      "Aqua Jet",
+      "Flip Turn",
+      "Liquidation",
+      "Phantom Force",
+      "Psychic Fangs",
+      "Head Smash",
+      "Waterfall",
+      "Crunch"
+    ],
+    "abilities": [
+      "Swift Swim",
+      "Adaptability",
+      "Mold Breaker"
+    ],
+    "items": [
+      "Life Orb",
+      "Choice Band",
+      "Choice Scarf",
+      "Focus Sash"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Brave",
+      "Naughty"
+    ],
+    "teraTypes": [
+      "Water",
+      "Ghost",
+      "Grass",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Meowscarada",
+    "score": 2392,
+    "damageMoves": [
+      "Knock Off",
+      "U-turn",
+      "Sucker Punch",
+      "Play Rough"
+    ],
+    "allMoves": [
+      "Knock Off",
+      "U-turn",
+      "Sucker Punch",
+      "Play Rough",
+      "Triple Axel",
+      "Grass Pledge",
+      "Brick Break",
+      "Low Kick"
+    ],
+    "abilities": [
+      "Protean",
+      "Overgrow"
+    ],
+    "items": [
+      "Focus Sash",
+      "Choice Band",
+      "Choice Scarf",
+      "Life Orb"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Timid",
+      "Hasty"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Ghost",
+      "Stellar",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Walking Wake",
+    "score": 2368,
+    "damageMoves": [
+      "Draco Meteor",
+      "Flamethrower",
+      "Dragon Pulse",
+      "Snarl"
+    ],
+    "allMoves": [
+      "Draco Meteor",
+      "Flamethrower",
+      "Dragon Pulse",
+      "Snarl",
+      "Aqua Jet",
+      "Weather Ball",
+      "Hurricane",
+      "Flip Turn"
+    ],
+    "abilities": [],
+    "items": [
+      "Life Orb",
+      "Assault Vest",
+      "Choice Specs",
+      "Mystic Water"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Calm",
+      "Quiet"
+    ],
+    "teraTypes": [
+      "Water",
+      "Fire",
+      "Steel",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Indeedee",
+    "score": 2346,
+    "damageMoves": [
+      "Expanding Force",
+      "Dazzling Gleam",
+      "Hyper Voice",
+      "Psychic"
+    ],
+    "allMoves": [
+      "Expanding Force",
+      "Dazzling Gleam",
+      "Hyper Voice",
+      "Psychic",
+      "Shadow Ball",
+      "Psyshock",
+      "Energy Ball",
+      "Drain Punch"
+    ],
+    "abilities": [
+      "Psychic Surge",
+      "Inner Focus",
+      "Synchronize"
+    ],
+    "items": [
+      "Focus Sash",
+      "Choice Scarf",
+      "Choice Specs",
+      "Twisted Spoon"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Quiet",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Psychic",
+      "Fairy",
+      "Fighting",
+      "Normal"
+    ]
+  },
+  {
+    "name": "Regieleki",
+    "score": 2330,
+    "damageMoves": [
+      "Electroweb",
+      "Thunderbolt",
+      "Volt Switch",
+      "Explosion"
+    ],
+    "allMoves": [
+      "Electroweb",
+      "Thunderbolt",
+      "Volt Switch",
+      "Explosion",
+      "Extreme Speed",
+      "Thunder",
+      "Wild Charge",
+      "Thunder Cage"
+    ],
+    "abilities": [
+      "Transistor"
+    ],
+    "items": [
+      "Focus Sash",
+      "Life Orb",
+      "Choice Specs",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Adamant",
+      "Jolly"
+    ],
+    "teraTypes": [
+      "Normal",
+      "Electric",
+      "Ice",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Kyogre",
+    "score": 2311,
+    "damageMoves": [
+      "Water Spout",
+      "Origin Pulse",
+      "Ice Beam",
+      "Thunder"
+    ],
+    "allMoves": [
+      "Water Spout",
+      "Origin Pulse",
+      "Ice Beam",
+      "Thunder",
+      "Hydro Pump",
+      "Blizzard",
+      "Surf",
+      "Icy Wind"
+    ],
+    "abilities": [
+      "Drizzle"
+    ],
+    "items": [
+      "Mystic Water",
+      "Choice Scarf",
+      "Assault Vest",
+      "Choice Specs"
+    ],
+    "natures": [
+      "Modest",
+      "Timid",
+      "Quiet",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Water",
+      "Grass",
+      "Electric",
+      "Ghost"
+    ]
+  },
+  {
+    "name": "Zamazenta",
+    "score": 2294,
+    "damageMoves": [
+      "Body Press",
+      "Heavy Slam",
+      "Iron Head",
+      "Crunch"
+    ],
+    "allMoves": [
+      "Body Press",
+      "Heavy Slam",
+      "Iron Head",
+      "Crunch",
+      "Snarl",
+      "Quick Attack",
+      "Play Rough",
+      "Wild Charge"
+    ],
+    "abilities": [
+      "Dauntless Shield"
+    ],
+    "items": [
+      "Leftovers",
+      "Choice Band",
+      "Life Orb",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Impish",
+      "Jolly",
+      "Careful",
+      "Adamant"
+    ],
+    "teraTypes": [
+      "Dragon",
+      "Grass",
+      "Water",
+      "Ghost"
+    ]
+  },
+  {
+    "name": "Koraidon",
+    "score": 2249,
+    "damageMoves": [
+      "Flare Blitz",
+      "Flame Charge",
+      "Close Combat",
+      "Breaking Swipe"
+    ],
+    "allMoves": [
+      "Flare Blitz",
+      "Flame Charge",
+      "Close Combat",
+      "Breaking Swipe",
+      "U-turn",
+      "Scale Shot",
+      "Dragon Claw",
+      "Low Kick"
+    ],
+    "abilities": [],
+    "items": [
+      "Life Orb",
+      "Choice Band",
+      "Choice Scarf",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Quirky",
+      "Careful"
+    ],
+    "teraTypes": [
+      "Fire",
+      "Steel",
+      "Fighting",
+      "Fairy"
+    ]
+  },
+  {
+    "name": "Entei",
+    "score": 2238,
+    "damageMoves": [
+      "Extreme Speed",
+      "Sacred Fire",
+      "Stomping Tantrum",
+      "Snarl"
+    ],
+    "allMoves": [
+      "Extreme Speed",
+      "Sacred Fire",
+      "Stomping Tantrum",
+      "Snarl",
+      "Crunch",
+      "Stone Edge",
+      "Flare Blitz",
+      "Eruption"
+    ],
+    "abilities": [
+      "Inner Focus",
+      "Pressure"
+    ],
+    "items": [
+      "Assault Vest",
+      "Choice Band",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Modest",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Normal",
+      "Grass",
+      "Fire",
+      "Ground"
+    ]
+  },
+  {
+    "name": "Gothitelle",
+    "score": 2230,
+    "damageMoves": [
+      "Fake Out",
+      "Psychic",
+      "Foul Play",
+      "Expanding Force"
+    ],
+    "allMoves": [
+      "Fake Out",
+      "Psychic",
+      "Foul Play",
+      "Expanding Force",
+      "Thunderbolt",
+      "Psyshock",
+      "Dark Pulse"
+    ],
+    "abilities": [
+      "Shadow Tag",
+      "Competitive",
+      "Frisk"
+    ],
+    "items": [
+      "Sitrus Berry",
+      "Leftovers",
+      "Mental Herb",
+      "Safety Goggles"
+    ],
+    "natures": [
+      "Calm",
+      "Bold",
+      "Sassy",
+      "Relaxed"
+    ],
+    "teraTypes": [
+      "Dark",
+      "Water",
+      "Fairy",
+      "Normal"
+    ]
+  },
+  {
+    "name": "Gyarados",
+    "score": 2229,
+    "damageMoves": [
+      "Waterfall",
+      "Earthquake",
+      "Ice Fang",
+      "Iron Head"
+    ],
+    "allMoves": [
+      "Waterfall",
+      "Earthquake",
+      "Ice Fang",
+      "Iron Head",
+      "Crunch",
+      "Icy Wind",
+      "Dragon Tail"
+    ],
+    "abilities": [
+      "Intimidate",
+      "Moxie"
+    ],
+    "items": [
+      "Sitrus Berry",
+      "Rocky Helmet",
+      "Safety Goggles",
+      "Lum Berry"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Careful",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Ground",
+      "Flying",
+      "Steel",
+      "Water"
+    ]
+  },
+  {
+    "name": "Ceruledge",
+    "score": 2227,
+    "damageMoves": [
+      "Shadow Sneak",
+      "Shadow Claw",
+      "Close Combat",
+      "Poltergeist"
+    ],
+    "allMoves": [
+      "Shadow Sneak",
+      "Shadow Claw",
+      "Close Combat",
+      "Poltergeist",
+      "Solar Blade",
+      "Clear Smog",
+      "Phantom Force",
+      "Psycho Cut"
+    ],
+    "abilities": [
+      "Flash Fire",
+      "Weak Armor"
+    ],
+    "items": [
+      "Leftovers",
+      "Life Orb",
+      "Focus Sash",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Adamant",
+      "Jolly",
+      "Impish",
+      "Brave"
+    ],
+    "teraTypes": [
+      "Grass",
+      "Steel",
+      "Fairy",
+      "Fire"
+    ]
+  },
+  {
+    "name": "Iron Treads",
+    "score": 2221,
+    "damageMoves": [
+      "Iron Head",
+      "High Horsepower",
+      "Knock Off",
+      "Earthquake"
+    ],
+    "allMoves": [
+      "Iron Head",
+      "High Horsepower",
+      "Knock Off",
+      "Earthquake",
+      "Steel Roller",
+      "Rock Slide",
+      "Stomping Tantrum",
+      "Wild Charge"
+    ],
+    "abilities": [],
+    "items": [
+      "Life Orb",
+      "Choice Band",
+      "Assault Vest",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Careful",
+      "Impish"
+    ],
+    "teraTypes": [
+      "Ground",
+      "Ghost",
+      "Water",
+      "Dragon"
+    ]
+  },
+  {
+    "name": "Lilligant-Hisui",
+    "score": 2198,
+    "damageMoves": [
+      "Close Combat",
+      "Solar Blade",
+      "Leaf Blade",
+      "Triple Axel"
+    ],
+    "allMoves": [
+      "Close Combat",
+      "Solar Blade",
+      "Leaf Blade",
+      "Triple Axel",
+      "Petal Blizzard",
+      "Pollen Puff"
+    ],
+    "abilities": [
+      "Chlorophyll",
+      "Hustle",
+      "Leaf Guard"
+    ],
+    "items": [
+      "Focus Sash",
+      "Wide Lens",
+      "Life Orb",
+      "Choice Scarf"
+    ],
+    "natures": [
+      "Jolly",
+      "Adamant",
+      "Hasty",
+      "Timid"
+    ],
+    "teraTypes": [
+      "Ghost",
+      "Grass",
+      "Fire",
+      "Stellar"
+    ]
+  },
+  {
+    "name": "Iron Jugulis",
+    "score": 2152,
+    "damageMoves": [
+      "Snarl",
+      "Air Slash",
+      "Hurricane",
+      "Dark Pulse"
+    ],
+    "allMoves": [
+      "Snarl",
+      "Air Slash",
+      "Hurricane",
+      "Dark Pulse",
+      "Earth Power",
+      "Flash Cannon",
+      "Heat Wave",
+      "Meteor Beam"
+    ],
+    "abilities": [],
+    "items": [
+      "Focus Sash",
+      "Life Orb",
+      "Power Herb",
+      "Assault Vest"
+    ],
+    "natures": [
+      "Timid",
+      "Modest",
+      "Calm",
+      "Bold"
+    ],
+    "teraTypes": [
+      "Steel",
+      "Ground",
+      "Fire",
+      "Ghost"
+    ]
+  }
+]

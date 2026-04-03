@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VGC Damage Intuition Guide</title>
+<style>
+  :root {
+    --bg:        #0d0d1a;
+    --card:      #161628;
+    --card2:     #1e1e35;
+    --border:    #2e2e50;
+    --gold:      #f0c040;
+    --blue:      #4a90e2;
+    --green:     #4caf6f;
+    --red:       #e05555;
+    --purple:    #9b6de8;
+    --text:      #e8e8f8;
+    --muted:     #7878a8;
+    --radius:    12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,26,.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 2rem;
+    display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
+  }
+  nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--gold); white-space: nowrap; }
+  nav a {
+    color: var(--muted); text-decoration: none; font-size: .88rem;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  /* ── LAYOUT ──────────────────────────────────────────────── */
+  .hero {
+    text-align: center; padding: 4rem 2rem 3rem;
+    background: linear-gradient(160deg, #1a0e2e 0%, #0d0d1a 60%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); margin-bottom: .75rem; }
+  .hero p  { font-size: 1.1rem; color: var(--muted); max-width: 640px; margin: 0 auto; }
+
+  section { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
+  section + section { border-top: 1px solid var(--border); }
+
+  h2 {
+    font-size: 1.5rem; margin-bottom: 1.5rem;
+    color: var(--gold); display: flex; align-items: center; gap: .5rem;
+  }
+  h3 { font-size: 1.1rem; color: var(--blue); margin: 1.25rem 0 .6rem; }
+  p  { color: var(--muted); margin-bottom: .75rem; }
+  strong { color: var(--text); }
+
+  /* ── CARDS ───────────────────────────────────────────────── */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .mod-card {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem 1.25rem;
+  }
+  .mod-card .label { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .mod-card .val   { font-size: 1.4rem; font-weight: 700; color: var(--gold); }
+  .mod-card p      { font-size: .88rem; margin-top: .35rem; }
+
+  /* ── FORMULA STEPS ───────────────────────────────────────── */
+  .steps { display: flex; flex-direction: column; gap: .6rem; }
+  .step {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--card2); border-radius: 8px; padding: .8rem 1rem;
+    border-left: 3px solid var(--blue);
+  }
+  .step .num {
+    background: var(--blue); color: #fff;
+    width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 700; flex-shrink: 0; margin-top: .1rem;
+  }
+  .step code { background: rgba(255,255,255,.07); padding: .15rem .4rem; border-radius: 4px; font-size: .92rem; }
+
+  /* ── FORMULA DISPLAY ─────────────────────────────────────── */
+  .formula-box {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    font-size: 1rem; color: var(--text); text-align: center;
+    font-family: 'Courier New', monospace; letter-spacing: .03em;
+    overflow-x: auto; margin: 1rem 0;
+  }
+  .formula-box span.atk  { color: #e05555; }
+  .formula-box span.def  { color: #4a90e2; }
+  .formula-box span.bp   { color: #f0c040; }
+  .formula-box span.mod  { color: #4caf6f; }
+
+  /* ── INPUTS ──────────────────────────────────────────────── */
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media(max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+
+  .input-group { margin-bottom: .9rem; }
+  .input-group label {
+    display: block; font-size: .82rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .04em; margin-bottom: .3rem;
+  }
+  .input-group input, .input-group select {
+    width: 100%; padding: .5rem .75rem;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--text); font-size: .95rem;
+    outline: none; transition: border-color .2s;
+  }
+  .input-group input:focus, .input-group select:focus { border-color: var(--blue); }
+  .input-group .stat-preview {
+    margin-top: .25rem; font-size: .82rem; color: var(--gold);
+  }
+
+  .checkbox-row {
+    display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem;
+  }
+  .cb-label {
+    display: flex; align-items: center; gap: .35rem;
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 6px; padding: .35rem .7rem;
+    font-size: .85rem; cursor: pointer; user-select: none;
+    transition: border-color .2s, background .2s;
+  }
+  .cb-label:has(input:checked) {
+    border-color: var(--blue); background: rgba(74,144,226,.12);
+  }
+  .cb-label input { accent-color: var(--blue); cursor: pointer; }
+
+  /* ── RESULT ──────────────────────────────────────────────── */
+  #result-box {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    margin-top: 1.25rem;
+  }
+  .result-range {
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+    margin-bottom: .25rem;
+  }
+  .result-pct  { font-size: 1.1rem; color: var(--blue); margin-bottom: .75rem; }
+  .rolls-grid  {
+    display: flex; flex-wrap: wrap; gap: .3rem;
+    margin-bottom: .75rem;
+  }
+  .roll-chip {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 4px; padding: .2rem .45rem; font-size: .82rem;
+    color: var(--muted);
+  }
+  .roll-chip.min { border-color: var(--blue); color: var(--blue); }
+  .roll-chip.max { border-color: var(--gold); color: var(--gold); }
+
+  .ko-bar { margin-top: .75rem; }
+  .ko-bar-label { font-size: .82rem; color: var(--muted); margin-bottom: .3rem; }
+  .ko-bar-track {
+    height: 10px; background: var(--border);
+    border-radius: 5px; overflow: hidden;
+  }
+  .ko-bar-fill {
+    height: 100%; border-radius: 5px;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+    transition: width .4s ease;
+  }
+
+  .step-breakdown {
+    margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem;
+  }
+  .step-breakdown table {
+    width: 100%; border-collapse: collapse; font-size: .88rem;
+  }
+  .step-breakdown td { padding: .25rem .5rem; }
+  .step-breakdown td:first-child { color: var(--muted); width: 55%; }
+  .step-breakdown td:last-child  { color: var(--text); font-weight: 600; text-align: right; }
+
+  /* ── BENCHMARKS ──────────────────────────────────────────── */
+  .bench-table {
+    width: 100%; border-collapse: collapse; font-size: .88rem;
+  }
+  .bench-table th {
+    background: var(--card2); color: var(--gold); font-weight: 600;
+    padding: .6rem .75rem; text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .bench-table td {
+    padding: .55rem .75rem; border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .bench-table td strong { color: var(--text); }
+  .bench-table tr:hover td { background: var(--card2); }
+  .pct-tag {
+    display: inline-block; background: rgba(74,144,226,.15);
+    border: 1px solid var(--blue); border-radius: 4px;
+    padding: .1rem .45rem; color: var(--blue); font-size: .82rem;
+  }
+  .pct-ohko { background: rgba(224,85,85,.15); border-color: var(--red); color: var(--red); }
+  .pct-2hko { background: rgba(240,192,64,.12); border-color: var(--gold); color: var(--gold); }
+
+  /* ── TIPS ────────────────────────────────────────────────── */
+  .tip-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+  .tip-list li {
+    background: var(--card2); border-radius: 8px;
+    padding: .8rem 1rem 0.8rem 1.2rem;
+    border-left: 3px solid var(--purple);
+    color: var(--muted); font-size: .95rem;
+  }
+  .tip-list li strong { color: var(--text); }
+
+  /* ── RANGE VIZ ───────────────────────────────────────────── */
+  .range-bar-wrap { margin-top: .5rem; }
+  .range-bar-track {
+    height: 18px; background: var(--border); border-radius: 9px;
+    position: relative; overflow: hidden;
+  }
+  .range-bar-fill {
+    position: absolute; top: 0; height: 100%; border-radius: 9px;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+    transition: left .3s, width .3s;
+  }
+  .range-bar-labels {
+    display: flex; justify-content: space-between;
+    font-size: .75rem; color: var(--muted); margin-top: .25rem;
+  }
+
+  /* ── UTIL ────────────────────────────────────────────────── */
+  .tag {
+    display: inline-block; padding: .1rem .55rem;
+    border-radius: 4px; font-size: .78rem; font-weight: 600;
+    background: rgba(74,144,226,.18); color: var(--blue);
+    border: 1px solid rgba(74,144,226,.3);
+  }
+  .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">⚔️ VGC Damage Intuition</span>
+  <a href="#formula">Formula</a>
+  <a href="#statmath">Stat Math</a>
+  <a href="#dmganchor">Anchors</a>
+  <a href="#calc">Calculator</a>
+  <a href="#modifiers">Modifiers</a>
+  <a href="#benchmarks">Benchmarks</a>
+  <a href="#shortcuts">Shortcuts</a>
+</nav>
+
+<div class="hero">
+  <h1>Build Your Damage Intuition</h1>
+  <p>Learn how Pokémon damage is actually calculated at Level 50 VGC, then use the live calculator to develop a gut feeling for what ranges to expect.</p>
+</div>
+
+<!-- ────────────────────────────────────────────── FORMULA -->
+<section id="formula">
+  <h2>📐 How Damage Is Calculated</h2>
+  <p>Every damage roll in Gen 9 follows the same formula. Once you internalize each piece, you can estimate ranges in your head.</p>
+
+  <div class="formula-box">
+    Damage = ⌊ ⌊ <span class="atk">22 × Atk</span> × <span class="bp">BP</span> / <span class="def">Def</span> ⌋ / 50 ⌋ + 2
+    &nbsp; × &nbsp; <span class="mod">Modifiers</span>
+  </div>
+
+  <p style="text-align:center;font-size:.85rem;color:var(--muted);margin-top:-.25rem">
+    The <strong>22</strong> comes from the level-50 factor: <code>⌊(2×50/5) + 2⌋ = 22</code>
+  </p>
+
+  <div class="steps" style="margin-top:1.5rem">
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <strong>Calculate the attacker's effective stat</strong><br>
+        <span style="color:var(--muted)">Start from the base stat, add EV/IV contributions, apply nature, then apply any in-battle boosts (+1 to +6 stages multiply by 1.5×, 2×, 2.5×, 3×, 3.5×, 4×).</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <strong>Calculate the defender's effective stat</strong><br>
+        <span style="color:var(--muted)">Same process. Wonder Room swaps Def ↔ SpD before this step. Unaware ignores the opponent's boosts.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <strong>Compute base damage</strong><br>
+        <code>base = ⌊ ⌊22 × Atk × BP / Def⌋ / 50 ⌋ + 2</code>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <strong>Apply pre-roll modifiers</strong><br>
+        <span style="color:var(--muted)">Spread (×0.75 in doubles), Weather boost/weaken (×1.5 / ×0.5), Critical hit (×1.5).</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <div>
+        <strong>Apply the random roll</strong><br>
+        <span style="color:var(--muted)">Multiply by one of 16 values from <strong>85/100 to 100/100</strong>. This is why you always see a range of 16 different damage values.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">6</div>
+      <div>
+        <strong>Apply post-roll modifiers</strong><br>
+        <span style="color:var(--muted)">STAB (×1.5), Type effectiveness (×0.5 / ×2 / ×4), Burn (×0.5), Screens (÷2 singles, ×2732/4096 doubles), Friend Guard (×0.75).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Stat Formula at Level 50</h3>
+  <div class="two-col">
+    <div class="card">
+      <strong>HP Stat</strong>
+      <div class="formula-box" style="font-size:.9rem;text-align:left;margin:.75rem 0 0">
+        ⌊ (2×Base + IV + ⌊EV÷4⌋) × 0.5 ⌋ + <strong>60</strong>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Other Stats (Atk / Def / SpA / SpD / Spe)</strong>
+      <div class="formula-box" style="font-size:.9rem;text-align:left;margin:.75rem 0 0">
+        ⌊ ( ⌊ (2×Base + IV + ⌊EV÷4⌋) × 0.5 ⌋ + 5 ) × Nature ⌋
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:.5rem">Nature is <strong>1.1</strong> (beneficial), <strong>0.9</strong> (detrimental), or <strong>1.0</strong> (neutral). Max EVs = 252, max IVs = 31.</p>
+</section>
+
+<!-- ────────────────────────────────────────────── STAT MENTAL MATH -->
+<section id="statmath">
+  <h2>🔢 Stat Mental Math</h2>
+  <p>You don't need to run the formula every time. With two anchor numbers and one nature adjustment, you can estimate any stat in seconds.</p>
+
+  <!-- The two golden rules -->
+  <div class="two-col" style="margin-bottom:1rem">
+    <div class="card" style="border-color:var(--blue)">
+      <h3 style="margin-top:0;color:var(--blue)">Non-HP Stats (Atk / Def / SpA / SpD / Spe)</h3>
+      <div class="formula-box" style="font-size:1rem;margin:.5rem 0">
+        stat ≈ <span class="atk">base</span> + <span class="mod">EVs ÷ 8</span> + <strong>20</strong>
+      </div>
+      <table class="bench-table" style="margin-top:.5rem">
+        <thead><tr><th>EVs</th><th>Add this</th><th>So stat ≈</th></tr></thead>
+        <tbody>
+          <tr><td>0</td>  <td>+0</td>  <td>base + <strong>20</strong></td></tr>
+          <tr><td>4</td>  <td>+0</td>  <td>base + <strong>20</strong> (negligible)</td></tr>
+          <tr><td>64</td> <td>+8</td>  <td>base + <strong>28</strong></td></tr>
+          <tr><td>128</td><td>+16</td> <td>base + <strong>36</strong></td></tr>
+          <tr><td>196</td><td>+24</td> <td>base + <strong>44</strong></td></tr>
+          <tr><td>252</td><td>+32</td> <td>base + <strong>52</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:.75rem;font-size:.85rem">Then apply nature: <strong>×1.1</strong> (add ~10%) or <strong>×0.9</strong> (subtract ~10%)</p>
+    </div>
+    <div class="card" style="border-color:var(--green)">
+      <h3 style="margin-top:0;color:var(--green)">HP Stat</h3>
+      <div class="formula-box" style="font-size:1rem;margin:.5rem 0">
+        HP ≈ <span class="atk">base</span> + <span class="mod">EVs ÷ 8</span> + <strong>76</strong>
+      </div>
+      <table class="bench-table" style="margin-top:.5rem">
+        <thead><tr><th>EVs</th><th>Add this</th><th>So HP ≈</th></tr></thead>
+        <tbody>
+          <tr><td>0</td>  <td>+0</td>  <td>base + <strong>76</strong></td></tr>
+          <tr><td>4</td>  <td>+0</td>  <td>base + <strong>76</strong></td></tr>
+          <tr><td>64</td> <td>+8</td>  <td>base + <strong>84</strong></td></tr>
+          <tr><td>128</td><td>+16</td> <td>base + <strong>92</strong></td></tr>
+          <tr><td>196</td><td>+24</td> <td>base + <strong>100</strong></td></tr>
+          <tr><td>252</td><td>+32</td> <td>base + <strong>108</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:.75rem;font-size:.85rem">HP is <strong>never</strong> affected by nature. The constant 76 = 60 (level anchor) + 16 (31 IVs ÷ 2 rounded).</p>
+    </div>
+  </div>
+
+  <!-- Why the constants work -->
+  <div class="card" style="margin-bottom:1rem">
+    <h3 style="margin-top:0">Why +20 and +76?</h3>
+    <p>At Level 50 with 31 IVs and 0 EVs, the inner part of the stat formula is:</p>
+    <div class="formula-box" style="font-size:.9rem;text-align:left">
+      Non-HP: ⌊ (2×base + 31) × 0.5 ⌋ + 5  ≈  base + <strong>15.5 + 5 = 20.5 → ~20</strong><br>
+      HP:&nbsp;&nbsp;&nbsp;&nbsp; ⌊ (2×base + 31) × 0.5 ⌋ + 60 ≈  base + <strong>15.5 + 60 = 75.5 → ~76</strong>
+    </div>
+    <p style="margin-top:.6rem">Every 8 EVs adds exactly 1 to the final stat (because <code>floor(EVs/4) × 0.5 = EVs/8</code>). So 252 EVs adds exactly <strong>31</strong> to the raw value, which we round to <strong>+32</strong> for quick mental math.</p>
+  </div>
+
+  <!-- Nature quick-add -->
+  <div class="card" style="margin-bottom:1rem">
+    <h3 style="margin-top:0">Applying Nature in Your Head</h3>
+    <div class="two-col">
+      <div>
+        <p><strong style="color:var(--green)">+10% nature (beneficial):</strong></p>
+        <ul class="tip-list" style="gap:.4rem">
+          <li>Divide the stat by 10, then add it.<br><span style="color:var(--muted)">e.g. stat = 182 → 182÷10 ≈ 18 → 182+18 = <strong>200</strong></span></li>
+          <li>Or: multiply by 1.1 by doing <code>stat × 1.1</code><br><span style="color:var(--muted)">182 × 1.1 = 200.2 → 200</span></li>
+        </ul>
+      </div>
+      <div>
+        <p><strong style="color:var(--red)">−10% nature (detrimental):</strong></p>
+        <ul class="tip-list" style="gap:.4rem">
+          <li>Divide the stat by 10, then subtract it.<br><span style="color:var(--muted)">e.g. stat = 182 → 182÷10 ≈ 18 → 182−18 = <strong>164</strong></span></li>
+          <li>Or: multiply by 0.9.<br><span style="color:var(--muted)">182 × 0.9 = 163.8 → 163</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Worked examples -->
+  <h3>Worked Examples</h3>
+  <div class="card" style="overflow-x:auto">
+    <table class="bench-table">
+      <thead>
+        <tr><th>Pokémon</th><th>Base</th><th>EVs</th><th>Nature</th><th>Mental Math</th><th>Exact</th></tr>
+      </thead>
+      <tbody id="stat-examples-body"></tbody>
+    </table>
+  </div>
+
+  <!-- Interactive stat estimator -->
+  <div class="card" style="margin-top:1.5rem">
+    <h3 style="margin-top:0">🧪 Stat Estimator — Try It Yourself</h3>
+    <p>Enter a base stat, EVs, and nature. The estimator shows the quick mental-math path alongside the exact value so you can feel the difference.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem;margin-top:.75rem">
+      <div class="input-group" style="margin:0">
+        <label>Base Stat</label>
+        <input type="number" id="se-base" value="130" min="1" max="255">
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>EVs</label>
+        <input type="number" id="se-ev" value="252" min="0" max="252">
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>IVs</label>
+        <input type="number" id="se-iv" value="31" min="0" max="31">
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>Nature</label>
+        <select id="se-nature">
+          <option value="1.1">+10% (Adamant/Modest…)</option>
+          <option value="1.0" selected>Neutral</option>
+          <option value="0.9">−10%</option>
+        </select>
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>Stat type</label>
+        <select id="se-type">
+          <option value="other" selected>Atk / Def / SpA / SpD / Spe</option>
+          <option value="hp">HP</option>
+        </select>
+      </div>
+    </div>
+    <div id="se-result" style="margin-top:1.25rem;padding:1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────── DAMAGE ANCHORS -->
+<section id="dmganchor">
+  <h2>🎯 Base Damage Anchors</h2>
+  <p>Instead of running the full formula from scratch, start from an <strong>anchor</strong> — the base damage when Atk equals Def — then scale by your actual ratio and stack modifiers on top.</p>
+
+  <div class="formula-box">
+    Base ≈ 22 × <span class="bp">BP</span> × ( <span class="atk">Atk</span> ÷ <span class="def">Def</span> ) ÷ 50
+  </div>
+  <p style="text-align:center;font-size:.85rem;color:var(--muted);margin-top:-.25rem">
+    The <strong>+2</strong> at the end of the real formula adds at most ~4% — safe to ignore for rough estimates. The table below bakes it in anyway.
+  </p>
+
+  <!-- ── Anchor reference table ── -->
+  <div class="card" style="overflow-x:auto;margin-top:1.5rem">
+    <h3 style="margin-top:0">Step 1 — Look up your BP anchor (Atk = Def)</h3>
+    <p>Each row is the <strong>exact base damage</strong> when Atk and Def are equal, before any modifiers or random roll. Min/Max are the 85% and 100% roll outcomes.</p>
+    <table class="bench-table" id="anchor-table">
+      <thead>
+        <tr>
+          <th>BP</th>
+          <th>Base</th>
+          <th>Min roll</th>
+          <th>Max roll</th>
+          <th>+STAB max</th>
+          <th>+STAB +2× max</th>
+          <th>Doubles spread max</th>
+        </tr>
+      </thead>
+      <tbody id="anchor-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- ── Ratio scaling ── -->
+  <h3 style="margin-top:2rem">Step 2 — Scale by Atk ÷ Def ratio</h3>
+  <p>Multiply the anchor by your actual ratio. A ratio above 1 means the attacker is stronger; below 1 means the defender wins the stat war.</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="bench-table">
+      <thead><tr><th>Atk / Def ratio</th><th>Multiply anchor by</th><th>Typical scenario</th></tr></thead>
+      <tbody>
+        <tr><td><strong>0.5×</strong></td><td>÷ 2</td><td>Heavily invested defender, unboosted attacker — or −2 Atk drop</td></tr>
+        <tr><td><strong>0.67×</strong></td><td>× ⅔</td><td>Intimidate: attacker's Atk is at −1 stage (×0.667)</td></tr>
+        <tr><td><strong>0.75×</strong></td><td>× ¾</td><td>Defender has ~33% more Defense than your Attack</td></tr>
+        <tr><td><strong>1.0×</strong></td><td>× 1 (the anchor)</td><td>Equal offensive and defensive investment</td></tr>
+        <tr><td><strong>1.25×</strong></td><td>× 1.25</td><td>Typical: 252 Atk +nature vs 252 Def neutral defender</td></tr>
+        <tr><td><strong>1.5×</strong></td><td>× 1.5</td><td>+1 Atk boost (Swords Dance first stage) or Choice Band</td></tr>
+        <tr><td><strong>2.0×</strong></td><td>× 2</td><td>+2 Atk boost, or attacker has double the defensive stat</td></tr>
+        <tr><td><strong>3.0×</strong></td><td>× 3</td><td>+3 Atk boost — essentially nothing survives without screens</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Modifier stack ── -->
+  <h3 style="margin-top:2rem">Step 3 — Stack your modifiers</h3>
+  <p>Apply each multiplier one at a time. You don't need to be exact — round to the nearest 5 as you go.</p>
+  <div class="card-grid">
+    <div class="mod-card">
+      <div class="label">STAB</div>
+      <div class="val">× 1.5</div>
+      <p>Add half again. 40 → 60. The single most common modifier to check.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Super-effective (×2)</div>
+      <div class="val">× 2</div>
+      <p>Double it. STAB + SE = ×3 total. 40 → 120.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Doubles spread</div>
+      <div class="val">× 0.75</div>
+      <p>Lose a quarter. 40 → 30. Apply this <em>before</em> STAB.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Critical hit</div>
+      <div class="val">× 1.5</div>
+      <p>Same multiplier as STAB — combine them to ×2.25 when both apply.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Screen (doubles)</div>
+      <div class="val">× 0.667</div>
+      <p>Lose a third. 60 → 40. Applied after the roll.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Weather / Terrain boost</div>
+      <div class="val">× 1.5 / × 1.3</div>
+      <p>Rain/Sun = +50%, Terrain = +30%. These are pre-roll, so apply early in the chain.</p>
+    </div>
+  </div>
+
+  <!-- ── Worked example ── -->
+  <div class="card" style="margin-top:1.5rem;border-color:var(--purple)">
+    <h3 style="margin-top:0;color:var(--purple)">📖 Worked Example</h3>
+    <p><strong>Scenario:</strong> 252 SpA Modest Flutter Mane (SpA 187) uses Moonblast (95 BP, STAB) vs 252 SpD Calm Incineroar (SpD ~130).</p>
+    <div class="steps" style="margin-top:.75rem">
+      <div class="step">
+        <div class="num">1</div>
+        <div><strong>Look up BP 95 anchor</strong> — base damage ≈ <strong>43</strong> (Atk = Def)</div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div><strong>Scale by ratio</strong> — Atk 187 ÷ Def 130 ≈ <strong>1.44×</strong> → 43 × 1.44 ≈ <strong>62</strong></div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div><strong>Apply STAB ×1.5</strong> → 62 × 1.5 ≈ <strong>93</strong></div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div><strong>Roll range (85%–100%)</strong> → roughly <strong>79–93 HP</strong></div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div><strong>Incineroar HP</strong> (252 HP) ≈ 197 → <strong>79/197 – 93/197 ≈ 40%–47%</strong></div>
+      </div>
+    </div>
+    <p style="margin-top:.75rem;font-size:.88rem">Actual calc: <strong>40.1%–47.7%</strong>. Mental math landed within 1%. ✅</p>
+  </div>
+
+  <!-- ── Interactive anchor finder ── -->
+  <div class="card" style="margin-top:1.5rem">
+    <h3 style="margin-top:0">🧪 Anchor Finder — Plug in Your Stats</h3>
+    <p>Enter any Atk, Def, and BP. The finder shows the exact base damage, the full roll range, and the mental-math chain so you can see where each step lands.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.75rem;margin-top:.75rem">
+      <div class="input-group" style="margin:0">
+        <label>Atk stat</label>
+        <input type="number" id="af-atk" value="187" min="1" max="999">
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>Def stat</label>
+        <input type="number" id="af-def" value="130" min="1" max="999">
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>Base Power</label>
+        <input type="number" id="af-bp" value="95" min="1" max="999">
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>STAB?</label>
+        <select id="af-stab">
+          <option value="1">No STAB</option>
+          <option value="1.5" selected>STAB ×1.5</option>
+          <option value="2">Adaptability ×2</option>
+        </select>
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>Type matchup</label>
+        <select id="af-type">
+          <option value="0.25">Resistant ×0.25</option>
+          <option value="0.5">Resistant ×0.5</option>
+          <option value="1" selected>Neutral ×1</option>
+          <option value="2">Super-effective ×2</option>
+          <option value="4">Double SE ×4</option>
+        </select>
+      </div>
+      <div class="input-group" style="margin:0">
+        <label>Spread (doubles)?</label>
+        <select id="af-spread">
+          <option value="1" selected>No</option>
+          <option value="0.75">Yes ×0.75</option>
+        </select>
+      </div>
+    </div>
+    <div id="af-result" style="margin-top:1.25rem;padding:1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────── CALC -->
+<section id="calc">
+  <h2>🧮 Live Damage Calculator</h2>
+  <p>Fill in the stats and toggle modifiers to see the full 16-roll damage range instantly.</p>
+
+  <div class="calc-grid">
+    <!-- Attacker -->
+    <div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--red)">⚔️ Attacker</h3>
+        <div class="input-group">
+          <label>Base Stat (Atk or SpA)</label>
+          <input type="number" id="atkBase" value="130" min="1" max="255">
+        </div>
+        <div class="input-group">
+          <label>EVs <span style="color:var(--muted)">(0–252)</span></label>
+          <input type="number" id="atkEV" value="252" min="0" max="252">
+        </div>
+        <div class="input-group">
+          <label>IVs <span style="color:var(--muted)">(0–31)</span></label>
+          <input type="number" id="atkIV" value="31" min="0" max="31">
+        </div>
+        <div class="input-group">
+          <label>Nature</label>
+          <select id="atkNature">
+            <option value="1.1">+10% (Adamant / Modest / Jolly / Timid…)</option>
+            <option value="1.0" selected>Neutral (Hardy / Serious / Docile…)</option>
+            <option value="0.9">−10% (Modest attacking physical, etc.)</option>
+          </select>
+          <div class="stat-preview" id="atkStatPreview"></div>
+        </div>
+        <div class="input-group">
+          <label>Stat Boost Stage</label>
+          <select id="atkBoost">
+            <option value="6">+6 (×4.0)</option>
+            <option value="5">+5 (×3.5)</option>
+            <option value="4">+4 (×3.0)</option>
+            <option value="3">+3 (×2.5)</option>
+            <option value="2">+2 (×2.0)</option>
+            <option value="1">+1 (×1.5)</option>
+            <option value="0" selected>0 (×1.0)</option>
+            <option value="-1">−1 (×0.667)</option>
+            <option value="-2">−2 (×0.5)</option>
+            <option value="-3">−3 (×0.4)</option>
+            <option value="-4">−4 (×0.333)</option>
+            <option value="-5">−5 (×0.286)</option>
+            <option value="-6">−6 (×0.25)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3 style="margin-top:0;color:var(--gold)">💥 Move</h3>
+        <div class="input-group">
+          <label>Base Power</label>
+          <input type="number" id="bp" value="90" min="1" max="999">
+        </div>
+        <div class="input-group">
+          <label>Category</label>
+          <select id="category">
+            <option value="physical" selected>Physical (uses Atk vs Def)</option>
+            <option value="special">Special (uses SpA vs SpD)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Defender -->
+    <div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--blue)">🛡️ Defender</h3>
+        <div class="input-group">
+          <label>Base Stat (Def or SpD)</label>
+          <input type="number" id="defBase" value="80" min="1" max="255">
+        </div>
+        <div class="input-group">
+          <label>EVs <span style="color:var(--muted)">(0–252)</span></label>
+          <input type="number" id="defEV" value="252" min="0" max="252">
+        </div>
+        <div class="input-group">
+          <label>IVs <span style="color:var(--muted)">(0–31)</span></label>
+          <input type="number" id="defIV" value="31" min="0" max="31">
+        </div>
+        <div class="input-group">
+          <label>Nature</label>
+          <select id="defNature">
+            <option value="1.1">+10% (Bold / Calm / Impish / Careful…)</option>
+            <option value="1.0" selected>Neutral</option>
+            <option value="0.9">−10%</option>
+          </select>
+          <div class="stat-preview" id="defStatPreview"></div>
+        </div>
+        <div class="input-group">
+          <label>Stat Boost Stage</label>
+          <select id="defBoost">
+            <option value="6">+6 (×4.0)</option>
+            <option value="5">+5 (×3.5)</option>
+            <option value="4">+4 (×3.0)</option>
+            <option value="3">+3 (×2.5)</option>
+            <option value="2">+2 (×2.0)</option>
+            <option value="1">+1 (×1.5)</option>
+            <option value="0" selected>0 (×1.0)</option>
+            <option value="-1">−1 (×0.667)</option>
+            <option value="-2">−2 (×0.5)</option>
+            <option value="-3">−3 (×0.4)</option>
+            <option value="-4">−4 (×0.333)</option>
+            <option value="-5">−5 (×0.286)</option>
+            <option value="-6">−6 (×0.25)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>HP Base Stat</label>
+          <input type="number" id="hpBase" value="108" min="1" max="255">
+        </div>
+        <div class="input-group">
+          <label>HP EVs</label>
+          <input type="number" id="hpEV" value="252" min="0" max="252">
+          <div class="stat-preview" id="hpStatPreview"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modifiers -->
+  <div class="card" style="margin-top:1rem">
+    <h3 style="margin-top:0">⚙️ Modifiers</h3>
+    <div class="checkbox-row">
+      <label class="cb-label"><input type="checkbox" id="modStab"> STAB (×1.5)</label>
+      <label class="cb-label"><input type="checkbox" id="modType2"> Type ×2</label>
+      <label class="cb-label"><input type="checkbox" id="modType4"> Type ×4</label>
+      <label class="cb-label"><input type="checkbox" id="modTypeHalf"> Type ×0.5</label>
+      <label class="cb-label"><input type="checkbox" id="modTypeQuarter"> Type ×0.25</label>
+    </div>
+    <div class="checkbox-row">
+      <label class="cb-label"><input type="checkbox" id="modWeatherBoost"> Weather Boost (×1.5)</label>
+      <label class="cb-label"><input type="checkbox" id="modWeatherWeaken"> Weather Weaken (×0.5)</label>
+      <label class="cb-label"><input type="checkbox" id="modTerrainBoost"> Terrain Boost (×1.3)</label>
+      <label class="cb-label"><input type="checkbox" id="modTerrainWeaken"> Terrain Weaken (×0.5)</label>
+    </div>
+    <div class="checkbox-row">
+      <label class="cb-label"><input type="checkbox" id="modDoubles"> Doubles format</label>
+      <label class="cb-label"><input type="checkbox" id="modSpread"> Spread move (×0.75)</label>
+      <label class="cb-label"><input type="checkbox" id="modScreen"> Screen (Reflect/Light Screen/Aurora Veil)</label>
+      <label class="cb-label"><input type="checkbox" id="modFriendGuard"> Friend Guard (×0.75)</label>
+    </div>
+    <div class="checkbox-row">
+      <label class="cb-label"><input type="checkbox" id="modCrit"> Critical Hit (×1.5)</label>
+      <label class="cb-label"><input type="checkbox" id="modBurn"> Burn (×0.5 physical)</label>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div id="result-box">
+    <div style="color:var(--muted);text-align:center;padding:1rem">Enter stats above to see the damage range.</div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────── MODIFIERS -->
+<section id="modifiers">
+  <h2>🔢 Modifier Reference</h2>
+  <p>Each modifier is multiplied into the damage in order. They <strong>stack multiplicatively</strong> — STAB + 2× type = ×3 total damage.</p>
+
+  <div class="card-grid">
+    <div class="mod-card">
+      <div class="label">STAB</div>
+      <div class="val">×1.5</div>
+      <p>Same Type Attack Bonus. <strong>Adaptability</strong> makes it ×2. Tera STAB on a non-native type is also ×1.5 (×2 if it matches the original type too).</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Type Effectiveness</div>
+      <div class="val">×0.25 / ×0.5 / ×2 / ×4</div>
+      <p>Stacked per type interaction. Double-weak (×4) Pokémon are extremely vulnerable — a STAB super-effective hit is ×6.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Weather Boost/Weaken</div>
+      <div class="val">×1.5 / ×0.5</div>
+      <p>Sun boosts Fire, weakens Water. Rain boosts Water, weakens Fire. Air Lock / Cloud Nine nullifies weather effects on damage.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Terrain Boost</div>
+      <div class="val">×1.3</div>
+      <p>Electric/Grassy/Psychic Terrain boost their respective types for <strong>grounded</strong> Pokémon. Misty Terrain halves Dragon moves.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Spread Move (Doubles)</div>
+      <div class="val">×0.75</div>
+      <p>Any move that hits both opponents (Earthquake, Heat Wave, etc.) in Doubles does 75% damage. Singles is unaffected.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Reflect / Light Screen</div>
+      <div class="val">×0.5 singles / ×0.667 doubles</div>
+      <p>Reflect halves physical damage, Light Screen halves special. In Doubles the reduction is ×2732/4096 ≈ ⅔ instead of ½. Aurora Veil applies the same multiplier as a screen for that category.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Critical Hit</div>
+      <div class="val">×1.5</div>
+      <p>Also <strong>ignores</strong> negative attacker stat drops and positive defender stat boosts. Does not ignore screens.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Burn</div>
+      <div class="val">×0.5 (physical)</div>
+      <p>Halves the damage of physical moves. <strong>Guts</strong> ignores the damage penalty. Does not affect special moves.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Friend Guard</div>
+      <div class="val">×0.75</div>
+      <p>Doubles-only. An ally with Friend Guard reduces all damage taken by any teammate by 25%.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Stat Boosts (Stages)</div>
+      <div class="val">+1→×1.5, +2→×2, +6→×4</div>
+      <p>Every +1 stage adds 0.5 to the multiplier. −1 = ×0.667, −2 = ×0.5, −6 = ×0.25. Stored Power gains 20 BP per positive stage.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Wonder Room</div>
+      <div class="val">Def ↔ SpD swap</div>
+      <p>All Pokémon use their SpD in place of Def (and vice-versa) for damage calculation. Great for punishing high-SpD defensive Pokémon with physical moves.</p>
+    </div>
+    <div class="mod-card">
+      <div class="label">Magic Room</div>
+      <div class="val">Items suppressed</div>
+      <p>Held items have no effect. Life Orb, Choice Band, Eviolite, Assault Vest — all ignored for 5 turns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────── BENCHMARKS -->
+<section id="benchmarks">
+  <h2>📋 Common Benchmarks</h2>
+  <p>These are real Level 50 calcs with standard VGC spreads. Use them as reference points to calibrate your intuition.</p>
+
+  <div class="card" style="overflow-x:auto">
+    <table class="bench-table">
+      <thead>
+        <tr>
+          <th>Attacker → Defender</th>
+          <th>Move (BP)</th>
+          <th>Conditions</th>
+          <th>Damage %</th>
+          <th>KO?</th>
+        </tr>
+      </thead>
+      <tbody id="benchmarks-body">
+        <!-- filled by JS -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────── SHORTCUTS -->
+<section id="shortcuts">
+  <h2>🧠 Mental Math Shortcuts</h2>
+  <p>Experienced players don't calculate exactly — they use benchmarks and rough multipliers to estimate damage in seconds.</p>
+
+  <ul class="tip-list">
+    <li>
+      <strong>The ÷2 Rule for Equal Stats:</strong><br>
+      If attacker's effective Attack equals defender's effective Defense, a 100 BP move at Level 50 does roughly <strong>44 base damage</strong> before modifiers (<code>22×100÷100÷50+2 = 44</code>). Use 44 as your anchor.
+    </li>
+    <li>
+      <strong>Rough Damage %:</strong><br>
+      <code>Damage% ≈ (Atk × BP) / (Def × HP / 100 × 2.3)</code><br>
+      This over-simplifies the formula but gives you a ballpark within ~5%. For quick mental checks, just ask: "is the attacker's Atk×BP more or less than 2.3× the defender's Def×HP/100?"
+    </li>
+    <li>
+      <strong>STAB + Super-Effective = ×3:</strong><br>
+      A STAB move into a 2× weakness triples the damage. If the base deal was 25%, it becomes ~75%. STAB + 4× weakness is ×6 — almost always an OHKO.
+    </li>
+    <li>
+      <strong>EV Investment Impact:</strong><br>
+      Going from <strong>0 EVs → 252 EVs</strong> in an offensive stat adds roughly <strong>+63 to the inner formula</strong>, which translates to about <strong>+15–20%</strong> more stat. A Choice Band (+50%) is far stronger than EVs alone.
+    </li>
+    <li>
+      <strong>+1 Stage is Huge:</strong><br>
+      A +1 Attack boost multiplies your damage by ×1.5 — equivalent to adding 50% more base power to every move. +2 is ×2. Getting a Dragon Dance or Swords Dance off usually means the next hit kills something it couldn't before.
+    </li>
+    <li>
+      <strong>Doubles Spread = Singles ×0.75:</strong><br>
+      Your Earthquake that does 60% in singles only does 45% in doubles. This is why single-target coverage moves (Close Combat, Iron Head) are often preferred in VGC over spread moves.
+    </li>
+    <li>
+      <strong>Screens Make OHKOs into 2HKOs:</strong><br>
+      In doubles, a screen reduces damage by ~33%. A move that would OHKO without a screen might only do ~67% with one, turning a clean KO into a 2HKO. Factor this into your win condition timing.
+    </li>
+    <li>
+      <strong>The 16-Roll Range:</strong><br>
+      The minimum roll is always <strong>85%</strong> of the maximum roll. So if the max is 100 damage, the min is 85. The range you see is min–max across those 16 values. In practice, the middle values are each equally likely, so focus on whether the <em>minimum</em> guarantees a KO.
+    </li>
+    <li>
+      <strong>Common Defensive Benchmarks to Memorize:</strong><br>
+      • <strong>252 HP Incineroar</strong> at Lv50 has <strong>197 HP</strong><br>
+      • <strong>252 HP Rillaboom</strong> at Lv50 has <strong>207 HP</strong><br>
+      • <strong>252 HP Flutter Mane</strong> at Lv50 has <strong>139 HP</strong><br>
+      • <strong>Max SpD Assault Vest Incineroar</strong> tanks special hits extremely well (~90 SpD)<br>
+      Once you know these HP values, you can quickly judge whether a damage range crosses the KO threshold.
+    </li>
+  </ul>
+
+  <div class="divider"></div>
+  <h3>Stage Multiplier Quick Reference</h3>
+  <div class="card" style="overflow-x:auto">
+    <table class="bench-table">
+      <thead><tr><th>Stage</th><th>Atk/Def Multiplier</th><th>Relative to +0</th><th>Intuition</th></tr></thead>
+      <tbody>
+        <tr><td>+6</td><td>×4.000</td><td>+300%</td><td>Practically doubles twice — almost always OHKOs</td></tr>
+        <tr><td>+4</td><td>×3.000</td><td>+200%</td><td>Triples base damage</td></tr>
+        <tr><td>+2</td><td>×2.000</td><td>+100%</td><td>Every move hits twice as hard</td></tr>
+        <tr><td>+1</td><td>×1.500</td><td>+50%</td><td>Like a free Choice Band</td></tr>
+        <tr><td>0</td><td>×1.000</td><td>baseline</td><td>—</td></tr>
+        <tr><td>−1</td><td>×0.667</td><td>−33%</td><td>Intimidate: physical damage reduced by ⅓</td></tr>
+        <tr><td>−2</td><td>×0.500</td><td>−50%</td><td>Halves the stat — equivalent to running 0 EVs</td></tr>
+        <tr><td>−4</td><td>×0.333</td><td>−67%</td><td>Reduces to ⅓ of original</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div style="text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)">
+  VGC Damage Intuition Guide · Level 50 · Gen 9 · All calculations follow the official damage formula
+</div>
+
+<script>
+// ── STAT & DAMAGE ENGINE ──────────────────────────────────────
+function calcStat(base, ev, iv, nature, isHP) {
+  base = +base || 0; ev = Math.min(252, Math.max(0, +ev || 0));
+  iv   = Math.min(31,  Math.max(0, +iv  || 0));
+  nature = +nature || 1.0;
+  const inner = Math.floor((2 * base + iv + Math.floor(ev / 4)) * 50 / 100);
+  if (isHP) return inner + 60;
+  return Math.floor((inner + 5) * nature);
+}
+
+const BOOST_MULTS = { 6:4, 5:3.5, 4:3, 3:2.5, 2:2, 1:1.5, 0:1,
+  '-1': 2/3, '-2': 0.5, '-3': 0.4, '-4': 1/3, '-5': 2/7, '-6': 0.25 };
+
+function applyBoost(stat, stage) {
+  return Math.floor(stat * (BOOST_MULTS[stage] ?? 1));
+}
+
+function pokeFloor(n, d) { return Math.floor(n * d / 4096); }
+
+function calcRolls(atkStat, defStat, bp, mods) {
+  // base damage
+  let base = Math.floor(Math.floor(22 * bp * atkStat / defStat) / 50) + 2;
+
+  // spread
+  if (mods.spread && mods.doubles) base = Math.floor(base * 3 / 4);
+
+  // weather
+  if (mods.weatherBoost)   base = pokeFloor(base, 6144);
+  if (mods.weatherWeaken)  base = pokeFloor(base, 2048);
+
+  // terrain (applied before random in the actual engine)
+  if (mods.terrainBoost)   base = pokeFloor(base, 5325); // ×1.3 ≈ 5325/4096
+  if (mods.terrainWeaken)  base = pokeFloor(base, 2048);
+
+  // crit
+  if (mods.crit) base = pokeFloor(base, 6144);
+
+  // 16 random rolls
+  const rolls = [];
+  for (let r = 85; r <= 100; r++) {
+    let dmg = Math.floor(base * r / 100);
+
+    // STAB
+    if (mods.stab) dmg = pokeFloor(dmg, 6144);
+
+    // type
+    if (mods.type4)       { dmg = pokeFloor(dmg, 8192); dmg = pokeFloor(dmg, 8192); }
+    else if (mods.type2)  { dmg = pokeFloor(dmg, 8192); }
+    else if (mods.typeH)  { dmg = pokeFloor(dmg, 2048); }
+    else if (mods.typeQ)  { dmg = pokeFloor(dmg, 2048); dmg = pokeFloor(dmg, 2048); }
+
+    // burn
+    if (mods.burn) dmg = pokeFloor(dmg, 2048);
+
+    // screen
+    if (mods.screen) {
+      dmg = mods.doubles ? pokeFloor(dmg, 2732) : pokeFloor(dmg, 2048);
+    }
+
+    // friend guard
+    if (mods.friendGuard) dmg = pokeFloor(dmg, 3072);
+
+    rolls.push(Math.max(1, dmg));
+  }
+  return rolls;
+}
+
+// ── ANCHOR TABLE ─────────────────────────────────────────────
+function anchorBase(bp, ratio) {
+  return Math.floor(Math.floor(22 * ratio * bp) / 50) + 2;
+}
+function anchorRoll(base, pct) {
+  return Math.floor(base * pct / 100);
+}
+function pokeFloorA(n, d) { return Math.floor(n * d / 4096); }
+
+const ANCHOR_BPS = [40, 60, 75, 80, 90, 95, 100, 110, 120, 130, 150];
+
+function renderAnchorTable() {
+  const tbody = document.getElementById('anchor-tbody');
+  tbody.innerHTML = '';
+  ANCHOR_BPS.forEach(bp => {
+    const base   = anchorBase(bp, 1.0);
+    const minR   = anchorRoll(base, 85);
+    const maxR   = base; // roll 100/100 = base itself
+    const stabMax  = pokeFloorA(maxR, 6144);        // ×1.5
+    const stabSeMax = pokeFloorA(pokeFloorA(maxR, 6144), 8192); // ×1.5 ×2
+    const spreadMax = Math.floor(maxR * 3 / 4);    // ×0.75
+    tbody.innerHTML += `<tr>
+      <td><strong>${bp}</strong></td>
+      <td><strong style="color:var(--gold)">${base}</strong></td>
+      <td style="color:var(--muted)">${minR}</td>
+      <td>${maxR}</td>
+      <td style="color:var(--green)">${stabMax}</td>
+      <td style="color:var(--red)">${stabSeMax}</td>
+      <td style="color:var(--blue)">${spreadMax}</td>
+    </tr>`;
+  });
+}
+
+function renderAnchorFinder() {
+  const atk    = +document.getElementById('af-atk').value  || 1;
+  const def    = +document.getElementById('af-def').value  || 1;
+  const bp     = +document.getElementById('af-bp').value   || 1;
+  const stab   = +document.getElementById('af-stab').value;
+  const type   = +document.getElementById('af-type').value;
+  const spread = +document.getElementById('af-spread').value;
+
+  const ratio   = atk / def;
+  const anchor  = anchorBase(bp, 1.0);
+  const scaled  = anchorBase(bp, ratio);
+
+  // full 16-roll range with mods
+  const rolls = [];
+  for (let r = 85; r <= 100; r++) {
+    let d = Math.floor(scaled * r / 100);
+    if (spread < 1) d = Math.floor(d * 3 / 4);
+    if (stab  > 1)  d = pokeFloorA(d, Math.round(stab * 4096));
+    if (type  !== 1) {
+      if (type === 2)    d = pokeFloorA(d, 8192);
+      else if (type === 4) { d = pokeFloorA(d, 8192); d = pokeFloorA(d, 8192); }
+      else if (type === 0.5) d = pokeFloorA(d, 2048);
+      else if (type === 0.25) { d = pokeFloorA(d, 2048); d = pokeFloorA(d, 2048); }
+    }
+    rolls.push(Math.max(1, d));
+  }
+  const minD = rolls[0], maxD = rolls[rolls.length - 1];
+
+  const spreadLabel = spread < 1 ? ' → ×0.75 spread' : '';
+  const stabLabel   = stab > 1  ? ` → ×${stab} STAB` : '';
+  const typeVal     = type !== 1 ? ` → ×${type} type` : '';
+
+  document.getElementById('af-result').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin-bottom:1rem">
+      <div class="mod-card">
+        <div class="label">Anchor (Atk = Def)</div>
+        <div class="val">${anchor}</div>
+        <p>base at ratio 1.0</p>
+      </div>
+      <div class="mod-card">
+        <div class="label">Ratio (${atk} ÷ ${def})</div>
+        <div class="val">${ratio.toFixed(2)}×</div>
+        <p>scaled base → <strong style="color:var(--gold)">${scaled}</strong></p>
+      </div>
+      <div class="mod-card">
+        <div class="label">Roll range</div>
+        <div class="val" style="color:var(--green)">${minD} – ${maxD}</div>
+        <p>after all modifiers</p>
+      </div>
+    </div>
+    <div style="font-size:.88rem;color:var(--muted);line-height:2">
+      <strong style="color:var(--text)">Mental math chain:</strong><br>
+      Anchor <strong style="color:var(--gold)">${anchor}</strong>
+      → ×${ratio.toFixed(2)} ratio → <strong>${scaled}</strong>${spreadLabel}${stabLabel}${typeVal}
+      → roll 85–100% → <strong style="color:var(--green)">${minD}–${maxD} HP</strong>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderAnchorTable();
+  renderAnchorFinder();
+  ['af-atk','af-def','af-bp','af-stab','af-type','af-spread'].forEach(id => {
+    document.getElementById(id).addEventListener('input', renderAnchorFinder);
+    document.getElementById(id).addEventListener('change', renderAnchorFinder);
+  });
+});
+
+// ── PRECOMPUTED BENCHMARKS ────────────────────────────────────
+// Each: { label, atkBase, atkEV, atkNat, atkBoost, bp, defBase, defEV, defNat, hpBase, hpEV, mods, notes }
+const BENCHMARKS = [
+  { atk:'252 Atk +Nat Garchomp (130 Atk)', atkS:200, bp:80,  defS:100, hpS:191, notes:'EQ (singles)',   mods:{} },
+  { atk:'252 Atk +Nat Garchomp',           atkS:200, bp:60,  defS:100, hpS:191, notes:'EQ (doubles spread)', mods:{doubles:true,spread:true} },
+  { atk:'252 SpA +Nat Flutter Mane (135 SpA)', atkS:187, bp:95, defS:55, hpS:139, notes:'Moonblast (STAB)', mods:{stab:true} },
+  { atk:'252 SpA +Nat Calyrex-Ice (165 SpA)',  atkS:222, bp:130,defS:130,hpS:175, notes:'Glacial Lance (STAB)', mods:{stab:true} },
+  { atk:'252 Atk +Nat Urshifu-S (130 Atk)',    atkS:200, bp:85, defS:65, hpS:165, notes:'Surging Strikes ×3 (STAB, ignores screens)', mods:{stab:true} },
+  { atk:'252 SpA Modest Kyogre (150 SpA)',      atkS:204, bp:90, defS:100,hpS:197, notes:'Scald in Rain (STAB+Rain)', mods:{stab:true, weatherBoost:true} },
+  { atk:'0 Atk Incineroar (115 Atk, no EVs)',   atkS:122, bp:75, defS:100,hpS:191, notes:'Fake Out + Flare Blitz (STAB, no Atk EVs)', mods:{stab:true} },
+  { atk:'+1 252 Atk +Nat Landorus-T (145 Atk)', atkS:210, bp:100,defS:100,hpS:191, notes:'EQ after Intimidate reversal (+1 net)', mods:{stab:true}, atkBoostMult: 1.5 },
+];
+
+function renderBenchmarks() {
+  const tbody = document.getElementById('benchmarks-body');
+  tbody.innerHTML = '';
+  BENCHMARKS.forEach(b => {
+    let atkS = b.atkS;
+    if (b.atkBoostMult) atkS = Math.floor(atkS * b.atkBoostMult);
+    const rolls = calcRolls(atkS, b.defS, b.bp, b.mods);
+    const minD = rolls[0], maxD = rolls[rolls.length - 1];
+    const minP = (minD / b.hpS * 100).toFixed(1);
+    const maxP = (maxD / b.hpS * 100).toFixed(1);
+    const isOHKO = minD >= b.hpS;
+    const maybe2HKO = maxD * 2 >= b.hpS && minD * 2 < b.hpS;
+    const is2HKO = minD * 2 >= b.hpS;
+    const koTag = isOHKO
+      ? '<span class="pct-tag pct-ohko">Guaranteed OHKO</span>'
+      : is2HKO
+      ? '<span class="pct-tag pct-2hko">Guaranteed 2HKO</span>'
+      : maybe2HKO
+      ? '<span class="pct-tag">Possible 2HKO</span>'
+      : '<span class="pct-tag">3HKO or less</span>';
+    tbody.innerHTML += `<tr>
+      <td><strong>${b.atk}</strong></td>
+      <td>${b.notes}</td>
+      <td>${Object.keys(b.mods).filter(k=>b.mods[k]&&k!=='doubles'&&k!=='spread').join(', ')||'—'}</td>
+      <td>${minP}% – ${maxP}%</td>
+      <td>${koTag}</td>
+    </tr>`;
+  });
+}
+
+// ── LIVE CALCULATOR ───────────────────────────────────────────
+function getStat(baseId, evId, ivId, natId, isHP) {
+  return calcStat(
+    document.getElementById(baseId).value,
+    document.getElementById(evId).value,
+    document.getElementById(ivId).value,
+    document.getElementById(natId).value,
+    isHP
+  );
+}
+
+function updatePreviews() {
+  const atkRaw = calcStat(
+    document.getElementById('atkBase').value,
+    document.getElementById('atkEV').value,
+    document.getElementById('atkIV').value,
+    document.getElementById('atkNature').value, false
+  );
+  const defRaw = calcStat(
+    document.getElementById('defBase').value,
+    document.getElementById('defEV').value,
+    document.getElementById('defIV').value,
+    document.getElementById('defNature').value, false
+  );
+  const hpRaw = calcStat(
+    document.getElementById('hpBase').value,
+    document.getElementById('hpEV').value, 31, 1.0, true
+  );
+
+  const atkBoost = document.getElementById('atkBoost').value;
+  const defBoost = document.getElementById('defBoost').value;
+  const atkFinal = applyBoost(atkRaw, atkBoost);
+  const defFinal = applyBoost(defRaw, defBoost);
+
+  document.getElementById('atkStatPreview').textContent =
+    `Base stat: ${atkRaw}${atkBoost !== '0' ? ` → boosted: ${atkFinal}` : ''}`;
+  document.getElementById('defStatPreview').textContent =
+    `Base stat: ${defRaw}${defBoost !== '0' ? ` → boosted: ${defFinal}` : ''}`;
+  document.getElementById('hpStatPreview').textContent = `HP stat: ${hpRaw}`;
+
+  return { atkFinal, defFinal, hpRaw, atkRaw, defRaw };
+}
+
+function getChecked(id) { return document.getElementById(id).checked; }
+
+function renderResult() {
+  const { atkFinal, defFinal, hpRaw, atkRaw, defRaw } = updatePreviews();
+  const bp = +document.getElementById('bp').value || 1;
+  const doubles = getChecked('modDoubles');
+
+  const mods = {
+    stab:          getChecked('modStab'),
+    type4:         getChecked('modType4'),
+    type2:         getChecked('modType2'),
+    typeH:         getChecked('modTypeHalf'),
+    typeQ:         getChecked('modTypeQuarter'),
+    weatherBoost:  getChecked('modWeatherBoost'),
+    weatherWeaken: getChecked('modWeatherWeaken'),
+    terrainBoost:  getChecked('modTerrainBoost'),
+    terrainWeaken: getChecked('modTerrainWeaken'),
+    doubles,
+    spread:        getChecked('modSpread'),
+    screen:        getChecked('modScreen'),
+    friendGuard:   getChecked('modFriendGuard'),
+    crit:          getChecked('modCrit'),
+    burn:          getChecked('modBurn'),
+  };
+
+  if (!atkFinal || !defFinal || !bp || !hpRaw) return;
+
+  const rolls = calcRolls(atkFinal, defFinal, bp, mods);
+  const minD  = rolls[0];
+  const maxD  = rolls[rolls.length - 1];
+  const minP  = (minD / hpRaw * 100).toFixed(1);
+  const maxP  = (maxD / hpRaw * 100).toFixed(1);
+
+  // KO probability
+  const koPct = (rolls.filter(r => r >= hpRaw).length / rolls.length * 100).toFixed(0);
+  const koText = +koPct === 100 ? 'Guaranteed OHKO'
+               : +koPct === 0   ? 'No OHKO'
+               : `${koPct}% chance to OHKO`;
+
+  // Step breakdown
+  const base = Math.floor(Math.floor(22 * bp * atkFinal / defFinal) / 50) + 2;
+  const effMult = (maxD / base).toFixed(3);
+
+  const box = document.getElementById('result-box');
+  box.innerHTML = `
+    <div class="result-range">${minD} – ${maxD} HP</div>
+    <div class="result-pct">${minP}% – ${maxP}% of ${hpRaw} HP · ${koText}</div>
+
+    <div class="range-bar-wrap">
+      <div class="range-bar-track">
+        <div class="range-bar-fill" style="left:0;width:${Math.min(100, maxP)}%"></div>
+      </div>
+      <div class="range-bar-labels"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+
+    <div class="rolls-grid" style="margin-top:1rem">
+      ${rolls.map((r,i) => `<span class="roll-chip${i===0?' min':i===rolls.length-1?' max':''}">${r}</span>`).join('')}
+    </div>
+
+    <div class="ko-bar">
+      <div class="ko-bar-label">OHKO probability: ${koPct}%</div>
+      <div class="ko-bar-track"><div class="ko-bar-fill" style="width:${koPct}%"></div></div>
+    </div>
+
+    <div class="step-breakdown">
+      <table>
+        <tr><td>Effective Attack stat</td><td>${atkFinal}</td></tr>
+        <tr><td>Effective Defense stat</td><td>${defFinal}</td></tr>
+        <tr><td>Base damage (before roll &amp; mods)</td><td>${base}</td></tr>
+        <tr><td>Total modifier applied (max roll)</td><td>×${effMult}</td></tr>
+        <tr><td>Random roll range</td><td>85/100 – 100/100</td></tr>
+      </table>
+    </div>
+  `;
+}
+
+// ── WIRE UP EVENTS ────────────────────────────────────────────
+document.querySelectorAll('input, select').forEach(el => {
+  el.addEventListener('input', renderResult);
+  el.addEventListener('change', renderResult);
+});
+
+// ── STAT EXAMPLES TABLE ───────────────────────────────────────
+const STAT_EXAMPLES = [
+  { name: 'Garchomp Atk',       base: 130, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: 'Incineroar Atk',     base: 115, ev: 0,   iv: 31, nat: 1.0, isHP: false },
+  { name: 'Flutter Mane SpA',   base: 135, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: 'Rillaboom Atk',      base: 125, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: 'Corviknight Def',    base: 105, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: 'Incineroar HP',      base: 95,  ev: 252, iv: 31, nat: 1.0, isHP: true  },
+  { name: 'Calyrex-Ice HP',     base: 100, ev: 252, iv: 31, nat: 1.0, isHP: true  },
+  { name: 'Flutter Mane Spe',   base: 135, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: 'Urshifu-S Atk',      base: 130, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: 'Kyogre SpA',         base: 150, ev: 252, iv: 31, nat: 1.1, isHP: false },
+  { name: '0 EV neutral SpD',   base: 80,  ev: 0,   iv: 31, nat: 1.0, isHP: false },
+  { name: 'Blissey HP',         base: 255, ev: 252, iv: 31, nat: 1.0, isHP: true  },
+];
+
+function statMentalMath(base, ev, isHP, nat) {
+  const evAdd  = Math.round(ev / 8);      // quick: EVs ÷ 8
+  const anchor = isHP ? 76 : 20;
+  const rawEst = base + evAdd + anchor;
+  const est    = isHP ? rawEst : Math.floor(rawEst * nat);
+  return { evAdd, anchor, rawEst, est };
+}
+
+function renderStatExamples() {
+  const tbody = document.getElementById('stat-examples-body');
+  tbody.innerHTML = '';
+  STAT_EXAMPLES.forEach(({ name, base, ev, iv, nat, isHP }) => {
+    const exact = calcStat(base, ev, iv, nat, isHP);
+    const { evAdd, anchor, rawEst, est } = statMentalMath(base, ev, isHP, nat);
+    const natLabel = nat === 1.1 ? '+10%' : nat === 0.9 ? '−10%' : 'neutral';
+    const natStep  = (!isHP && nat !== 1.0)
+      ? ` × ${nat} = <strong>${est}</strong>`
+      : ` = <strong>${est}</strong>`;
+    const diff = exact - est;
+    const diffStr = diff === 0 ? '✓' : `off by ${diff > 0 ? '+' : ''}${diff}`;
+    tbody.innerHTML += `<tr>
+      <td><strong>${name}</strong></td>
+      <td>${base}</td>
+      <td>${ev}</td>
+      <td>${natLabel}</td>
+      <td style="font-size:.82rem;color:var(--muted)">
+        ${base} + ${evAdd} + ${anchor} = ${rawEst}${natStep}
+      </td>
+      <td><strong style="color:var(--gold)">${exact}</strong>
+        <span style="font-size:.75rem;color:${diff===0?'var(--green)':'var(--muted)'};margin-left:.3rem">${diffStr}</span>
+      </td>
+    </tr>`;
+  });
+}
+
+// ── STAT ESTIMATOR ────────────────────────────────────────────
+function updateStatEstimator() {
+  const base  = +document.getElementById('se-base').value   || 0;
+  const ev    = +document.getElementById('se-ev').value     || 0;
+  const iv    = +document.getElementById('se-iv').value     ?? 31;
+  const nat   = +document.getElementById('se-nature').value || 1.0;
+  const isHP  = document.getElementById('se-type').value === 'hp';
+
+  const exact  = calcStat(base, ev, iv, nat, isHP);
+  const { evAdd, anchor, rawEst, est } = statMentalMath(base, ev, isHP, nat);
+  const natLabel = nat === 1.1 ? '+10% nature' : nat === 0.9 ? '−10% nature' : 'neutral nature';
+
+  const steps = [
+    `<strong>Step 1 — EV contribution:</strong> ${ev} ÷ 8 = <span style="color:var(--gold)">${evAdd}</span>`,
+    `<strong>Step 2 — Add base + EV + anchor (${anchor}):</strong> ${base} + ${evAdd} + ${anchor} = <span style="color:var(--gold)">${rawEst}</span>`,
+  ];
+  if (!isHP && nat !== 1.0) {
+    const pct = nat === 1.1 ? 10 : -10;
+    const adj = Math.round(rawEst * Math.abs(pct) / 100);
+    steps.push(`<strong>Step 3 — ${natLabel}:</strong> ${rawEst} ${pct>0?'+':'-'} ${adj} = <span style="color:var(--gold)">${est}</span>`);
+  }
+
+  const diff   = exact - est;
+  const diffMsg = diff === 0
+    ? `<span style="color:var(--green)">✓ Estimate matches exactly</span>`
+    : `<span style="color:var(--muted)">Estimate: ${est} · Exact: ${exact} · off by ${diff>0?'+':''}${diff}</span>`;
+
+  document.getElementById('se-result').innerHTML = `
+    <div style="font-size:1.8rem;font-weight:700;color:var(--gold);margin-bottom:.5rem">
+      ~${est} <span style="font-size:1rem;color:var(--muted)">(exact: ${exact})</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--muted)">
+      ${steps.map(s=>`<div>${s}</div>`).join('')}
+    </div>
+    <div style="margin-top:.75rem;font-size:.85rem">${diffMsg}</div>
+  `;
+}
+
+document.querySelectorAll('#se-base, #se-ev, #se-iv, #se-nature, #se-type').forEach(el => {
+  el.addEventListener('input', updateStatEstimator);
+  el.addEventListener('change', updateStatEstimator);
+});
+
+// ── INIT ──────────────────────────────────────────────────────
+renderBenchmarks();
+renderStatExamples();
+updateStatEstimator();
+renderResult();
+</script>
+</body>
+</html>
