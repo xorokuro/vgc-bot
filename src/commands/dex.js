@@ -207,13 +207,13 @@ function buildDetailEmbed(poke, lang = 'zh') {
 }
 
 // ── Build search-result embed ─────────────────────────────────────────────────
-function buildEmbed(results, gameId, query, page, showStats) {
+function buildEmbed(results, gameId, query, page, showStats, lang = 'zh') {
   const cfg        = GAME_CONFIGS[gameId];
   const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const slice      = results.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   const lines = slice.map(p => {
-    const name = p.name_zh || p.name_en || '—';
+    const name = getPokeDisplayName(p, lang);
     if (showStats && p.stats) {
       const s   = p.stats;
       const bst = Object.values(s).reduce((a, v) => a + (v || 0), 0);
@@ -235,7 +235,7 @@ function buildEmbed(results, gameId, query, page, showStats) {
 function buildDetailMenu(slice, gameId, lang, pub) {
   if (!slice.length) return null;
   const options = slice.map((p, i) => ({
-    label: (p.name_zh || p.name_en || `#${i}`).slice(0, 100),
+    label: getPokeDisplayName(p, lang).slice(0, 100) || `#${i}`,
     value: p.name_en || String(i),
   }));
   return new ActionRowBuilder().addComponents(
@@ -331,7 +331,7 @@ module.exports = {
     const totalPages = Math.ceil(results.length / PAGE_SIZE);
     cacheStore(cacheId, { results, gameId, query, showStats, lang, pub });
 
-    const { embed, slice } = buildEmbed(results, gameId, query, 0, showStats);
+    const { embed, slice } = buildEmbed(results, gameId, query, 0, showStats, lang);
     await interaction.editReply({
       embeds:     [embed],
       components: pageComponents(slice, gameId, 0, totalPages, cacheId, lang, pub),
@@ -351,7 +351,7 @@ module.exports = {
 
     const { results, gameId, query, showStats, lang = 'zh', pub = false } = cached;
     const totalPages          = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
-    const { embed, slice }    = buildEmbed(results, gameId, query, page, showStats);
+    const { embed, slice }    = buildEmbed(results, gameId, query, page, showStats, lang);
     await interaction.update({
       embeds:     [embed],
       components: pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub),
