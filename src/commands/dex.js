@@ -80,27 +80,35 @@ function statBar(val, max = 255) {
   return '█'.repeat(filled) + '░'.repeat(20 - filled);
 }
 
-// ── Stat chart image ─────────────────────────────────────────────────────────
-const STAT_ROWS = [
-  { key: 'hp',              label: 'HP',  color: '#FF5959' },
-  { key: 'attack',          label: 'Atk', color: '#F5AC78' },
-  { key: 'defense',         label: 'Def', color: '#FAE078' },
-  { key: 'special-attack',  label: 'SpA', color: '#9DB7F5' },
-  { key: 'special-defense', label: 'SpD', color: '#A7DB8D' },
-  { key: 'speed',           label: 'Spe', color: '#FA92B2' },
+// ── Stat labels per language ──────────────────────────────────────────────────
+const STAT_KEYS = [
+  { key: 'hp',              color: '#FF5959' },
+  { key: 'attack',          color: '#F5AC78' },
+  { key: 'defense',         color: '#FAE078' },
+  { key: 'special-attack',  color: '#9DB7F5' },
+  { key: 'special-defense', color: '#A7DB8D' },
+  { key: 'speed',           color: '#FA92B2' },
 ];
+const STAT_LABELS = {
+  zh: ['HP', '攻擊', '防禦', '特攻', '特防', '速度'],
+  ja: ['HP', '攻撃', '防御', '特攻', '特防', '素早'],
+  en: ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'],
+};
 
-async function buildStatImage(stats, bst) {
+// ── Stat chart image ─────────────────────────────────────────────────────────
+async function buildStatImage(stats, bst, lang = 'zh') {
+  const labels = STAT_LABELS[lang] ?? STAT_LABELS.zh;
   const W = 400, H = 258;
-  const BAR_X = 88, BAR_W = 288, BAR_H = 14;
+  const BAR_X = 100, BAR_W = 276, BAR_H = 14;
   const START_Y = 64, ROW_H = 32;
 
-  const rows = STAT_ROWS.map((r, i) => {
+  const rows = STAT_KEYS.map((r, i) => {
+    const label = labels[i];
     const val  = stats[r.key] ?? 0;
     const barW = Math.max(0, Math.round(val / 255 * BAR_W));
     const y    = START_Y + i * ROW_H;
     return `
-      <text x="20" y="${y}" font-family="monospace" font-size="13" fill="#CCCCCC">${r.label}</text>
+      <text x="20" y="${y}" font-family="sans-serif" font-size="13" fill="#CCCCCC">${label}</text>
       <text x="${BAR_X - 8}" y="${y}" font-family="monospace" font-size="13" fill="#CCCCCC" text-anchor="end">${val}</text>
       <rect x="${BAR_X}" y="${y - 12}" width="${BAR_W}" height="${BAR_H}" fill="#2A2A3A" rx="3"/>
       ${barW > 0 ? `<rect x="${BAR_X}" y="${y - 12}" width="${barW}" height="${BAR_H}" fill="${r.color}" rx="3"/>` : ''}`;
@@ -137,17 +145,15 @@ function buildDetailEmbed(poke, lang = 'zh') {
   const typeStr = (poke.types_en || []).map(t => typeEmoji(t)).join('  ');
 
   // Stats
-  const s    = poke.stats ?? {};
-  const bst  = Object.values(s).reduce((a, v) => a + (v || 0), 0);
-  const statLines = [
-    ['HP',  s.hp               ?? 0],
-    ['Atk', s.attack           ?? 0],
-    ['Def', s.defense          ?? 0],
-    ['SpA', s['special-attack']?? 0],
-    ['SpD', s['special-defense']??0],
-    ['Spe', s.speed            ?? 0],
-  ].map(([label, val]) =>
-    `\`${label.padEnd(3)}\` \`${String(val).padStart(3)}\``,
+  const s      = poke.stats ?? {};
+  const bst    = Object.values(s).reduce((a, v) => a + (v || 0), 0);
+  const sLabels = STAT_LABELS[lang] ?? STAT_LABELS.zh;
+  const statVals = [
+    s.hp ?? 0, s.attack ?? 0, s.defense ?? 0,
+    s['special-attack'] ?? 0, s['special-defense'] ?? 0, s.speed ?? 0,
+  ];
+  const statLines = sLabels.map((lbl, i) =>
+    `\`${lbl.padEnd(3)}\` \`${String(statVals[i]).padStart(3)}\``,
   ).join('\n');
 
   // Abilities
@@ -356,7 +362,7 @@ module.exports = {
     const flags = pub ? undefined : 64;
 
     try {
-      const imgBuf = await buildStatImage(s, bst);
+      const imgBuf = await buildStatImage(s, bst, lang);
       const file   = new AttachmentBuilder(imgBuf, { name: 'stats.png' });
       embed.setImage('attachment://stats.png');
       await interaction.reply({ embeds: [embed], files: [file], flags });
