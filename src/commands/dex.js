@@ -114,9 +114,10 @@ async function buildStatImage(stats, bst, lang = 'zh') {
       ${barW > 0 ? `<rect x="${BAR_X}" y="${y - 12}" width="${barW}" height="${BAR_H}" fill="${r.color}" rx="3"/>` : ''}`;
   }).join('');
 
+  const chartTitle = lang === 'en' ? `Base Stats  Total ${bst}` : lang === 'ja' ? `種族値　合計 ${bst}` : `種族值　總計 ${bst}`;
   const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
     <rect width="${W}" height="${H}" fill="#12121C" rx="10"/>
-    <text x="20" y="24" font-family="sans-serif" font-size="13" fill="#888888">種族値　総計 ${bst}</text>
+    <text x="20" y="24" font-family="sans-serif" font-size="13" fill="#888888">${chartTitle}</text>
     <line x1="20" y1="34" x2="${W - 20}" y2="34" stroke="#333333" stroke-width="1"/>
     ${rows}
   </svg>`;
