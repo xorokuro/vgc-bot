@@ -116,29 +116,36 @@ async function buildStatImage(stats, bst) {
   return sharp(Buffer.from(svg)).png().toBuffer();
 }
 
+// ── Localised label tables ────────────────────────────────────────────────────
+const DEX_LABELS = {
+  zh: { type: '屬性', stats: '種族值', ability: '特性', weakness: '弱點・抗性', noWeak: '無特殊弱點', hidden: '〔隱藏特性〕' },
+  ja: { type: 'タイプ', stats: '種族値', ability: '特性', weakness: '弱点・耐性', noWeak: '特殊な弱点なし', hidden: '〔隠れ特性〕' },
+  en: { type: 'Type', stats: 'Base Stats', ability: 'Abilities', weakness: 'Weaknesses', noWeak: 'No special weaknesses', hidden: '[Hidden]' },
+};
+
 // ── Detail embed for one Pokémon ──────────────────────────────────────────────
-function buildDetailEmbed(poke) {
+function buildDetailEmbed(poke, lang = 'zh') {
+  const L      = DEX_LABELS[lang] ?? DEX_LABELS.zh;
   const zhName = poke.name_zh || poke.name_en || '?';
   const enName = poke.name_en
     ? poke.name_en.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join('-')
     : '';
-  const dexNum = poke.id ? `#${String(poke.id).padStart(4, '0')}` : '';
+  const dexNum  = poke.id ? `#${String(poke.id).padStart(4, '0')}` : '';
+  const title   = lang === 'en' ? `${enName}  ${dexNum}` : `${zhName}  ${dexNum}`;
 
   // Types
-  const typeStr = (poke.types_en || [])
-    .map(t => typeEmoji(t))
-    .join('  ');
+  const typeStr = (poke.types_en || []).map(t => typeEmoji(t)).join('  ');
 
   // Stats
   const s    = poke.stats ?? {};
   const bst  = Object.values(s).reduce((a, v) => a + (v || 0), 0);
   const statLines = [
-    ['HP',   s.hp               ?? 0],
-    ['Atk',  s.attack           ?? 0],
-    ['Def',  s.defense          ?? 0],
-    ['SpA',  s['special-attack']?? 0],
-    ['SpD',  s['special-defense']??0],
-    ['Spe',  s.speed            ?? 0],
+    ['HP',  s.hp               ?? 0],
+    ['Atk', s.attack           ?? 0],
+    ['Def', s.defense          ?? 0],
+    ['SpA', s['special-attack']?? 0],
+    ['SpD', s['special-defense']??0],
+    ['Spe', s.speed            ?? 0],
   ].map(([label, val]) =>
     `\`${label.padEnd(3)}\` \`${String(val).padStart(3)}\``,
   ).join('\n');
@@ -146,37 +153,31 @@ function buildDetailEmbed(poke) {
   // Abilities
   const abilities = poke.abilities ?? [];
   const abilityLines = abilities.map(a => {
-    const enKey  = a.name.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
-    const zhName = translate(enKey, 'ability', 'zh');
-    const jaName = translate(enKey, 'ability', 'ja');
-    const hidden = a.is_hidden ? ' 〔隱藏特性〕' : '';
-    return `${zhName} / ${jaName}${hidden}`;
+    const enKey = a.name.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+    const name  = translate(enKey, 'ability', lang) || enKey;
+    const hidden = a.is_hidden ? ` ${L.hidden}` : '';
+    return `${name}${hidden}`;
   }).join('\n');
 
   // Type weaknesses
   const weak = calcWeaknesses(poke.types_en ?? []);
   const weakRows = [
-    ['4×',  weak['4']],
-    ['2×',  weak['2']],
-    ['½×',  weak['0.5']],
-    ['¼×',  weak['0.25']],
-    ['0×',  weak['0']],
+    ['4×', weak['4']], ['2×', weak['2']], ['½×', weak['0.5']],
+    ['¼×', weak['0.25']], ['0×', weak['0']],
   ]
     .filter(([, arr]) => arr.length > 0)
     .map(([label, arr]) => `**${label}** ${arr.map(t => typeEmoji(t.toLowerCase())).join('')}`)
     .join('  ');
 
-  const embed = new EmbedBuilder()
+  return new EmbedBuilder()
     .setColor(COLOR)
-    .setTitle(`${zhName} / ${enName}  ${dexNum}`)
+    .setTitle(title)
     .addFields(
-      { name: `屬性 / Type`,    value: typeStr || '—',     inline: false },
-      { name: `⚔️ 種族值  BST: ${bst}`, value: statLines, inline: false },
-      { name: `💡 特性 / Ability`, value: abilityLines || '—', inline: false },
-      { name: `🛡️ 弱點・抗性`,   value: weakRows   || '一般（無特殊弱點）', inline: false },
+      { name: `屬性 ${L.type}`,           value: typeStr || '—', inline: false },
+      { name: `⚔️ ${L.stats}  BST: ${bst}`, value: statLines,   inline: false },
+      { name: `💡 ${L.ability}`,           value: abilityLines || '—', inline: false },
+      { name: `🛡️ ${L.weakness}`,          value: weakRows || L.noWeak, inline: false },
     );
-
-  return embed;
 }
 
 // ── Build search-result embed ─────────────────────────────────────────────────
@@ -205,15 +206,15 @@ function buildEmbed(results, gameId, query, page, showStats) {
 }
 
 // ── Dropdown: select a Pokémon from the current page to see its detail ────────
-function buildDetailMenu(slice, gameId) {
+function buildDetailMenu(slice, gameId, lang, pub) {
   if (!slice.length) return null;
   const options = slice.map((p, i) => ({
     label: (p.name_zh || p.name_en || `#${i}`).slice(0, 100),
-    value: p.name_en || String(i),   // English name used as stable key
+    value: p.name_en || String(i),
   }));
   return new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
-      .setCustomId(`dex_detail|${gameId}`)
+      .setCustomId(`dex_detail|${gameId}|${lang}|${pub ? '1' : '0'}`)
       .setPlaceholder('🔎 查看詳細資料 / View Pokémon details')
       .addOptions(options),
   );
@@ -235,10 +236,10 @@ function makeNavRow(page, totalPages, cacheId) {
 }
 
 // ── Helper: build reply components for a page ─────────────────────────────────
-function pageComponents(slice, gameId, page, totalPages, cacheId) {
+function pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub) {
   const rows = [];
-  if (totalPages > 1)    rows.push(makeNavRow(page, totalPages, cacheId));
-  const menu = buildDetailMenu(slice, gameId);
+  if (totalPages > 1) rows.push(makeNavRow(page, totalPages, cacheId));
+  const menu = buildDetailMenu(slice, gameId, lang, pub);
   if (menu) rows.push(menu);
   return rows;
 }
@@ -262,12 +263,25 @@ module.exports = {
       .setRequired(true))
     .addBooleanOption(o => o
       .setName('show_stats')
-      .setDescription('顯示種族值 / Show base stats in results (default: off)')),
+      .setDescription('顯示種族值 / Show base stats in results (default: off)'))
+    .addStringOption(o => o
+      .setName('lang')
+      .setDescription('詳細頁語言（預設：繁體中文）/ Language for detail card')
+      .addChoices(
+        { name: '繁體中文', value: 'zh' },
+        { name: 'English',  value: 'en' },
+        { name: '日本語',   value: 'ja' },
+      ))
+    .addBooleanOption(o => o
+      .setName('public')
+      .setDescription('公開顯示詳細資料（預設：僅自己可見）/ Show detail card publicly')),
 
   async execute(interaction) {
     const gameId    = interaction.options.getString('game');
     const rawQuery  = interaction.options.getString('query');
     const showStats = interaction.options.getBoolean('show_stats') ?? false;
+    const lang      = interaction.options.getString('lang') ?? 'zh';
+    const pub       = interaction.options.getBoolean('public') ?? false;
 
     await interaction.deferReply();
 
@@ -289,12 +303,12 @@ module.exports = {
 
     const cacheId    = interaction.id;
     const totalPages = Math.ceil(results.length / PAGE_SIZE);
-    cacheStore(cacheId, { results, gameId, query, showStats });
+    cacheStore(cacheId, { results, gameId, query, showStats, lang, pub });
 
     const { embed, slice } = buildEmbed(results, gameId, query, 0, showStats);
     await interaction.editReply({
       embeds:     [embed],
-      components: pageComponents(slice, gameId, 0, totalPages, cacheId),
+      components: pageComponents(slice, gameId, 0, totalPages, cacheId, lang, pub),
     });
   },
 
@@ -309,24 +323,25 @@ module.exports = {
       return;
     }
 
-    const { results, gameId, query, showStats } = cached;
+    const { results, gameId, query, showStats, lang = 'zh', pub = false } = cached;
     const totalPages          = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
     const { embed, slice }    = buildEmbed(results, gameId, query, page, showStats);
     await interaction.update({
       embeds:     [embed],
-      components: pageComponents(slice, gameId, page, totalPages, cacheId),
+      components: pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub),
     });
   },
 
-  // ── dex_detail| select menu → ephemeral detail card ──────────────────────
+  // ── dex_detail| select menu → detail card ────────────────────────────────
   async handleSelectMenu(interaction) {
-    const gameId = interaction.customId.split('|')[1];
+    const parts  = interaction.customId.split('|');
+    const gameId = parts[1];
+    const lang   = parts[2] ?? 'zh';
+    const pub    = parts[3] === '1';
     const nameEn = interaction.values[0];
     const cfg    = GAME_CONFIGS[gameId];
     if (!cfg) { await interaction.reply({ content: '❌ 無效遊戲。', flags: 64 }); return; }
 
-    // Re-use the already-loaded DB from dexSearch (cached in memory after first /pokemon_search)
-    // searchPokemon with a direct name match is instant since the DB is already in RAM.
     const { results } = searchPokemon(nameEn, gameId);
     const poke = results.find(p => p.name_en === nameEn);
 
@@ -335,18 +350,18 @@ module.exports = {
       return;
     }
 
-    const embed = buildDetailEmbed(poke);
+    const embed = buildDetailEmbed(poke, lang);
     const s     = poke.stats ?? {};
     const bst   = Object.values(s).reduce((a, v) => a + (v || 0), 0);
+    const flags = pub ? undefined : 64;
 
     try {
       const imgBuf = await buildStatImage(s, bst);
       const file   = new AttachmentBuilder(imgBuf, { name: 'stats.png' });
       embed.setImage('attachment://stats.png');
-      await interaction.reply({ embeds: [embed], files: [file], flags: 64 });
+      await interaction.reply({ embeds: [embed], files: [file], flags });
     } catch {
-      // Image generation failed — fall back to text-only
-      await interaction.reply({ embeds: [embed], flags: 64 });
+      await interaction.reply({ embeds: [embed], flags });
     }
   },
 };
