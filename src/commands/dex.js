@@ -195,9 +195,13 @@ function buildDetailEmbed(poke, lang = 'zh') {
     .map(([label, arr]) => `**${label}** ${arr.map(t => typeEmoji(t.toLowerCase())).join('')}`)
     .join('  ');
 
+  const spriteId  = (poke.name_en || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const spriteUrl = `https://play.pokemonshowdown.com/sprites/home/${spriteId}.png`;
+
   return new EmbedBuilder()
     .setColor(COLOR)
     .setTitle(title)
+    .setThumbnail(spriteUrl)
     .addFields(
       { name: `${L.type}`,                  value: typeStr || '—', inline: false },
       { name: `⚔️ ${L.stats}  BST: ${bst}`, value: statLines,   inline: false },
