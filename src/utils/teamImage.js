@@ -205,6 +205,14 @@ const PS_FORM_NAMES = {
   // Terapagos (HOME: 1=Terastal, 2=Stellar)
   'dex-1024-01': 'terapagos-terastal',
   'dex-1024-02': 'terapagos-stellar',
+  // Ursaluna Blood Moon (HOME: 1=Blood Moon)
+  'dex-0901-01': 'ursaluna-bloodmoon',
+  // Basculegion (HOME: 1=Female) — female form has different look
+  'dex-0902-01': 'basculegion-f',
+  // Poltchageist (HOME: 1=Artisan)
+  'dex-1012-01': 'poltchageist-artisan',
+  // Sinistcha (HOME: 1=Masterpiece)
+  'dex-1013-01': 'sinistcha-masterpiece',
 };
 
 async function getPokeSprite(dexClass) {
