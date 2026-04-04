@@ -110,10 +110,9 @@ def parse_tm(table):
         cells = tr.find_all("td")
         if len(cells) < 2:
             continue
-        tm_raw   = cells[0].get_text(strip=True)
-        move_raw = cells[1].get_text(strip=True)
+        tm_raw    = cells[0].get_text(strip=True)
+        move_raw  = cells[1].get_text(strip=True)
         move_name = re.sub(r"[†‡*]+$", "", move_raw).strip()
-        # Pad TM number to 3 digits if it's numeric
         try:
             tm_num = str(int(tm_raw)).zfill(3)
         except ValueError:
@@ -122,10 +121,41 @@ def parse_tm(table):
     return moves
 
 
+def parse_move_names(table):
+    """
+    Parse a simple move-name table (egg moves, evolution moves, reminder moves).
+    Returns [str, ...] — just the move names, no level or TM info.
+    """
+    moves = []
+    tbody = table.find("tbody")
+    if not tbody:
+        return moves
+    for tr in tbody.find_all("tr"):
+        cells = tr.find_all("td")
+        if not cells:
+            continue
+        move_raw  = cells[0].get_text(strip=True)
+        move_name = re.sub(r"[†‡*]+$", "", move_raw).strip()
+        if move_name:
+            moves.append(move_name)
+    return moves
+
+
 def scrape_sv_moves(slug, session):
     """
-    Fetch the individual Pokémon page and extract SV level-up + TM moves.
-    Returns {"level_up_moves": [...], "tm_moves": [...]} or None on failure.
+    Fetch the individual Pokémon page and extract all SV move data.
+
+    Returns:
+      {
+        "level_up_moves":  [{"level": int, "move_en": str}, ...],
+          # level = 0  → learnt on evolution
+          # level = -1 → learnt by reminder (move reminder NPC)
+        "evolution_moves": [str, ...],   ← also merged into level_up as level=0
+        "reminder_moves":  [str, ...],   ← also merged into level_up as level=-1
+        "egg_moves":       [str, ...],
+        "tm_moves":        [{"tm": "001", "move_en": str}, ...],
+      }
+    or None on network failure.
     """
     url = f"{BASE_URL}/pokedex/{slug}"
     try:
@@ -137,43 +167,64 @@ def scrape_sv_moves(slug, session):
 
     soup = BeautifulSoup(r.text, "html.parser")
 
-    # The moves section is a .tabset-moves-game wrapper
+    empty = {
+        "level_up_moves":  [],
+        "evolution_moves": [],
+        "reminder_moves":  [],
+        "egg_moves":       [],
+        "tm_moves":        [],
+    }
+
     ts = soup.select_one("[class*='tabset-moves-game']")
     if not ts:
-        # No moves section at all
-        return {"level_up_moves": [], "tm_moves": []}
+        return empty
 
     tab_list   = ts.select_one(".sv-tabs-tab-list")
     panel_list = ts.select_one(".sv-tabs-panel-list")
     if not tab_list or not panel_list:
-        return {"level_up_moves": [], "tm_moves": []}
+        return empty
 
-    # Find the "Scarlet/Violet" game tab
-    tabs    = tab_list.find_all("a")
-    sv_idx  = next(
+    tabs   = tab_list.find_all("a")
+    sv_idx = next(
         (i for i, a in enumerate(tabs) if "Scarlet/Violet" in a.get_text()),
         None,
     )
     if sv_idx is None:
-        # Pokémon not in SV (shouldn't happen if slug came from SV game page)
-        return {"level_up_moves": [], "tm_moves": []}
+        return empty
 
     sv_href  = tabs[sv_idx].get("href", "").lstrip("#")
     sv_panel = panel_list.find(id=sv_href)
     if not sv_panel:
-        return {"level_up_moves": [], "tm_moves": []}
+        return empty
 
-    # Within the SV panel, find sections by h3 heading
-    result = {"level_up_moves": [], "tm_moves": []}
+    result = dict(empty)
 
     for h3 in sv_panel.find_all("h3"):
         heading = h3.get_text(strip=True).lower()
-        # Get the first <table> anywhere after this h3
         tbl = h3.find_next("table")
         if not tbl:
             continue
+
         if "level up" in heading:
             result["level_up_moves"] = parse_level_up(tbl)
+
+        elif "evolution" in heading:
+            evo_moves = parse_move_names(tbl)
+            result["evolution_moves"] = evo_moves
+            # Merge into level_up_moves as level=0 (same convention as PLZA)
+            for m in evo_moves:
+                result["level_up_moves"].append({"level": 0, "move_en": m})
+
+        elif "reminder" in heading:
+            reminder_moves = parse_move_names(tbl)
+            result["reminder_moves"] = reminder_moves
+            # Merge into level_up_moves as level=-1 (same convention as PLZA)
+            for m in reminder_moves:
+                result["level_up_moves"].append({"level": -1, "move_en": m})
+
+        elif "egg" in heading:
+            result["egg_moves"] = parse_move_names(tbl)
+
         elif "tm" in heading or "technical machine" in heading:
             result["tm_moves"] = parse_tm(tbl)
 
@@ -192,7 +243,13 @@ def main():
     if OUT_FILE.exists():
         with OUT_FILE.open(encoding="utf-8") as f:
             db = json.load(f)
-        print(f"Resuming — already have {len(db)} entries.")
+        # Re-scrape old entries that are missing the new fields (egg_moves etc.)
+        outdated = [k for k, v in db.items() if "egg_moves" not in v]
+        if outdated:
+            print(f"Found {len(outdated)} entries from old format — will re-scrape them.")
+            for k in outdated:
+                del db[k]
+        print(f"Resuming — {len(db)} entries already complete.")
     else:
         db = {}
 
@@ -212,9 +269,17 @@ def main():
         if data is None:
             print("FAILED — skipping")
         else:
-            lv_count = len(data["level_up_moves"])
-            tm_count = len(data["tm_moves"])
-            print(f"→ {lv_count} level-up, {tm_count} TM")
+            lv  = len(data["level_up_moves"])
+            tm  = len(data["tm_moves"])
+            egg = len(data["egg_moves"])
+            evo = len(data["evolution_moves"])
+            rem = len(data["reminder_moves"])
+            extras = []
+            if evo: extras.append(f"{evo} evo")
+            if rem: extras.append(f"{rem} reminder")
+            if egg: extras.append(f"{egg} egg")
+            extra_str = f"  [{', '.join(extras)}]" if extras else ""
+            print(f"→ {lv} level-up, {tm} TM{extra_str}")
             db[slug] = data
 
         # Save after every 10 Pokémon so progress isn't lost
@@ -237,6 +302,12 @@ def main():
     sample_tm = next((v for v in db.values() if v["tm_moves"]), None)
     if sample_tm:
         print("Sample TM entry:      ", json.dumps(sample_tm["tm_moves"][:3], ensure_ascii=False))
+    sample_egg = next((v for v in db.values() if v.get("egg_moves")), None)
+    if sample_egg:
+        print("Sample egg moves:     ", json.dumps(sample_egg["egg_moves"][:3], ensure_ascii=False))
+    sample_evo = next((v for v in db.values() if v.get("evolution_moves")), None)
+    if sample_evo:
+        print("Sample evo moves:     ", json.dumps(sample_evo["evolution_moves"][:3], ensure_ascii=False))
 
 
 if __name__ == "__main__":
