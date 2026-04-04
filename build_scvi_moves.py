@@ -329,16 +329,21 @@ def scrape_species(species_slug: str, session, forms: list) -> dict:
 
 # ── Egg move inheritance ──────────────────────────────────────────────────────
 
-def inherit_egg_moves(db: dict, scvi: dict):
+def inherit_moves(db: dict, scvi: dict):
     """
-    Propagate egg moves down evolution chains.
-    If Bulbasaur learns Ingrain as an egg move, Ivysaur and Venusaur inherit it.
+    Propagate egg moves AND TM moves down evolution chains.
+
+    If Bulbasaur learns Ingrain as an egg move, Ivysaur/Venusaur inherit it.
+    If Charmander can learn False Swipe via TM, Charmeleon/Charizard inherit it.
+
+    Level-up moves are NOT inherited (evolutions have their own level-up sets).
 
     Uses evolves_from_en_name from the SCVI db to walk the chain.
-    Runs multiple passes until no new moves are added (handles 3-stage chains).
+    Runs multiple passes until stable (handles 3-stage chains).
     """
-    print("\nInheriting egg moves down evolution chains...")
-    total_added = 0
+    print("\nInheriting moves down evolution chains...")
+    egg_added = 0
+    tm_added  = 0
 
     for _pass in range(5):  # max 5 passes (more than enough for any chain)
         added_this_pass = 0
@@ -347,19 +352,32 @@ def inherit_egg_moves(db: dict, scvi: dict):
             if not pre_evo or pre_evo not in db or name_en not in db:
                 continue
 
+            # ── Egg moves ────────────────────────────────────────────────────
             current_eggs = set(db[name_en]["egg_moves"])
             pre_eggs     = set(db[pre_evo]["egg_moves"])
-            new_moves    = pre_eggs - current_eggs
+            new_eggs     = pre_eggs - current_eggs
+            if new_eggs:
+                db[name_en]["egg_moves"] = sorted(current_eggs | new_eggs)
+                egg_added += len(new_eggs)
+                added_this_pass += len(new_eggs)
 
-            if new_moves:
-                db[name_en]["egg_moves"] = sorted(current_eggs | new_moves)
-                added_this_pass += len(new_moves)
+            # ── TM moves ──────────────────────────────────────────────────────
+            current_tm_names = {m["move_en"] for m in db[name_en]["tm_moves"]}
+            pre_tms          = db[pre_evo]["tm_moves"]
+            new_tms          = [m for m in pre_tms if m["move_en"] not in current_tm_names]
+            if new_tms:
+                db[name_en]["tm_moves"] = sorted(
+                    db[name_en]["tm_moves"] + new_tms,
+                    key=lambda m: m["tm"]
+                )
+                tm_added += len(new_tms)
+                added_this_pass += len(new_tms)
 
-        total_added += added_this_pass
         if added_this_pass == 0:
             break
 
-    print(f"  Added {total_added} inherited egg moves across all Pokémon.")
+    print(f"  Egg moves inherited: {egg_added}")
+    print(f"  TM moves inherited:  {tm_added}")
 
 
 # ── Validation ────────────────────────────────────────────────────────────────
@@ -465,8 +483,8 @@ def main():
 
         time.sleep(DELAY)
 
-    # Inherit egg moves down evolution chains
-    inherit_egg_moves(db, scvi)
+    # Inherit egg + TM moves down evolution chains
+    inherit_moves(db, scvi)
 
     # Final save
     with OUT_FILE.open("w", encoding="utf-8") as f:
