@@ -16,6 +16,7 @@ const pokemonSearchCommand = require('./commands/dex');
 const teamsCommand      = require('./commands/teams');
 const teamSearchCommand = require('./commands/team_search');
 const shinyCommand      = require('./commands/shiny');
+const searchMiscCommand = require('./commands/search_misc');
 
 if (!process.env.DISCORD_TOKEN) throw new Error('DISCORD_TOKEN is not set in .env');
 if (!process.env.CLIENT_ID)     throw new Error('CLIENT_ID is not set in .env');
@@ -35,6 +36,7 @@ const commands = [
   teamsCommand.data.toJSON(),
   teamSearchCommand.data.toJSON(),
   shinyCommand.data.toJSON(),
+  searchMiscCommand.data.toJSON(),
 ];
 const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 

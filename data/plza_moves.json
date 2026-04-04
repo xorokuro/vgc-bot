@@ -1,0 +1,6122 @@
+{
+    "吸取": {
+        "name_zh": "吸取",
+        "name_en": "Absorb",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "攻擊對手並吸取養分。回復給予對手傷害的一半HP。"
+    },
+    "absorb": {
+        "name_zh": "吸取",
+        "name_en": "Absorb",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "攻擊對手並吸取養分。回復給予對手傷害的一半HP。"
+    },
+    "溶化": {
+        "name_zh": "溶化",
+        "name_en": "Acid Armor",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "改變細胞排列讓身體液體化，在一段時間內提升防禦。"
+    },
+    "acid-armor": {
+        "name_zh": "溶化",
+        "name_en": "Acid Armor",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "改變細胞排列讓身體液體化，在一段時間內提升防禦。"
+    },
+    "酸液炸彈": {
+        "name_zh": "酸液炸彈",
+        "name_en": "Acid Spray",
+        "type": "poison",
+        "category": "special",
+        "cooldown": "7",
+        "power": "40",
+        "effect": "噴出強酸液體攻擊對手。也會在一段時間內降低對手的特防。"
+    },
+    "acid-spray": {
+        "name_zh": "酸液炸彈",
+        "name_en": "Acid Spray",
+        "type": "poison",
+        "category": "special",
+        "cooldown": "7",
+        "power": "40",
+        "effect": "噴出強酸液體攻擊對手。也會在一段時間內降低對手的特防。"
+    },
+    "燕返": {
+        "name_zh": "燕返",
+        "name_en": "Aerial Ace",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "60",
+        "effect": "以敏捷的動作擾亂對手後進行斬擊。"
+    },
+    "aerial-ace": {
+        "name_zh": "燕返",
+        "name_en": "Aerial Ace",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "60",
+        "effect": "以敏捷的動作擾亂對手後進行斬擊。"
+    },
+    "高速移動": {
+        "name_zh": "高速移動",
+        "name_en": "Agility",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "放鬆身體肌肉讓身體變輕，在短時間內提升移動速度。"
+    },
+    "agility": {
+        "name_zh": "高速移動",
+        "name_en": "Agility",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "放鬆身體肌肉讓身體變輕，在短時間內提升移動速度。"
+    },
+    "空氣斬": {
+        "name_zh": "空氣斬",
+        "name_en": "Air Slash",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "用連天空也能劈開的空氣利刃攻擊。有時會讓對手畏縮。"
+    },
+    "air-slash": {
+        "name_zh": "空氣斬",
+        "name_en": "Air Slash",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "用連天空也能劈開的空氣利刃攻擊。有時會讓對手畏縮。"
+    },
+    "瞬間失憶": {
+        "name_zh": "瞬間失憶",
+        "name_en": "Amnesia",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "瞬間放空大腦忘卻煩惱，在一段時間內提升特防。"
+    },
+    "amnesia": {
+        "name_zh": "瞬間失憶",
+        "name_en": "Amnesia",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "瞬間放空大腦忘卻煩惱，在一段時間內提升特防。"
+    },
+    "原始之力": {
+        "name_zh": "原始之力",
+        "name_en": "Ancient Power",
+        "type": "rock",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "用原始的力量攻擊。有時會同時提升自己的所有能力。"
+    },
+    "ancient-power": {
+        "name_zh": "原始之力",
+        "name_en": "Ancient Power",
+        "type": "rock",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "用原始的力量攻擊。有時會同時提升自己的所有能力。"
+    },
+    "水流噴射": {
+        "name_zh": "水流噴射",
+        "name_en": "Aqua Jet",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "以迅雷不及掩耳的速度向對手衝撞攻擊。"
+    },
+    "aqua-jet": {
+        "name_zh": "水流噴射",
+        "name_en": "Aqua Jet",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "以迅雷不及掩耳的速度向對手衝撞攻擊。"
+    },
+    "水流環": {
+        "name_zh": "水流環",
+        "name_en": "Aqua Ring",
+        "type": "water",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "在自己身上覆蓋水幕，緩緩回復HP。"
+    },
+    "aqua-ring": {
+        "name_zh": "水流環",
+        "name_en": "Aqua Ring",
+        "type": "water",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "在自己身上覆蓋水幕，緩緩回復HP。"
+    },
+    "鎧農炮": {
+        "name_zh": "鎧農炮",
+        "name_en": "Armor Cannon",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "120",
+        "effect": "將鎧甲如燃燒的砲彈般擊發攻擊。使用後會在短時間內降低自己的防禦和特防。"
+    },
+    "armor-cannon": {
+        "name_zh": "鎧農炮",
+        "name_en": "Armor Cannon",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "120",
+        "effect": "將鎧甲如燃燒的砲彈般擊發攻擊。使用後會在短時間內降低自己的防禦和特防。"
+    },
+    "波導彈": {
+        "name_zh": "波導彈",
+        "name_en": "Aura Sphere",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "從體內放射出波導的力量攻擊對手。"
+    },
+    "aura-sphere": {
+        "name_zh": "波導彈",
+        "name_en": "Aura Sphere",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "從體內放射出波導的力量攻擊對手。"
+    },
+    "氣場輪": {
+        "name_zh": "氣場輪",
+        "name_en": "Aura Wheel",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "110",
+        "effect": "產生電能攻擊，在短時間內提升移動速度與攻擊。招式的屬性會隨莫魯貝可的樣子而改變。"
+    },
+    "aura-wheel": {
+        "name_zh": "氣場輪",
+        "name_en": "Aura Wheel",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "110",
+        "effect": "產生電能攻擊，在短時間內提升移動速度與攻擊。招式的屬性會隨莫魯貝可的樣子而改變。"
+    },
+    "毒千針": {
+        "name_zh": "毒千針",
+        "name_en": "Barb Barrage",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "60",
+        "effect": "發射無數帶毒的毒針攻擊，有時會讓對手陷入中毒狀態。若對手已陷入中毒狀態，威力會變成2倍。"
+    },
+    "barb-barrage": {
+        "name_zh": "毒千針",
+        "name_en": "Barb Barrage",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "60",
+        "effect": "發射無數帶毒的毒針攻擊，有時會讓對手陷入中毒狀態。若對手已陷入中毒狀態，威力會變成2倍。"
+    },
+    "咬住": {
+        "name_zh": "咬住",
+        "name_en": "Bite",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "用銳利的牙齒咬住對手攻擊。有時會讓對手畏縮。"
+    },
+    "bite": {
+        "name_zh": "咬住",
+        "name_en": "Bite",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "用銳利的牙齒咬住對手攻擊。有時會讓對手畏縮。"
+    },
+    "悔念劍": {
+        "name_zh": "悔念劍",
+        "name_en": "Bitter Blade",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "90",
+        "effect": "將對塵世的怨念集中於劍尖斬擊。回復給予對手傷害的一半HP。"
+    },
+    "bitter-blade": {
+        "name_zh": "悔念劍",
+        "name_en": "Bitter Blade",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "90",
+        "effect": "將對塵世的怨念集中於劍尖斬擊。回復給予對手傷害的一半HP。"
+    },
+    "爆炸烈焰": {
+        "name_zh": "爆炸烈焰",
+        "name_en": "Blast Burn",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "引發爆炸烈焰燒盡對手。因反作用力，自己在短時間內將無法動彈。"
+    },
+    "blast-burn": {
+        "name_zh": "爆炸烈焰",
+        "name_en": "Blast Burn",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "引發爆炸烈焰燒盡對手。因反作用力，自己在短時間內將無法動彈。"
+    },
+    "火焰踢": {
+        "name_zh": "火焰踢",
+        "name_en": "Blaze Kick",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "85",
+        "effect": "使出容易擊中要害的踢擊。有時會讓對手陷入灼傷狀態。"
+    },
+    "blaze-kick": {
+        "name_zh": "火焰踢",
+        "name_en": "Blaze Kick",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "85",
+        "effect": "使出容易擊中要害的踢擊。有時會讓對手陷入灼傷狀態。"
+    },
+    "暴風雪": {
+        "name_zh": "暴風雪",
+        "name_en": "Blizzard",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "12",
+        "power": "110",
+        "effect": "將猛烈的暴風雪刮向對手進行攻擊。有時會讓對手陷入冰凍狀態。"
+    },
+    "blizzard": {
+        "name_zh": "暴風雪",
+        "name_en": "Blizzard",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "12",
+        "power": "110",
+        "effect": "將猛烈的暴風雪刮向對手進行攻擊。有時會讓對手陷入冰凍狀態。"
+    },
+    "泰山壓頂": {
+        "name_zh": "泰山壓頂",
+        "name_en": "Body Slam",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "85",
+        "effect": "用整個身體壓住對手進行攻擊。有時會讓對手陷入麻痺狀態。"
+    },
+    "body-slam": {
+        "name_zh": "泰山壓頂",
+        "name_en": "Body Slam",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "85",
+        "effect": "用整個身體壓住對手進行攻擊。有時會讓對手陷入麻痺狀態。"
+    },
+    "骨頭回力鏢": {
+        "name_zh": "骨頭回力鏢",
+        "name_en": "Bonemerang",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "55",
+        "effect": "投擲手中的骨頭進行攻擊。連續2次給予傷害。"
+    },
+    "bonemerang": {
+        "name_zh": "骨頭回力鏢",
+        "name_en": "Bonemerang",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "55",
+        "effect": "投擲手中的骨頭進行攻擊。連續2次給予傷害。"
+    },
+    "爆音波": {
+        "name_zh": "爆音波",
+        "name_en": "Boomburst",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "8",
+        "power": "140",
+        "effect": "發出驚天動地的爆炸聲，以此破壞力攻擊周圍所有的寶可夢。"
+    },
+    "boomburst": {
+        "name_zh": "爆音波",
+        "name_en": "Boomburst",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "8",
+        "power": "140",
+        "effect": "發出驚天動地的爆炸聲，以此破壞力攻擊周圍所有的寶可夢。"
+    },
+    "彈跳": {
+        "name_zh": "彈跳",
+        "name_en": "Bounce",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "85",
+        "effect": "高高跳起並在短時間內消失於空中，之後落下攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "bounce": {
+        "name_zh": "彈跳",
+        "name_en": "Bounce",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "85",
+        "effect": "高高跳起並在短時間內消失於空中，之後落下攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "勇鳥猛攻": {
+        "name_zh": "勇鳥猛攻",
+        "name_en": "Brave Bird",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "收攏翅膀，從低空向對手突擊。自己也會受到一些傷害。"
+    },
+    "brave-bird": {
+        "name_zh": "勇鳥猛攻",
+        "name_en": "Brave Bird",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "收攏翅膀，從低空向對手突擊。自己也會受到一些傷害。"
+    },
+    "廣域破壞": {
+        "name_zh": "廣域破壞",
+        "name_en": "Breaking Swipe",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "60",
+        "effect": "揮舞強韌的尾巴攻擊。在短時間內降低對手的攻擊。"
+    },
+    "breaking-swipe": {
+        "name_zh": "廣域破壞",
+        "name_en": "Breaking Swipe",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "60",
+        "effect": "揮舞強韌的尾巴攻擊。在短時間內降低對手的攻擊。"
+    },
+    "劈瓦": {
+        "name_zh": "劈瓦",
+        "name_en": "Brick Break",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "施展手刀劈擊。還可以破壞光牆和反射壁等防護罩。"
+    },
+    "brick-break": {
+        "name_zh": "劈瓦",
+        "name_en": "Brick Break",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "施展手刀劈擊。還可以破壞光牆和反射壁等防護罩。"
+    },
+    "狂舞揮打": {
+        "name_zh": "狂舞揮打",
+        "name_en": "Brutal Swing",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "60",
+        "effect": "猛烈揮舞身體，攻擊周圍所有的寶可夢。"
+    },
+    "brutal-swing": {
+        "name_zh": "狂舞揮打",
+        "name_en": "Brutal Swing",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "60",
+        "effect": "猛烈揮舞身體，攻擊周圍所有的寶可夢。"
+    },
+    "泡沫光線": {
+        "name_zh": "泡沫光線",
+        "name_en": "Bubble Beam",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "猛烈地射出泡沫進行攻擊。有時會讓對手行動變得遲緩。"
+    },
+    "bubble-beam": {
+        "name_zh": "泡沫光線",
+        "name_en": "Bubble Beam",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "猛烈地射出泡沫進行攻擊。有時會讓對手行動變得遲緩。"
+    },
+    "蟲鳴": {
+        "name_zh": "蟲鳴",
+        "name_en": "Bug Buzz",
+        "type": "bug",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "藉由振動發出音波進行攻擊。有時會降低對手的特防。"
+    },
+    "bug-buzz": {
+        "name_zh": "蟲鳴",
+        "name_en": "Bug Buzz",
+        "type": "bug",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "藉由振動發出音波進行攻擊。有時會降低對手的特防。"
+    },
+    "健美": {
+        "name_zh": "健美",
+        "name_en": "Bulk Up",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "18",
+        "power": "--",
+        "effect": "透過使勁全身肌肉鼓起身體，在短時間內提升攻擊和防禦。"
+    },
+    "bulk-up": {
+        "name_zh": "健美",
+        "name_en": "Bulk Up",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "18",
+        "power": "--",
+        "effect": "透過使勁全身肌肉鼓起身體，在短時間內提升攻擊和防禦。"
+    },
+    "重踏": {
+        "name_zh": "重踏",
+        "name_en": "Bulldoze",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "踩踏地面攻擊對手。在短時間內讓對手行動變得遲緩。"
+    },
+    "bulldoze": {
+        "name_zh": "重踏",
+        "name_en": "Bulldoze",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "踩踏地面攻擊對手。在短時間內讓對手行動變得遲緩。"
+    },
+    "子彈拳": {
+        "name_zh": "子彈拳",
+        "name_en": "Bullet Punch",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "使出如子彈般快速而堅硬的拳頭進行攻擊。"
+    },
+    "bullet-punch": {
+        "name_zh": "子彈拳",
+        "name_en": "Bullet Punch",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "使出如子彈般快速而堅硬的拳頭進行攻擊。"
+    },
+    "種子機關槍": {
+        "name_zh": "種子機關槍",
+        "name_en": "Bullet Seed",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "15",
+        "effect": "像機關槍一樣，連續射出5顆種子進行攻擊。"
+    },
+    "bullet-seed": {
+        "name_zh": "種子機關槍",
+        "name_en": "Bullet Seed",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "15",
+        "effect": "像機關槍一樣，連續射出5顆種子進行攻擊。"
+    },
+    "冥想": {
+        "name_zh": "冥想",
+        "name_en": "Calm Mind",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "18",
+        "power": "--",
+        "effect": "透過集中精神平復心情，在短時間內提升特攻和特防。"
+    },
+    "calm-mind": {
+        "name_zh": "冥想",
+        "name_en": "Calm Mind",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "18",
+        "power": "--",
+        "effect": "透過集中精神平復心情，在短時間內提升特攻和特防。"
+    },
+    "充電": {
+        "name_zh": "充電",
+        "name_en": "Charge",
+        "type": "electric",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "蓄力讓下一次使用的電屬性招式威力上升。同時在短時間內提升自己的特防。"
+    },
+    "charge": {
+        "name_zh": "充電",
+        "name_en": "Charge",
+        "type": "electric",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "蓄力讓下一次使用的電屬性招式威力上升。同時在短時間內提升自己的特防。"
+    },
+    "充電光束": {
+        "name_zh": "充電光束",
+        "name_en": "Charge Beam",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "發射電流攻擊對手。有時會利用殘留的電流提升特攻。"
+    },
+    "charge-beam": {
+        "name_zh": "充電光束",
+        "name_en": "Charge Beam",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "發射電流攻擊對手。有時會利用殘留的電流提升特攻。"
+    },
+    "撒嬌": {
+        "name_zh": "撒嬌",
+        "name_en": "Charm",
+        "type": "fairy",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "裝得可愛讓對手大意，在一段時間內降低對手的攻擊。"
+    },
+    "charm": {
+        "name_zh": "撒嬌",
+        "name_en": "Charm",
+        "type": "fairy",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "裝得可愛讓對手大意，在一段時間內降低對手的攻擊。"
+    },
+    "潑冷水": {
+        "name_zh": "潑冷水",
+        "name_en": "Chilling Water",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "潑灑冷到會讓人失去活力的水攻擊對手。在短時間內降低對手的攻擊。"
+    },
+    "chilling-water": {
+        "name_zh": "潑冷水",
+        "name_en": "Chilling Water",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "潑灑冷到會讓人失去活力的水攻擊對手。在短時間內降低對手的攻擊。"
+    },
+    "巴投": {
+        "name_zh": "巴投",
+        "name_en": "Circle Throw",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "巴投對手並將其摔飛出去。有時會降低對手的防禦。"
+    },
+    "circle-throw": {
+        "name_zh": "巴投",
+        "name_en": "Circle Throw",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "巴投對手並將其摔飛出去。有時會降低對手的防禦。"
+    },
+    "近身戰": {
+        "name_zh": "近身戰",
+        "name_en": "Close Combat",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "放棄守護，向對手懷裡突擊。使用後會在短時間內降低自己的防禦和特防。"
+    },
+    "close-combat": {
+        "name_zh": "近身戰",
+        "name_en": "Close Combat",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "放棄守護，向對手懷裡突擊。使用後會在短時間內降低自己的防禦和特防。"
+    },
+    "連續拳": {
+        "name_zh": "連續拳",
+        "name_en": "Comet Punch",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "30",
+        "effect": "連續使出5次拳擊攻擊對手。"
+    },
+    "comet-punch": {
+        "name_zh": "連續拳",
+        "name_en": "Comet Punch",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "30",
+        "effect": "連續使出5次拳擊攻擊對手。"
+    },
+    "奇異之光": {
+        "name_zh": "奇異之光",
+        "name_en": "Confuse Ray",
+        "type": "ghost",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "照射怪異的光線，讓對手陷入混亂狀態。"
+    },
+    "confuse-ray": {
+        "name_zh": "奇異之光",
+        "name_en": "Confuse Ray",
+        "type": "ghost",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "照射怪異的光線，讓對手陷入混亂狀態。"
+    },
+    "念力": {
+        "name_zh": "念力",
+        "name_en": "Confusion",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "用微弱的念力攻擊對手。有時會讓對手陷入混亂狀態。"
+    },
+    "confusion": {
+        "name_zh": "念力",
+        "name_en": "Confusion",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "用微弱的念力攻擊對手。有時會讓對手陷入混亂狀態。"
+    },
+    "紋理": {
+        "name_zh": "紋理",
+        "name_en": "Conversion",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "將自己的屬性變得和學會的招式之中，排在第一個的招式屬性相同。"
+    },
+    "conversion": {
+        "name_zh": "紋理",
+        "name_en": "Conversion",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "將自己的屬性變得和學會的招式之中，排在第一個的招式屬性相同。"
+    },
+    "紋理２": {
+        "name_zh": "紋理２",
+        "name_en": "Conversion 2",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "改變自己的屬性，讓自己對最後受到的招式屬性產生抗性。"
+    },
+    "conversion-2": {
+        "name_zh": "紋理２",
+        "name_en": "Conversion 2",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "改變自己的屬性，讓自己對最後受到的招式屬性產生抗性。"
+    },
+    "核心懲罰者": {
+        "name_zh": "核心懲罰者",
+        "name_en": "Core Enforcer",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "9",
+        "power": "100",
+        "effect": "攻擊對手。發射會將大地燒成Ｚ字型的光束進行攻擊。"
+    },
+    "core-enforcer": {
+        "name_zh": "核心懲罰者",
+        "name_en": "Core Enforcer",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "9",
+        "power": "100",
+        "effect": "攻擊對手。發射會將大地燒成Ｚ字型的光束進行攻擊。"
+    },
+    "棉花防守": {
+        "name_zh": "棉花防守",
+        "name_en": "Cotton Guard",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用軟綿綿的絨毛包裹身體，在較長時間內提高自己的防禦。"
+    },
+    "cotton-guard": {
+        "name_zh": "棉花防守",
+        "name_en": "Cotton Guard",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用軟綿綿的絨毛包裹身體，在較長時間內提高自己的防禦。"
+    },
+    "咬碎": {
+        "name_zh": "咬碎",
+        "name_en": "Crunch",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "用利牙咬碎對手進行攻擊。有時會降低對手的防禦。"
+    },
+    "crunch": {
+        "name_zh": "咬碎",
+        "name_en": "Crunch",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "用利牙咬碎對手進行攻擊。有時會降低對手的防禦。"
+    },
+    "詛咒": {
+        "name_zh": "詛咒",
+        "name_en": "Curse",
+        "type": "ghost",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "雖然會短暫降低行動順序，但會提高進攻力和防禦。幽靈屬性寶可夢使用的話，效果會改變。"
+    },
+    "curse": {
+        "name_zh": "詛咒",
+        "name_en": "Curse",
+        "type": "ghost",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "雖然會短暫降低行動順序，但會提高進攻力和防禦。幽靈屬性寶可夢使用的話，效果會改變。"
+    },
+    "惡之波動": {
+        "name_zh": "惡之波動",
+        "name_en": "Dark Pulse",
+        "type": "dark",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "從體內發出充滿惡意的恐怖氣場進行攻擊。有時會使對手畏縮。"
+    },
+    "dark-pulse": {
+        "name_zh": "惡之波動",
+        "name_en": "Dark Pulse",
+        "type": "dark",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "從體內發出充滿惡意的恐怖氣場進行攻擊。有時會使對手畏縮。"
+    },
+    "暗黑洞": {
+        "name_zh": "暗黑洞",
+        "name_en": "Dark Void",
+        "type": "dark",
+        "category": "special",
+        "cooldown": "12",
+        "power": "60",
+        "effect": "讓對手陷入瞌睡狀態。給予瞌睡狀態的對手巨大傷害，並回復給予傷害的一半ＨＰ。"
+    },
+    "dark-void": {
+        "name_zh": "暗黑洞",
+        "name_en": "Dark Void",
+        "type": "dark",
+        "category": "special",
+        "cooldown": "12",
+        "power": "60",
+        "effect": "讓對手陷入瞌睡狀態。給予瞌睡狀態的對手巨大傷害，並回復給予傷害的一半ＨＰ。"
+    },
+    "魔法閃耀": {
+        "name_zh": "魔法閃耀",
+        "name_en": "Dazzling Gleam",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "30",
+        "power": "80",
+        "effect": "發出強光攻擊對手。"
+    },
+    "dazzling-gleam": {
+        "name_zh": "魔法閃耀",
+        "name_en": "Dazzling Gleam",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "30",
+        "power": "80",
+        "effect": "發出強光攻擊對手。"
+    },
+    "看穿": {
+        "name_zh": "看穿",
+        "name_en": "Detect",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "13",
+        "power": "--",
+        "effect": "採取守勢，閃避對手的攻擊。"
+    },
+    "detect": {
+        "name_zh": "看穿",
+        "name_en": "Detect",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "13",
+        "power": "--",
+        "effect": "採取守勢，閃避對手的攻擊。"
+    },
+    "鑽石風暴": {
+        "name_zh": "鑽石風暴",
+        "name_en": "Diamond Storm",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "100",
+        "effect": "捲起鑽石風暴攻擊對手。有時會大幅提高自己的防禦。"
+    },
+    "diamond-storm": {
+        "name_zh": "鑽石風暴",
+        "name_en": "Diamond Storm",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "100",
+        "effect": "捲起鑽石風暴攻擊對手。有時會大幅提高自己的防禦。"
+    },
+    "挖洞": {
+        "name_zh": "挖洞",
+        "name_en": "Dig",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "80",
+        "effect": "潛入地底後攻擊對手。"
+    },
+    "dig": {
+        "name_zh": "挖洞",
+        "name_en": "Dig",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "80",
+        "effect": "潛入地底後攻擊對手。"
+    },
+    "魅惑之聲": {
+        "name_zh": "魅惑之聲",
+        "name_en": "Disarming Voice",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "9",
+        "power": "40",
+        "effect": "發出迷人的叫聲，給予對手精神上的傷害。"
+    },
+    "disarming-voice": {
+        "name_zh": "魅惑之聲",
+        "name_en": "Disarming Voice",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "9",
+        "power": "40",
+        "effect": "發出迷人的叫聲，給予對手精神上的傷害。"
+    },
+    "放電": {
+        "name_zh": "放電",
+        "name_en": "Discharge",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "釋放電力攻擊周圍。有時會讓對手陷入麻痺狀態。"
+    },
+    "discharge": {
+        "name_zh": "放電",
+        "name_en": "Discharge",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "釋放電力攻擊周圍。有時會讓對手陷入麻痺狀態。"
+    },
+    "二連擊": {
+        "name_zh": "二連擊",
+        "name_en": "Double Hit",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "使用尾巴等部位拍打對手，連續２次給予傷害。"
+    },
+    "double-hit": {
+        "name_zh": "二連擊",
+        "name_en": "Double Hit",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "使用尾巴等部位拍打對手，連續２次給予傷害。"
+    },
+    "鋼拳雙擊": {
+        "name_zh": "鋼拳雙擊",
+        "name_en": "Double Iron Bash",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "60",
+        "effect": "透過旋轉胸口的螺帽，揮舞手臂連續２次給予傷害。有時會使對手畏縮。"
+    },
+    "double-iron-bash": {
+        "name_zh": "鋼拳雙擊",
+        "name_en": "Double Iron Bash",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "60",
+        "effect": "透過旋轉胸口的螺帽，揮舞手臂連續２次給予傷害。有時會使對手畏縮。"
+    },
+    "影子分身": {
+        "name_zh": "影子分身",
+        "name_en": "Double Team",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "透過快速移動製造分身，讓對手的攻擊難以擊中。"
+    },
+    "double-team": {
+        "name_zh": "影子分身",
+        "name_en": "Double Team",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "透過快速移動製造分身，讓對手的攻擊難以擊中。"
+    },
+    "捨身衝撞": {
+        "name_zh": "捨身衝撞",
+        "name_en": "Double-Edge",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "拚命地猛撞對手進行攻擊。自己也會受到傷害。"
+    },
+    "double-edge": {
+        "name_zh": "捨身衝撞",
+        "name_en": "Double-Edge",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "拚命地猛撞對手進行攻擊。自己也會受到傷害。"
+    },
+    "流星群": {
+        "name_zh": "流星群",
+        "name_en": "Draco Meteor",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "10",
+        "power": "130",
+        "effect": "從天空中降下隕石攻擊對手。使用後，自己的特攻會持續一段時間下降。"
+    },
+    "draco-meteor": {
+        "name_zh": "流星群",
+        "name_en": "Draco Meteor",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "10",
+        "power": "130",
+        "effect": "從天空中降下隕石攻擊對手。使用後，自己的特攻會持續一段時間下降。"
+    },
+    "畫龍點睛": {
+        "name_zh": "畫龍點睛",
+        "name_en": "Dragon Ascent",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "16",
+        "power": "120",
+        "effect": "從高空急速下降攻擊對手。自己的防禦和特防會短暫下降。"
+    },
+    "dragon-ascent": {
+        "name_zh": "畫龍點睛",
+        "name_en": "Dragon Ascent",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "16",
+        "power": "120",
+        "effect": "從高空急速下降攻擊對手。自己的防禦和特防會短暫下降。"
+    },
+    "龍息": {
+        "name_zh": "龍息",
+        "name_en": "Dragon Breath",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "吐出強烈的氣息攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "dragon-breath": {
+        "name_zh": "龍息",
+        "name_en": "Dragon Breath",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "吐出強烈的氣息攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "龍爪": {
+        "name_zh": "龍爪",
+        "name_en": "Dragon Claw",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "用尖銳的巨爪劈開對手進行攻擊。"
+    },
+    "dragon-claw": {
+        "name_zh": "龍爪",
+        "name_en": "Dragon Claw",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "用尖銳的巨爪劈開對手進行攻擊。"
+    },
+    "龍之波動": {
+        "name_zh": "龍之波動",
+        "name_en": "Dragon Pulse",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "8",
+        "power": "85",
+        "effect": "從大大的口中釋放衝擊波攻擊對手。"
+    },
+    "dragon-pulse": {
+        "name_zh": "龍之波動",
+        "name_en": "Dragon Pulse",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "8",
+        "power": "85",
+        "effect": "從大大的口中釋放衝擊波攻擊對手。"
+    },
+    "龍之俯衝": {
+        "name_zh": "龍之俯衝",
+        "name_en": "Dragon Rush",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "100",
+        "effect": "釋放恐怖的殺氣，同時撞擊對手。有時會使對手畏縮。"
+    },
+    "dragon-rush": {
+        "name_zh": "龍之俯衝",
+        "name_en": "Dragon Rush",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "100",
+        "effect": "釋放恐怖的殺氣，同時撞擊對手。有時會使對手畏縮。"
+    },
+    "吸取拳": {
+        "name_zh": "吸取拳",
+        "name_en": "Drain Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "攻擊對手。可以回復給予對手傷害的一半ＨＰ。"
+    },
+    "drain-punch": {
+        "name_zh": "吸取拳",
+        "name_en": "Drain Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "攻擊對手。可以回復給予對手傷害的一半ＨＰ。"
+    },
+    "吸取之吻": {
+        "name_zh": "吸取之吻",
+        "name_en": "Draining Kiss",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "10",
+        "power": "50",
+        "effect": "親吻對手進行攻擊。可以回復給予對手傷害的一半ＨＰ。"
+    },
+    "draining-kiss": {
+        "name_zh": "吸取之吻",
+        "name_en": "Draining Kiss",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "10",
+        "power": "50",
+        "effect": "親吻對手進行攻擊。可以回復給予對手傷害的一半ＨＰ。"
+    },
+    "食夢": {
+        "name_zh": "食夢",
+        "name_en": "Dream Eater",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "7",
+        "power": "100",
+        "effect": "吃掉瞌睡狀態對手的夢進行攻擊。可以回復給予對手傷害的一半ＨＰ。"
+    },
+    "dream-eater": {
+        "name_zh": "食夢",
+        "name_en": "Dream Eater",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "7",
+        "power": "100",
+        "effect": "吃掉瞌睡狀態對手的夢進行攻擊。可以回復給予對手傷害的一半ＨＰ。"
+    },
+    "直衝鑽": {
+        "name_zh": "直衝鑽",
+        "name_en": "Drill Run",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "像鑽頭一樣旋轉身體撞擊對手。容易擊中要害。"
+    },
+    "drill-run": {
+        "name_zh": "直衝鑽",
+        "name_en": "Drill Run",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "像鑽頭一樣旋轉身體撞擊對手。容易擊中要害。"
+    },
+    "二連劈": {
+        "name_zh": "二連劈",
+        "name_en": "Dual Chop",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "45",
+        "effect": "驅使身體堅硬的部位，連續２次給予傷害。"
+    },
+    "dual-chop": {
+        "name_zh": "二連劈",
+        "name_en": "Dual Chop",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "45",
+        "effect": "驅使身體堅硬的部位，連續２次給予傷害。"
+    },
+    "雙翼": {
+        "name_zh": "雙翼",
+        "name_en": "Dual Wingbeat",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "45",
+        "effect": "用翅膀撞擊對手，連續２次給予傷害。"
+    },
+    "dual-wingbeat": {
+        "name_zh": "雙翼",
+        "name_en": "Dual Wingbeat",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "45",
+        "effect": "用翅膀撞擊對手，連續２次給予傷害。"
+    },
+    "爆裂拳": {
+        "name_zh": "爆裂拳",
+        "name_en": "Dynamic Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "100",
+        "effect": "集中全身力量毆打對手。會讓對手陷入混亂狀態。"
+    },
+    "dynamic-punch": {
+        "name_zh": "爆裂拳",
+        "name_en": "Dynamic Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "100",
+        "effect": "集中全身力量毆打對手。會讓對手陷入混亂狀態。"
+    },
+    "大地之力": {
+        "name_zh": "大地之力",
+        "name_en": "Earth Power",
+        "type": "ground",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "利用大地的力量攻擊對手。有時會降低對手的特防。"
+    },
+    "earth-power": {
+        "name_zh": "大地之力",
+        "name_en": "Earth Power",
+        "type": "ground",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "利用大地的力量攻擊對手。有時會降低對手的特防。"
+    },
+    "地震": {
+        "name_zh": "地震",
+        "name_en": "Earthquake",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "引發地震攻擊周圍。"
+    },
+    "earthquake": {
+        "name_zh": "地震",
+        "name_en": "Earthquake",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "引發地震攻擊周圍。"
+    },
+    "怪異電波": {
+        "name_zh": "怪異電波",
+        "name_en": "Eerie Impulse",
+        "type": "electric",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "從體內發出怪異的電波，在一段時間內降低對手的特攻。"
+    },
+    "eerie-impulse": {
+        "name_zh": "怪異電波",
+        "name_en": "Eerie Impulse",
+        "type": "electric",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "從體內發出怪異的電波，在一段時間內降低對手的特攻。"
+    },
+    "電網": {
+        "name_zh": "電網",
+        "name_en": "Electroweb",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "7",
+        "power": "55",
+        "effect": "投擲電網攻擊對手。會短暫降低對手的行動順序。"
+    },
+    "electroweb": {
+        "name_zh": "電網",
+        "name_en": "Electroweb",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "7",
+        "power": "55",
+        "effect": "投擲電網攻擊對手。會短暫降低對手的行動順序。"
+    },
+    "火花": {
+        "name_zh": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "發射小小的火焰攻擊對手。有時會讓對手陷入灼傷狀態。"
+    },
+    "ember": {
+        "name_zh": "火花",
+        "name_en": "Ember",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "發射小小的火焰攻擊對手。有時會讓對手陷入灼傷狀態。"
+    },
+    "挺住": {
+        "name_zh": "挺住",
+        "name_en": "Endure",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "採取能夠承受攻擊的架勢。即使受到攻擊，ＨＰ也必定會留下１。"
+    },
+    "endure": {
+        "name_zh": "挺住",
+        "name_en": "Endure",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "採取能夠承受攻擊的架勢。即使受到攻擊，ＨＰ也必定會留下１。"
+    },
+    "能量球": {
+        "name_zh": "能量球",
+        "name_en": "Energy Ball",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "借助大自然的力量攻擊對手。有時會降低對手的特防。"
+    },
+    "energy-ball": {
+        "name_zh": "能量球",
+        "name_en": "Energy Ball",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "借助大自然的力量攻擊對手。有時會降低對手的特防。"
+    },
+    "大爆炸": {
+        "name_zh": "大爆炸",
+        "name_en": "Explosion",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "250",
+        "effect": "透過大爆炸攻擊周圍。使用後自己會陷入瀕死。"
+    },
+    "explosion": {
+        "name_zh": "大爆炸",
+        "name_en": "Explosion",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "250",
+        "effect": "透過大爆炸攻擊周圍。使用後自己會陷入瀕死。"
+    },
+    "神速": {
+        "name_zh": "神速",
+        "name_en": "Extreme Speed",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "65",
+        "effect": "以猛烈的速度衝撞對手進行攻擊。"
+    },
+    "extreme-speed": {
+        "name_zh": "神速",
+        "name_en": "Extreme Speed",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "65",
+        "effect": "以猛烈的速度衝撞對手進行攻擊。"
+    },
+    "硬撐": {
+        "name_zh": "硬撐",
+        "name_en": "Facade",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "攻擊對手。自己處於中毒、麻痺、灼傷、瞌睡狀態時，威力會變成２倍。"
+    },
+    "facade": {
+        "name_zh": "硬撐",
+        "name_en": "Facade",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "攻擊對手。自己處於中毒、麻痺、灼傷、瞌睡狀態時，威力會變成２倍。"
+    },
+    "妖精之風": {
+        "name_zh": "妖精之風",
+        "name_en": "Fairy Wind",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "8",
+        "power": "40",
+        "effect": "颳起妖精之風攻擊對手。"
+    },
+    "fairy-wind": {
+        "name_zh": "妖精之風",
+        "name_en": "Fairy Wind",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "8",
+        "power": "40",
+        "effect": "颳起妖精之風攻擊對手。"
+    },
+    "擊掌奇襲": {
+        "name_zh": "擊掌奇襲",
+        "name_en": "Fake Out",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "進行先制攻擊，使對手畏縮。只有在剛出場時才能使用。"
+    },
+    "fake-out": {
+        "name_zh": "擊掌奇襲",
+        "name_en": "Fake Out",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "進行先制攻擊，使對手畏縮。只有在剛出場時才能使用。"
+    },
+    "假哭": {
+        "name_zh": "假哭",
+        "name_en": "Fake Tears",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "裝哭流眼淚來欺騙對手，在一段時間內降低對手的特防。"
+    },
+    "fake-tears": {
+        "name_zh": "假哭",
+        "name_en": "Fake Tears",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "裝哭流眼淚來欺騙對手，在一段時間內降低對手的特防。"
+    },
+    "點到為止": {
+        "name_zh": "點到為止",
+        "name_en": "False Swipe",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "手下留情地攻擊。對手的ＨＰ必定會留下１。"
+    },
+    "false-swipe": {
+        "name_zh": "點到為止",
+        "name_en": "False Swipe",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "手下留情地攻擊。對手的ＨＰ必定會留下１。"
+    },
+    "羽毛舞": {
+        "name_zh": "羽毛舞",
+        "name_en": "Feather Dance",
+        "type": "flying",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出羽毛，將對手包在裡面。在一段時間內降低對手的進攻力。"
+    },
+    "feather-dance": {
+        "name_zh": "羽毛舞",
+        "name_en": "Feather Dance",
+        "type": "flying",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出羽毛，將對手包在裡面。在一段時間內降低對手的進攻力。"
+    },
+    "大字爆炎": {
+        "name_zh": "大字爆炎",
+        "name_en": "Fire Blast",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "10",
+        "power": "110",
+        "effect": "放出呈大字形燃燒的火焰攻擊對手。有時會讓對手陷入灼傷狀態。"
+    },
+    "fire-blast": {
+        "name_zh": "大字爆炎",
+        "name_en": "Fire Blast",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "10",
+        "power": "110",
+        "effect": "放出呈大字形燃燒的火焰攻擊對手。有時會讓對手陷入灼傷狀態。"
+    },
+    "火焰牙": {
+        "name_zh": "火焰牙",
+        "name_en": "Fire Fang",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "用覆蓋著火焰的牙齒咬住對手。有時會使對手畏縮，或陷入灼傷狀態。"
+    },
+    "fire-fang": {
+        "name_zh": "火焰牙",
+        "name_en": "Fire Fang",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "用覆蓋著火焰的牙齒咬住對手。有時會使對手畏縮，或陷入灼傷狀態。"
+    },
+    "火焰拳": {
+        "name_zh": "火焰拳",
+        "name_en": "Fire Punch",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "用充滿火焰的拳頭攻擊對手。有時會讓對手陷入灼傷狀態。"
+    },
+    "fire-punch": {
+        "name_zh": "火焰拳",
+        "name_en": "Fire Punch",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "用充滿火焰的拳頭攻擊對手。有時會讓對手陷入灼傷狀態。"
+    },
+    "火焰旋渦": {
+        "name_zh": "火焰旋渦",
+        "name_en": "Fire Spin",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "讓火焰形成的旋渦包圍對手。被包圍的對手會持續受到傷害。"
+    },
+    "fire-spin": {
+        "name_zh": "火焰旋渦",
+        "name_en": "Fire Spin",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "讓火焰形成的旋渦包圍對手。被包圍的對手會持續受到傷害。"
+    },
+    "迎頭一擊": {
+        "name_zh": "迎頭一擊",
+        "name_en": "First Impression",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "90",
+        "effect": "給予對手大傷害，但只有在剛出場時才能使用。"
+    },
+    "first-impression": {
+        "name_zh": "迎頭一擊",
+        "name_en": "First Impression",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "90",
+        "effect": "給予對手大傷害，但只有在剛出場時才能使用。"
+    },
+    "地裂": {
+        "name_zh": "地裂",
+        "name_en": "Fissure",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "250",
+        "effect": "讓地裂開吞噬對手進行攻擊。使出招式需要花費很多時間。"
+    },
+    "fissure": {
+        "name_zh": "地裂",
+        "name_en": "Fissure",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "250",
+        "effect": "讓地裂開吞噬對手進行攻擊。使出招式需要花費很多時間。"
+    },
+    "蓄能焰襲": {
+        "name_zh": "蓄能焰襲",
+        "name_en": "Flame Charge",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "使用者在用火焰包覆全身後進行攻擊。這也會在短時間內提升使用者的移動速度。"
+    },
+    "flame-charge": {
+        "name_zh": "蓄能焰襲",
+        "name_en": "Flame Charge",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "使用者在用火焰包覆全身後進行攻擊。這也會在短時間內提升使用者的移動速度。"
+    },
+    "火焰輪": {
+        "name_zh": "火焰輪",
+        "name_en": "Flame Wheel",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者全身包覆火焰並向前衝鋒進行攻擊。這也可能讓目標陷入灼傷狀態。"
+    },
+    "flame-wheel": {
+        "name_zh": "火焰輪",
+        "name_en": "Flame Wheel",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者全身包覆火焰並向前衝鋒進行攻擊。這也可能讓目標陷入灼傷狀態。"
+    },
+    "噴射火焰": {
+        "name_zh": "噴射火焰",
+        "name_en": "Flamethrower",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者噴射激烈的火焰流進行攻擊。這也可能讓目標陷入灼傷狀態。"
+    },
+    "flamethrower": {
+        "name_zh": "噴射火焰",
+        "name_en": "Flamethrower",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者噴射激烈的火焰流進行攻擊。這也可能讓目標陷入灼傷狀態。"
+    },
+    "閃焰衝鋒": {
+        "name_zh": "閃焰衝鋒",
+        "name_en": "Flare Blitz",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "120",
+        "effect": "使用者全身包覆火焰並向前衝鋒進行攻擊。這可能讓目標陷入灼傷狀態。使用者也會受到一些傷害。"
+    },
+    "flare-blitz": {
+        "name_zh": "閃焰衝鋒",
+        "name_en": "Flare Blitz",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "120",
+        "effect": "使用者全身包覆火焰並向前衝鋒進行攻擊。這可能讓目標陷入灼傷狀態。使用者也會受到一些傷害。"
+    },
+    "加農光炮": {
+        "name_zh": "加農光炮",
+        "name_en": "Flash Cannon",
+        "type": "steel",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者聚集體內的光能並一次釋放進行攻擊。這也可能降低目標的特防。"
+    },
+    "flash-cannon": {
+        "name_zh": "加農光炮",
+        "name_en": "Flash Cannon",
+        "type": "steel",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者聚集體內的光能並一次釋放進行攻擊。這也可能降低目標的特防。"
+    },
+    "花朵加農炮": {
+        "name_zh": "花朵加農炮",
+        "name_en": "Fleur Cannon",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "6",
+        "power": "130",
+        "effect": "使用者釋放強力的光束進行攻擊。反作用力會讓使用者的特攻在一段時間內降低。"
+    },
+    "fleur-cannon": {
+        "name_zh": "花朵加農炮",
+        "name_en": "Fleur Cannon",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "6",
+        "power": "130",
+        "effect": "使用者釋放強力的光束進行攻擊。反作用力會讓使用者的特攻在一段時間內降低。"
+    },
+    "快速折返": {
+        "name_zh": "快速折返",
+        "name_en": "Flip Turn",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "60",
+        "effect": "使用者使出快速的一擊，然後以驚人的速度衝回訓練家身邊。"
+    },
+    "flip-turn": {
+        "name_zh": "快速折返",
+        "name_en": "Flip Turn",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "60",
+        "effect": "使用者使出快速的一擊，然後以驚人的速度衝回訓練家身邊。"
+    },
+    "飛翔": {
+        "name_zh": "飛翔",
+        "name_en": "Fly",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "90",
+        "effect": "使用者飛向高空消失一段時間，然後俯衝下來攻擊。"
+    },
+    "fly": {
+        "name_zh": "飛翔",
+        "name_en": "Fly",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "90",
+        "effect": "使用者飛向高空消失一段時間，然後俯衝下來攻擊。"
+    },
+    "飛身重壓": {
+        "name_zh": "飛身重壓",
+        "name_en": "Flying Press",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "100",
+        "effect": "使用者從空中俯衝向目標攻擊。此招式同時具有格鬥屬性和飛行屬性。"
+    },
+    "flying-press": {
+        "name_zh": "飛身重壓",
+        "name_en": "Flying Press",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "100",
+        "effect": "使用者從空中俯衝向目標攻擊。此招式同時具有格鬥屬性和飛行屬性。"
+    },
+    "真氣彈": {
+        "name_zh": "真氣彈",
+        "name_en": "Focus Blast",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "使用者提升精神集中力釋放力量進行攻擊。這也可能降低目標的特防。"
+    },
+    "focus-blast": {
+        "name_zh": "真氣彈",
+        "name_en": "Focus Blast",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "使用者提升精神集中力釋放力量進行攻擊。這也可能降低目標的特防。"
+    },
+    "聚氣": {
+        "name_zh": "聚氣",
+        "name_en": "Focus Energy",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者深呼吸並集中精神，在一段時間內提升攻擊擊中要害的機率。"
+    },
+    "focus-energy": {
+        "name_zh": "聚氣",
+        "name_en": "Focus Energy",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者深呼吸並集中精神，在一段時間內提升攻擊擊中要害的機率。"
+    },
+    "森林詛咒": {
+        "name_zh": "森林詛咒",
+        "name_en": "Forest's Curse",
+        "type": "unknown",
+        "category": "unknown",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "使用者對目標施加森林詛咒。這會增加目標的草屬性。"
+    },
+    "forest-s-curse": {
+        "name_zh": "森林詛咒",
+        "name_en": "Forest's Curse",
+        "type": "unknown",
+        "category": "unknown",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "使用者對目標施加森林詛咒。這會增加目標的草屬性。"
+    },
+    "冷凍乾燥": {
+        "name_zh": "冷凍乾燥",
+        "name_en": "Freeze-Dry",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "10",
+        "power": "70",
+        "effect": "使用者透過急速降低目標溫度進行攻擊。此招式對水屬性寶可夢效果絕佳，也可能讓目標陷入冰凍狀態。"
+    },
+    "freeze-dry": {
+        "name_zh": "冷凍乾燥",
+        "name_en": "Freeze-Dry",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "10",
+        "power": "70",
+        "effect": "使用者透過急速降低目標溫度進行攻擊。此招式對水屬性寶可夢效果絕佳，也可能讓目標陷入冰凍狀態。"
+    },
+    "瘋狂植物": {
+        "name_zh": "瘋狂植物",
+        "name_en": "Frenzy Plant",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者用巨大的樹根摔打目標進行攻擊。反作用力會讓使用者短時間內無法移動。"
+    },
+    "frenzy-plant": {
+        "name_zh": "瘋狂植物",
+        "name_en": "Frenzy Plant",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者用巨大的樹根摔打目標進行攻擊。反作用力會讓使用者短時間內無法移動。"
+    },
+    "冰息": {
+        "name_zh": "冰息",
+        "name_en": "Frost Breath",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "7",
+        "power": "65",
+        "effect": "使用者對目標吹出寒氣進行攻擊。此招式必定會擊中要害。"
+    },
+    "frost-breath": {
+        "name_zh": "冰息",
+        "name_en": "Frost Breath",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "7",
+        "power": "65",
+        "effect": "使用者對目標吹出寒氣進行攻擊。此招式必定會擊中要害。"
+    },
+    "預知未來": {
+        "name_zh": "預知未來",
+        "name_en": "Future Sight",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用此招式一段時間後，一團念力能量會襲擊目標原本所在的位置。"
+    },
+    "future-sight": {
+        "name_zh": "預知未來",
+        "name_en": "Future Sight",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用此招式一段時間後，一團念力能量會襲擊目標原本所在的位置。"
+    },
+    "大地掌控": {
+        "name_zh": "大地掌控",
+        "name_en": "Geomancy",
+        "type": "fairy",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者吸收能量以提升特攻和特防，並在一段時間內提升移動速度。此招式需要一些時間來執行。"
+    },
+    "geomancy": {
+        "name_zh": "大地掌控",
+        "name_en": "Geomancy",
+        "type": "fairy",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者吸收能量以提升特攻和特防，並在一段時間內提升移動速度。此招式需要一些時間來執行。"
+    },
+    "終極吸取": {
+        "name_zh": "終極吸取",
+        "name_en": "Giga Drain",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "9",
+        "power": "75",
+        "effect": "使用者吸取目標的養分進行攻擊。使用者的HP會回復造成的傷害的一部份。"
+    },
+    "giga-drain": {
+        "name_zh": "終極吸取",
+        "name_en": "Giga Drain",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "9",
+        "power": "75",
+        "effect": "使用者吸取目標的養分進行攻擊。使用者的HP會回復造成的傷害的一部份。"
+    },
+    "終極衝擊": {
+        "name_zh": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者用盡全力撞向目標進行攻擊。反作用力會讓使用者短時間內無法移動。"
+    },
+    "giga-impact": {
+        "name_zh": "終極衝擊",
+        "name_en": "Giga Impact",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者用盡全力撞向目標進行攻擊。反作用力會讓使用者短時間內無法移動。"
+    },
+    "巨力錘": {
+        "name_zh": "巨力錘",
+        "name_en": "Gigaton Hammer",
+        "type": "unknown",
+        "category": "status",
+        "cooldown": "9",
+        "power": "160",
+        "effect": "使用者揮舞整個身體帶動巨大的錘子進行攻擊。此招式在攻擊後短時間內無法再次使用。"
+    },
+    "gigaton-hammer": {
+        "name_zh": "巨力錘",
+        "name_en": "Gigaton Hammer",
+        "type": "unknown",
+        "category": "status",
+        "cooldown": "9",
+        "power": "160",
+        "effect": "使用者揮舞整個身體帶動巨大的錘子進行攻擊。此招式在攻擊後短時間內無法再次使用。"
+    },
+    "巨劍突擊": {
+        "name_zh": "巨劍突擊",
+        "name_en": "Glaive Rush",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "使用者魯莽地將整個身體投身衝鋒進行攻擊。然而，使用者會破綻大開且短時間內無法移動。"
+    },
+    "glaive-rush": {
+        "name_zh": "巨劍突擊",
+        "name_en": "Glaive Rush",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "使用者魯莽地將整個身體投身衝鋒進行攻擊。然而，使用者會破綻大開且短時間內無法移動。"
+    },
+    "大蛇瞪眼": {
+        "name_zh": "大蛇瞪眼",
+        "name_en": "Glare",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "使用者用可怕的瞪眼威嚇目標，使其陷入麻痺狀態。"
+    },
+    "glare": {
+        "name_zh": "大蛇瞪眼",
+        "name_en": "Glare",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "使用者用可怕的瞪眼威嚇目標，使其陷入麻痺狀態。"
+    },
+    "叫聲": {
+        "name_zh": "叫聲",
+        "name_en": "Growl",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者發出可愛的叫聲讓目標降低戒心，短時間內降低其攻擊。"
+    },
+    "growl": {
+        "name_zh": "叫聲",
+        "name_en": "Growl",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者發出可愛的叫聲讓目標降低戒心，短時間內降低其攻擊。"
+    },
+    "生長": {
+        "name_zh": "生長",
+        "name_en": "Growth",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者讓身體瞬間長大，短時間內提升攻擊和特攻。"
+    },
+    "growth": {
+        "name_zh": "生長",
+        "name_en": "Growth",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者讓身體瞬間長大，短時間內提升攻擊和特攻。"
+    },
+    "垃圾射擊": {
+        "name_zh": "垃圾射擊",
+        "name_en": "Gunk Shot",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者射出骯髒的垃圾進行攻擊。這也可能讓目標陷入中毒狀態。"
+    },
+    "gunk-shot": {
+        "name_zh": "垃圾射擊",
+        "name_en": "Gunk Shot",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者射出骯髒的垃圾進行攻擊。這也可能讓目標陷入中毒狀態。"
+    },
+    "起風": {
+        "name_zh": "起風",
+        "name_en": "Gust",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者用翅膀颳起強風襲擊目標。"
+    },
+    "gust": {
+        "name_zh": "起風",
+        "name_en": "Gust",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者用翅膀颳起強風襲擊目標。"
+    },
+    "變硬": {
+        "name_zh": "變硬",
+        "name_en": "Harden",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者全身用力使肌肉變硬，短時間內提升防禦。"
+    },
+    "harden": {
+        "name_zh": "變硬",
+        "name_en": "Harden",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者全身用力使肌肉變硬，短時間內提升防禦。"
+    },
+    "黑霧": {
+        "name_zh": "黑霧",
+        "name_en": "Haze",
+        "type": "ice",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者用黑霧覆蓋場地。接觸到黑霧的寶可夢的能力變化會被還原。"
+    },
+    "haze": {
+        "name_zh": "黑霧",
+        "name_en": "Haze",
+        "type": "ice",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者用黑霧覆蓋場地。接觸到黑霧的寶可夢的能力變化會被還原。"
+    },
+    "雙刃頭錘": {
+        "name_zh": "雙刃頭錘",
+        "name_en": "Head Smash",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "150",
+        "effect": "使用者用魯莽的全力頭錘撞向目標。使用者也會受到一些傷害。"
+    },
+    "head-smash": {
+        "name_zh": "雙刃頭錘",
+        "name_en": "Head Smash",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "150",
+        "effect": "使用者用魯莽的全力頭錘撞向目標。使用者也會受到一些傷害。"
+    },
+    "頭錘": {
+        "name_zh": "頭錘",
+        "name_en": "Headbutt",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "使用者向前傾身並用頭撞向目標。這也可能讓目標畏縮。"
+    },
+    "headbutt": {
+        "name_zh": "頭錘",
+        "name_en": "Headbutt",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "使用者向前傾身並用頭撞向目標。這也可能讓目標畏縮。"
+    },
+    "回復封鎖": {
+        "name_zh": "回復封鎖",
+        "name_en": "Heal Block",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者在一段時間內阻止目標透過招式或道具回復HP。"
+    },
+    "heal-block": {
+        "name_zh": "回復封鎖",
+        "name_en": "Heal Block",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者在一段時間內阻止目標透過招式或道具回復HP。"
+    },
+    "高溫重壓": {
+        "name_zh": "高溫重壓",
+        "name_en": "Heat Crash",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "使用者用燃燒的身體撞向目標。使用者比目標越重，此招式的威力越大。"
+    },
+    "heat-crash": {
+        "name_zh": "高溫重壓",
+        "name_en": "Heat Crash",
+        "type": "fire",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "使用者用燃燒的身體撞向目標。使用者比目標越重，此招式的威力越大。"
+    },
+    "熱風": {
+        "name_zh": "熱風",
+        "name_en": "Heat Wave",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "9",
+        "power": "95",
+        "effect": "使用者吐出熱氣進行攻擊。這也可能讓目標陷入灼傷狀態。"
+    },
+    "heat-wave": {
+        "name_zh": "熱風",
+        "name_en": "Heat Wave",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "9",
+        "power": "95",
+        "effect": "使用者吐出熱氣進行攻擊。這也可能讓目標陷入灼傷狀態。"
+    },
+    "重磅衝撞": {
+        "name_zh": "重磅衝撞",
+        "name_en": "Heavy Slam",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者用沈重的身體撞向目標。使用者比目標越重，此招式的威力越大。"
+    },
+    "heavy-slam": {
+        "name_zh": "重磅衝撞",
+        "name_en": "Heavy Slam",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者用沈重的身體撞向目標。使用者比目標越重，此招式的威力越大。"
+    },
+    "木角": {
+        "name_zh": "木角",
+        "name_en": "Horn Leech",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "75",
+        "effect": "使用者用角吸取目標的能量進行攻擊。使用者的HP會回復造成的傷害的一部份。"
+    },
+    "horn-leech": {
+        "name_zh": "木角",
+        "name_en": "Horn Leech",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "75",
+        "effect": "使用者用角吸取目標的能量進行攻擊。使用者的HP會回復造成的傷害的一部份。"
+    },
+    "暴風": {
+        "name_zh": "暴風",
+        "name_en": "Hurricane",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "9",
+        "power": "110",
+        "effect": "使用者用強烈的風包住目標進行攻擊。這也可能讓目標混亂。"
+    },
+    "hurricane": {
+        "name_zh": "暴風",
+        "name_en": "Hurricane",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "9",
+        "power": "110",
+        "effect": "使用者用強烈的風包住目標進行攻擊。這也可能讓目標混亂。"
+    },
+    "加農水炮": {
+        "name_zh": "加農水炮",
+        "name_en": "Hydro Cannon",
+        "type": "water",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者用像大砲般的水流轟擊目標。反作用力會讓使用者短時間內無法移動。"
+    },
+    "hydro-cannon": {
+        "name_zh": "加農水炮",
+        "name_en": "Hydro Cannon",
+        "type": "water",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者用像大砲般的水流轟擊目標。反作用力會讓使用者短時間內無法移動。"
+    },
+    "水炮": {
+        "name_zh": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "category": "special",
+        "cooldown": "12",
+        "power": "110",
+        "effect": "使用者在高壓下發射大量的水轟擊目標。"
+    },
+    "hydro-pump": {
+        "name_zh": "水炮",
+        "name_en": "Hydro Pump",
+        "type": "water",
+        "category": "special",
+        "cooldown": "12",
+        "power": "110",
+        "effect": "使用者在高壓下發射大量的水轟擊目標。"
+    },
+    "破壞光線": {
+        "name_zh": "破壞光線",
+        "name_en": "Hyper Beam",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者向目標發射強力的光束。反作用力會讓使用者短時間內無法移動。"
+    },
+    "hyper-beam": {
+        "name_zh": "破壞光線",
+        "name_en": "Hyper Beam",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "使用者向目標發射強力的光束。反作用力會讓使用者短時間內無法移動。"
+    },
+    "巨聲": {
+        "name_zh": "巨聲",
+        "name_en": "Hyper Voice",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者發出極其吵雜、響亮的震動波進行攻擊。"
+    },
+    "hyper-voice": {
+        "name_zh": "巨聲",
+        "name_en": "Hyper Voice",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者發出極其吵雜、響亮的震動波進行攻擊。"
+    },
+    "異次元猛攻": {
+        "name_zh": "異次元猛攻",
+        "name_en": "Hyperspace Fury",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "100",
+        "effect": "使用者用多隻手臂進行連續攻擊。此攻擊無視守住或看穿等招式，但也包含短時間內降低使用者的防禦。"
+    },
+    "hyperspace-fury": {
+        "name_zh": "異次元猛攻",
+        "name_en": "Hyperspace Fury",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "100",
+        "effect": "使用者用多隻手臂進行連續攻擊。此攻擊無視守住或看穿等招式，但也包含短時間內降低使用者的防禦。"
+    },
+    "異次元洞": {
+        "name_zh": "異次元洞",
+        "name_en": "Hyperspace Hole",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "10",
+        "power": "80",
+        "effect": "使用者利用異次元洞在毫無預警的情況下出現在目標身邊攻擊。此攻擊可命中使用了守住或看穿等招式的目標。"
+    },
+    "hyperspace-hole": {
+        "name_zh": "異次元洞",
+        "name_en": "Hyperspace Hole",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "10",
+        "power": "80",
+        "effect": "使用者利用異次元洞在毫無預警的情況下出現在目標身邊攻擊。此攻擊可命中使用了守住或看穿等招式的目標。"
+    },
+    "催眠術": {
+        "name_zh": "催眠術",
+        "name_en": "Hypnosis",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者使用催眠暗示讓目標想睡覺。"
+    },
+    "hypnosis": {
+        "name_zh": "催眠術",
+        "name_en": "Hypnosis",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者使用催眠暗示讓目標想睡覺。"
+    },
+    "冰凍光束": {
+        "name_zh": "冰凍光束",
+        "name_en": "Ice Beam",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者發射極寒的能量光束進行攻擊。這也可能讓目標陷入冰凍狀態。"
+    },
+    "ice-beam": {
+        "name_zh": "冰凍光束",
+        "name_en": "Ice Beam",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者發射極寒的能量光束進行攻擊。這也可能讓目標陷入冰凍狀態。"
+    },
+    "冰凍牙": {
+        "name_zh": "冰凍牙",
+        "name_en": "Ice Fang",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "使用者用帶有寒氣的牙齒咬住目標。這可能讓目標畏縮或陷入冰凍狀態。"
+    },
+    "ice-fang": {
+        "name_zh": "冰凍牙",
+        "name_en": "Ice Fang",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "使用者用帶有寒氣的牙齒咬住目標。這可能讓目標畏縮或陷入冰凍狀態。"
+    },
+    "冰錘": {
+        "name_zh": "冰錘",
+        "name_en": "Ice Hammer",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "100",
+        "effect": "使用者揮舞強重的拳頭攻擊目標造成傷害。這也會在短時間內降低使用者的移動速度。"
+    },
+    "ice-hammer": {
+        "name_zh": "冰錘",
+        "name_en": "Ice Hammer",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "100",
+        "effect": "使用者揮舞強重的拳頭攻擊目標造成傷害。這也會在短時間內降低使用者的移動速度。"
+    },
+    "冰凍拳": {
+        "name_zh": "冰凍拳",
+        "name_en": "Ice Punch",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "使用者用帶有冰氣的拳頭攻擊。這也可能讓目標陷入冰凍狀態。"
+    },
+    "ice-punch": {
+        "name_zh": "冰凍拳",
+        "name_en": "Ice Punch",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "使用者用帶有冰氣的拳頭攻擊。這也可能讓目標陷入冰凍狀態。"
+    },
+    "冰礫": {
+        "name_zh": "冰礫",
+        "name_en": "Ice Shard",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "使用者瞬間凍結冰塊並投向目標進行攻擊。"
+    },
+    "ice-shard": {
+        "name_zh": "冰礫",
+        "name_en": "Ice Shard",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "使用者瞬間凍結冰塊並投向目標進行攻擊。"
+    },
+    "冰柱墜擊": {
+        "name_zh": "冰柱墜擊",
+        "name_en": "Icicle Crash",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "85",
+        "effect": "使用者將巨大的冰柱砸向目標進行攻擊。這也可能讓目標畏縮。"
+    },
+    "icicle-crash": {
+        "name_zh": "冰柱墜擊",
+        "name_en": "Icicle Crash",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "85",
+        "effect": "使用者將巨大的冰柱砸向目標進行攻擊。這也可能讓目標畏縮。"
+    },
+    "冰錐": {
+        "name_zh": "冰錐",
+        "name_en": "Icicle Spear",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "25",
+        "effect": "使用者向目標連續發射五根銳利的冰柱進行攻擊。"
+    },
+    "icicle-spear": {
+        "name_zh": "冰錐",
+        "name_en": "Icicle Spear",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "25",
+        "effect": "使用者向目標連續發射五根銳利的冰柱進行攻擊。"
+    },
+    "冰凍之風": {
+        "name_zh": "冰凍之風",
+        "name_en": "Icy Wind",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "7",
+        "power": "55",
+        "effect": "使用者吹出寒冷的風進行攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "icy-wind": {
+        "name_zh": "冰凍之風",
+        "name_en": "Icy Wind",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "7",
+        "power": "55",
+        "effect": "使用者吹出寒冷的風進行攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "死纏爛打": {
+        "name_zh": "死纏爛打",
+        "name_en": "Infestation",
+        "type": "bug",
+        "category": "special",
+        "cooldown": "6",
+        "power": "20",
+        "effect": "使用者糾纏目標使其在一段時間內持續受到傷害。在此期間目標無法被替換出戰鬥。"
+    },
+    "infestation": {
+        "name_zh": "死纏爛打",
+        "name_en": "Infestation",
+        "type": "bug",
+        "category": "special",
+        "cooldown": "6",
+        "power": "20",
+        "effect": "使用者糾纏目標使其在一段時間內持續受到傷害。在此期間目標無法被替換出戰鬥。"
+    },
+    "鐵壁": {
+        "name_zh": "鐵壁",
+        "name_en": "Iron Defense",
+        "type": "steel",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "使用者讓身體表面硬化得像鐵一樣，在一段時間內提升防禦。"
+    },
+    "iron-defense": {
+        "name_zh": "鐵壁",
+        "name_en": "Iron Defense",
+        "type": "steel",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "使用者讓身體表面硬化得像鐵一樣，在一段時間內提升防禦。"
+    },
+    "鐵頭": {
+        "name_zh": "鐵頭",
+        "name_en": "Iron Head",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者用鋼鐵般堅硬的頭撞向目標。這也可能讓目標畏縮。"
+    },
+    "iron-head": {
+        "name_zh": "鐵頭",
+        "name_en": "Iron Head",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者用鋼鐵般堅硬的頭撞向目標。這也可能讓目標畏縮。"
+    },
+    "鐵尾": {
+        "name_zh": "鐵尾",
+        "name_en": "Iron Tail",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "使用者用堅硬的尾巴摔打目標。這也可能降低目標的防禦。"
+    },
+    "iron-tail": {
+        "name_zh": "鐵尾",
+        "name_en": "Iron Tail",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "使用者用堅硬的尾巴摔打目標。這也可能降低目標的防禦。"
+    },
+    "王者盾牌": {
+        "name_zh": "王者盾牌",
+        "name_en": "King's Shield",
+        "type": "unknown",
+        "category": "unknown",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者採取防禦姿態並保護自己免受攻擊。此盾牌會降低直接接觸攻擊者的攻擊。"
+    },
+    "king-s-shield": {
+        "name_zh": "王者盾牌",
+        "name_en": "King's Shield",
+        "type": "unknown",
+        "category": "unknown",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者採取防禦姿態並保護自己免受攻擊。此盾牌會降低直接接觸攻擊者的攻擊。"
+    },
+    "拍落": {
+        "name_zh": "拍落",
+        "name_en": "Knock Off",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "65",
+        "effect": "使用者拍落目標持有的道具，使其在剩餘的戰鬥中無法使用。此招式對持有道具的目標造成更多傷害。"
+    },
+    "knock-off": {
+        "name_zh": "拍落",
+        "name_en": "Knock Off",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "65",
+        "effect": "使用者拍落目標持有的道具，使其在剩餘的戰鬥中無法使用。此招式對持有道具的目標造成更多傷害。"
+    },
+    "大地神力": {
+        "name_zh": "大地神力",
+        "name_en": "Land's Wrath",
+        "type": "unknown",
+        "category": "unknown",
+        "cooldown": "10",
+        "power": "90",
+        "effect": "使用者聚集大地的能量並將力量集中在目標身上進行攻擊。"
+    },
+    "land-s-wrath": {
+        "name_zh": "大地神力",
+        "name_en": "Land's Wrath",
+        "type": "unknown",
+        "category": "unknown",
+        "cooldown": "10",
+        "power": "90",
+        "effect": "使用者聚集大地的能量並將力量集中在目標身上進行攻擊。"
+    },
+    "掃墓": {
+        "name_zh": "掃墓",
+        "name_en": "Last Respects",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "50",
+        "effect": "使用者為了替同伴復仇而攻擊。隊伍中被打倒的同伴越多，招式威力越大。"
+    },
+    "last-respects": {
+        "name_zh": "掃墓",
+        "name_en": "Last Respects",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "50",
+        "effect": "使用者為了替同伴復仇而攻擊。隊伍中被打倒的同伴越多，招式威力越大。"
+    },
+    "噴煙": {
+        "name_zh": "噴煙",
+        "name_en": "Lava Plume",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者在廣大範圍內釋放深紅色的烈焰進行攻擊。這也可能讓被擊中者陷入灼傷狀態。"
+    },
+    "lava-plume": {
+        "name_zh": "噴煙",
+        "name_en": "Lava Plume",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者在廣大範圍內釋放深紅色的烈焰進行攻擊。這也可能讓被擊中者陷入灼傷狀態。"
+    },
+    "葉刃": {
+        "name_zh": "葉刃",
+        "name_en": "Leaf Blade",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者像劍一樣使用葉子切斬目標。此招式容易擊中要害。"
+    },
+    "leaf-blade": {
+        "name_zh": "葉刃",
+        "name_en": "Leaf Blade",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者像劍一樣使用葉子切斬目標。此招式容易擊中要害。"
+    },
+    "飛葉風暴": {
+        "name_zh": "飛葉風暴",
+        "name_en": "Leaf Storm",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "10",
+        "power": "130",
+        "effect": "使用者在目標周圍捲起尖銳的風暴進行攻擊。反作用力會讓使用者的特攻在一段時間內降低。"
+    },
+    "leaf-storm": {
+        "name_zh": "飛葉風暴",
+        "name_en": "Leaf Storm",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "10",
+        "power": "130",
+        "effect": "使用者在目標周圍捲起尖銳的風暴進行攻擊。反作用力會讓使用者的特攻在一段時間內降低。"
+    },
+    "樹葉": {
+        "name_zh": "樹葉",
+        "name_en": "Leafage",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使用者用葉子擊打目標進行攻擊。"
+    },
+    "leafage": {
+        "name_zh": "樹葉",
+        "name_en": "Leafage",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使用者用葉子擊打目標進行攻擊。"
+    },
+    "吸血": {
+        "name_zh": "吸血",
+        "name_en": "Leech Life",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "80",
+        "effect": "使用者吸取目標的血液進行攻擊。使用者的HP會回復造成的傷害的一部份。"
+    },
+    "leech-life": {
+        "name_zh": "吸血",
+        "name_en": "Leech Life",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "80",
+        "effect": "使用者吸取目標的血液進行攻擊。使用者的HP會回復造成的傷害的一部份。"
+    },
+    "寄生種子": {
+        "name_zh": "寄生種子",
+        "name_en": "Leech Seed",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者種下種子，緩慢但持續地吸取目標的HP並回復使用者的HP。"
+    },
+    "leech-seed": {
+        "name_zh": "寄生種子",
+        "name_en": "Leech Seed",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者種下種子，緩慢但持續地吸取目標的HP並回復使用者的HP。"
+    },
+    "瞪眼": {
+        "name_zh": "瞪眼",
+        "name_en": "Leer",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者用威嚇的眼神嚇唬目標，短時間內降低其防禦。"
+    },
+    "leer": {
+        "name_zh": "瞪眼",
+        "name_en": "Leer",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者用威嚇的眼神嚇唬目標，短時間內降低其防禦。"
+    },
+    "舌舔": {
+        "name_zh": "舌舔",
+        "name_en": "Lick",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "30",
+        "effect": "使用者用長舌頭舔目標進行攻擊。這也可能讓目標陷入麻痺狀態。"
+    },
+    "lick": {
+        "name_zh": "舌舔",
+        "name_en": "Lick",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "30",
+        "effect": "使用者用長舌頭舔目標進行攻擊。這也可能讓目標陷入麻痺狀態。"
+    },
+    "光牆": {
+        "name_zh": "光牆",
+        "name_en": "Light Screen",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者建立一道奇妙的光牆，在一段時間內減少特殊招式造成的傷害。即使使用者被替換，此效果仍會持續。"
+    },
+    "light-screen": {
+        "name_zh": "光牆",
+        "name_en": "Light Screen",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者建立一道奇妙的光牆，在一段時間內減少特殊招式造成的傷害。即使使用者被替換，此效果仍會持續。"
+    },
+    "破滅之光": {
+        "name_zh": "破滅之光",
+        "name_en": "Light of Ruin",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "8",
+        "power": "140",
+        "effect": "使用者從永恆之花汲取力量發射強力的光束進行攻擊。使用者也會受到一些傷害。"
+    },
+    "light-of-ruin": {
+        "name_zh": "破滅之光",
+        "name_en": "Light of Ruin",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "8",
+        "power": "140",
+        "effect": "使用者從永恆之花汲取力量發射強力的光束進行攻擊。使用者也會受到一些傷害。"
+    },
+    "水流裂破": {
+        "name_zh": "水流裂破",
+        "name_en": "Liquidation",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "85",
+        "effect": "使用者用全力的水流轟擊撞向目標。這也可能降低目標的防禦。"
+    },
+    "liquidation": {
+        "name_zh": "水流裂破",
+        "name_en": "Liquidation",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "85",
+        "effect": "使用者用全力的水流轟擊撞向目標。這也可能降低目標的防禦。"
+    },
+    "下盤踢": {
+        "name_zh": "下盤踢",
+        "name_en": "Low Sweep",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "使用者針對腿部進行迅速的攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "low-sweep": {
+        "name_zh": "下盤踢",
+        "name_en": "Low Sweep",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "使用者針對腿部進行迅速的攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "猛撲": {
+        "name_zh": "猛撲",
+        "name_en": "Lunge",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "80",
+        "effect": "使用者用全力衝向目標進行攻擊。這也會在短時間內降低目標的攻擊。"
+    },
+    "lunge": {
+        "name_zh": "猛撲",
+        "name_en": "Lunge",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "80",
+        "effect": "使用者用全力衝向目標進行攻擊。這也會在短時間內降低目標的攻擊。"
+    },
+    "潔淨光芒": {
+        "name_zh": "潔淨光芒",
+        "name_en": "Luster Purge",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "使用者釋放刺眼的光芒進行攻擊。這也可能降低目標的特防。"
+    },
+    "luster-purge": {
+        "name_zh": "潔淨光芒",
+        "name_en": "Luster Purge",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "使用者釋放刺眼的光芒進行攻擊。這也可能降低目標的特防。"
+    },
+    "音速拳": {
+        "name_zh": "音速拳",
+        "name_en": "Mach Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "使用者以極快的速度出拳攻擊。"
+    },
+    "mach-punch": {
+        "name_zh": "音速拳",
+        "name_en": "Mach Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "使用者以極快的速度出拳攻擊。"
+    },
+    "魔法葉": {
+        "name_zh": "魔法葉",
+        "name_en": "Magical Leaf",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者散佈可以追蹤目標的奇異葉片進行攻擊。"
+    },
+    "magical-leaf": {
+        "name_zh": "魔法葉",
+        "name_en": "Magical Leaf",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者散佈可以追蹤目標的奇異葉片進行攻擊。"
+    },
+    "熔岩風暴": {
+        "name_zh": "熔岩風暴",
+        "name_en": "Magma Storm",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "12",
+        "power": "100",
+        "effect": "使用者在目標腳邊捲起劇烈燃燒的火焰風暴。身處風暴中的對手會受到持續傷害。"
+    },
+    "magma-storm": {
+        "name_zh": "熔岩風暴",
+        "name_en": "Magma Storm",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "12",
+        "power": "100",
+        "effect": "使用者在目標腳邊捲起劇烈燃燒的火焰風暴。身處風暴中的對手會受到持續傷害。"
+    },
+    "磁鐵炸彈": {
+        "name_zh": "磁鐵炸彈",
+        "name_en": "Magnet Bomb",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "使用者發射會黏住目標的鋼鐵炸彈進行攻擊。"
+    },
+    "magnet-bomb": {
+        "name_zh": "磁鐵炸彈",
+        "name_en": "Magnet Bomb",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "使用者發射會黏住目標的鋼鐵炸彈進行攻擊。"
+    },
+    "淘金潮": {
+        "name_zh": "淘金潮",
+        "name_en": "Make It Rain",
+        "type": "steel",
+        "category": "special",
+        "cooldown": "6",
+        "power": "120",
+        "effect": "使用者撒出大量的硬幣進行攻擊。這也會在短時間內降低使用者的特攻。如果成功擊中目標，將會獲得金錢。"
+    },
+    "make-it-rain": {
+        "name_zh": "淘金潮",
+        "name_en": "Make It Rain",
+        "type": "steel",
+        "category": "special",
+        "cooldown": "6",
+        "power": "120",
+        "effect": "使用者撒出大量的硬幣進行攻擊。這也會在短時間內降低使用者的特攻。如果成功擊中目標，將會獲得金錢。"
+    },
+    "超級角擊": {
+        "name_zh": "超級角擊",
+        "name_en": "Megahorn",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者用堅固且驚人的角，以全力的氣勢衝撞目標。"
+    },
+    "megahorn": {
+        "name_zh": "超級角擊",
+        "name_en": "Megahorn",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者用堅固且驚人的角，以全力的氣勢衝撞目標。"
+    },
+    "金屬爪": {
+        "name_zh": "金屬爪",
+        "name_en": "Metal Claw",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "使用者用鋼鐵之爪抓擊目標。這也可能提升使用者的攻擊。"
+    },
+    "metal-claw": {
+        "name_zh": "金屬爪",
+        "name_en": "Metal Claw",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "使用者用鋼鐵之爪抓擊目標。這也可能提升使用者的攻擊。"
+    },
+    "金屬音": {
+        "name_zh": "金屬音",
+        "name_en": "Metal Sound",
+        "type": "steel",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者發出像金屬摩擦般的刺耳聲音，在一段時間內降低目標的特防。"
+    },
+    "metal-sound": {
+        "name_zh": "金屬音",
+        "name_en": "Metal Sound",
+        "type": "steel",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者發出像金屬摩擦般的刺耳聲音，在一段時間內降低目標的特防。"
+    },
+    "流星突擊": {
+        "name_zh": "流星突擊",
+        "name_en": "Meteor Assault",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "150",
+        "effect": "使用者揮舞粗壯的大蔥瘋狂攻擊。然而，這也會讓使用者站立不穩，短時間內無法移動。"
+    },
+    "meteor-assault": {
+        "name_zh": "流星突擊",
+        "name_en": "Meteor Assault",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "150",
+        "effect": "使用者揮舞粗壯的大蔥瘋狂攻擊。然而，這也會讓使用者站立不穩，短時間內無法移動。"
+    },
+    "流星光束": {
+        "name_zh": "流星光束",
+        "name_en": "Meteor Beam",
+        "type": "rock",
+        "category": "special",
+        "cooldown": "6",
+        "power": "120",
+        "effect": "使用者聚集來自宇宙的能量進行攻擊。這會在一段時間內提升使用者的特攻。此招式需要一些時間來執行。"
+    },
+    "meteor-beam": {
+        "name_zh": "流星光束",
+        "name_en": "Meteor Beam",
+        "type": "rock",
+        "category": "special",
+        "cooldown": "6",
+        "power": "120",
+        "effect": "使用者聚集來自宇宙的能量進行攻擊。這會在一段時間內提升使用者的特攻。此招式需要一些時間來執行。"
+    },
+    "揮指": {
+        "name_zh": "揮指",
+        "name_en": "Metronome",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "4",
+        "power": "--",
+        "effect": "使用者揮動手指刺激大腦，從現有的眾多招式中隨機使出一個。"
+    },
+    "metronome": {
+        "name_zh": "揮指",
+        "name_en": "Metronome",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "4",
+        "power": "--",
+        "effect": "使用者揮動手指刺激大腦，從現有的眾多招式中隨機使出一個。"
+    },
+    "模仿": {
+        "name_zh": "模仿",
+        "name_en": "Mimic",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者模仿目標最後使用的招式，並將該招式反擊回去。"
+    },
+    "mimic": {
+        "name_zh": "模仿",
+        "name_en": "Mimic",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "使用者模仿目標最後使用的招式，並將該招式反擊回去。"
+    },
+    "白霧": {
+        "name_zh": "白霧",
+        "name_en": "Mist",
+        "type": "ice",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者用白霧覆蓋場地。處於霧中的寶可夢的能力不會被對手降低。"
+    },
+    "mist": {
+        "name_zh": "白霧",
+        "name_en": "Mist",
+        "type": "ice",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者用白霧覆蓋場地。處於霧中的寶可夢的能力不會被對手降低。"
+    },
+    "薄霧球": {
+        "name_zh": "薄霧球",
+        "name_en": "Mist Ball",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "使用者用充滿霧狀羽絨的球進行攻擊。這也可能降低目標的特攻。"
+    },
+    "mist-ball": {
+        "name_zh": "薄霧球",
+        "name_en": "Mist Ball",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "使用者用充滿霧狀羽絨的球進行攻擊。這也可能降低目標的特攻。"
+    },
+    "月亮之力": {
+        "name_zh": "月亮之力",
+        "name_en": "Moonblast",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "6",
+        "power": "95",
+        "effect": "使用者借助月亮的力量進行攻擊。這也可能降低目標的特攻。"
+    },
+    "moonblast": {
+        "name_zh": "月亮之力",
+        "name_en": "Moonblast",
+        "type": "fairy",
+        "category": "special",
+        "cooldown": "6",
+        "power": "95",
+        "effect": "使用者借助月亮的力量進行攻擊。這也可能降低目標的特攻。"
+    },
+    "月光": {
+        "name_zh": "月光",
+        "name_en": "Moonlight",
+        "type": "fairy",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者沐浴在舒緩的月光下回復一些HP。"
+    },
+    "moonlight": {
+        "name_zh": "月光",
+        "name_en": "Moonlight",
+        "type": "fairy",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者沐浴在舒緩的月光下回復一些HP。"
+    },
+    "晨光": {
+        "name_zh": "晨光",
+        "name_en": "Morning Sun",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者沐浴在舒適的陽光下回復一些HP。"
+    },
+    "morning-sun": {
+        "name_zh": "晨光",
+        "name_en": "Morning Sun",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者沐浴在舒適的陽光下回復一些HP。"
+    },
+    "晶光轉轉": {
+        "name_zh": "晶光轉轉",
+        "name_en": "Mortal Spin",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "30",
+        "effect": "使用者旋轉身體進行攻擊。這會讓目標陷入中毒狀態，並在短時間內提升使用者的移動速度。"
+    },
+    "mortal-spin": {
+        "name_zh": "晶光轉轉",
+        "name_en": "Mortal Spin",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "30",
+        "effect": "使用者旋轉身體進行攻擊。這會讓目標陷入中毒狀態，並在短時間內提升使用者的移動速度。"
+    },
+    "泥巴射擊": {
+        "name_zh": "泥巴射擊",
+        "name_en": "Mud Shot",
+        "type": "ground",
+        "category": "special",
+        "cooldown": "6",
+        "power": "55",
+        "effect": "使用者向目標投擲泥塊進行攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "mud-shot": {
+        "name_zh": "泥巴射擊",
+        "name_en": "Mud Shot",
+        "type": "ground",
+        "category": "special",
+        "cooldown": "6",
+        "power": "55",
+        "effect": "使用者向目標投擲泥塊進行攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "濁流": {
+        "name_zh": "濁流",
+        "name_en": "Muddy Water",
+        "type": "water",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者向目標噴射濁流進行攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "muddy-water": {
+        "name_zh": "濁流",
+        "name_en": "Muddy Water",
+        "type": "water",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者向目標噴射濁流進行攻擊。這也會讓目標在短時間內移動變慢。"
+    },
+    "魔法火焰": {
+        "name_zh": "魔法火焰",
+        "name_en": "Mystical Fire",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "75",
+        "effect": "使用者噴出奇特的灼熱火焰進行攻擊。這也會在短時間內降低目標的特攻。"
+    },
+    "mystical-fire": {
+        "name_zh": "魔法火焰",
+        "name_en": "Mystical Fire",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "8",
+        "power": "75",
+        "effect": "使用者噴出奇特的灼熱火焰進行攻擊。這也會在短時間內降低目標的特攻。"
+    },
+    "詭計": {
+        "name_zh": "詭計",
+        "name_en": "Nasty Plot",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者透過想壞壞的事情刺激大腦，在一段時間內提升特攻。"
+    },
+    "nasty-plot": {
+        "name_zh": "詭計",
+        "name_en": "Nasty Plot",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者透過想壞壞的事情刺激大腦，在一段時間內提升特攻。"
+    },
+    "暗襲要害": {
+        "name_zh": "暗襲要害",
+        "name_en": "Night Slash",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "使用者抓住瞬間的機會進行斬擊。此招式容易擊中要害。"
+    },
+    "night-slash": {
+        "name_zh": "暗襲要害",
+        "name_en": "Night Slash",
+        "type": "dark",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "使用者抓住瞬間的機會進行斬擊。此招式容易擊中要害。"
+    },
+    "歸無之光": {
+        "name_zh": "歸無之光",
+        "name_en": "Nihil Light",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "30",
+        "power": "200",
+        "effect": "使用者釋放違背所有自然法則的強光進行攻擊，甚至能擊中妖精屬性，並無視影響目標的任何能力變化。"
+    },
+    "nihil-light": {
+        "name_zh": "歸無之光",
+        "name_en": "Nihil Light",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "30",
+        "power": "200",
+        "effect": "使用者釋放違背所有自然法則的強光進行攻擊，甚至能擊中妖精屬性，並無視影響目標的任何能力變化。"
+    },
+    "背水一戰": {
+        "name_zh": "背水一戰",
+        "name_en": "No Retreat",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者孤注一擲，短時間內提升所有能力。代價是使用者暫時無法被替換出戰鬥。"
+    },
+    "no-retreat": {
+        "name_zh": "背水一戰",
+        "name_en": "No Retreat",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者孤注一擲，短時間內提升所有能力。代價是使用者暫時無法被替換出戰鬥。"
+    },
+    "蹭蹭臉頰": {
+        "name_zh": "蹭蹭臉頰",
+        "name_en": "Nuzzle",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "20",
+        "effect": "使用者用帶電的臉頰蹭目標進行攻擊。這會讓目標陷入麻痺狀態。"
+    },
+    "nuzzle": {
+        "name_zh": "蹭蹭臉頰",
+        "name_en": "Nuzzle",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "20",
+        "effect": "使用者用帶電的臉頰蹭目標進行攻擊。這會讓目標陷入麻痺狀態。"
+    },
+    "死亡之翼": {
+        "name_zh": "死亡之翼",
+        "name_en": "Oblivion Wing",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "10",
+        "power": "80",
+        "effect": "使用者釋放毀滅波吸取目標的HP，並回復使用者的HP。"
+    },
+    "oblivion-wing": {
+        "name_zh": "死亡之翼",
+        "name_en": "Oblivion Wing",
+        "type": "flying",
+        "category": "special",
+        "cooldown": "10",
+        "power": "80",
+        "effect": "使用者釋放毀滅波吸取目標的HP，並回復使用者的HP。"
+    },
+    "蛸固": {
+        "name_zh": "蛸固",
+        "name_en": "Octolock",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "60",
+        "power": "--",
+        "effect": "阻止對手逃走，並持續降低防禦與特防。"
+    },
+    "octolock": {
+        "name_zh": "蛸固",
+        "name_en": "Octolock",
+        "type": "fighting",
+        "category": "status",
+        "cooldown": "60",
+        "power": "--",
+        "effect": "阻止對手逃走，並持續降低防禦與特防。"
+    },
+    "奇異之風": {
+        "name_zh": "奇異之風",
+        "name_en": "Ominous Wind",
+        "type": "ghost",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "刮起令人毛骨悚然的風攻擊，有時會提升自己的所有能力。"
+    },
+    "ominous-wind": {
+        "name_zh": "奇異之風",
+        "name_en": "Ominous Wind",
+        "type": "ghost",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "刮起令人毛骨悚然的風攻擊，有時會提升自己的所有能力。"
+    },
+    "上菜": {
+        "name_zh": "上菜",
+        "name_en": "Order Up",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "擺出帥氣的姿勢攻擊。若口中有米立龍，依其姿勢提升能力。"
+    },
+    "order-up": {
+        "name_zh": "上菜",
+        "name_en": "Order Up",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "擺出帥氣的姿勢攻擊。若口中有米立龍，依其姿勢提升能力。"
+    },
+    "根源波動": {
+        "name_zh": "根源波動",
+        "name_en": "Origin Pulse",
+        "type": "water",
+        "category": "special",
+        "cooldown": "15",
+        "power": "110",
+        "effect": "用無數青白色的光線攻擊對手。"
+    },
+    "origin-pulse": {
+        "name_zh": "根源波動",
+        "name_en": "Origin Pulse",
+        "type": "water",
+        "category": "special",
+        "cooldown": "15",
+        "power": "110",
+        "effect": "用無數青白色的光線攻擊對手。"
+    },
+    "逆鱗": {
+        "name_zh": "逆鱗",
+        "name_en": "Outrage",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "120",
+        "effect": "失控地大鬧一番後，自己會陷入混亂。"
+    },
+    "outrage": {
+        "name_zh": "逆鱗",
+        "name_en": "Outrage",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "120",
+        "effect": "失控地大鬧一番後，自己會陷入混亂。"
+    },
+    "破音": {
+        "name_zh": "破音",
+        "name_en": "Overdrive",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "9",
+        "power": "80",
+        "effect": "彈奏吉他或貝斯發出巨響與強烈震動進行攻擊。"
+    },
+    "overdrive": {
+        "name_zh": "破音",
+        "name_en": "Overdrive",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "9",
+        "power": "80",
+        "effect": "彈奏吉他或貝斯發出巨響與強烈震動進行攻擊。"
+    },
+    "過熱": {
+        "name_zh": "過熱",
+        "name_en": "Overheat",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "10",
+        "power": "130",
+        "effect": "使出全力進行攻擊。使用後自己的特攻會大幅降低。"
+    },
+    "overheat": {
+        "name_zh": "過熱",
+        "name_en": "Overheat",
+        "type": "fire",
+        "category": "special",
+        "cooldown": "10",
+        "power": "130",
+        "effect": "使出全力進行攻擊。使用後自己的特攻會大幅降低。"
+    },
+    "拋物面充電": {
+        "name_zh": "拋物面充電",
+        "name_en": "Parabolic Charge",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "10",
+        "power": "65",
+        "effect": "放出電流攻擊。回復給予傷害的一半HP。"
+    },
+    "parabolic-charge": {
+        "name_zh": "拋物面充電",
+        "name_en": "Parabolic Charge",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "10",
+        "power": "65",
+        "effect": "放出電流攻擊。回復給予傷害的一半HP。"
+    },
+    "拋下狠話": {
+        "name_zh": "拋下狠話",
+        "name_en": "Parting Shot",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "恐嚇對手並拋下狠話降低其攻擊與特攻後，回到訓練家身邊。"
+    },
+    "parting-shot": {
+        "name_zh": "拋下狠話",
+        "name_en": "Parting Shot",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "恐嚇對手並拋下狠話降低其攻擊與特攻後，回到訓練家身邊。"
+    },
+    "聚寶功": {
+        "name_zh": "聚寶功",
+        "name_en": "Pay Day",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "投擲金幣攻擊。若擊中對手可獲得金錢。"
+    },
+    "pay-day": {
+        "name_zh": "聚寶功",
+        "name_en": "Pay Day",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "投擲金幣攻擊。若擊中對手可獲得金錢。"
+    },
+    "啄": {
+        "name_zh": "啄",
+        "name_en": "Peck",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "35",
+        "effect": "用尖銳的喙或角刺擊對手。"
+    },
+    "peck": {
+        "name_zh": "啄",
+        "name_en": "Peck",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "35",
+        "effect": "用尖銳的喙或角刺擊對手。"
+    },
+    "滅亡之歌": {
+        "name_zh": "滅亡之歌",
+        "name_en": "Perish Song",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "20",
+        "power": "--",
+        "effect": "聽到的寶可夢一段時間後會瀕死，除非替換下場。"
+    },
+    "perish-song": {
+        "name_zh": "滅亡之歌",
+        "name_en": "Perish Song",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "20",
+        "power": "--",
+        "effect": "聽到的寶可夢一段時間後會瀕死，除非替換下場。"
+    },
+    "花瓣舞": {
+        "name_zh": "花瓣舞",
+        "name_en": "Petal Dance",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "10",
+        "power": "40",
+        "effect": "連續散落花瓣攻擊。之後自己會陷入混亂。"
+    },
+    "petal-dance": {
+        "name_zh": "花瓣舞",
+        "name_en": "Petal Dance",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "10",
+        "power": "40",
+        "effect": "連續散落花瓣攻擊。之後自己會陷入混亂。"
+    },
+    "潛靈奇襲": {
+        "name_zh": "潛靈奇襲",
+        "name_en": "Phantom Force",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "90",
+        "effect": "潛入暗影後攻擊。可擊中使出守住或看穿的對手。"
+    },
+    "phantom-force": {
+        "name_zh": "潛靈奇襲",
+        "name_en": "Phantom Force",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "90",
+        "effect": "潛入暗影後攻擊。可擊中使出守住或看穿的對手。"
+    },
+    "飛彈針": {
+        "name_zh": "飛彈針",
+        "name_en": "Pin Missile",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "15",
+        "effect": "連續發射尖刺攻擊。"
+    },
+    "pin-missile": {
+        "name_zh": "飛彈針",
+        "name_en": "Pin Missile",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "15",
+        "effect": "連續發射尖刺攻擊。"
+    },
+    "等離子閃電拳": {
+        "name_zh": "等離子閃電拳",
+        "name_en": "Plasma Fists",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "100",
+        "effect": "用帶電的拳頭攻擊。容易擊中要害，有時會讓對手畏縮。"
+    },
+    "plasma-fists": {
+        "name_zh": "等離子閃電拳",
+        "name_en": "Plasma Fists",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "100",
+        "effect": "用帶電的拳頭攻擊。容易擊中要害，有時會讓對手畏縮。"
+    },
+    "嬉鬧": {
+        "name_zh": "嬉鬧",
+        "name_en": "Play Rough",
+        "type": "fairy",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "90",
+        "effect": "與對手嬉鬧攻擊。有時會降低對手的攻擊。"
+    },
+    "play-rough": {
+        "name_zh": "嬉鬧",
+        "name_en": "Play Rough",
+        "type": "fairy",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "90",
+        "effect": "與對手嬉鬧攻擊。有時會降低對手的攻擊。"
+    },
+    "劇毒牙": {
+        "name_zh": "劇毒牙",
+        "name_en": "Poison Fang",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "用帶毒的牙齒咬住對手。有時會讓對手身中劇毒。"
+    },
+    "poison-fang": {
+        "name_zh": "劇毒牙",
+        "name_en": "Poison Fang",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "用帶毒的牙齒咬住對手。有時會讓對手身中劇毒。"
+    },
+    "毒擊": {
+        "name_zh": "毒擊",
+        "name_en": "Poison Jab",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "用帶毒的觸手或手臂突刺。有時會讓對手中毒。"
+    },
+    "poison-jab": {
+        "name_zh": "毒擊",
+        "name_en": "Poison Jab",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "用帶毒的觸手或手臂突刺。有時會讓對手中毒。"
+    },
+    "毒粉": {
+        "name_zh": "毒粉",
+        "name_en": "Poison Powder",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出毒粉，讓對手中毒。"
+    },
+    "poison-powder": {
+        "name_zh": "毒粉",
+        "name_en": "Poison Powder",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出毒粉，讓對手中毒。"
+    },
+    "毒針": {
+        "name_zh": "毒針",
+        "name_en": "Poison Sting",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "30",
+        "effect": "用毒針刺擊對手。有時會讓對手中毒。"
+    },
+    "poison-sting": {
+        "name_zh": "毒針",
+        "name_en": "Poison Sting",
+        "type": "poison",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "30",
+        "effect": "用毒針刺擊對手。有時會讓對手中毒。"
+    },
+    "力量寶石": {
+        "name_zh": "力量寶石",
+        "name_en": "Power Gem",
+        "type": "rock",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "發射像寶石般閃耀的光線攻擊。"
+    },
+    "power-gem": {
+        "name_zh": "力量寶石",
+        "name_en": "Power Gem",
+        "type": "rock",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "發射像寶石般閃耀的光線攻擊。"
+    },
+    "強力鞭打": {
+        "name_zh": "強力鞭打",
+        "name_en": "Power Whip",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "揮舞藤蔓或觸手強力鞭打對手。"
+    },
+    "power-whip": {
+        "name_zh": "強力鞭打",
+        "name_en": "Power Whip",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "揮舞藤蔓或觸手強力鞭打對手。"
+    },
+    "增強拳": {
+        "name_zh": "增強拳",
+        "name_en": "Power-Up Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "拳頭變硬攻擊對手。使用後提升自己的攻擊。"
+    },
+    "power-up-punch": {
+        "name_zh": "增強拳",
+        "name_en": "Power-Up Punch",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "拳頭變硬攻擊對手。使用後提升自己的攻擊。"
+    },
+    "斷崖之劍": {
+        "name_zh": "斷崖之劍",
+        "name_en": "Precipice Blades",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "16",
+        "power": "120",
+        "effect": "將大地的力量變化成利刃攻擊對手。"
+    },
+    "precipice-blades": {
+        "name_zh": "斷崖之劍",
+        "name_en": "Precipice Blades",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "16",
+        "power": "120",
+        "effect": "將大地的力量變化成利刃攻擊對手。"
+    },
+    "守住": {
+        "name_zh": "守住",
+        "name_en": "Protect",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "擺出防禦架勢，抵擋對手的攻擊。"
+    },
+    "protect": {
+        "name_zh": "守住",
+        "name_en": "Protect",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "擺出防禦架勢，抵擋對手的攻擊。"
+    },
+    "幻象光線": {
+        "name_zh": "幻象光線",
+        "name_en": "Psybeam",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "發射神奇的光線攻擊。有時會讓對手混亂。"
+    },
+    "psybeam": {
+        "name_zh": "幻象光線",
+        "name_en": "Psybeam",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "發射神奇的光線攻擊。有時會讓對手混亂。"
+    },
+    "精神強念": {
+        "name_zh": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "發出強大的念力攻擊。有時會降低對手的特防。"
+    },
+    "psychic": {
+        "name_zh": "精神強念",
+        "name_en": "Psychic",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "發出強大的念力攻擊。有時會降低對手的特防。"
+    },
+    "精神之牙": {
+        "name_zh": "精神之牙",
+        "name_en": "Psychic Fangs",
+        "type": "psychic",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "85",
+        "effect": "利用念力咬碎對手。可破壞光牆或反射壁等障礙。"
+    },
+    "psychic-fangs": {
+        "name_zh": "精神之牙",
+        "name_en": "Psychic Fangs",
+        "type": "psychic",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "85",
+        "effect": "利用念力咬碎對手。可破壞光牆或反射壁等障礙。"
+    },
+    "精神利刃": {
+        "name_zh": "精神利刃",
+        "name_en": "Psycho Cut",
+        "type": "psychic",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用念力實體化的利刃切斬。容易擊中要害。"
+    },
+    "psycho-cut": {
+        "name_zh": "精神利刃",
+        "name_en": "Psycho Cut",
+        "type": "psychic",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用念力實體化的利刃切斬。容易擊中要害。"
+    },
+    "精神衝擊": {
+        "name_zh": "精神衝擊",
+        "name_en": "Psyshock",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "將不可思議的念波實體化攻擊。給予對手物理傷害。"
+    },
+    "psyshock": {
+        "name_zh": "精神衝擊",
+        "name_en": "Psyshock",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "將不可思議的念波實體化攻擊。給予對手物理傷害。"
+    },
+    "精神擊破": {
+        "name_zh": "精神擊破",
+        "name_en": "Psystrike",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "將不可思議的念波實體化攻擊。給予對手物理傷害。"
+    },
+    "psystrike": {
+        "name_zh": "精神擊破",
+        "name_en": "Psystrike",
+        "type": "psychic",
+        "category": "special",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "將不可思議的念波實體化攻擊。給予對手物理傷害。"
+    },
+    "電光一閃": {
+        "name_zh": "電光一閃",
+        "name_en": "Quick Attack",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "以迅雷不及掩耳的速度撲向對手攻擊。"
+    },
+    "quick-attack": {
+        "name_zh": "電光一閃",
+        "name_en": "Quick Attack",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "30",
+        "effect": "以迅雷不及掩耳的速度撲向對手攻擊。"
+    },
+    "憤怒之拳": {
+        "name_zh": "憤怒之拳",
+        "name_en": "Rage Fist",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "50",
+        "effect": "將憤怒化為力量攻擊。受攻擊次數越多威力越大。"
+    },
+    "rage-fist": {
+        "name_zh": "憤怒之拳",
+        "name_en": "Rage Fist",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "50",
+        "effect": "將憤怒化為力量攻擊。受攻擊次數越多威力越大。"
+    },
+    "飛葉快刀": {
+        "name_zh": "飛葉快刀",
+        "name_en": "Razor Leaf",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "55",
+        "effect": "發射葉片斬擊對手。容易擊中要害。"
+    },
+    "razor-leaf": {
+        "name_zh": "飛葉快刀",
+        "name_en": "Razor Leaf",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "55",
+        "effect": "發射葉片斬擊對手。容易擊中要害。"
+    },
+    "旋風刀": {
+        "name_zh": "旋風刀",
+        "name_en": "Razor Wind",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "製造風之刃攻擊。容易擊中要害，但需要時間蓄力。"
+    },
+    "razor-wind": {
+        "name_zh": "旋風刀",
+        "name_en": "Razor Wind",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "製造風之刃攻擊。容易擊中要害，但需要時間蓄力。"
+    },
+    "自我再生": {
+        "name_zh": "自我再生",
+        "name_en": "Recover",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "讓細胞再生，回復自己的HP。"
+    },
+    "recover": {
+        "name_zh": "自我再生",
+        "name_en": "Recover",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "讓細胞再生，回復自己的HP。"
+    },
+    "反射壁": {
+        "name_zh": "反射壁",
+        "name_en": "Reflect",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "建立神奇的光牆，一段時間內減弱物理攻擊的傷害。即使替換寶可夢效果也會持續。"
+    },
+    "reflect": {
+        "name_zh": "反射壁",
+        "name_en": "Reflect",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "建立神奇的光牆，一段時間內減弱物理攻擊的傷害。即使替換寶可夢效果也會持續。"
+    },
+    "古老之歌": {
+        "name_zh": "古老之歌",
+        "name_en": "Relic Song",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "12",
+        "power": "75",
+        "effect": "唱出古老的歌曲攻擊並輕快地跳舞閃避。有時會讓對手陷入瞌睡狀態。"
+    },
+    "relic-song": {
+        "name_zh": "古老之歌",
+        "name_en": "Relic Song",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "12",
+        "power": "75",
+        "effect": "唱出古老的歌曲攻擊並輕快地跳舞閃避。有時會讓對手陷入瞌睡狀態。"
+    },
+    "吼叫": {
+        "name_zh": "吼叫",
+        "name_en": "Roar",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "大吼一聲嚇走對手。"
+    },
+    "roar": {
+        "name_zh": "吼叫",
+        "name_en": "Roar",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "大吼一聲嚇走對手。"
+    },
+    "岩石爆擊": {
+        "name_zh": "岩石爆擊",
+        "name_en": "Rock Blast",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "15",
+        "effect": "連續發射硬石攻擊。"
+    },
+    "rock-blast": {
+        "name_zh": "岩石爆擊",
+        "name_en": "Rock Blast",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "15",
+        "effect": "連續發射硬石攻擊。"
+    },
+    "岩崩": {
+        "name_zh": "岩崩",
+        "name_en": "Rock Slide",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "投擲巨大的岩石攻擊。有時會讓對手畏縮。"
+    },
+    "rock-slide": {
+        "name_zh": "岩崩",
+        "name_en": "Rock Slide",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "投擲巨大的岩石攻擊。有時會讓對手畏縮。"
+    },
+    "碎岩": {
+        "name_zh": "碎岩",
+        "name_en": "Rock Smash",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "用拳頭攻擊。有時會降低對手的防禦。"
+    },
+    "rock-smash": {
+        "name_zh": "碎岩",
+        "name_en": "Rock Smash",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "用拳頭攻擊。有時會降低對手的防禦。"
+    },
+    "落石": {
+        "name_zh": "落石",
+        "name_en": "Rock Throw",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "投擲小岩石攻擊對手。"
+    },
+    "rock-throw": {
+        "name_zh": "落石",
+        "name_en": "Rock Throw",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "50",
+        "effect": "投擲小岩石攻擊對手。"
+    },
+    "岩石封鎖": {
+        "name_zh": "岩石封鎖",
+        "name_en": "Rock Tomb",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "60",
+        "effect": "投擲岩石攻擊。擊中後會降低對手速度。未擊中的岩石會留在場上。"
+    },
+    "rock-tomb": {
+        "name_zh": "岩石封鎖",
+        "name_en": "Rock Tomb",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "60",
+        "effect": "投擲岩石攻擊。擊中後會降低對手速度。未擊中的岩石會留在場上。"
+    },
+    "滾動": {
+        "name_zh": "滾動",
+        "name_en": "Rollout",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "捲成球狀撞擊對手。"
+    },
+    "rollout": {
+        "name_zh": "滾動",
+        "name_en": "Rollout",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "捲成球狀撞擊對手。"
+    },
+    "聖劍": {
+        "name_zh": "聖劍",
+        "name_en": "Sacred Sword",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "用劍切斬攻擊。無視對手的能力變化。"
+    },
+    "sacred-sword": {
+        "name_zh": "聖劍",
+        "name_en": "Sacred Sword",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "用劍切斬攻擊。無視對手的能力變化。"
+    },
+    "神秘守護": {
+        "name_zh": "神秘守護",
+        "name_en": "Safeguard",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "製造神奇的防護罩，一段時間內不陷入異常狀態。即使替換寶可夢效果也會持續。"
+    },
+    "safeguard": {
+        "name_zh": "神秘守護",
+        "name_en": "Safeguard",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "製造神奇的防護罩，一段時間內不陷入異常狀態。即使替換寶可夢效果也會持續。"
+    },
+    "鹽醃": {
+        "name_zh": "鹽醃",
+        "name_en": "Salt Cure",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使對手陷入鹽醃狀態持續受傷。對水和鋼屬性更有效。"
+    },
+    "salt-cure": {
+        "name_zh": "鹽醃",
+        "name_en": "Salt Cure",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使對手陷入鹽醃狀態持續受傷。對水和鋼屬性更有效。"
+    },
+    "流沙地獄": {
+        "name_zh": "流沙地獄",
+        "name_en": "Sand Tomb",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "召喚沙塵暴困住對手。沙暴內的對手會持續受到傷害。"
+    },
+    "sand-tomb": {
+        "name_zh": "流沙地獄",
+        "name_en": "Sand Tomb",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "召喚沙塵暴困住對手。沙暴內的對手會持續受到傷害。"
+    },
+    "熱水": {
+        "name_zh": "熱水",
+        "name_en": "Scald",
+        "type": "water",
+        "category": "special",
+        "cooldown": "7",
+        "power": "80",
+        "effect": "噴射熱水攻擊。有時會讓對手灼傷。"
+    },
+    "scald": {
+        "name_zh": "熱水",
+        "name_en": "Scald",
+        "type": "water",
+        "category": "special",
+        "cooldown": "7",
+        "power": "80",
+        "effect": "噴射熱水攻擊。有時會讓對手灼傷。"
+    },
+    "鱗射": {
+        "name_zh": "鱗射",
+        "name_en": "Scale Shot",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "15",
+        "effect": "連續發射鱗片攻擊。會提升自己的移動速度，但降低防禦。"
+    },
+    "scale-shot": {
+        "name_zh": "鱗射",
+        "name_en": "Scale Shot",
+        "type": "dragon",
+        "category": "physical",
+        "cooldown": "20",
+        "power": "15",
+        "effect": "連續發射鱗片攻擊。會提升自己的移動速度，但降低防禦。"
+    },
+    "熱沙大地": {
+        "name_zh": "熱沙大地",
+        "name_en": "Scorching Sands",
+        "type": "ground",
+        "category": "special",
+        "cooldown": "6",
+        "power": "70",
+        "effect": "投擲熱沙攻擊。有時會讓對手灼傷。"
+    },
+    "scorching-sands": {
+        "name_zh": "熱沙大地",
+        "name_en": "Scorching Sands",
+        "type": "ground",
+        "category": "special",
+        "cooldown": "6",
+        "power": "70",
+        "effect": "投擲熱沙攻擊。有時會讓對手灼傷。"
+    },
+    "刺耳聲": {
+        "name_zh": "刺耳聲",
+        "name_en": "Screech",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "發出刺耳的聲音，大幅降低對手的防禦。"
+    },
+    "screech": {
+        "name_zh": "刺耳聲",
+        "name_en": "Screech",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "發出刺耳的聲音，大幅降低對手的防禦。"
+    },
+    "神秘之劍": {
+        "name_zh": "神秘之劍",
+        "name_en": "Secret Sword",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "30",
+        "power": "85",
+        "effect": "用長角切斬攻擊。神秘的力量將給予對手物理傷害。"
+    },
+    "secret-sword": {
+        "name_zh": "神秘之劍",
+        "name_en": "Secret Sword",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "30",
+        "power": "85",
+        "effect": "用長角切斬攻擊。神秘的力量將給予對手物理傷害。"
+    },
+    "種子炸彈": {
+        "name_zh": "種子炸彈",
+        "name_en": "Seed Bomb",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "35",
+        "effect": "從上方投擲堅硬的種子攻擊。"
+    },
+    "seed-bomb": {
+        "name_zh": "種子炸彈",
+        "name_en": "Seed Bomb",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "35",
+        "effect": "從上方投擲堅硬的種子攻擊。"
+    },
+    "自爆": {
+        "name_zh": "自爆",
+        "name_en": "Self-Destruct",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "200",
+        "effect": "引發大爆炸攻擊周圍。使用後自己會瀕死。"
+    },
+    "self-destruct": {
+        "name_zh": "自爆",
+        "name_en": "Self-Destruct",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "15",
+        "power": "200",
+        "effect": "引發大爆炸攻擊周圍。使用後自己會瀕死。"
+    },
+    "暗影球": {
+        "name_zh": "暗影球",
+        "name_en": "Shadow Ball",
+        "type": "ghost",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "投擲黑影攻擊。有時會降低對手的特防。"
+    },
+    "shadow-ball": {
+        "name_zh": "暗影球",
+        "name_en": "Shadow Ball",
+        "type": "ghost",
+        "category": "special",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "投擲黑影攻擊。有時會降低對手的特防。"
+    },
+    "暗影之骨": {
+        "name_zh": "暗影之骨",
+        "name_en": "Shadow Bone",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "85",
+        "effect": "用附有靈魂的骨頭毆打對手。有時會降低對手的防禦。"
+    },
+    "shadow-bone": {
+        "name_zh": "暗影之骨",
+        "name_en": "Shadow Bone",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "85",
+        "effect": "用附有靈魂的骨頭毆打對手。有時會降低對手的防禦。"
+    },
+    "暗影爪": {
+        "name_zh": "暗影爪",
+        "name_en": "Shadow Claw",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用影做的爪子劈斬。容易擊中要害。"
+    },
+    "shadow-claw": {
+        "name_zh": "暗影爪",
+        "name_en": "Shadow Claw",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用影做的爪子劈斬。容易擊中要害。"
+    },
+    "暗影拳": {
+        "name_zh": "暗影拳",
+        "name_en": "Shadow Punch",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "躲在影子裡出拳攻擊。"
+    },
+    "shadow-punch": {
+        "name_zh": "暗影拳",
+        "name_en": "Shadow Punch",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "躲在影子裡出拳攻擊。"
+    },
+    "影子偷襲": {
+        "name_zh": "影子偷襲",
+        "name_en": "Shadow Sneak",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "伸長影子從背後攻擊對手。"
+    },
+    "shadow-sneak": {
+        "name_zh": "影子偷襲",
+        "name_en": "Shadow Sneak",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "伸長影子從背後攻擊對手。"
+    },
+    "斷尾": {
+        "name_zh": "斷尾",
+        "name_en": "Shed Tail",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "削減HP製造替身並回到訓練家身邊。一段時間內提升移動速度。"
+    },
+    "shed-tail": {
+        "name_zh": "斷尾",
+        "name_en": "Shed Tail",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "削減HP製造替身並回到訓練家身邊。一段時間內提升移動速度。"
+    },
+    "絕對零度": {
+        "name_zh": "絕對零度",
+        "name_en": "Sheer Cold",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "用絕對零度的冷氣攻擊。會讓對手冰凍，但需要很長的時間蓄力。"
+    },
+    "sheer-cold": {
+        "name_zh": "絕對零度",
+        "name_en": "Sheer Cold",
+        "type": "ice",
+        "category": "special",
+        "cooldown": "20",
+        "power": "150",
+        "effect": "用絕對零度的冷氣攻擊。會讓對手冰凍，但需要很長的時間蓄力。"
+    },
+    "集沙": {
+        "name_zh": "集沙",
+        "name_en": "Shore Up",
+        "type": "ground",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "聚集沙子並吸收，回復HP。"
+    },
+    "shore-up": {
+        "name_zh": "集沙",
+        "name_en": "Shore Up",
+        "type": "ground",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "聚集沙子並吸收，回復HP。"
+    },
+    "銀色旋風": {
+        "name_zh": "銀色旋風",
+        "name_en": "Silver Wind",
+        "type": "bug",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "在風中摻雜鱗粉攻擊。有時會提升自己的所有能力。"
+    },
+    "silver-wind": {
+        "name_zh": "銀色旋風",
+        "name_en": "Silver Wind",
+        "type": "bug",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "在風中摻雜鱗粉攻擊。有時會提升自己的所有能力。"
+    },
+    "唱歌": {
+        "name_zh": "唱歌",
+        "name_en": "Sing",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "用美妙的歌聲讓對手陷入瞌睡狀態。"
+    },
+    "sing": {
+        "name_zh": "唱歌",
+        "name_en": "Sing",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "用美妙的歌聲讓對手陷入瞌睡狀態。"
+    },
+    "火箭頭錘": {
+        "name_zh": "火箭頭錘",
+        "name_en": "Skull Bash",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "150",
+        "effect": "縮入頭部提升防禦後撞擊對手。需要時間蓄力。"
+    },
+    "skull-bash": {
+        "name_zh": "火箭頭錘",
+        "name_en": "Skull Bash",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "150",
+        "effect": "縮入頭部提升防禦後撞擊對手。需要時間蓄力。"
+    },
+    "神鳥猛擊": {
+        "name_zh": "神鳥猛擊",
+        "name_en": "Sky Attack",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "140",
+        "effect": "從空中急速俯衝攻擊。容易擊中要害或讓對手畏縮，但需要時間蓄力。"
+    },
+    "sky-attack": {
+        "name_zh": "神鳥猛擊",
+        "name_en": "Sky Attack",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "140",
+        "effect": "從空中急速俯衝攻擊。容易擊中要害或讓對手畏縮，但需要時間蓄力。"
+    },
+    "劈開": {
+        "name_zh": "劈開",
+        "name_en": "Slash",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用爪或鐮刀劈斬。容易擊中要害。"
+    },
+    "slash": {
+        "name_zh": "劈開",
+        "name_en": "Slash",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用爪或鐮刀劈斬。容易擊中要害。"
+    },
+    "催眠粉": {
+        "name_zh": "催眠粉",
+        "name_en": "Sleep Powder",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出催眠粉，讓對手陷入瞌睡狀態。"
+    },
+    "sleep-powder": {
+        "name_zh": "催眠粉",
+        "name_en": "Sleep Powder",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出催眠粉，讓對手陷入瞌睡狀態。"
+    },
+    "污泥炸彈": {
+        "name_zh": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "category": "special",
+        "cooldown": "7",
+        "power": "90",
+        "effect": "投擲骯髒的污泥攻擊。有時會讓對手中毒。"
+    },
+    "sludge-bomb": {
+        "name_zh": "污泥炸彈",
+        "name_en": "Sludge Bomb",
+        "type": "poison",
+        "category": "special",
+        "cooldown": "7",
+        "power": "90",
+        "effect": "投擲骯髒的污泥攻擊。有時會讓對手中毒。"
+    },
+    "污泥波": {
+        "name_zh": "污泥波",
+        "name_en": "Sludge Wave",
+        "type": "poison",
+        "category": "special",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "用污泥波及周圍攻擊。有時會讓對手中毒。"
+    },
+    "sludge-wave": {
+        "name_zh": "污泥波",
+        "name_en": "Sludge Wave",
+        "type": "poison",
+        "category": "special",
+        "cooldown": "8",
+        "power": "95",
+        "effect": "用污泥波及周圍攻擊。有時會讓對手中毒。"
+    },
+    "煙幕": {
+        "name_zh": "煙幕",
+        "name_en": "Smokescreen",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "用煙或墨汁隱藏身形。野生寶可夢將無法發現你在煙霧中。"
+    },
+    "smokescreen": {
+        "name_zh": "煙幕",
+        "name_en": "Smokescreen",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "用煙或墨汁隱藏身形。野生寶可夢將無法發現你在煙霧中。"
+    },
+    "大聲咆哮": {
+        "name_zh": "大聲咆哮",
+        "name_en": "Snarl",
+        "type": "dark",
+        "category": "special",
+        "cooldown": "8",
+        "power": "55",
+        "effect": "沒完沒了地咆哮，降低對手的特攻。"
+    },
+    "snarl": {
+        "name_zh": "大聲咆哮",
+        "name_en": "Snarl",
+        "type": "dark",
+        "category": "special",
+        "cooldown": "8",
+        "power": "55",
+        "effect": "沒完沒了地咆哮，降低對手的特攻。"
+    },
+    "日光束": {
+        "name_zh": "日光束",
+        "name_en": "Solar Beam",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "積蓄光能發射攻擊。需要時間蓄力。"
+    },
+    "solar-beam": {
+        "name_zh": "日光束",
+        "name_en": "Solar Beam",
+        "type": "grass",
+        "category": "special",
+        "cooldown": "12",
+        "power": "120",
+        "effect": "積蓄光能發射攻擊。需要時間蓄力。"
+    },
+    "日光刃": {
+        "name_zh": "日光刃",
+        "name_en": "Solar Blade",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "125",
+        "effect": "積蓄光能成劍攻擊。需要時間蓄力。"
+    },
+    "solar-blade": {
+        "name_zh": "日光刃",
+        "name_en": "Solar Blade",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "125",
+        "effect": "積蓄光能成劍攻擊。需要時間蓄力。"
+    },
+    "電光": {
+        "name_zh": "電光",
+        "name_en": "Spark",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "帶電衝撞對手。有時會讓對手麻痺。"
+    },
+    "spark": {
+        "name_zh": "電光",
+        "name_en": "Spark",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "帶電衝撞對手。有時會讓對手麻痺。"
+    },
+    "暗影偷盜": {
+        "name_zh": "暗影偷盜",
+        "name_en": "Spectral Thief",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "潛入影子奪取對手的能力提升效果後進行攻擊。"
+    },
+    "spectral-thief": {
+        "name_zh": "暗影偷盜",
+        "name_en": "Spectral Thief",
+        "type": "ghost",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "潛入影子奪取對手的能力提升效果後進行攻擊。"
+    },
+    "辣椒精華": {
+        "name_zh": "辣椒精華",
+        "name_en": "Spicy Extract",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "發出激辛成份，大幅提升對手的攻擊，但降低其防禦。"
+    },
+    "spicy-extract": {
+        "name_zh": "辣椒精華",
+        "name_en": "Spicy Extract",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "發出激辛成份，大幅提升對手的攻擊，但降低其防禦。"
+    },
+    "撒菱": {
+        "name_zh": "撒菱",
+        "name_en": "Spikes",
+        "type": "ground",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "在腳下設置尖刺陷阱。踩到的對手會受到傷害。"
+    },
+    "spikes": {
+        "name_zh": "撒菱",
+        "name_en": "Spikes",
+        "type": "ground",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "在腳下設置尖刺陷阱。踩到的對手會受到傷害。"
+    },
+    "尖刺防守": {
+        "name_zh": "尖刺防守",
+        "name_en": "Spiky Shield",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "防住攻擊，並給予接觸的對手傷害。"
+    },
+    "spiky-shield": {
+        "name_zh": "尖刺防守",
+        "name_en": "Spiky Shield",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "8",
+        "power": "--",
+        "effect": "防住攻擊，並給予接觸的對手傷害。"
+    },
+    "躍起": {
+        "name_zh": "躍起",
+        "name_en": "Splash",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "4",
+        "power": "--",
+        "effect": "只是在那邊跳，什麼都不會發生……"
+    },
+    "splash": {
+        "name_zh": "躍起",
+        "name_en": "Splash",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "4",
+        "power": "--",
+        "effect": "只是在那邊跳，什麼都不會發生……"
+    },
+    "蘑菇孢子": {
+        "name_zh": "蘑菇孢子",
+        "name_en": "Spore",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出催眠孢子，讓對手陷入瞌睡狀態。"
+    },
+    "spore": {
+        "name_zh": "蘑菇孢子",
+        "name_en": "Spore",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出催眠孢子，讓對手陷入瞌睡狀態。"
+    },
+    "隱形岩": {
+        "name_zh": "隱形岩",
+        "name_en": "Stealth Rock",
+        "type": "rock",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "在周圍設置浮空岩石陷阱。接觸到的對手會受到傷害。"
+    },
+    "stealth-rock": {
+        "name_zh": "隱形岩",
+        "name_en": "Stealth Rock",
+        "type": "rock",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "在周圍設置浮空岩石陷阱。接觸到的對手會受到傷害。"
+    },
+    "蒸汽爆炸": {
+        "name_zh": "蒸汽爆炸",
+        "name_en": "Steam Eruption",
+        "type": "water",
+        "category": "special",
+        "cooldown": "10",
+        "power": "110",
+        "effect": "噴射高溫蒸汽攻擊。有時會讓對手灼傷。"
+    },
+    "steam-eruption": {
+        "name_zh": "蒸汽爆炸",
+        "name_en": "Steam Eruption",
+        "type": "water",
+        "category": "special",
+        "cooldown": "10",
+        "power": "110",
+        "effect": "噴射高溫蒸汽攻擊。有時會讓對手灼傷。"
+    },
+    "鐵蹄光線": {
+        "name_zh": "鐵蹄光線",
+        "name_en": "Steel Beam",
+        "type": "steel",
+        "category": "special",
+        "cooldown": "20",
+        "power": "140",
+        "effect": "從全身發射激烈的鋼之光束。自己也會受到傷害。"
+    },
+    "steel-beam": {
+        "name_zh": "鐵蹄光線",
+        "name_en": "Steel Beam",
+        "type": "steel",
+        "category": "special",
+        "cooldown": "20",
+        "power": "140",
+        "effect": "從全身發射激烈的鋼之光束。自己也會受到傷害。"
+    },
+    "鋼翼": {
+        "name_zh": "鋼翼",
+        "name_en": "Steel Wing",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用堅硬的翅膀撞擊。有時會提升自己的防禦。"
+    },
+    "steel-wing": {
+        "name_zh": "鋼翼",
+        "name_en": "Steel Wing",
+        "type": "steel",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "70",
+        "effect": "用堅硬的翅膀撞擊。有時會提升自己的防禦。"
+    },
+    "黏黏網": {
+        "name_zh": "黏黏網",
+        "name_en": "Sticky Web",
+        "type": "bug",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "在對手腳下設置黏網。接觸到的對手速度會變慢。"
+    },
+    "sticky-web": {
+        "name_zh": "黏黏網",
+        "name_en": "Sticky Web",
+        "type": "bug",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "在對手腳下設置黏網。接觸到的對手速度會變慢。"
+    },
+    "岩斧": {
+        "name_zh": "岩斧",
+        "name_en": "Stone Axe",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "65",
+        "effect": "用岩石斧頭攻擊。碎片會殘留在對手周圍。"
+    },
+    "stone-axe": {
+        "name_zh": "岩斧",
+        "name_en": "Stone Axe",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "65",
+        "effect": "用岩石斧頭攻擊。碎片會殘留在對手周圍。"
+    },
+    "尖石攻擊": {
+        "name_zh": "尖石攻擊",
+        "name_en": "Stone Edge",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "用尖銳的岩石刺入攻擊。容易擊中要害。"
+    },
+    "stone-edge": {
+        "name_zh": "尖石攻擊",
+        "name_en": "Stone Edge",
+        "type": "rock",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "100",
+        "effect": "用尖銳的岩石刺入攻擊。容易擊中要害。"
+    },
+    "山嵐摔": {
+        "name_zh": "山嵐摔",
+        "name_en": "Storm Throw",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "65",
+        "effect": "給予對手強烈的一擊。必定擊中要害。"
+    },
+    "storm-throw": {
+        "name_zh": "山嵐摔",
+        "name_en": "Storm Throw",
+        "type": "fighting",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "65",
+        "effect": "給予對手強烈的一擊。必定擊中要害。"
+    },
+    "吐絲": {
+        "name_zh": "吐絲",
+        "name_en": "String Shot",
+        "type": "bug",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "吐出絲線纏繞對手，降低其速度。"
+    },
+    "string-shot": {
+        "name_zh": "吐絲",
+        "name_en": "String Shot",
+        "type": "bug",
+        "category": "status",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "吐出絲線纏繞對手，降低其速度。"
+    },
+    "麻痺粉": {
+        "name_zh": "麻痺粉",
+        "name_en": "Stun Spore",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出麻痺粉，讓對手麻痺。"
+    },
+    "stun-spore": {
+        "name_zh": "麻痺粉",
+        "name_en": "Stun Spore",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "撒出麻痺粉，讓對手麻痺。"
+    },
+    "替身": {
+        "name_zh": "替身",
+        "name_en": "Substitute",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "削減少量HP製造替身。"
+    },
+    "substitute": {
+        "name_zh": "替身",
+        "name_en": "Substitute",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "削減少量HP製造替身。"
+    },
+    "憤怒門牙": {
+        "name_zh": "憤怒門牙",
+        "name_en": "Super Fang",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "用銳利的門牙猛咬攻擊。傷害取決於對手的剩餘HP。"
+    },
+    "super-fang": {
+        "name_zh": "憤怒門牙",
+        "name_en": "Super Fang",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "--",
+        "effect": "用銳利的門牙猛咬攻擊。傷害取決於對手的剩餘HP。"
+    },
+    "超音波": {
+        "name_zh": "超音波",
+        "name_en": "Supersonic",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "發出特殊的音波，讓對手混亂。"
+    },
+    "supersonic": {
+        "name_zh": "超音波",
+        "name_en": "Supersonic",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "6",
+        "power": "--",
+        "effect": "發出特殊的音波，讓對手混亂。"
+    },
+    "衝浪": {
+        "name_zh": "衝浪",
+        "name_en": "Surf",
+        "type": "water",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "掀起大浪捲入周圍進行攻擊。"
+    },
+    "surf": {
+        "name_zh": "衝浪",
+        "name_en": "Surf",
+        "type": "water",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "掀起大浪捲入周圍進行攻擊。"
+    },
+    "虛張聲勢": {
+        "name_zh": "虛張聲勢",
+        "name_en": "Swagger",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "激怒對手使其混亂，但會大幅提升其攻擊。"
+    },
+    "swagger": {
+        "name_zh": "虛張聲勢",
+        "name_en": "Swagger",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "激怒對手使其混亂，但會大幅提升其攻擊。"
+    },
+    "高速星星": {
+        "name_zh": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "5",
+        "power": "60",
+        "effect": "發射星形光束攻擊對手。"
+    },
+    "swift": {
+        "name_zh": "高速星星",
+        "name_en": "Swift",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "5",
+        "power": "60",
+        "effect": "發射星形光束攻擊對手。"
+    },
+    "劍舞": {
+        "name_zh": "劍舞",
+        "name_en": "Swords Dance",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者跳起激烈的戰舞，在一段時間內提高攻擊力。"
+    },
+    "swords-dance": {
+        "name_zh": "劍舞",
+        "name_en": "Swords Dance",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者跳起激烈的戰舞，在一段時間內提高攻擊力。"
+    },
+    "光合作用": {
+        "name_zh": "光合作用",
+        "name_en": "Synthesis",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者透過光合作用產生能量，回復部分HP。"
+    },
+    "synthesis": {
+        "name_zh": "光合作用",
+        "name_en": "Synthesis",
+        "type": "grass",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者透過光合作用產生能量，回復部分HP。"
+    },
+    "撞擊": {
+        "name_zh": "撞擊",
+        "name_en": "Tackle",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "4",
+        "power": "40",
+        "effect": "使用者向前衝鋒，用整個身體撞擊對手造成傷害。"
+    },
+    "tackle": {
+        "name_zh": "撞擊",
+        "name_en": "Tackle",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "4",
+        "power": "40",
+        "effect": "使用者向前衝鋒，用整個身體撞擊對手造成傷害。"
+    },
+    "搖尾巴": {
+        "name_zh": "搖尾巴",
+        "name_en": "Tail Whip",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者可愛地搖尾巴讓對手降低戒心，在短時間內降低對手的防禦力。"
+    },
+    "tail-whip": {
+        "name_zh": "搖尾巴",
+        "name_en": "Tail Whip",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者可愛地搖尾巴讓對手降低戒心，在短時間內降低對手的防禦力。"
+    },
+    "猛撞": {
+        "name_zh": "猛撞",
+        "name_en": "Take Down",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者猛烈衝撞對手造成傷害。使用者也會受到一些傷害。"
+    },
+    "take-down": {
+        "name_zh": "猛撞",
+        "name_en": "Take Down",
+        "type": "normal",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者猛烈衝撞對手造成傷害。使用者也會受到一些傷害。"
+    },
+    "挑釁": {
+        "name_zh": "挑釁",
+        "name_en": "Taunt",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者嘲諷對手，使其暴怒，在短時間內只能使用給予傷害的招式。"
+    },
+    "taunt": {
+        "name_zh": "挑釁",
+        "name_en": "Taunt",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者嘲諷對手，使其暴怒，在短時間內只能使用給予傷害的招式。"
+    },
+    "高科技光炮": {
+        "name_zh": "高科技光炮",
+        "name_en": "Techno Blast",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者向對手發射光束造成傷害。此招式的屬性會根據使用者攜帶的卡帶而改變。"
+    },
+    "techno-blast": {
+        "name_zh": "高科技光炮",
+        "name_en": "Techno Blast",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者向對手發射光束造成傷害。此招式的屬性會根據使用者攜帶的卡帶而改變。"
+    },
+    "瞬間移動": {
+        "name_zh": "瞬間移動",
+        "name_en": "Teleport",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者瞬間移動回到訓練家身邊。"
+    },
+    "teleport": {
+        "name_zh": "瞬間移動",
+        "name_en": "Teleport",
+        "type": "psychic",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者瞬間移動回到訓練家身邊。"
+    },
+    "千箭齊發": {
+        "name_zh": "千箭齊發",
+        "name_en": "Thousand Arrows",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "90",
+        "effect": "使用者利用體內的能量產生無數箭矢，如雨點般射向對手造成傷害。連飛行屬性的寶可夢也會被此招式擊中。"
+    },
+    "thousand-arrows": {
+        "name_zh": "千箭齊發",
+        "name_en": "Thousand Arrows",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "90",
+        "effect": "使用者利用體內的能量產生無數箭矢，如雨點般射向對手造成傷害。連飛行屬性的寶可夢也會被此招式擊中。"
+    },
+    "千波激盪": {
+        "name_zh": "千波激盪",
+        "name_en": "Thousand Waves",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "90",
+        "effect": "使用者釋放出在地面爬行的波浪攻擊對手。被波浪擊中的寶可夢將無法替換下場。"
+    },
+    "thousand-waves": {
+        "name_zh": "千波激盪",
+        "name_en": "Thousand Waves",
+        "type": "ground",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "90",
+        "effect": "使用者釋放出在地面爬行的波浪攻擊對手。被波浪擊中的寶可夢將無法替換下場。"
+    },
+    "打雷": {
+        "name_zh": "打雷",
+        "name_en": "Thunder",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "10",
+        "power": "110",
+        "effect": "使用者劈下猛烈的雷電攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "thunder": {
+        "name_zh": "打雷",
+        "name_en": "Thunder",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "10",
+        "power": "110",
+        "effect": "使用者劈下猛烈的雷電攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "雷電牙": {
+        "name_zh": "雷電牙",
+        "name_en": "Thunder Fang",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "使用者用帶電的牙齒咬住對手造成傷害。有時會讓對手畏縮或陷入麻痺狀態。"
+    },
+    "thunder-fang": {
+        "name_zh": "雷電牙",
+        "name_en": "Thunder Fang",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "65",
+        "effect": "使用者用帶電的牙齒咬住對手造成傷害。有時會讓對手畏縮或陷入麻痺狀態。"
+    },
+    "雷電拳": {
+        "name_zh": "雷電拳",
+        "name_en": "Thunder Punch",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "使用者用帶電的拳頭攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "thunder-punch": {
+        "name_zh": "雷電拳",
+        "name_en": "Thunder Punch",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "7",
+        "power": "75",
+        "effect": "使用者用帶電的拳頭攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "電擊": {
+        "name_zh": "電擊",
+        "name_en": "Thunder Shock",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者用電流攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "thunder-shock": {
+        "name_zh": "電擊",
+        "name_en": "Thunder Shock",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者用電流攻擊對手。有時會讓對手陷入麻痺狀態。"
+    },
+    "電磁波": {
+        "name_zh": "電磁波",
+        "name_en": "Thunder Wave",
+        "type": "electric",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者向對手發射微弱的電流，讓對手陷入麻痺狀態。"
+    },
+    "thunder-wave": {
+        "name_zh": "電磁波",
+        "name_en": "Thunder Wave",
+        "type": "electric",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者向對手發射微弱的電流，讓對手陷入麻痺狀態。"
+    },
+    "十萬伏特": {
+        "name_zh": "十萬伏特",
+        "name_en": "Thunderbolt",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者向對手發射強力的電流造成傷害。有時會讓對手陷入麻痺狀態。"
+    },
+    "thunderbolt": {
+        "name_zh": "十萬伏特",
+        "name_en": "Thunderbolt",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者向對手發射強力的電流造成傷害。有時會讓對手陷入麻痺狀態。"
+    },
+    "顛倒": {
+        "name_zh": "顛倒",
+        "name_en": "Topsy-Turvy",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者將對手的所有能力變化顛倒過來，使其變成原本相反的狀態。"
+    },
+    "topsy-turvy": {
+        "name_zh": "顛倒",
+        "name_en": "Topsy-Turvy",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者將對手的所有能力變化顛倒過來，使其變成原本相反的狀態。"
+    },
+    "無理取鬧": {
+        "name_zh": "無理取鬧",
+        "name_en": "Torment",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者折磨並激怒對手，使其難以連續使用相同的招式。"
+    },
+    "torment": {
+        "name_zh": "無理取鬧",
+        "name_en": "Torment",
+        "type": "dark",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者折磨並激怒對手，使其難以連續使用相同的招式。"
+    },
+    "劇毒": {
+        "name_zh": "劇毒",
+        "name_en": "Toxic",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者讓對手陷入劇毒狀態。毒素造成的傷害會隨時間增加。"
+    },
+    "toxic": {
+        "name_zh": "劇毒",
+        "name_en": "Toxic",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者讓對手陷入劇毒狀態。毒素造成的傷害會隨時間增加。"
+    },
+    "毒菱": {
+        "name_zh": "毒菱",
+        "name_en": "Toxic Spikes",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者在腳下佈設毒菱。對手替換出場的寶可夢若接觸到毒菱就會陷入中毒狀態。"
+    },
+    "toxic-spikes": {
+        "name_zh": "毒菱",
+        "name_en": "Toxic Spikes",
+        "type": "poison",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者在腳下佈設毒菱。對手替換出場的寶可夢若接觸到毒菱就會陷入中毒狀態。"
+    },
+    "起草": {
+        "name_zh": "起草",
+        "name_en": "Trailblaze",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使用者像是從草叢中跳出來般突然攻擊。靈活的步伐會讓使用者的移動速度在短時間內提升。"
+    },
+    "trailblaze": {
+        "name_zh": "起草",
+        "name_en": "Trailblaze",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使用者像是從草叢中跳出來般突然攻擊。靈活的步伐會讓使用者的移動速度在短時間內提升。"
+    },
+    "三重攻擊": {
+        "name_zh": "三重攻擊",
+        "name_en": "Tri Attack",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "7",
+        "power": "40",
+        "effect": "使用者發射三種光束攻擊對手。有時會讓對手陷入灼傷、冰凍或麻痺狀態。"
+    },
+    "tri-attack": {
+        "name_zh": "三重攻擊",
+        "name_en": "Tri Attack",
+        "type": "normal",
+        "category": "special",
+        "cooldown": "7",
+        "power": "40",
+        "effect": "使用者發射三種光束攻擊對手。有時會讓對手陷入灼傷、冰凍或麻痺狀態。"
+    },
+    "萬聖夜": {
+        "name_zh": "萬聖夜",
+        "name_en": "Trick-or-Treat",
+        "type": "ghost",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者邀請對手去不給糖就搗蛋。這會追加對手的幽靈屬性。"
+    },
+    "trick-or-treat": {
+        "name_zh": "萬聖夜",
+        "name_en": "Trick-or-Treat",
+        "type": "ghost",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用者邀請對手去不給糖就搗蛋。這會追加對手的幽靈屬性。"
+    },
+    "三旋擊": {
+        "name_zh": "三旋擊",
+        "name_en": "Triple Axel",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使用者連續踢擊三次造成傷害。每次跳起來踢擊時，攻擊範圍都會擴大。"
+    },
+    "triple-axel": {
+        "name_zh": "三旋擊",
+        "name_en": "Triple Axel",
+        "type": "ice",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "40",
+        "effect": "使用者連續踢擊三次造成傷害。每次跳起來踢擊時，攻擊範圍都會擴大。"
+    },
+    "龍捲風": {
+        "name_zh": "龍捲風",
+        "name_en": "Twister",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者捲起猛烈的龍捲風攻擊對手。有時會讓對手畏縮。"
+    },
+    "twister": {
+        "name_zh": "龍捲風",
+        "name_en": "Twister",
+        "type": "dragon",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者捲起猛烈的龍捲風攻擊對手。有時會讓對手畏縮。"
+    },
+    "急速折返": {
+        "name_zh": "急速折返",
+        "name_en": "U-turn",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "70",
+        "effect": "使用者進行快速攻擊後，以驚人的速度回到訓練家身邊。"
+    },
+    "u-turn": {
+        "name_zh": "急速折返",
+        "name_en": "U-turn",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "12",
+        "power": "70",
+        "effect": "使用者進行快速攻擊後，以驚人的速度回到訓練家身邊。"
+    },
+    "真空波": {
+        "name_zh": "真空波",
+        "name_en": "Vacuum Wave",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "使用者揮動拳頭製造出真空波，飛速攻擊對手。"
+    },
+    "vacuum-wave": {
+        "name_zh": "真空波",
+        "name_en": "Vacuum Wave",
+        "type": "fighting",
+        "category": "special",
+        "cooldown": "3",
+        "power": "40",
+        "effect": "使用者揮動拳頭製造出真空波，飛速攻擊對手。"
+    },
+    "藤鞭": {
+        "name_zh": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "45",
+        "effect": "使用者用像鞭子般細長的藤蔓抽打對手造成傷害。"
+    },
+    "vine-whip": {
+        "name_zh": "藤鞭",
+        "name_en": "Vine Whip",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "45",
+        "effect": "使用者用像鞭子般細長的藤蔓抽打對手造成傷害。"
+    },
+    "伏特替換": {
+        "name_zh": "伏特替換",
+        "name_en": "Volt Switch",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "12",
+        "power": "70",
+        "effect": "使用者進行快速攻擊後，以驚人的速度回到訓練家身邊。"
+    },
+    "volt-switch": {
+        "name_zh": "伏特替換",
+        "name_en": "Volt Switch",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "12",
+        "power": "70",
+        "effect": "使用者進行快速攻擊後，以驚人的速度回到訓練家身邊。"
+    },
+    "伏特攻擊": {
+        "name_zh": "伏特攻擊",
+        "name_en": "Volt Tackle",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "120",
+        "effect": "使用者全身纏繞電流向前衝鋒造成傷害。有時會讓對手陷入麻痺狀態。使用者也會受到一些傷害。"
+    },
+    "volt-tackle": {
+        "name_zh": "伏特攻擊",
+        "name_en": "Volt Tackle",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "9",
+        "power": "120",
+        "effect": "使用者全身纏繞電流向前衝鋒造成傷害。有時會讓對手陷入麻痺狀態。使用者也會受到一些傷害。"
+    },
+    "水槍": {
+        "name_zh": "水槍",
+        "name_en": "Water Gun",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者向對手發射強力的水流攻擊造成傷害。"
+    },
+    "water-gun": {
+        "name_zh": "水槍",
+        "name_en": "Water Gun",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "40",
+        "effect": "使用者向對手發射強力的水流攻擊造成傷害。"
+    },
+    "水之波動": {
+        "name_zh": "水之波動",
+        "name_en": "Water Pulse",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者發射脈衝般的水流攻擊對手。有時會讓對手陷入混亂狀態。"
+    },
+    "water-pulse": {
+        "name_zh": "水之波動",
+        "name_en": "Water Pulse",
+        "type": "water",
+        "category": "special",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者發射脈衝般的水流攻擊對手。有時會讓對手陷入混亂狀態。"
+    },
+    "飛水手裡劍": {
+        "name_zh": "飛水手裡劍",
+        "name_en": "Water Shuriken",
+        "type": "water",
+        "category": "special",
+        "cooldown": "8",
+        "power": "15",
+        "effect": "使用者用黏液製成的五枚手裡劍，連續投擲攻擊對手。"
+    },
+    "water-shuriken": {
+        "name_zh": "飛水手裡劍",
+        "name_en": "Water Shuriken",
+        "type": "water",
+        "category": "special",
+        "cooldown": "8",
+        "power": "15",
+        "effect": "使用者用黏液製成的五枚手裡劍，連續投擲攻擊對手。"
+    },
+    "攀瀑": {
+        "name_zh": "攀瀑",
+        "name_en": "Waterfall",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者以驚人的氣勢衝撞對手造成傷害。有時會讓對手畏縮。"
+    },
+    "waterfall": {
+        "name_zh": "攀瀑",
+        "name_en": "Waterfall",
+        "type": "water",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者以驚人的氣勢衝撞對手造成傷害。有時會讓對手畏縮。"
+    },
+    "潮旋": {
+        "name_zh": "潮旋",
+        "name_en": "Whirlpool",
+        "type": "water",
+        "category": "special",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "使用者召喚猛烈的漩渦包圍對手。位於漩渦中的對手會受到持續傷害。"
+    },
+    "whirlpool": {
+        "name_zh": "潮旋",
+        "name_en": "Whirlpool",
+        "type": "water",
+        "category": "special",
+        "cooldown": "7",
+        "power": "20",
+        "effect": "使用者召喚猛烈的漩渦包圍對手。位於漩渦中的對手會受到持續傷害。"
+    },
+    "吹飛": {
+        "name_zh": "吹飛",
+        "name_en": "Whirlwind",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者刮起強風，將對手吹飛一段距離。"
+    },
+    "whirlwind": {
+        "name_zh": "吹飛",
+        "name_en": "Whirlwind",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "7",
+        "power": "--",
+        "effect": "使用者刮起強風，將對手吹飛一段距離。"
+    },
+    "瘋狂伏特": {
+        "name_zh": "瘋狂伏特",
+        "name_en": "Wild Charge",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者全身纏繞電流向前衝鋒造成傷害。使用者也會受到一些傷害。"
+    },
+    "wild-charge": {
+        "name_zh": "瘋狂伏特",
+        "name_en": "Wild Charge",
+        "type": "electric",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "90",
+        "effect": "使用者全身纏繞電流向前衝鋒造成傷害。使用者也會受到一些傷害。"
+    },
+    "鬼火": {
+        "name_zh": "鬼火",
+        "name_en": "Will-O-Wisp",
+        "type": "fire",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者放出怪異的火焰，讓對手陷入灼傷狀態。"
+    },
+    "will-o-wisp": {
+        "name_zh": "鬼火",
+        "name_en": "Will-O-Wisp",
+        "type": "fire",
+        "category": "status",
+        "cooldown": "10",
+        "power": "--",
+        "effect": "使用者放出怪異的火焰，讓對手陷入灼傷狀態。"
+    },
+    "翅膀攻擊": {
+        "name_zh": "翅膀攻擊",
+        "name_en": "Wing Attack",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者大大張開翅膀撞擊對手造成傷害。"
+    },
+    "wing-attack": {
+        "name_zh": "翅膀攻擊",
+        "name_en": "Wing Attack",
+        "type": "flying",
+        "category": "physical",
+        "cooldown": "6",
+        "power": "60",
+        "effect": "使用者大大張開翅膀撞擊對手造成傷害。"
+    },
+    "祈願": {
+        "name_zh": "祈願",
+        "name_en": "Wish",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用該招式一段時間後，會回復使用者或接替使用者上場戰鬥的寶可夢的HP。"
+    },
+    "wish": {
+        "name_zh": "祈願",
+        "name_en": "Wish",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "12",
+        "power": "--",
+        "effect": "使用該招式一段時間後，會回復使用者或接替使用者上場戰鬥的寶可夢的HP。"
+    },
+    "木槌": {
+        "name_zh": "木槌",
+        "name_en": "Wood Hammer",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者用堅硬的身體撞擊對手造成傷害。使用者也會受到一些傷害。"
+    },
+    "wood-hammer": {
+        "name_zh": "木槌",
+        "name_en": "Wood Hammer",
+        "type": "grass",
+        "category": "physical",
+        "cooldown": "10",
+        "power": "120",
+        "effect": "使用者用堅硬的身體撞擊對手造成傷害。使用者也會受到一些傷害。"
+    },
+    "自我激勵": {
+        "name_zh": "自我激勵",
+        "name_en": "Work Up",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者透過自我激勵，在短時間內提高攻擊和特攻。"
+    },
+    "work-up": {
+        "name_zh": "自我激勵",
+        "name_en": "Work Up",
+        "type": "normal",
+        "category": "status",
+        "cooldown": "15",
+        "power": "--",
+        "effect": "使用者透過自我激勵，在短時間內提高攻擊和特攻。"
+    },
+    "十字剪": {
+        "name_zh": "十字剪",
+        "name_en": "X-Scissor",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者將鐮刀或爪子像剪刀般交叉攻擊對手。"
+    },
+    "x-scissor": {
+        "name_zh": "十字剪",
+        "name_en": "X-Scissor",
+        "type": "bug",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者將鐮刀或爪子像剪刀般交叉攻擊對手。"
+    },
+    "電磁炮": {
+        "name_zh": "電磁炮",
+        "name_en": "Zap Cannon",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "15",
+        "power": "120",
+        "effect": "使用者像發射大砲一樣發射電流攻擊對手。必定會讓對手陷入麻痺狀態。"
+    },
+    "zap-cannon": {
+        "name_zh": "電磁炮",
+        "name_en": "Zap Cannon",
+        "type": "electric",
+        "category": "special",
+        "cooldown": "15",
+        "power": "120",
+        "effect": "使用者像發射大砲一樣發射電流攻擊對手。必定會讓對手陷入麻痺狀態。"
+    },
+    "意念頭錘": {
+        "name_zh": "意念頭錘",
+        "name_en": "Zen Headbutt",
+        "type": "psychic",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者將意志力集中在額頭上進行頭錘攻擊。有時會讓對手畏縮。"
+    },
+    "zen-headbutt": {
+        "name_zh": "意念頭錘",
+        "name_en": "Zen Headbutt",
+        "type": "psychic",
+        "category": "physical",
+        "cooldown": "8",
+        "power": "80",
+        "effect": "使用者將意志力集中在額頭上進行頭錘攻擊。有時會讓對手畏縮。"
+    }
+}
