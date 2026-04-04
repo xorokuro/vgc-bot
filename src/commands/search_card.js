@@ -14,6 +14,7 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder } = require('discord.js');
 const fs     = require('fs');
 const cardDb = require('../ptcgp/cardDb');
+const { resolveImagePath } = cardDb;
 const { typeSprite, raritySprite, rarityDisplay } = require('../ptcgp/sprites');
 const { getSetName } = require('../ptcgp/setNames');
 
@@ -361,7 +362,7 @@ async function execute(interaction) {
   // Single result — show card image
   if (results.length === 1) {
     const card      = results[0];
-    const imagePath = card.images?.zh_TW ?? card.images?.en_US ?? Object.values(card.images ?? {})[0];
+    const imagePath = resolveImagePath(card.images?.zh_TW ?? card.images?.en_US ?? Object.values(card.images ?? {})[0]);
     const embed = new EmbedBuilder()
       .setTitle('找到 1 張卡牌 / 1 card found')
       .setDescription(formatCardLine(card))
@@ -408,7 +409,7 @@ async function handleSelectMenu(interaction) {
   const card = cardDb.getCard(uid);
   if (!card) return interaction.reply({ content: '❌ Card not found.', flags: 64 });
 
-  const imagePath = card.images?.zh_TW ?? card.images?.en_US ?? Object.values(card.images ?? {})[0];
+  const imagePath = resolveImagePath(card.images?.zh_TW ?? card.images?.en_US ?? Object.values(card.images ?? {})[0]);
   if (!imagePath || !fs.existsSync(imagePath)) {
     return interaction.reply({ content: '⚠ Image not found.', flags: 64 });
   }

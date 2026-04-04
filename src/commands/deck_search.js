@@ -17,6 +17,7 @@ const {
   StringSelectMenuBuilder,
 } = require('discord.js');
 const cardDb = require('../ptcgp/cardDb');
+const { resolveImagePath } = cardDb;
 const { getSetName }     = require('../ptcgp/setNames');
 const { typeSprite }     = require('../ptcgp/sprites');
 const { buildDeckImage } = require('../ptcgp/deckImage');
@@ -66,7 +67,7 @@ function cardLabel(card, lang = 'zh') {
 
 function cardImagePath(card, lang = 'zh') {
   const key  = LANG_IMG_KEY[lang] ?? 'zh_TW';
-  const p    = card.images?.[key] ?? card.images?.zh_TW ?? Object.values(card.images ?? {})[0];
+  const p    = resolveImagePath(card.images?.[key] ?? card.images?.zh_TW ?? Object.values(card.images ?? {})[0]);
   return p && fs.existsSync(p) ? p : null;
 }
 

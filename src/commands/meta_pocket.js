@@ -15,6 +15,7 @@ const { fetchMetaDecks, fetchDeckDetail, fetchDecklist, deckUrl, cacheAge } = re
 const { getSetName } = require('../ptcgp/setNames');
 const { typeSprite } = require('../ptcgp/sprites');
 const cardDb = require('../ptcgp/cardDb');
+const { resolveImagePath } = cardDb;
 
 const PAGE_SIZE = 10;
 
@@ -385,7 +386,7 @@ async function handleCardView(interaction) {
 
   // Pick image — try zh_TW first
   const LANG_ORDER = ['zh_TW', 'en_US', 'ja_JP'];
-  const imagePath = LANG_ORDER.map(l => card.images?.[l]).find(p => p && fs.existsSync(p));
+  const imagePath = LANG_ORDER.map(l => resolveImagePath(card.images?.[l])).find(p => p && fs.existsSync(p));
   if (!imagePath) return interaction.reply({ content: '⚠ Image not found.', flags: 64 });
 
   await interaction.deferReply({ flags: 64 });

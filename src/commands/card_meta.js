@@ -17,6 +17,7 @@ const {
 } = require('discord.js');
 const fs      = require('fs');
 const cardDb  = require('../ptcgp/cardDb');
+const { resolveImagePath } = cardDb;
 const { getSetName }    = require('../ptcgp/setNames');
 const { typeSprite, rarityDisplay } = require('../ptcgp/sprites');
 const { buildDeckImage }            = require('../ptcgp/deckImage');
@@ -292,7 +293,7 @@ async function execute(interaction) {
   }
 
   const imgKey    = LANG_IMAGE_KEY[lang] ?? 'zh_TW';
-  const imagePath = card.images?.[imgKey] ?? card.images?.zh_TW ?? card.images?.en_US ?? Object.values(card.images ?? {})[0];
+  const imagePath = resolveImagePath(card.images?.[imgKey] ?? card.images?.zh_TW ?? card.images?.en_US ?? Object.values(card.images ?? {})[0]);
   if (!imagePath || !fs.existsSync(imagePath)) {
     return interaction.reply({ content: `❌ 找不到卡牌圖片 / No image for **${uid}**`, flags: 64 });
   }

@@ -14,6 +14,7 @@ const {
 } = require('discord.js');
 const fs     = require('fs');
 const cardDb = require('../ptcgp/cardDb');
+const { resolveImagePath } = cardDb;
 const { getSetName } = require('../ptcgp/setNames');
 const { typeSprite, typeText, raritySprite } = require('../ptcgp/sprites');
 
@@ -218,7 +219,7 @@ async function handleSelectMenu(interaction) {
   }
 
   const langKey   = LANG_KEYS[display] ?? 'zh_TW';
-  const imagePath = card.images?.[langKey] ?? Object.values(card.images ?? {})[0];
+  const imagePath = resolveImagePath(card.images?.[langKey] ?? Object.values(card.images ?? {})[0]);
 
   if (!imagePath || !fs.existsSync(imagePath)) {
     return interaction.reply({ content: '⚠ Image not found.', flags: 64 });
