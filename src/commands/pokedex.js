@@ -279,11 +279,6 @@ module.exports = {
     .setName('pokedex')
     .setDescription('查詢寶可夢詳細資料 / Pokémon details: stats, moves, abilities')
     .addStringOption(o => o
-      .setName('pokemon')
-      .setDescription('寶可夢名稱（中文、日文、英文）/ Pokémon name (zh/ja/en)')
-      .setRequired(true)
-      .setAutocomplete(true))
-    .addStringOption(o => o
       .setName('game')
       .setDescription('遊戲版本 / Game version')
       .setRequired(true)
@@ -291,6 +286,11 @@ module.exports = {
         { name: '朱紫 (Scarlet/Violet)',  value: 'scvi' },
         { name: '傳說Z-A (Legends: Z-A)', value: 'plza' },
       ))
+    .addStringOption(o => o
+      .setName('pokemon')
+      .setDescription('寶可夢名稱（中文、日文、英文）/ Pokémon name (zh/ja/en)')
+      .setRequired(true)
+      .setAutocomplete(true))
     .addStringOption(o => o
       .setName('lang')
       .setDescription('顯示語言（預設：繁體中文）/ Display language')
