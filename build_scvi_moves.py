@@ -183,8 +183,8 @@ def scrape_sv_moves(slug, session):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    # Fix stdout encoding for Windows
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    # Force unbuffered output (works on both Windows and Linux)
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace", line_buffering=True)
 
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
