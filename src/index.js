@@ -20,6 +20,7 @@ const teamsCommand      = require('./commands/teams');
 const teamSearchCommand = require('./commands/team_search');
 const shinyCommand      = require('./commands/shiny');
 const searchMiscCommand = require('./commands/search_misc');
+const pokedexCommand    = require('./commands/pokedex');
 const { ui, translateType, translateCategory } = require('./utils/i18n');
 const { startDailyRefresh } = require('./ptcgp/metaScraper');
 
@@ -46,6 +47,7 @@ client.commands.set(teamsCommand.data.name,      teamsCommand);
 client.commands.set(teamSearchCommand.data.name, teamSearchCommand);
 client.commands.set(shinyCommand.data.name,      shinyCommand);
 client.commands.set(searchMiscCommand.data.name, searchMiscCommand);
+client.commands.set(pokedexCommand.data.name,    pokedexCommand);
 
 // ── Ready ─────────────────────────────────────────────────────────────────────
 client.once(Events.ClientReady, c => {

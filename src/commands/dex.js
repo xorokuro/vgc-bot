@@ -5,232 +5,60 @@ const {
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
   StringSelectMenuBuilder,
 } = require('discord.js');
-const sharp = require('sharp');
 const { searchPokemon, GAME_CONFIGS } = require('../utils/dexSearch');
-const { translate }                   = require('../utils/i18n');
-const { TYPE_EMOJI }                  = require('../utils/buildEmbed');
+const {
+  buildStatImage, buildDetailEmbed, getPokeDisplayName,
+  DEX_LABELS, STAT_LABELS, gameLabel,
+} = require('../utils/pokedexUtils');
 
-const PAGE_SIZE  = 25;
-const COLOR      = 0x3B4CCA; // Pokémon blue
-const CACHE_TTL  = 10 * 60 * 1000; // 10 minutes
+const PAGE_SIZE = 25;
+const COLOR     = 0x3B4CCA;
+const CACHE_TTL = 10 * 60 * 1000;
 
-// ── Result cache (keyed by interaction.id at search time) ─────────────────────
-const _cache = new Map(); // cacheId → { results, gameId, query, showStats, expires }
+// ── Result cache ──────────────────────────────────────────────────────────────
+const _cache = new Map();
 
 function cacheStore(id, payload) {
   _cache.set(id, { ...payload, expires: Date.now() + CACHE_TTL });
   setTimeout(() => _cache.delete(id), CACHE_TTL);
 }
 
-// TYPE_EMOJI is imported from buildEmbed.js (custom Discord emoji IDs, Title-case keys)
-// Helper: lowercase type name → sprite
-function typeEmoji(t) {
-  return TYPE_EMOJI[t[0].toUpperCase() + t.slice(1)] ?? '';
-}
-
-// ── Type effectiveness chart (Title-case keys) ────────────────────────────────
-// TYPE_CHART[atk][def] = multiplier (omitted = 1×)
-const TYPE_CHART = {
-  Normal:   { Rock: 0.5,  Ghost: 0,   Steel: 0.5 },
-  Fire:     { Fire: 0.5,  Water: 0.5, Grass: 2,   Ice: 2,   Bug: 2,   Rock: 0.5, Dragon: 0.5, Steel: 2 },
-  Water:    { Fire: 2,    Water: 0.5, Grass: 0.5, Ground: 2, Rock: 2,  Dragon: 0.5 },
-  Electric: { Water: 2,   Electric: 0.5, Grass: 0.5, Ground: 0, Flying: 2, Dragon: 0.5 },
-  Grass:    { Fire: 0.5,  Water: 2,   Grass: 0.5, Poison: 0.5, Ground: 2, Flying: 0.5, Bug: 0.5, Rock: 2, Dragon: 0.5, Steel: 0.5 },
-  Ice:      { Water: 0.5, Grass: 2,   Ice: 0.5,   Ground: 2, Flying: 2, Dragon: 2, Steel: 0.5 },
-  Fighting: { Normal: 2,  Ice: 2,     Poison: 0.5, Flying: 0.5, Psychic: 0.5, Bug: 0.5, Rock: 2, Ghost: 0, Dark: 2, Steel: 2, Fairy: 0.5 },
-  Poison:   { Grass: 2,   Poison: 0.5, Ground: 0.5, Rock: 0.5, Ghost: 0.5, Steel: 0, Fairy: 2 },
-  Ground:   { Fire: 2,    Electric: 2, Grass: 0.5, Poison: 2, Flying: 0, Bug: 0.5, Rock: 2, Steel: 2 },
-  Flying:   { Electric: 0.5, Grass: 2, Fighting: 2, Bug: 2, Rock: 0.5, Steel: 0.5 },
-  Psychic:  { Fighting: 2, Poison: 2, Psychic: 0.5, Dark: 0, Steel: 0.5 },
-  Bug:      { Fire: 0.5,  Grass: 2,   Fighting: 0.5, Flying: 0.5, Psychic: 2, Ghost: 0.5, Dark: 2, Steel: 0.5, Fairy: 0.5, Poison: 0.5 },
-  Rock:     { Fire: 2,    Ice: 2,     Fighting: 0.5, Ground: 0.5, Flying: 2, Bug: 2, Steel: 0.5 },
-  Ghost:    { Normal: 0,  Psychic: 2, Ghost: 2,   Dark: 0.5 },
-  Dragon:   { Dragon: 2,  Steel: 0.5, Fairy: 0 },
-  Dark:     { Fighting: 0.5, Psychic: 2, Ghost: 2, Dark: 0.5, Fairy: 0.5 },
-  Steel:    { Fire: 0.5,  Water: 0.5, Electric: 0.5, Ice: 2, Rock: 2, Steel: 0.5, Fairy: 2 },
-  Fairy:    { Fighting: 2, Poison: 0.5, Bug: 0.5, Dragon: 2, Dark: 2, Steel: 0.5 },
-};
-
-const ALL_TYPES = Object.keys(TYPE_CHART);
-
-/**
- * Compute type effectiveness groups for a Pokémon with the given types.
- * @param {string[]} typesEn  e.g. ['fire', 'flying']
- * @returns {{ '4': string[], '2': string[], '0.5': string[], '0.25': string[], '0': string[] }}
- */
-function calcWeaknesses(typesEn) {
-  const result = { '4': [], '2': [], '0.5': [], '0.25': [], '0': [] };
-  const defTypes = typesEn.map(t => t[0].toUpperCase() + t.slice(1)); // Title-case
-  for (const atkType of ALL_TYPES) {
-    const chart = TYPE_CHART[atkType] ?? {};
-    let mult = 1;
-    for (const def of defTypes) mult *= chart[def] ?? 1;
-    if      (mult === 4)    result['4'].push(atkType);
-    else if (mult === 2)    result['2'].push(atkType);
-    else if (mult === 0.5)  result['0.5'].push(atkType);
-    else if (mult === 0.25) result['0.25'].push(atkType);
-    else if (mult === 0)    result['0'].push(atkType);
-  }
-  return result;
-}
-
-// ── Stat bar (20 chars wide, max 255) ─────────────────────────────────────────
-function statBar(val, max = 255) {
-  const filled = Math.round((val / max) * 20);
-  return '█'.repeat(filled) + '░'.repeat(20 - filled);
-}
-
-// ── Stat labels per language ──────────────────────────────────────────────────
-const STAT_KEYS = [
-  { key: 'hp',              color: '#FF5959' },
-  { key: 'attack',          color: '#F5AC78' },
-  { key: 'defense',         color: '#FAE078' },
-  { key: 'special-attack',  color: '#9DB7F5' },
-  { key: 'special-defense', color: '#A7DB8D' },
-  { key: 'speed',           color: '#FA92B2' },
-];
-const STAT_LABELS = {
-  zh: ['HP', '攻擊', '防禦', '特攻', '特防', '速度'],
-  ja: ['HP', '攻撃', '防御', '特攻', '特防', '素早'],
-  en: ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'],
-};
-
-// ── Stat chart image ─────────────────────────────────────────────────────────
-async function buildStatImage(stats, bst, lang = 'zh') {
-  const labels = STAT_LABELS[lang] ?? STAT_LABELS.zh;
-  const W = 400, H = 258;
-  const BAR_X = 100, BAR_W = 276, BAR_H = 14;
-  const START_Y = 64, ROW_H = 32;
-
-  const rows = STAT_KEYS.map((r, i) => {
-    const label = labels[i];
-    const val  = stats[r.key] ?? 0;
-    const barW = Math.max(0, Math.round(val / 255 * BAR_W));
-    const y    = START_Y + i * ROW_H;
-    return `
-      <text x="20" y="${y}" font-family="sans-serif" font-size="13" fill="#CCCCCC">${label}</text>
-      <text x="${BAR_X - 8}" y="${y}" font-family="monospace" font-size="13" fill="#CCCCCC" text-anchor="end">${val}</text>
-      <rect x="${BAR_X}" y="${y - 12}" width="${BAR_W}" height="${BAR_H}" fill="#2A2A3A" rx="3"/>
-      ${barW > 0 ? `<rect x="${BAR_X}" y="${y - 12}" width="${barW}" height="${BAR_H}" fill="${r.color}" rx="3"/>` : ''}`;
-  }).join('');
-
-  const chartTitle = lang === 'en' ? `Base Stats  Total ${bst}` : lang === 'ja' ? `種族値　合計 ${bst}` : `種族值　總計 ${bst}`;
-  const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-    <rect width="${W}" height="${H}" fill="#12121C" rx="10"/>
-    <text x="20" y="24" font-family="sans-serif" font-size="13" fill="#888888">${chartTitle}</text>
-    <line x1="20" y1="34" x2="${W - 20}" y2="34" stroke="#333333" stroke-width="1"/>
-    ${rows}
-  </svg>`;
-
-  return sharp(Buffer.from(svg)).png().toBuffer();
-}
-
-// ── Localised label tables ────────────────────────────────────────────────────
-const DEX_LABELS = {
-  zh: { type: '屬性', stats: '種族值', ability: '特性', weakness: '弱點・抗性', noWeak: '無特殊弱點', hidden: '〔隱藏特性〕' },
-  ja: { type: 'タイプ', stats: '種族値', ability: '特性', weakness: '弱点・耐性', noWeak: '特殊な弱点なし', hidden: '〔隠れ特性〕' },
-  en: { type: 'Type', stats: 'Base Stats', ability: 'Abilities', weakness: 'Weaknesses', noWeak: 'No special weaknesses', hidden: '[Hidden]' },
-};
-
-// ── Resolve display name for a Pokémon in the requested language ──────────────
-// For zh: use name_zh (already includes form description in Chinese).
-// For en: formatted English name (e.g. "Vulpix-Alola").
-// For ja: translate the base species name via trilingual.json, then append the
-//         form suffix in English if present (e.g. "ロコン (Alola)").
-function getPokeDisplayName(poke, lang) {
-  const nameEn    = poke.name_en || '';
-  const speciesEn = poke.species_en_name || nameEn;
-  const cap       = w => w.charAt(0).toUpperCase() + w.slice(1);
-
-  if (lang === 'zh') return poke.name_zh || nameEn;
-
-  const formattedEn = nameEn.split('-').map(cap).join('-');
-  if (lang === 'en') return formattedEn;
-
-  // Japanese: translate species, append form if any
-  const speciesFormatted = speciesEn.split('-').map(cap).join(' ');
-  const jaSpecies = translate(speciesFormatted, 'pokemon', 'ja');
-  const hasForm   = nameEn.length > speciesEn.length && nameEn.startsWith(speciesEn + '-');
-  if (!hasForm) return jaSpecies;
-  const formStr = nameEn.slice(speciesEn.length + 1).split('-').map(cap).join(' ');
-  return `${jaSpecies} (${formStr})`;
-}
-
-// ── Detail embed for one Pokémon ──────────────────────────────────────────────
-function buildDetailEmbed(poke, lang = 'zh') {
-  const L      = DEX_LABELS[lang] ?? DEX_LABELS.zh;
-  const dexNum = poke.id ? `#${String(poke.id).padStart(4, '0')}` : '';
-  const title  = `${getPokeDisplayName(poke, lang)}  ${dexNum}`;
-
-  // Types
-  const typeStr = (poke.types_en || []).map(t => typeEmoji(t)).join('  ');
-
-  // Stats (used for image only)
-  const s   = poke.stats ?? {};
-  const bst = Object.values(s).reduce((a, v) => a + (v || 0), 0);
-
-  // Abilities
-  const abilities = poke.abilities ?? [];
-  const abilityLines = abilities.map(a => {
-    const enKey = a.name.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
-    const name  = translate(enKey, 'ability', lang) || enKey;
-    const hidden = a.is_hidden ? ` ${L.hidden}` : '';
-    return `${name}${hidden}`;
-  }).join('\n');
-
-  // Type weaknesses
-  const weak = calcWeaknesses(poke.types_en ?? []);
-  const weakRows = [
-    ['4×', weak['4']], ['2×', weak['2']], ['½×', weak['0.5']],
-    ['¼×', weak['0.25']], ['0×', weak['0']],
-  ]
-    .filter(([, arr]) => arr.length > 0)
-    .map(([label, arr]) => `**${label}** ${arr.map(t => typeEmoji(t.toLowerCase())).join('')}`)
-    .join('  ');
-
-  // Keep hyphens so alternate-form filenames resolve correctly (e.g. ninetales-alola.png)
-  const spriteId  = (poke.name_en || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
-  const spriteUrl = `https://play.pokemonshowdown.com/sprites/home/${spriteId}.png`;
-
-  return new EmbedBuilder()
-    .setColor(COLOR)
-    .setTitle(title)
-    .setThumbnail(spriteUrl)
-    .addFields(
-      { name: `${L.type}`,       value: typeStr || '—',      inline: false },
-      { name: `💡 ${L.ability}`, value: abilityLines || '—', inline: false },
-      { name: `🛡️ ${L.weakness}`,           value: weakRows || L.noWeak, inline: false },
-    );
-}
-
-// ── Build search-result embed ─────────────────────────────────────────────────
+// ── Search result embed ───────────────────────────────────────────────────────
 function buildEmbed(results, gameId, query, page, showStats, lang = 'zh') {
-  const cfg        = GAME_CONFIGS[gameId];
+  const L          = DEX_LABELS[lang] ?? DEX_LABELS.zh;
+  const gLabel     = gameLabel(gameId, lang);
   const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const slice      = results.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const statLabels = STAT_LABELS[lang] ?? STAT_LABELS.zh;
 
   const lines = slice.map(p => {
     const name = getPokeDisplayName(p, lang);
     if (showStats && p.stats) {
       const s   = p.stats;
       const bst = Object.values(s).reduce((a, v) => a + (v || 0), 0);
-      return `${name}　HP:${s.hp} 攻:${s.attack} 防:${s.defense} 特攻:${s['special-attack']} 特防:${s['special-defense']} 速:${s.speed} [${bst}]`;
+      const [HP, Atk, Def, SpA, SpD, Spe] = statLabels;
+      return `${name}　${HP}:${s.hp} ${Atk}:${s.attack} ${Def}:${s.defense} ${SpA}:${s['special-attack']} ${SpD}:${s['special-defense']} ${Spe}:${s.speed} [${bst}]`;
     }
     return name;
   });
 
+  const titleStr   = `🔍 ${L.searchTitle} (${gLabel})`;
+  const queryLabel = lang === 'en' ? `${L.query}: ${query}` : lang === 'ja' ? `${L.query}: ${query}` : `${L.query}: ${query}`;
+  const countLabel = lang === 'en' ? `**${results.length}** ${L.found}` : lang === 'ja' ? `**${results.length}** ${L.found}` : `共找到 **${results.length}** ${L.found}`;
+
   const embed = new EmbedBuilder()
     .setColor(COLOR)
-    .setTitle(`🔍 寶可夢搜尋結果 (${cfg.labelZh})`)
-    .setDescription(`查詢條件: ${query}\n共找到 **${results.length}** 筆結果：\n\n${lines.join('\n') || '—'}`)
-    .setFooter({ text: `頁數: ${page + 1}/${totalPages}` });
+    .setTitle(titleStr)
+    .setDescription(`${queryLabel}\n${countLabel}\n\n${lines.join('\n') || '—'}`)
+    .setFooter({ text: `${L.page}: ${page + 1}/${totalPages}` });
 
   return { embed, slice };
 }
 
-// ── Dropdown: select a Pokémon from the current page to see its detail ────────
+// ── Dropdown ──────────────────────────────────────────────────────────────────
 function buildDetailMenu(slice, gameId, lang, pub) {
   if (!slice.length) return null;
+  const L       = DEX_LABELS[lang] ?? DEX_LABELS.zh;
   const options = slice.map((p, i) => ({
     label: getPokeDisplayName(p, lang).slice(0, 100) || `#${i}`,
     value: p.name_en || String(i),
@@ -238,36 +66,36 @@ function buildDetailMenu(slice, gameId, lang, pub) {
   return new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
       .setCustomId(`dex_detail|${gameId}|${lang}|${pub ? '1' : '0'}`)
-      .setPlaceholder('🔎 查看詳細資料 / View Pokémon details')
+      .setPlaceholder(`🔎 ${L.details}`)
       .addOptions(options),
   );
 }
 
-function makeNavRow(page, totalPages, cacheId) {
+function makeNavRow(page, totalPages, cacheId, lang) {
+  const L = DEX_LABELS[lang] ?? DEX_LABELS.zh;
   return new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId(`dex_page|${cacheId}|${page - 1}`)
-      .setLabel('← 上頁')
+      .setLabel(L.prevPage)
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(page === 0),
     new ButtonBuilder()
       .setCustomId(`dex_page|${cacheId}|${page + 1}`)
-      .setLabel('下頁 →')
+      .setLabel(L.nextPage)
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(page >= totalPages - 1),
   );
 }
 
-// ── Helper: build reply components for a page ─────────────────────────────────
 function pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub) {
   const rows = [];
-  if (totalPages > 1) rows.push(makeNavRow(page, totalPages, cacheId));
+  if (totalPages > 1) rows.push(makeNavRow(page, totalPages, cacheId, lang));
   const menu = buildDetailMenu(slice, gameId, lang, pub);
   if (menu) rows.push(menu);
   return rows;
 }
 
-// ── Command definition ────────────────────────────────────────────────────────
+// ── Command ────────────────────────────────────────────────────────────────────
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('pokemon_search')
@@ -277,19 +105,19 @@ module.exports = {
       .setDescription('遊戲版本 / Game version')
       .setRequired(true)
       .addChoices(
-        { name: '朱紫 (Scarlet/Violet)', value: 'scvi' },
-        { name: '傳說Z-A (Legends: Z-A)', value: 'plza' },
+        { name: '朱紫 (Scarlet/Violet)',      value: 'scvi' },
+        { name: '傳說Z-A (Legends: Z-A)',     value: 'plza' },
       ))
     .addStringOption(o => o
       .setName('query')
-      .setDescription('搜尋條件 / Query — e.g. 火系 AND 速度>=100 AND NOT 龍系　　(水系 OR 冰系) AND 速度>=110')
+      .setDescription('搜尋條件 / Query — e.g. 火系 AND 速度>=100 AND NOT 龍系')
       .setRequired(true))
     .addBooleanOption(o => o
       .setName('show_stats')
       .setDescription('顯示種族值 / Show base stats in results (default: off)'))
     .addStringOption(o => o
       .setName('lang')
-      .setDescription('詳細頁語言（預設：繁體中文）/ Language for detail card')
+      .setDescription('顯示語言（預設：繁體中文）/ Display language')
       .addChoices(
         { name: '繁體中文', value: 'zh' },
         { name: 'English',  value: 'en' },
@@ -317,9 +145,10 @@ module.exports = {
     }
 
     if (!results.length) {
-      const cfg = GAME_CONFIGS[gameId];
+      const L      = DEX_LABELS[lang] ?? DEX_LABELS.zh;
+      const gLabel = gameLabel(gameId, lang);
       await interaction.editReply({
-        content: `在 **${cfg.labelZh} (${cfg.labelEn})** 中找不到符合條件的寶可夢。\n查詢：\`${query}\``,
+        content: `**${gLabel}**: ${L.searchTitle} — ${query}\n0 ${L.found}`,
       });
       return;
     }
@@ -335,27 +164,26 @@ module.exports = {
     });
   },
 
-  // ── dex_page| button ──────────────────────────────────────────────────────
   async handlePageButton(interaction) {
     const [, cacheId, pageStr] = interaction.customId.split('|');
     const page = parseInt(pageStr, 10);
 
     const cached = _cache.get(cacheId);
     if (!cached) {
-      await interaction.reply({ content: '⏰ 搜尋結果已過期，請重新執行 `/pokemon_search`。', flags: 64 });
+      const L = DEX_LABELS.zh;
+      await interaction.reply({ content: `⏰ ${L.expired}`, flags: 64 });
       return;
     }
 
     const { results, gameId, query, showStats, lang = 'zh', pub = false } = cached;
-    const totalPages          = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
-    const { embed, slice }    = buildEmbed(results, gameId, query, page, showStats, lang);
+    const totalPages       = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
+    const { embed, slice } = buildEmbed(results, gameId, query, page, showStats, lang);
     await interaction.update({
       embeds:     [embed],
       components: pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub),
     });
   },
 
-  // ── dex_detail| select menu → detail card ────────────────────────────────
   async handleSelectMenu(interaction) {
     const parts  = interaction.customId.split('|');
     const gameId = parts[1];
@@ -363,17 +191,17 @@ module.exports = {
     const pub    = parts[3] === '1';
     const nameEn = interaction.values[0];
     const cfg    = GAME_CONFIGS[gameId];
-    if (!cfg) { await interaction.reply({ content: '❌ 無效遊戲。', flags: 64 }); return; }
+    if (!cfg) { await interaction.reply({ content: '❌ Invalid game.', flags: 64 }); return; }
 
     const { results } = searchPokemon(nameEn, gameId);
     const poke = results.find(p => p.name_en === nameEn);
 
     if (!poke) {
-      await interaction.reply({ content: `❌ 找不到 ${nameEn} 的資料。`, flags: 64 });
+      await interaction.reply({ content: `❌ ${nameEn} not found.`, flags: 64 });
       return;
     }
 
-    const embed = buildDetailEmbed(poke, lang);
+    const embed = buildDetailEmbed(poke, lang, COLOR);
     const s     = poke.stats ?? {};
     const bst   = Object.values(s).reduce((a, v) => a + (v || 0), 0);
     const flags = pub ? undefined : 64;
