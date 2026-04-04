@@ -8,14 +8,14 @@
 const fs   = require('fs');
 const path = require('path');
 
-const DB_PATH       = path.join(__dirname, '../../data/ptcgp_cards.json');
-const IMAGE_BASE    = process.env.PTCGP_IMAGE_DIR ?? path.join(__dirname, '../../');
+const DB_PATH = path.join(__dirname, '../../data/ptcgp_cards.json');
 
 /** Resolve a relative image path (stored in JSON) to an absolute path. */
 function resolveImagePath(rel) {
   if (!rel) return null;
   if (path.isAbsolute(rel)) return rel; // legacy absolute paths still work
-  return path.join(IMAGE_BASE, rel);
+  const base = process.env.PTCGP_IMAGE_DIR ?? path.join(__dirname, '../../');
+  return path.join(base, rel);
 }
 
 let _cards   = null; // array of card objects
