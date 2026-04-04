@@ -73,7 +73,7 @@ MOVES = [
     ("Mountain Gale",        "ひょうざんおろし",           "冰山風"),
     ("Mystical Power",       "しんぴのちから",             "神秘之力"),
     ("Nature's Madness",     "しぜんのいかり",             "自然之怒"),
-    # Nihil Light skipped — no official data
+    ("Nihil Light",          "むにきすひかり",             "歸無之光"),
     ("Noxious Torque",       "ポイズンアクセル",           "劇毒暴衝"),
     ("Order Up",             "いっちょうあがり",           "上菜"),
     ("Population Bomb",      "ネズミざん",                 "鼠數兒"),
