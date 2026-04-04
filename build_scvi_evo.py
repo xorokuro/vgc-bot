@@ -57,10 +57,19 @@ def to_slug(name: str) -> str:
 
 def parse_method(text: str) -> str:
     """Clean up an evolution method string from pokemondb."""
-    t = text.strip()
-    # "Level 16" → "Lv. 16"
+    t = text.strip().strip("()")
+    # "(Level 16)" → "Lv. 16"
     t = re.sub(r"(?i)^level\s+(\d+)$", r"Lv. \1", t)
     return t or None
+
+
+def _poke_name_from_card(card) -> str:
+    """Extract the Pokémon English name from a div.infocard."""
+    # pokemondb puts the name in <a class="ent-name" href="/pokedex/xxx">Name</a>
+    a = card.find("a", class_="ent-name")
+    if a:
+        return a.get_text(strip=True)
+    return ""
 
 
 def parse_evo_chain(soup) -> list:
@@ -69,96 +78,99 @@ def parse_evo_chain(soup) -> list:
     Returns a flat list of dicts:
       [{"name_en": str, "stage": int, "method": str|None}, ...]
 
+    pokemondb HTML structure (confirmed):
+      div.infocard-list-evo
+        div.infocard          ← Pokémon card (name in <a class="ent-name">)
+        span.infocard.infocard-arrow  ← arrow with method in <small>(Level 16)</small>
+        div.infocard          ← next Pokémon
+        ...
+      Branching uses div.infocard-evo-split containing multiple branch divs.
+
     Handles:
       • Linear chains   — Bulbasaur→Ivysaur→Venusaur
       • Branching       — Eevee→(8 evolutions)
       • Two-stage split — Ralts→Kirlia→(Gardevoir|Gallade)
-      • No evolution    — Mewtwo
+      • No evolution    — Mewtwo (returns empty list)
     """
-    # pokemondb wraps the evo chart in a div just below the h2 "Evolution chart"
     evo_h2 = soup.find("h2", string=re.compile(r"Evolution chart", re.I))
     if not evo_h2:
         return []
 
-    # The evo list immediately follows the h2 (sometimes inside a tab panel)
     evo_div = evo_h2.find_next("div", class_="infocard-list-evo")
     if not evo_div:
         return []
 
     chain = []
-    _walk_evo_div(evo_div, stage=0, chain=chain, inherited_method=None)
+    _walk_evo_div(evo_div, stage=0, chain=chain, pending_method=None)
     return chain
 
 
-def _poke_name_from_card(card) -> str:
-    """Extract the Pokémon English name from an infocard div."""
-    # Name is in <a href="/pokedex/xxx"><b>Name</b></a> or just <b>
-    a = card.find("a", href=re.compile(r"/pokedex/"))
-    if a:
-        return a.get_text(strip=True)
-    b = card.find("b")
-    if b:
-        return b.get_text(strip=True)
-    return card.get_text(strip=True)
-
-
-def _method_between(node) -> str | None:
+def _walk_evo_div(div, stage: int, chain: list, pending_method):
     """
-    Given a node in the evo list, look at the PREVIOUS sibling small-text
-    arrow to get the evolution method.
-    pokemondb renders: [card] [span.infocard-arrow text "→ Lv. 16"] [card]
-    The method is inside the span between two cards.
-    """
-    prev = node.find_previous_sibling()
-    if prev is None:
-        return None
-    cls = prev.get("class") or []
-    text = prev.get_text(" ", strip=True)
-    # Strip leading arrow characters
-    text = re.sub(r"^[→\->\s]+", "", text).strip()
-    return parse_method(text) if text else None
+    Walk direct children of an infocard-list-evo (or branch) div.
 
+    Children come in three flavours:
+      div.infocard              → a Pokémon; consume pending_method
+      span.infocard-arrow       → an arrow; read its <small> text as next method, bump stage
+      div.infocard-evo-split    → branching node; recurse into each branch at current stage
+    """
+    children = [c for c in div.children if getattr(c, "name", None)]
 
-def _walk_evo_div(div, stage: int, chain: list, inherited_method):
-    """
-    Recursively walk the infocard-list-evo div and its split children.
-    """
-    children = [c for c in div.children if hasattr(c, "name") and c.name]
+    current_method = pending_method
+    current_stage  = stage
 
     for child in children:
         cls = child.get("class") or []
 
-        if "infocard" in cls and "infocard-evo-split" not in cls:
-            # A single Pokémon card
+        if child.name == "div" and "infocard" in cls and "infocard-evo-split" not in cls:
+            # ── Pokémon card ──────────────────────────────────────────────────
             name = _poke_name_from_card(child)
-            method = inherited_method if chain == [] else _method_between(child)
             chain.append({
                 "name_en": name,
-                "stage":   stage,
-                "method":  method,
+                "stage":   current_stage,
+                "method":  current_method,
             })
+            current_method = None  # consumed
+
+        elif child.name == "span" and "infocard-arrow" in cls:
+            # ── Arrow between stages ──────────────────────────────────────────
+            small = child.find("small")
+            raw   = small.get_text(strip=True) if small else child.get_text(strip=True)
+            current_method = parse_method(raw)
+            current_stage  = current_stage + 1
 
         elif "infocard-evo-split" in cls:
-            # Branching: each direct child branch is a mini-list
+            # ── Branching node ────────────────────────────────────────────────
+            # Each direct-child div is one branch
             for branch in child.find_all("div", recursive=False):
-                # Each branch has: optional method text + one or more infocards
-                branch_cards  = branch.find_all("div", class_="infocard")
-                method_span   = branch.find(["span", "small"])
-                raw_method    = method_span.get_text(strip=True) if method_span else ""
-                raw_method    = re.sub(r"^[→\->\s]+", "", raw_method).strip()
-                branch_method = parse_method(raw_method) if raw_method else None
+                # A branch may itself start with an arrow span, then cards
+                branch_method = current_method
+                branch_stage  = current_stage
+                branch_children = [c for c in branch.children if getattr(c, "name", None)]
 
-                for card in branch_cards:
-                    name = _poke_name_from_card(card)
-                    chain.append({
-                        "name_en": name,
-                        "stage":   stage,
-                        "method":  branch_method,
-                    })
-                    stage_inner = stage  # further evolutions from this branch
-                    inner_split = card.find_next_sibling("div", class_="infocard-evo-split")
-                    if inner_split:
-                        _walk_evo_div(inner_split, stage_inner + 1, chain, None)
+                for bc in branch_children:
+                    bc_cls = bc.get("class") or []
+
+                    if bc.name == "span" and "infocard-arrow" in bc_cls:
+                        small = bc.find("small")
+                        raw   = small.get_text(strip=True) if small else bc.get_text(strip=True)
+                        branch_method = parse_method(raw)
+                        branch_stage  = current_stage  # stays same; next card is the branch evo
+
+                    elif bc.name == "div" and "infocard" in bc_cls and "infocard-evo-split" not in bc_cls:
+                        name = _poke_name_from_card(bc)
+                        chain.append({
+                            "name_en": name,
+                            "stage":   branch_stage,
+                            "method":  branch_method,
+                        })
+                        branch_method = None
+
+                    elif "infocard-evo-split" in bc_cls:
+                        # Nested split (e.g. Kirlia → Gardevoir|Gallade)
+                        _walk_evo_div(bc, branch_stage + 1, chain, None)
+
+            current_method = None  # consumed by the split
 
 
 # ── Fetch + parse one species ─────────────────────────────────────────────────
