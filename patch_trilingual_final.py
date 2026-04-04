@@ -27,7 +27,7 @@ MOVES = [
     ("Blazing Torque",       "バーンアクセル",             "灼熱暴衝"),
     ("Bleakwind Storm",      "こがらしあらし",             "枯葉風暴"),
     ("Blood Moon",           "ブラッドムーン",             "血月"),
-    ("Burning Bulwark",      "かえんのまもり",             "燃火盾"),
+    ("Burning Bulwark",      "かえんのまもり",             "火焰守護"),
     ("Ceaseless Edge",       "ひけん・ちえなみ",           "秘劍・千重濤"),
     ("Chilling Water",       "ひやみず",                   "潑冷水"),
     ("Chilly Reception",     "さむいギャグ",               "冷笑話"),
