@@ -4565,7 +4565,7 @@
       "weakness": null,
       "names": {
         "zh": "迷你龍",
-        "ja": "ドラゴン",
+        "ja": "ミニリュウ",
         "en": "Dratini"
       },
       "images": {
@@ -4587,7 +4587,7 @@
       "weakness": null,
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -4609,7 +4609,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍",
-        "ja": "ドラゴン",
+        "ja": "カイリュー",
         "en": "Dragonite"
       },
       "images": {
@@ -6048,7 +6048,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍",
-        "ja": "ドラゴン",
+        "ja": "カイリュー",
         "en": "Dragonite"
       },
       "images": {
@@ -8446,7 +8446,7 @@
       "weakness": null,
       "names": {
         "zh": "赤面龍",
-        "ja": "ドラゴン",
+        "ja": "クリムガン",
         "en": "Druddigon"
       },
       "images": {
@@ -12192,7 +12192,7 @@
       "weakness": null,
       "names": {
         "zh": "圓陸鯊",
-        "ja": "ドラゴン",
+        "ja": "フカマル",
         "en": "Gible"
       },
       "images": {
@@ -12214,7 +12214,7 @@
       "weakness": null,
       "names": {
         "zh": "尖牙陸鯊",
-        "ja": "ドラゴン",
+        "ja": "ガバイト",
         "en": "Gabite"
       },
       "images": {
@@ -12236,7 +12236,7 @@
       "weakness": null,
       "names": {
         "zh": "烈咬陸鯊",
-        "ja": "ドラゴン",
+        "ja": "ガブリアス",
         "en": "Garchomp"
       },
       "images": {
@@ -13497,7 +13497,7 @@
       "weakness": null,
       "names": {
         "zh": "烈咬陸鯊",
-        "ja": "ドラゴン",
+        "ja": "ガブリアス",
         "en": "Garchomp"
       },
       "images": {
@@ -15801,7 +15801,7 @@
       "weakness": null,
       "names": {
         "zh": "騎拉帝納",
-        "ja": "ドラゴン",
+        "ja": "ギラティナ",
         "en": "Giratina"
       },
       "images": {
@@ -22497,7 +22497,7 @@
       "weakness": null,
       "names": {
         "zh": "老翁龍",
-        "ja": "ドラゴン",
+        "ja": "ジジーロン",
         "en": "Drampa"
       },
       "images": {
@@ -22519,7 +22519,7 @@
       "weakness": null,
       "names": {
         "zh": "心鱗寶",
-        "ja": "ドラゴン",
+        "ja": "ジャラコ",
         "en": "Jangmo-o"
       },
       "images": {
@@ -22541,7 +22541,7 @@
       "weakness": null,
       "names": {
         "zh": "鱗甲龍",
-        "ja": "ドラゴン",
+        "ja": "ジャランゴ",
         "en": "Hakamo-o"
       },
       "images": {
@@ -22563,7 +22563,7 @@
       "weakness": null,
       "names": {
         "zh": "杖尾鱗甲龍",
-        "ja": "ドラゴン",
+        "ja": "ジャラランガ",
         "en": "Kommo-o"
       },
       "images": {
@@ -23743,7 +23743,7 @@
       "weakness": null,
       "names": {
         "zh": "老翁龍",
-        "ja": "ドラゴン",
+        "ja": "ジジーロン",
         "en": "Drampa"
       },
       "images": {
@@ -29105,7 +29105,7 @@
       "weakness": null,
       "names": {
         "zh": "迷你龍",
-        "ja": "ドラゴン",
+        "ja": "ミニリュウ",
         "en": "Dratini"
       },
       "images": {
@@ -29127,7 +29127,7 @@
       "weakness": null,
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -29149,7 +29149,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍ex",
-        "ja": "ドラゴン",
+        "ja": "カイリューex",
         "en": "Dragonite ex"
       },
       "images": {
@@ -29171,7 +29171,7 @@
       "weakness": null,
       "names": {
         "zh": "老翁龍",
-        "ja": "ドラゴン",
+        "ja": "ジジーロン",
         "en": "Drampa"
       },
       "images": {
@@ -29856,7 +29856,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍ex",
-        "ja": "ドラゴン",
+        "ja": "カイリューex",
         "en": "Dragonite ex"
       },
       "images": {
@@ -30047,7 +30047,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍ex",
-        "ja": "ドラゴン",
+        "ja": "カイリューex",
         "en": "Dragonite ex"
       },
       "images": {
@@ -37818,7 +37818,7 @@
       },
       "names": {
         "zh": "七夕青鳥",
-        "ja": "ドラゴン",
+        "ja": "チルタリス",
         "en": "Altaria"
       },
       "images": {
@@ -45883,7 +45883,7 @@
       "originalUid": "A3b-051",
       "names": {
         "zh": "迷你龍",
-        "ja": "ドラゴン",
+        "ja": "ミニリュウ",
         "en": "Dratini"
       },
       "images": {
@@ -45905,7 +45905,7 @@
       "weakness": null,
       "names": {
         "zh": "迷你龍",
-        "ja": "ドラゴン",
+        "ja": "ミニリュウ",
         "en": "Dratini"
       },
       "images": {
@@ -45928,7 +45928,7 @@
       "originalUid": "A3b-052",
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -45950,7 +45950,7 @@
       "weakness": null,
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -45973,7 +45973,7 @@
       "originalUid": "A3b-053",
       "names": {
         "zh": "快龍ex",
-        "ja": "ドラゴン",
+        "ja": "カイリューex",
         "en": "Dragonite ex"
       },
       "images": {
@@ -52968,7 +52968,7 @@
       },
       "names": {
         "zh": "赤面龍",
-        "ja": "ドラゴン",
+        "ja": "クリムガン",
         "en": "Druddigon"
       },
       "images": {
@@ -52993,7 +52993,7 @@
       },
       "names": {
         "zh": "黏黏寶",
-        "ja": "ドラゴン",
+        "ja": "ヌメラ",
         "en": "Goomy"
       },
       "images": {
@@ -53018,7 +53018,7 @@
       },
       "names": {
         "zh": "黏美兒",
-        "ja": "ドラゴン",
+        "ja": "ヌメイル",
         "en": "Sliggoo"
       },
       "images": {
@@ -53043,7 +53043,7 @@
       },
       "names": {
         "zh": "黏美龍",
-        "ja": "ドラゴン",
+        "ja": "ヌメルゴン",
         "en": "Goodra"
       },
       "images": {
@@ -54701,7 +54701,7 @@
       },
       "names": {
         "zh": "黏黏寶",
-        "ja": "ドラゴン",
+        "ja": "ヌメラ",
         "en": "Goomy"
       },
       "images": {
@@ -62359,7 +62359,7 @@
       },
       "names": {
         "zh": "寶貝龍",
-        "ja": "ドラゴン",
+        "ja": "タツベイ",
         "en": "Bagon"
       },
       "images": {
@@ -62384,7 +62384,7 @@
       },
       "names": {
         "zh": "甲殼龍",
-        "ja": "ドラゴン",
+        "ja": "コモルー",
         "en": "Shelgon"
       },
       "images": {
@@ -62409,7 +62409,7 @@
       },
       "names": {
         "zh": "暴飛龍",
-        "ja": "ドラゴン",
+        "ja": "ボーマンダ",
         "en": "Salamence"
       },
       "images": {
@@ -63748,7 +63748,7 @@
       },
       "names": {
         "zh": "暴飛龍",
-        "ja": "ドラゴン",
+        "ja": "ボーマンダ",
         "en": "Salamence"
       },
       "images": {
@@ -69635,7 +69635,7 @@
       "weakness": null,
       "names": {
         "zh": "迷你龍",
-        "ja": "ドラゴン",
+        "ja": "ミニリュウ",
         "en": "Dratini"
       },
       "images": {
@@ -69657,7 +69657,7 @@
       "weakness": null,
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -69679,7 +69679,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍",
-        "ja": "ドラゴン",
+        "ja": "カイリュー",
         "en": "Dragonite"
       },
       "images": {
@@ -69701,7 +69701,7 @@
       "weakness": null,
       "names": {
         "zh": "牙",
-        "ja": "ドラゴン",
+        "ja": "キバゴ",
         "en": "Axew"
       },
       "images": {
@@ -69723,7 +69723,7 @@
       "weakness": null,
       "names": {
         "zh": "斧牙龍",
-        "ja": "ドラゴン",
+        "ja": "オノンド",
         "en": "Fraxure"
       },
       "images": {
@@ -69745,7 +69745,7 @@
       "weakness": null,
       "names": {
         "zh": "雙斧戰龍",
-        "ja": "ドラゴン",
+        "ja": "オノノクス",
         "en": "Haxorus"
       },
       "images": {
@@ -69767,7 +69767,7 @@
       "weakness": null,
       "names": {
         "zh": "赤面龍",
-        "ja": "ドラゴン",
+        "ja": "クリムガン",
         "en": "Druddigon"
       },
       "images": {
@@ -70943,7 +70943,7 @@
       "weakness": null,
       "names": {
         "zh": "迷你龍",
-        "ja": "ドラゴン",
+        "ja": "ミニリュウ",
         "en": "Dratini"
       },
       "images": {
@@ -70965,7 +70965,7 @@
       "weakness": null,
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -70987,7 +70987,7 @@
       "weakness": null,
       "names": {
         "zh": "快龍",
-        "ja": "ドラゴン",
+        "ja": "カイリュー",
         "en": "Dragonite"
       },
       "images": {
@@ -71009,7 +71009,7 @@
       "weakness": null,
       "names": {
         "zh": "牙",
-        "ja": "ドラゴン",
+        "ja": "キバゴ",
         "en": "Axew"
       },
       "images": {
@@ -71031,7 +71031,7 @@
       "weakness": null,
       "names": {
         "zh": "斧牙龍",
-        "ja": "ドラゴン",
+        "ja": "オノンド",
         "en": "Fraxure"
       },
       "images": {
@@ -71053,7 +71053,7 @@
       "weakness": null,
       "names": {
         "zh": "雙斧戰龍",
-        "ja": "ドラゴン",
+        "ja": "オノノクス",
         "en": "Haxorus"
       },
       "images": {
@@ -72305,7 +72305,7 @@
       },
       "names": {
         "zh": "圓陸鯊",
-        "ja": "ドラゴン",
+        "ja": "フカマル",
         "en": "Gible"
       },
       "images": {
@@ -73313,7 +73313,7 @@
       },
       "names": {
         "zh": "哈克龍",
-        "ja": "ドラゴン",
+        "ja": "ハクリュー",
         "en": "Dragonair"
       },
       "images": {
@@ -74903,7 +74903,7 @@
       "weakness": null,
       "names": {
         "zh": "雙斧戰龍",
-        "ja": "ドラゴン",
+        "ja": "オノノクス",
         "en": "Haxorus"
       },
       "images": {
