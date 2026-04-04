@@ -30,7 +30,7 @@ MOVES = [
     ("Burning Bulwark",      "かえんのまもり",             "燃火盾"),
     ("Ceaseless Edge",       "ひけん・ちえなみ",           "秘劍・千重濤"),
     ("Chilling Water",       "ひやみず",                   "潑冷水"),
-    ("Chilly Reception",     "さむいギャグ",               "冰冷笑話"),
+    ("Chilly Reception",     "さむいギャグ",               "冷笑話"),
     ("Chloroblast",          "クロロブラスト",             "葉綠爆震"),
     ("Collision Course",     "アクセルブレイク",           "全開猛撞"),
     ("Combat Torque",        "ファイトアクセル",           "格鬥暴衝"),
