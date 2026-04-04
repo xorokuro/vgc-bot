@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-One-off patch: add Rotom form-exclusive moves to scvi_moves_db.json.
-Each Rotom form learns a unique move when it changes form (level=0 = evolution).
+One-off patch: add form-exclusive evolution moves to scvi_moves_db.json.
+
+Rotom: each form learns a unique move when it changes form (level=0).
+Necrozma: Dusk Mane learns Sunsteel Strike, Dawn Wings learns Moongeist Beam.
 
 Run: python patch_rotom_moves.py
 """
@@ -10,20 +12,24 @@ from pathlib import Path
 
 DB = Path("data/scvi_moves_db.json")
 
-# Form-exclusive moves per Rotom form (English move names from pokemondb)
-ROTOM_FORM_MOVES = {
-    "rotom":       "Thunder Shock",
-    "rotom-heat":  "Overheat",
-    "rotom-wash":  "Hydro Pump",
-    "rotom-frost": "Blizzard",
-    "rotom-fan":   "Air Slash",
-    "rotom-mow":   "Leaf Storm",
+# Form-exclusive moves (English move names from pokemondb), stored as level=0
+FORM_MOVES = {
+    # Rotom forms
+    "rotom":            "Thunder Shock",
+    "rotom-heat":       "Overheat",
+    "rotom-wash":       "Hydro Pump",
+    "rotom-frost":      "Blizzard",
+    "rotom-fan":        "Air Slash",
+    "rotom-mow":        "Leaf Storm",
+    # Necrozma fused forms
+    "necrozma-dusk":    "Sunsteel Strike",
+    "necrozma-dawn":    "Moongeist Beam",
 }
 
 with DB.open(encoding="utf-8") as f:
     db = json.load(f)
 
-for form, move_en in ROTOM_FORM_MOVES.items():
+for form, move_en in FORM_MOVES.items():
     if form not in db:
         print(f"  SKIP {form}: not in db")
         continue
