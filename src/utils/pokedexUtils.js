@@ -226,7 +226,7 @@ function buildDetailEmbed(poke, lang = 'zh', color = 0x3B4CCA) {
     .setThumbnail(spriteUrl)
     .addFields(
       { name: L.type,             value: typeStr || '—',      inline: false },
-      { name: `💡 ${L.ability}`,  value: abilityLines || '—', inline: false },
+      { name: `<:abilitypatch:1489985991589761184> ${L.ability}`,  value: abilityLines || '—', inline: false },
       { name: `🛡️ ${L.weakness}`, value: weakRows || L.noWeak, inline: false },
     );
 }
