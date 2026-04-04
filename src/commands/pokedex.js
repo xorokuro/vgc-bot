@@ -3,7 +3,8 @@
 /**
  * /pokedex — direct Pokémon lookup with game + language selection.
  *
- * SCVI:  single embed (types, abilities, weaknesses, stat chart).
+ * SCVI:  4-tab interactive view — Tab 1: basic info, Tab 2: level-up moves,
+ *        Tab 3: TM moves, Tab 4: egg moves. Uses data/scvi_moves_db.json.
  * PLZA:  3-tab interactive view — Tab 1: basic info, Tab 2: level-up moves,
  *        Tab 3: TM moves. Moves show type + category emoji, TMs show TM number.
  */
@@ -97,6 +98,7 @@ const _dbs     = {};
 let _tri       = null;
 let _plzaMoves = null;
 let _movesDb   = null;
+let _scviMoves = null;
 
 function loadDb(gameId) {
   if (_dbs[gameId]) return _dbs[gameId];
@@ -119,6 +121,17 @@ function loadPlzaMoves() {
 function loadMovesDb() {
   if (!_movesDb) _movesDb = require(path.join(__dirname, '../../data/moves_db.json'));
   return _movesDb;
+}
+
+function loadScviMoves() {
+  if (!_scviMoves) {
+    try {
+      _scviMoves = require(path.join(__dirname, '../../data/scvi_moves_db.json'));
+    } catch {
+      _scviMoves = {};
+    }
+  }
+  return _scviMoves;
 }
 
 // ── zh→en move name map (for TM lookup) ──────────────────────────────────────
@@ -163,6 +176,56 @@ function getTmId(zhName) {
   // Normalise: lowercase + hyphens→spaces
   const key = en.toLowerCase().replace(/-/g, ' ');
   return TM_NUMBER_MAP[key] || '';
+}
+
+// ── en move name → {zh, ja, type, category} (for SCVI) ───────────────────────
+let _enMoveMap = null;
+
+function getEnMoveMap() {
+  if (_enMoveMap) return _enMoveMap;
+  const tri    = loadTri();
+  const db     = loadMovesDb();
+  _enMoveMap   = {};
+
+  // zh→{type,category} from moves_db
+  const zhInfo = {};
+  Object.entries(db).forEach(([zh, v]) => { zhInfo[zh] = v; });
+
+  Object.values(tri.move || {}).forEach(m => {
+    if (!m.en) return;
+    const enKey = m.en.toLowerCase();
+    const info  = m.zh ? (zhInfo[m.zh] ?? {}) : {};
+    _enMoveMap[enKey] = {
+      zh:       m.zh || m.en,
+      ja:       m.ja || m.en,
+      type:     info.type     || 'unknown',
+      category: info.category || 'unknown',
+    };
+  });
+  return _enMoveMap;
+}
+
+function getMoveInfoByEn(enName) {
+  return getEnMoveMap()[enName.toLowerCase()] ??
+    { zh: enName, ja: enName, type: 'unknown', category: 'unknown' };
+}
+
+function moveNameByEn(enName, lang) {
+  if (lang === 'en') return enName.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+  const info = getMoveInfoByEn(enName);
+  return (lang === 'ja' ? info.ja : info.zh) || enName;
+}
+
+function typeEmojiByEn(enName) {
+  const { type } = getMoveInfoByEn(enName);
+  return (type && type !== 'unknown') ? typeEmoji(type) : '';
+}
+
+function catEmojiByEn(enName) {
+  const { category } = getMoveInfoByEn(enName);
+  if (category === 'physical') return CATEGORY_EMOJI.Physical;
+  if (category === 'special')  return CATEGORY_EMOJI.Special;
+  return '';
 }
 
 // ── Move name lookup (zh → en/ja) ─────────────────────────────────────────────
@@ -417,10 +480,25 @@ function buildTabRow(currentTab, lang, disabled = false) {
   );
 }
 
-// ── SCVI single-embed builder (unchanged logic) ───────────────────────────────
-async function buildScviReply(poke, lang) {
+// ── SCVI page builders ────────────────────────────────────────────────────────
+const SCVI_FOOTER = {
+  zh: { p1: '頁 1/4：基本資料', p2: '頁 2/4：升等招式', p3: '頁 3/4：TM 招式', p4: '頁 4/4：蛋招式' },
+  ja: { p1: 'ページ 1/4：基本情報', p2: 'ページ 2/4：昇格技', p3: 'ページ 3/4：わざマシン', p4: 'ページ 4/4：タマゴ技' },
+  en: { p1: 'Page 1/4: Basic Info', p2: 'Page 2/4: Level Moves', p3: 'Page 3/4: TM Moves', p4: 'Page 4/4: Egg Moves' },
+};
+
+const SCVI_TAB_LABELS = {
+  zh: { basic: '基本資料', levelup: '升等招式', tm: 'TM招式', egg: '蛋招式' },
+  ja: { basic: '基本情報', levelup: '昇格技',   tm: 'わざマシン', egg: 'タマゴ技' },
+  en: { basic: 'Basic',   levelup: 'Lv. Moves', tm: 'TM Moves',   egg: 'Egg Moves' },
+};
+
+const EGG_LABEL = { zh: '蛋招式', ja: 'タマゴ技', en: 'Egg Moves' };
+
+async function buildScviPage1(poke, lang) {
   const embed = buildDetailEmbed(poke, lang, COLOR);
-  embed.setFooter({ text: gameLabel('scvi', lang) });
+  const ft = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
+  embed.setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p1}` });
 
   const s   = poke.stats ?? {};
   const bst = Object.values(s).reduce((a, v) => a + (v || 0), 0);
@@ -432,6 +510,122 @@ async function buildScviReply(poke, lang) {
   } catch {
     return { embed, file: null };
   }
+}
+
+function buildScviPage2(poke, lang) {
+  const L   = DEX_LABELS[lang] ?? DEX_LABELS.zh;
+  const ft  = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
+  const data = loadScviMoves()[poke.name_en];
+
+  const embed = new EmbedBuilder()
+    .setColor(COLOR)
+    .setTitle(getPokeDisplayName(poke, lang))
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p2}` });
+
+  const lvMoves = (data?.level_up_moves ?? []).slice().sort((a, b) => {
+    const la = a.level < 0 ? -2 : a.level === 0 ? -1 : a.level;
+    const lb = b.level < 0 ? -2 : b.level === 0 ? -1 : b.level;
+    return la - lb;
+  });
+
+  if (!lvMoves.length) {
+    embed.addFields({ name: `📈 ${L.levelUp}`, value: L.noMoves });
+    return embed;
+  }
+
+  const lines = lvMoves.map(m => {
+    const lv   = m.level < 0 ? '回憶' : m.level === 0 ? '進化' : `Lv.${m.level}`;
+    const tEm  = typeEmojiByEn(m.move_en);
+    const cEm  = catEmojiByEn(m.move_en);
+    const name = moveNameByEn(m.move_en, lang);
+    return `\`${lv.padEnd(5)}\` ${tEm}${cEm} **${name}**`;
+  });
+
+  splitToFields(embed, `📈 ${L.levelUp}`, lines);
+  return embed;
+}
+
+function buildScviPage3(poke, lang) {
+  const L   = DEX_LABELS[lang] ?? DEX_LABELS.zh;
+  const ft  = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
+  const data = loadScviMoves()[poke.name_en];
+
+  const embed = new EmbedBuilder()
+    .setColor(COLOR)
+    .setTitle(getPokeDisplayName(poke, lang))
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p3}` });
+
+  const tmMoves = (data?.tm_moves ?? []).slice().sort((a, b) => a.tm.localeCompare(b.tm));
+
+  if (!tmMoves.length) {
+    embed.addFields({ name: `💿 ${L.tmMoves}`, value: L.noMoves });
+    return embed;
+  }
+
+  const lines = tmMoves.map(m => {
+    const tEm  = typeEmojiByEn(m.move_en);
+    const cEm  = catEmojiByEn(m.move_en);
+    const name = moveNameByEn(m.move_en, lang);
+    return `\`TM${m.tm}\` ${tEm}${cEm} **${name}**`;
+  });
+
+  splitToFields(embed, `💿 ${L.tmMoves}`, lines);
+  return embed;
+}
+
+function buildScviPage4(poke, lang) {
+  const L   = DEX_LABELS[lang] ?? DEX_LABELS.zh;
+  const ft  = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
+  const data = loadScviMoves()[poke.name_en];
+
+  const embed = new EmbedBuilder()
+    .setColor(COLOR)
+    .setTitle(getPokeDisplayName(poke, lang))
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p4}` });
+
+  const eggMoves = data?.egg_moves ?? [];
+  const eggLabel = EGG_LABEL[lang] ?? EGG_LABEL.zh;
+
+  if (!eggMoves.length) {
+    embed.addFields({ name: `🥚 ${eggLabel}`, value: L.noMoves });
+    return embed;
+  }
+
+  const lines = eggMoves.map(m => {
+    const tEm  = typeEmojiByEn(m);
+    const cEm  = catEmojiByEn(m);
+    const name = moveNameByEn(m, lang);
+    return `${tEm}${cEm} **${name}**`;
+  });
+
+  splitToFields(embed, `🥚 ${eggLabel}`, lines);
+  return embed;
+}
+
+function buildScviTabRow(currentTab, lang, disabled = false) {
+  const lbs = SCVI_TAB_LABELS[lang] ?? SCVI_TAB_LABELS.zh;
+  return new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setCustomId('scvi_basic')
+      .setLabel(lbs.basic)
+      .setStyle(currentTab === 'basic'   ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(disabled),
+    new ButtonBuilder()
+      .setCustomId('scvi_levelup')
+      .setLabel(lbs.levelup)
+      .setStyle(currentTab === 'levelup' ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(disabled),
+    new ButtonBuilder()
+      .setCustomId('scvi_tm')
+      .setLabel(lbs.tm)
+      .setStyle(currentTab === 'tm'      ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(disabled),
+    new ButtonBuilder()
+      .setCustomId('scvi_egg')
+      .setLabel(lbs.egg)
+      .setStyle(currentTab === 'egg'     ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(disabled),
+  );
 }
 
 // ── Command ────────────────────────────────────────────────────────────────────
@@ -488,14 +682,51 @@ module.exports = {
 
     await interaction.deferReply({ flags });
 
-    // ── SCVI: single embed ─────────────────────────────────────────────────────
+    // ── SCVI: 4-tab interactive view ───────────────────────────────────────────
     if (gameId === 'scvi') {
-      const { embed, file } = await buildScviReply(poke, lang);
-      if (file) {
-        await interaction.editReply({ embeds: [embed], files: [file] });
-      } else {
-        await interaction.editReply({ embeds: [embed] });
-      }
+      const { embed: embed1, file: file1 } = await buildScviPage1(poke, lang);
+      const row = buildScviTabRow('basic', lang);
+
+      const msg = await interaction.editReply({
+        embeds:     [embed1],
+        files:      file1 ? [file1] : [],
+        components: [row],
+      });
+
+      let currentTab = 'basic';
+
+      const collector = msg.createMessageComponentCollector({
+        componentType: ComponentType.Button,
+        filter: i => i.user.id === interaction.user.id,
+        time: 300_000,
+      });
+
+      collector.on('collect', async btnInt => {
+        await btnInt.deferUpdate();
+        const tab    = btnInt.customId.replace('scvi_', '');
+        currentTab   = tab;
+        const newRow = buildScviTabRow(tab, lang);
+        try {
+          if (tab === 'basic') {
+            const { embed, file } = await buildScviPage1(poke, lang);
+            await interaction.editReply({ embeds: [embed], files: file ? [file] : [], components: [newRow] });
+          } else if (tab === 'levelup') {
+            await interaction.editReply({ embeds: [buildScviPage2(poke, lang)], files: [], components: [newRow] });
+          } else if (tab === 'tm') {
+            await interaction.editReply({ embeds: [buildScviPage3(poke, lang)], files: [], components: [newRow] });
+          } else if (tab === 'egg') {
+            await interaction.editReply({ embeds: [buildScviPage4(poke, lang)], files: [], components: [newRow] });
+          }
+        } catch (err) {
+          console.error('[pokedex] scvi button error:', err);
+        }
+      });
+
+      collector.on('end', async () => {
+        try {
+          await interaction.editReply({ components: [buildScviTabRow(currentTab, lang, true)] });
+        } catch { /* message may have been deleted */ }
+      });
       return;
     }
 
