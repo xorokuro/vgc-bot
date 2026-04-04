@@ -12,6 +12,7 @@
 const {
   SlashCommandBuilder, EmbedBuilder, AttachmentBuilder,
   ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType,
+  StringSelectMenuBuilder,
 } = require('discord.js');
 const path = require('path');
 const {
@@ -312,6 +313,10 @@ function findPokemon(gameId, query) {
   return searchInDbByJa(gameId, query);
 }
 
+function findPokemonByEn(gameId, nameEn) {
+  return loadDb(gameId).find(p => p.name_en === nameEn) ?? null;
+}
+
 // ── Autocomplete ──────────────────────────────────────────────────────────────
 function autocompleteForGame(gameId, q) {
   const entries = loadDb(gameId);
@@ -482,65 +487,83 @@ function buildTabRow(currentTab, lang, disabled = false) {
 
 // ── SCVI page builders ────────────────────────────────────────────────────────
 const SCVI_FOOTER = {
-  zh: { p1: '頁 1/4：基本資料', p2: '頁 2/4：升等招式', p3: '頁 3/4：TM 招式', p4: '頁 4/4：蛋招式' },
-  ja: { p1: 'ページ 1/4：基本情報', p2: 'ページ 2/4：昇格技', p3: 'ページ 3/4：わざマシン', p4: 'ページ 4/4：タマゴ技' },
-  en: { p1: 'Page 1/4: Basic Info', p2: 'Page 2/4: Level Moves', p3: 'Page 3/4: TM Moves', p4: 'Page 4/4: Egg Moves' },
+  zh: { p1: '頁 1/5：基本資料', p2: '頁 2/5：進化路線', p3: '頁 3/5：升等招式', p4: '頁 4/5：TM 招式', p5: '頁 5/5：蛋招式' },
+  ja: { p1: 'ページ 1/5：基本情報', p2: 'ページ 2/5：進化', p3: 'ページ 3/5：昇格技', p4: 'ページ 4/5：わざマシン', p5: 'ページ 5/5：タマゴ技' },
+  en: { p1: 'Page 1/5: Basic Info', p2: 'Page 2/5: Evolution', p3: 'Page 3/5: Level Moves', p4: 'Page 4/5: TM Moves', p5: 'Page 5/5: Egg Moves' },
 };
 
 const SCVI_TAB_LABELS = {
-  zh: { basic: '基本資料', levelup: '升等招式', tm: 'TM招式', egg: '蛋招式' },
-  ja: { basic: '基本情報', levelup: '昇格技',   tm: 'わざマシン', egg: 'タマゴ技' },
-  en: { basic: 'Basic',   levelup: 'Lv. Moves', tm: 'TM Moves',   egg: 'Egg Moves' },
+  zh: { basic: '基本資料', evo: '進化路線', levelup: '升等招式', tm: 'TM招式', egg: '蛋招式' },
+  ja: { basic: '基本情報', evo: '進化',     levelup: '昇格技',   tm: 'わざマシン', egg: 'タマゴ技' },
+  en: { basic: 'Basic',   evo: 'Evolution', levelup: 'Lv. Moves', tm: 'TM Moves',  egg: 'Egg Moves' },
 };
 
 const EGG_LABEL = { zh: '蛋招式', ja: 'タマゴ技', en: 'Egg Moves' };
 const EVO_LABEL = { zh: '進化路線', ja: '進化', en: 'Evolution' };
+const EVO_SELECT_PLACEHOLDER = { zh: '查看進化成員資料', ja: '進化メンバーを見る', en: 'View evo chain member' };
+const EVO_NO_EVO = { zh: '此寶可夢不會進化', ja: '進化しない', en: 'Does not evolve' };
 
 // ── Evolution chain helpers ───────────────────────────────────────────────────
 
 function translateEvoMethod(method, lang) {
   if (!method) return null;
-  if (lang === 'en') return method;
 
-  // Translate common patterns
-  let m = method;
+  // Normalize scraper artifacts: pokemondb's <small> tags sometimes contain
+  // newlines which get_text() concatenates without spaces → "useTart Apple",
+  // "afterDragon Cheerlearned", etc.  Fix common patterns before translating.
+  let m = method
+    .replace(/^use([A-Z])/, 'use $1')          // useTart → use Tart
+    .replace(/^after([A-Z])/, 'after $1')       // afterDragon → after Dragon
+    .replace(/([a-z])(Tart|Sweet|Syrupy|Dragon|Thunder|Fire|Water|Leaf|Moon|Sun|Shiny|Dusk|Dawn|Ice|High)/g, '$1 $2')
+    .replace(/Cheer\s*learned/, 'Cheer learned'); // Cheerlearned → Cheer learned
+
+  if (lang === 'en') return m;
+
   if (lang === 'zh') {
     m = m.replace(/^Lv\.\s*(\d+)$/, '升$1級');
-    m = m.replace(/^Use\s+/i, '使用');
-    m = m.replace(/High Friendship/i, '高親密度');
-    m = m.replace(/Friendship/i, '親密度');
-    m = m.replace(/at night/i, '（夜晚）');
-    m = m.replace(/in the day/i, '（白天）');
-    m = m.replace(/knowing\s+/i, '知道');
-    m = m.replace(/Trade/i, '交換');
-    m = m.replace(/Stone/i, '之石');
-    m = m.replace(/Water Stone/, '水之石');
-    m = m.replace(/Thunder Stone/, '雷之石');
-    m = m.replace(/Fire Stone/, '火之石');
-    m = m.replace(/Leaf Stone/, '葉之石');
-    m = m.replace(/Moon Stone/, '月之石');
-    m = m.replace(/Sun Stone/, '太陽之石');
-    m = m.replace(/Shiny Stone/, '光之石');
-    m = m.replace(/Dusk Stone/, '晚之石');
-    m = m.replace(/Dawn Stone/, '曙之石');
-    m = m.replace(/Ice Stone/, '冰之石');
+    // Named items (must come before generic "use" rule)
+    m = m.replace(/use\s+Tart Apple/i,   '使用酸蘋果');
+    m = m.replace(/use\s+Sweet Apple/i,  '使用甜蘋果');
+    m = m.replace(/use\s+Syrupy Apple/i, '使用蜜蘋果');
+    m = m.replace(/after.*Dragon Cheer.*learned/i, '學會龍之應援後');
+    m = m.replace(/use\s+Water Stone/i,   '使用水之石');
+    m = m.replace(/use\s+Thunder Stone/i, '使用雷之石');
+    m = m.replace(/use\s+Fire Stone/i,    '使用火之石');
+    m = m.replace(/use\s+Leaf Stone/i,    '使用葉之石');
+    m = m.replace(/use\s+Moon Stone/i,    '使用月之石');
+    m = m.replace(/use\s+Sun Stone/i,     '使用太陽之石');
+    m = m.replace(/use\s+Shiny Stone/i,   '使用光之石');
+    m = m.replace(/use\s+Dusk Stone/i,    '使用晚之石');
+    m = m.replace(/use\s+Dawn Stone/i,    '使用曙之石');
+    m = m.replace(/use\s+Ice Stone/i,     '使用冰之石');
+    m = m.replace(/^use\s+/i,             '使用');   // generic fallback
+    m = m.replace(/High Friendship/i,     '高親密度');
+    m = m.replace(/Friendship/i,          '親密度');
+    m = m.replace(/at night/i,            '（夜晚）');
+    m = m.replace(/in the day/i,          '（白天）');
+    m = m.replace(/knowing\s+/i,          '知道');
+    m = m.replace(/Trade/i,               '交換');
   } else if (lang === 'ja') {
     m = m.replace(/^Lv\.\s*(\d+)$/, 'Lv.$1');
-    m = m.replace(/High Friendship/i, '仲良し度高');
-    m = m.replace(/Friendship/i, '仲良し度');
-    m = m.replace(/at night/i, '（夜）');
-    m = m.replace(/in the day/i, '（昼）');
-    m = m.replace(/Trade/i, '通信交換');
-    m = m.replace(/Water Stone/, 'みずのいし');
-    m = m.replace(/Thunder Stone/, 'かみなりのいし');
-    m = m.replace(/Fire Stone/, 'ほのおのいし');
-    m = m.replace(/Leaf Stone/, 'くさのいし');
-    m = m.replace(/Moon Stone/, 'つきのいし');
-    m = m.replace(/Sun Stone/, 'たいようのいし');
-    m = m.replace(/Shiny Stone/, 'ひかりのいし');
-    m = m.replace(/Dusk Stone/, 'やみのいし');
-    m = m.replace(/Dawn Stone/, 'めざめのいし');
-    m = m.replace(/Ice Stone/, 'こおりのいし');
+    m = m.replace(/use\s+Tart Apple/i,   'タルトのリンゴを使う');
+    m = m.replace(/use\s+Sweet Apple/i,  'あまいリンゴを使う');
+    m = m.replace(/use\s+Syrupy Apple/i, 'シロップのリンゴを使う');
+    m = m.replace(/after.*Dragon Cheer.*learned/i, 'ドラゴンエールを覚えた後');
+    m = m.replace(/use\s+Water Stone/i,   'みずのいしを使う');
+    m = m.replace(/use\s+Thunder Stone/i, 'かみなりのいしを使う');
+    m = m.replace(/use\s+Fire Stone/i,    'ほのおのいしを使う');
+    m = m.replace(/use\s+Leaf Stone/i,    'くさのいしを使う');
+    m = m.replace(/use\s+Moon Stone/i,    'つきのいしを使う');
+    m = m.replace(/use\s+Sun Stone/i,     'たいようのいしを使う');
+    m = m.replace(/use\s+Shiny Stone/i,   'ひかりのいしを使う');
+    m = m.replace(/use\s+Dusk Stone/i,    'やみのいしを使う');
+    m = m.replace(/use\s+Dawn Stone/i,    'めざめのいしを使う');
+    m = m.replace(/use\s+Ice Stone/i,     'こおりのいしを使う');
+    m = m.replace(/High Friendship/i,     '仲良し度高');
+    m = m.replace(/Friendship/i,          '仲良し度');
+    m = m.replace(/at night/i,            '（夜）');
+    m = m.replace(/in the day/i,          '（昼）');
+    m = m.replace(/Trade/i,               '通信交換');
   }
   return m;
 }
@@ -563,7 +586,7 @@ function buildEvoLine(chain, lang) {
     const members = stages[stageNum];
     const nameList = members.map(e => {
       // Look up display name from scvi db
-      const dbEntry = Object.values(loadDb('scvi')).find(p => p.name_en === e.name_en);
+      const dbEntry = loadDb('scvi').find(p => p.name_en === e.name_en);
       const displayName = dbEntry ? getPokeDisplayName(dbEntry, lang) : e.name_en;
       const method = e.method ? translateEvoMethod(e.method, lang) : null;
       return method ? `${method} → **${displayName}**` : `**${displayName}**`;
@@ -579,13 +602,6 @@ async function buildScviPage1(poke, lang) {
   const ft = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
   embed.setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p1}` });
 
-  // Evolution chain
-  const movesData = loadScviMoves()[poke.name_en];
-  const evoLine   = buildEvoLine(movesData?.evolution_chain, lang);
-  if (evoLine) {
-    embed.addFields({ name: `🔄 ${EVO_LABEL[lang] ?? EVO_LABEL.zh}`, value: evoLine });
-  }
-
   const s   = poke.stats ?? {};
   const bst = Object.values(s).reduce((a, v) => a + (v || 0), 0);
   try {
@@ -598,6 +614,24 @@ async function buildScviPage1(poke, lang) {
   }
 }
 
+function buildScviPageEvo(poke, lang) {
+  const ft   = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
+  const data = loadScviMoves()[poke.name_en];
+  const chain = data?.evolution_chain;
+
+  const embed = new EmbedBuilder()
+    .setColor(COLOR)
+    .setTitle(getPokeDisplayName(poke, lang))
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p2}` });
+
+  const evoText = buildEvoLine(chain, lang);
+  embed.addFields({
+    name:  `🔄 ${EVO_LABEL[lang] ?? EVO_LABEL.zh}`,
+    value: evoText ?? (EVO_NO_EVO[lang] ?? EVO_NO_EVO.zh),
+  });
+  return embed;
+}
+
 function buildScviPage2(poke, lang) {
   const L   = DEX_LABELS[lang] ?? DEX_LABELS.zh;
   const ft  = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
@@ -606,7 +640,7 @@ function buildScviPage2(poke, lang) {
   const embed = new EmbedBuilder()
     .setColor(COLOR)
     .setTitle(getPokeDisplayName(poke, lang))
-    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p2}` });
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p3}` });
 
   const lvMoves = (data?.level_up_moves ?? []).slice().sort((a, b) => {
     const la = a.level < 0 ? -2 : a.level === 0 ? -1 : a.level;
@@ -639,7 +673,7 @@ function buildScviPage3(poke, lang) {
   const embed = new EmbedBuilder()
     .setColor(COLOR)
     .setTitle(getPokeDisplayName(poke, lang))
-    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p3}` });
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p4}` });
 
   const tmMoves = (data?.tm_moves ?? []).slice().sort((a, b) => a.tm.localeCompare(b.tm));
 
@@ -667,7 +701,7 @@ function buildScviPage4(poke, lang) {
   const embed = new EmbedBuilder()
     .setColor(COLOR)
     .setTitle(getPokeDisplayName(poke, lang))
-    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p4}` });
+    .setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p5}` });
 
   const eggMoves = data?.egg_moves ?? [];
   const eggLabel = EGG_LABEL[lang] ?? EGG_LABEL.zh;
@@ -697,6 +731,11 @@ function buildScviTabRow(currentTab, lang, disabled = false) {
       .setStyle(currentTab === 'basic'   ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(disabled),
     new ButtonBuilder()
+      .setCustomId('scvi_evo')
+      .setLabel(lbs.evo)
+      .setStyle(currentTab === 'evo'     ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(disabled),
+    new ButtonBuilder()
       .setCustomId('scvi_levelup')
       .setLabel(lbs.levelup)
       .setStyle(currentTab === 'levelup' ? ButtonStyle.Primary : ButtonStyle.Secondary)
@@ -711,6 +750,34 @@ function buildScviTabRow(currentTab, lang, disabled = false) {
       .setLabel(lbs.egg)
       .setStyle(currentTab === 'egg'     ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(disabled),
+  );
+}
+
+function buildEvoSelectRow(chain, lang, currentNameEn, disabled = false) {
+  if (!chain || chain.length === 0) return null;
+
+  const seen    = new Set();
+  const options = [];
+  for (const entry of chain) {
+    if (seen.has(entry.name_en)) continue;
+    seen.add(entry.name_en);
+    const dbEntry     = loadDb('scvi').find(p => p.name_en === entry.name_en);
+    const displayName = dbEntry ? getPokeDisplayName(dbEntry, lang) : entry.name_en;
+    options.push({
+      label:   displayName.slice(0, 100),
+      value:   entry.name_en,
+      default: entry.name_en === currentNameEn,
+    });
+  }
+
+  if (options.length <= 1) return null; // no point for solo Pokémon
+
+  return new ActionRowBuilder().addComponents(
+    new StringSelectMenuBuilder()
+      .setCustomId('scvi_evo_member')
+      .setPlaceholder(EVO_SELECT_PLACEHOLDER[lang] ?? EVO_SELECT_PLACEHOLDER.zh)
+      .setDisabled(disabled)
+      .addOptions(options),
   );
 }
 
@@ -768,49 +835,59 @@ module.exports = {
 
     await interaction.deferReply({ flags });
 
-    // ── SCVI: 4-tab interactive view ───────────────────────────────────────────
+    // ── SCVI: 5-tab interactive view ───────────────────────────────────────────
     if (gameId === 'scvi') {
-      const { embed: embed1, file: file1 } = await buildScviPage1(poke, lang);
-      const row = buildScviTabRow('basic', lang);
+      let currentPoke = poke;
+      let currentTab  = 'basic';
 
-      const msg = await interaction.editReply({
-        embeds:     [embed1],
-        files:      file1 ? [file1] : [],
-        components: [row],
-      });
+      function getEvoChain(p) {
+        return loadScviMoves()[p.name_en]?.evolution_chain ?? null;
+      }
 
-      let currentTab = 'basic';
+      function buildScviComponents(tab, p, disabled = false) {
+        const tabRow = buildScviTabRow(tab, lang, disabled);
+        const selRow = buildEvoSelectRow(getEvoChain(p), lang, p.name_en, disabled);
+        return selRow ? [tabRow, selRow] : [tabRow];
+      }
+
+      async function renderTab(tab, p) {
+        if (tab === 'basic') {
+          const { embed, file } = await buildScviPage1(p, lang);
+          return { embeds: [embed], files: file ? [file] : [], components: buildScviComponents(tab, p) };
+        }
+        const embed =
+          tab === 'evo'     ? buildScviPageEvo(p, lang)  :
+          tab === 'levelup' ? buildScviPage2(p, lang)    :
+          tab === 'tm'      ? buildScviPage3(p, lang)    :
+                              buildScviPage4(p, lang);
+        return { embeds: [embed], files: [], components: buildScviComponents(tab, p) };
+      }
+
+      const msg = await interaction.editReply(await renderTab('basic', currentPoke));
 
       const collector = msg.createMessageComponentCollector({
-        componentType: ComponentType.Button,
         filter: i => i.user.id === interaction.user.id,
         time: 300_000,
       });
 
-      collector.on('collect', async btnInt => {
-        await btnInt.deferUpdate();
-        const tab    = btnInt.customId.replace('scvi_', '');
-        currentTab   = tab;
-        const newRow = buildScviTabRow(tab, lang);
+      collector.on('collect', async compInt => {
+        await compInt.deferUpdate();
         try {
-          if (tab === 'basic') {
-            const { embed, file } = await buildScviPage1(poke, lang);
-            await interaction.editReply({ embeds: [embed], files: file ? [file] : [], components: [newRow] });
-          } else if (tab === 'levelup') {
-            await interaction.editReply({ embeds: [buildScviPage2(poke, lang)], files: [], components: [newRow] });
-          } else if (tab === 'tm') {
-            await interaction.editReply({ embeds: [buildScviPage3(poke, lang)], files: [], components: [newRow] });
-          } else if (tab === 'egg') {
-            await interaction.editReply({ embeds: [buildScviPage4(poke, lang)], files: [], components: [newRow] });
+          if (compInt.isStringSelectMenu() && compInt.customId === 'scvi_evo_member') {
+            const newPoke = findPokemonByEn('scvi', compInt.values[0]);
+            if (newPoke) currentPoke = newPoke;
+          } else if (compInt.isButton()) {
+            currentTab = compInt.customId.replace('scvi_', '');
           }
+          await interaction.editReply(await renderTab(currentTab, currentPoke));
         } catch (err) {
-          console.error('[pokedex] scvi button error:', err);
+          console.error('[pokedex] scvi component error:', err);
         }
       });
 
       collector.on('end', async () => {
         try {
-          await interaction.editReply({ components: [buildScviTabRow(currentTab, lang, true)] });
+          await interaction.editReply({ components: buildScviComponents(currentTab, currentPoke, true) });
         } catch { /* message may have been deleted */ }
       });
       return;

@@ -57,8 +57,10 @@ def to_slug(name: str) -> str:
 
 def parse_method(text: str) -> str:
     """Clean up an evolution method string from pokemondb."""
-    t = text.strip().strip("()")
-    # "(Level 16)" → "Lv. 16"
+    # Normalize whitespace first (handles newlines inside <small> tags that
+    # get_text() would otherwise concatenate without spaces)
+    t = " ".join(text.split()).strip("()")
+    # "Level 16" → "Lv. 16"
     t = re.sub(r"(?i)^level\s+(\d+)$", r"Lv. \1", t)
     return t or None
 
@@ -135,17 +137,20 @@ def _walk_evo_div(div, stage: int, chain: list, pending_method):
         elif child.name == "span" and "infocard-arrow" in cls:
             # ── Arrow between stages ──────────────────────────────────────────
             small = child.find("small")
-            raw   = small.get_text(strip=True) if small else child.get_text(strip=True)
+            raw   = small.get_text(separator=" ", strip=True) if small else child.get_text(separator=" ", strip=True)
             current_method = parse_method(raw)
             current_stage  = current_stage + 1
 
         elif "infocard-evo-split" in cls:
             # ── Branching node ────────────────────────────────────────────────
-            # Each direct-child div is one branch
+            # Each direct-child div is one branch.
+            # The first card in each branch is always one stage beyond the parent.
+            # If a branch has multiple cards (e.g. Dipplin→Hydrapple), subsequent
+            # arrows within the branch advance the stage further.
             for branch in child.find_all("div", recursive=False):
-                # A branch may itself start with an arrow span, then cards
                 branch_method = current_method
-                branch_stage  = current_stage
+                branch_stage  = current_stage + 1   # ← fixed: always +1 from parent
+                cards_added   = 0
                 branch_children = [c for c in branch.children if getattr(c, "name", None)]
 
                 for bc in branch_children:
@@ -153,9 +158,11 @@ def _walk_evo_div(div, stage: int, chain: list, pending_method):
 
                     if bc.name == "span" and "infocard-arrow" in bc_cls:
                         small = bc.find("small")
-                        raw   = small.get_text(strip=True) if small else bc.get_text(strip=True)
+                        raw   = small.get_text(separator=" ", strip=True) if small else bc.get_text(separator=" ", strip=True)
                         branch_method = parse_method(raw)
-                        branch_stage  = current_stage  # stays same; next card is the branch evo
+                        if cards_added > 0:
+                            # Arrow after a card = going to the next stage
+                            branch_stage += 1
 
                     elif bc.name == "div" and "infocard" in bc_cls and "infocard-evo-split" not in bc_cls:
                         name = _poke_name_from_card(bc)
@@ -165,10 +172,11 @@ def _walk_evo_div(div, stage: int, chain: list, pending_method):
                             "method":  branch_method,
                         })
                         branch_method = None
+                        cards_added  += 1
 
                     elif "infocard-evo-split" in bc_cls:
                         # Nested split (e.g. Kirlia → Gardevoir|Gallade)
-                        _walk_evo_div(bc, branch_stage + 1, chain, None)
+                        _walk_evo_div(bc, branch_stage, chain, None)
 
             current_method = None  # consumed by the split
 
