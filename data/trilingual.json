@@ -12958,6 +12958,13 @@
       "ja_hrkt": "",
       "zh": "詭異咒語",
       "zh_src": "local"
+    },
+    "851": {
+      "en": "Dragon Cheer",
+      "ja": "ドラゴンエール",
+      "ja_hrkt": "",
+      "zh": "龍聲鼓舞",
+      "zh_src": "local"
     }
   },
   "item": {

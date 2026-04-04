@@ -525,7 +525,7 @@ function translateEvoMethod(method, lang) {
     m = m.replace(/use\s+Tart Apple/i,   '使用酸蘋果');
     m = m.replace(/use\s+Sweet Apple/i,  '使用甜蘋果');
     m = m.replace(/use\s+Syrupy Apple/i, '使用蜜蘋果');
-    m = m.replace(/after.*Dragon Cheer.*learned/i, '學會龍之應援後');
+    m = m.replace(/after.*Dragon Cheer.*learned/i, '學會龍聲鼓舞後');
     m = m.replace(/use\s+Water Stone/i,   '使用水之石');
     m = m.replace(/use\s+Thunder Stone/i, '使用雷之石');
     m = m.replace(/use\s+Fire Stone/i,    '使用火之石');
@@ -626,7 +626,7 @@ function buildScviPageEvo(poke, lang) {
 
   const evoText = buildEvoLine(chain, lang);
   embed.addFields({
-    name:  `🔄 ${EVO_LABEL[lang] ?? EVO_LABEL.zh}`,
+    name:  `<:rarecandy:1489986738997821501> ${EVO_LABEL[lang] ?? EVO_LABEL.zh}`,
     value: evoText ?? (EVO_NO_EVO[lang] ?? EVO_NO_EVO.zh),
   });
   return embed;
