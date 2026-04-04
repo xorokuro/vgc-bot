@@ -494,11 +494,97 @@ const SCVI_TAB_LABELS = {
 };
 
 const EGG_LABEL = { zh: '蛋招式', ja: 'タマゴ技', en: 'Egg Moves' };
+const EVO_LABEL = { zh: '進化路線', ja: '進化', en: 'Evolution' };
+
+// ── Evolution chain helpers ───────────────────────────────────────────────────
+
+function translateEvoMethod(method, lang) {
+  if (!method) return null;
+  if (lang === 'en') return method;
+
+  // Translate common patterns
+  let m = method;
+  if (lang === 'zh') {
+    m = m.replace(/^Lv\.\s*(\d+)$/, '升$1級');
+    m = m.replace(/^Use\s+/i, '使用');
+    m = m.replace(/High Friendship/i, '高親密度');
+    m = m.replace(/Friendship/i, '親密度');
+    m = m.replace(/at night/i, '（夜晚）');
+    m = m.replace(/in the day/i, '（白天）');
+    m = m.replace(/knowing\s+/i, '知道');
+    m = m.replace(/Trade/i, '交換');
+    m = m.replace(/Stone/i, '之石');
+    m = m.replace(/Water Stone/, '水之石');
+    m = m.replace(/Thunder Stone/, '雷之石');
+    m = m.replace(/Fire Stone/, '火之石');
+    m = m.replace(/Leaf Stone/, '葉之石');
+    m = m.replace(/Moon Stone/, '月之石');
+    m = m.replace(/Sun Stone/, '太陽之石');
+    m = m.replace(/Shiny Stone/, '光之石');
+    m = m.replace(/Dusk Stone/, '晚之石');
+    m = m.replace(/Dawn Stone/, '曙之石');
+    m = m.replace(/Ice Stone/, '冰之石');
+  } else if (lang === 'ja') {
+    m = m.replace(/^Lv\.\s*(\d+)$/, 'Lv.$1');
+    m = m.replace(/High Friendship/i, '仲良し度高');
+    m = m.replace(/Friendship/i, '仲良し度');
+    m = m.replace(/at night/i, '（夜）');
+    m = m.replace(/in the day/i, '（昼）');
+    m = m.replace(/Trade/i, '通信交換');
+    m = m.replace(/Water Stone/, 'みずのいし');
+    m = m.replace(/Thunder Stone/, 'かみなりのいし');
+    m = m.replace(/Fire Stone/, 'ほのおのいし');
+    m = m.replace(/Leaf Stone/, 'くさのいし');
+    m = m.replace(/Moon Stone/, 'つきのいし');
+    m = m.replace(/Sun Stone/, 'たいようのいし');
+    m = m.replace(/Shiny Stone/, 'ひかりのいし');
+    m = m.replace(/Dusk Stone/, 'やみのいし');
+    m = m.replace(/Dawn Stone/, 'めざめのいし');
+    m = m.replace(/Ice Stone/, 'こおりのいし');
+  }
+  return m;
+}
+
+function buildEvoLine(chain, lang) {
+  if (!chain || chain.length === 0) return null;
+
+  // Group by stage
+  const stages = {};
+  for (const entry of chain) {
+    if (!stages[entry.stage]) stages[entry.stage] = [];
+    stages[entry.stage].push(entry);
+  }
+
+  const stageNums = Object.keys(stages).map(Number).sort((a, b) => a - b);
+  if (stageNums.length <= 1 && stages[0]?.length === 1) return null; // no evolution
+
+  const lines = [];
+  for (const stageNum of stageNums) {
+    const members = stages[stageNum];
+    const nameList = members.map(e => {
+      // Look up display name from scvi db
+      const dbEntry = Object.values(loadDb('scvi')).find(p => p.name_en === e.name_en);
+      const displayName = dbEntry ? getPokeDisplayName(dbEntry, lang) : e.name_en;
+      const method = e.method ? translateEvoMethod(e.method, lang) : null;
+      return method ? `${method} → **${displayName}**` : `**${displayName}**`;
+    });
+    lines.push(nameList.join('  /  '));
+  }
+
+  return lines.join('\n');
+}
 
 async function buildScviPage1(poke, lang) {
   const embed = buildDetailEmbed(poke, lang, COLOR);
   const ft = SCVI_FOOTER[lang] ?? SCVI_FOOTER.zh;
   embed.setFooter({ text: `${gameLabel('scvi', lang)} · ${ft.p1}` });
+
+  // Evolution chain
+  const movesData = loadScviMoves()[poke.name_en];
+  const evoLine   = buildEvoLine(movesData?.evolution_chain, lang);
+  if (evoLine) {
+    embed.addFields({ name: `🔄 ${EVO_LABEL[lang] ?? EVO_LABEL.zh}`, value: evoLine });
+  }
 
   const s   = poke.stats ?? {};
   const bst = Object.values(s).reduce((a, v) => a + (v || 0), 0);
