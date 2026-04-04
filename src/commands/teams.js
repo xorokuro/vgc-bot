@@ -19,7 +19,7 @@ const {
   StringSelectMenuBuilder, AttachmentBuilder,
   ModalBuilder, TextInputBuilder, TextInputStyle,
 } = require('discord.js');
-const { fetchTeamPage, SITE_CONFIGS }                    = require('../utils/teamScraper');
+const { fetchTeamPage, SITE_CONFIGS, cfgLabel, fmtLabel } = require('../utils/teamScraper');
 const { buildTeamImage, buildTeamsListImage }              = require('../utils/teamImage');
 const { translateByDexClass, translateItemByJa,
         translateTeraType, LANG_CHOICES }                 = require('../utils/i18n');
@@ -96,10 +96,11 @@ async function buildListEmbed(teams, totalCount, sitePage, totalSitePages, discP
   const dp           = Math.min(discPage, Math.max(0, totalDisc - 1));
   const slice        = teams.slice(dp * TEAMS_PER_VIEW, (dp + 1) * TEAMS_PER_VIEW);
 
-  const seasonTag = season ? ` S${season}` : '';
+  const seasonTag  = season ? ` S${season}` : '';
+  const titleSuffix = lang === 'en' ? 'Team Articles' : lang === 'ja' ? 'チーム記事' : '隊伍分享文章';
   const embed = new EmbedBuilder()
     .setColor(cfg.color)
-    .setTitle(`${cfg.labelZh} ${fmt.labelZh}${seasonTag} 隊伍分享文章`)
+    .setTitle(`${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)}${seasonTag} ${titleSuffix}`)
     .setURL(`${cfg.baseUrl}/article/search?rule=${fmt.rule}${season ? `&season_start=${season}&season_end=${season}` : ''}&page=${sitePage}#search-results`);
 
   // Thumbnail: lead Pokémon sprite of the top team on this page
@@ -132,11 +133,12 @@ async function buildListEmbed(teams, totalCount, sitePage, totalSitePages, discP
   });
 
   if (fields.length) embed.addFields(fields);
-  else embed.setDescription('このページにはチームがありません。');
+  else embed.setDescription(lang === 'en' ? 'No teams on this page.' : lang === 'ja' ? 'このページにはチームがありません。' : '此頁沒有隊伍。');
 
-  embed.setFooter({
-    text: `第 ${sitePage}/${totalSitePages} 頁  ·  組 ${dp + 1}/${totalDisc}  ·  共 ${totalCount} 篇`,
-  });
+  const footerPage  = lang === 'en' ? `Page ${sitePage}/${totalSitePages}` : lang === 'ja' ? `ページ ${sitePage}/${totalSitePages}` : `第 ${sitePage}/${totalSitePages} 頁`;
+  const footerGroup = lang === 'en' ? `Group ${dp + 1}/${totalDisc}` : lang === 'ja' ? `グループ ${dp + 1}/${totalDisc}` : `組 ${dp + 1}/${totalDisc}`;
+  const footerTotal = lang === 'en' ? `${totalCount} articles` : lang === 'ja' ? `計 ${totalCount} 件` : `共 ${totalCount} 篇`;
+  embed.setFooter({ text: `${footerPage}  ·  ${footerGroup}  ·  ${footerTotal}` });
 
   // Generate sprite grid image (5 rows numbered to match fields above)
   let imgBuf = null;
@@ -166,14 +168,14 @@ function buildNavRow(gameId, format, sitePage, totalSitePages, discPage, totalDi
   return new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId(idPP(Math.max(1, sitePage - 1), 0, 0))
-      .setLabel('◀◀ 前頁')
+      .setLabel(lang === 'en' ? '◀◀ Prev' : lang === 'ja' ? '◀◀ 前頁' : '◀◀ 前頁')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(sitePage <= 1),
     new ButtonBuilder()
       .setCustomId(
         discPage > 0 ? id(sitePage, discPage - 1) : id(Math.max(1, sitePage - 1), 99),
       )
-      .setLabel('◀ 上組')
+      .setLabel(lang === 'en' ? '◀ Prev' : lang === 'ja' ? '◀ 前グループ' : '◀ 上組')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(atFirst),
     new ButtonBuilder()
@@ -182,17 +184,17 @@ function buildNavRow(gameId, format, sitePage, totalSitePages, discPage, totalDi
           ? id(sitePage, discPage + 1)
           : id(Math.min(totalSitePages, sitePage + 1), 0),
       )
-      .setLabel('下組 ▶')
+      .setLabel(lang === 'en' ? 'Next ▶' : lang === 'ja' ? '次グループ ▶' : '下組 ▶')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(atLast),
     new ButtonBuilder()
       .setCustomId(idPP(Math.min(totalSitePages, sitePage + 1), 0, 1))
-      .setLabel('後頁 ▶▶')
+      .setLabel(lang === 'en' ? 'Next ▶▶' : lang === 'ja' ? '次頁 ▶▶' : '後頁 ▶▶')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(sitePage >= totalSitePages),
     new ButtonBuilder()
       .setCustomId(`tms_jump|${gameId}|${f}|${totalSitePages}|${p}|${lang}|${s}`)
-      .setLabel('跳頁')
+      .setLabel(lang === 'en' ? 'Go to Page' : lang === 'ja' ? 'ページ移動' : '跳頁')
       .setStyle(ButtonStyle.Primary),
   );
 }
@@ -210,7 +212,7 @@ function buildPreviewMenu(slice, gameId, format, sitePage, discPage, pub, lang, 
   return new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
       .setCustomId(`tms_preview|${gameId}|${f}|${sitePage}|${discPage}|${p}|${lang}|${s}`)
-      .setPlaceholder('👁 查看隊伍預覽 / Preview a team')
+      .setPlaceholder(lang === 'en' ? '👁 Preview a team' : lang === 'ja' ? '👁 チームをプレビュー' : '👁 查看隊伍預覽')
       .addOptions(options),
   );
 }
@@ -280,13 +282,14 @@ module.exports = {
     const cfg = SITE_CONFIGS[gameId];
     const fmt = cfg?.formats[format];
     if (!cfg || !fmt) {
-      await interaction.reply({ content: '❌ 無效的遊戲或賽制。', flags: 64 });
+      await interaction.reply({ content: '❌ Invalid game or format.', flags: 64 });
       return;
     }
     if (!fmt.available) {
-      await interaction.reply({
-        content: `❌ ${cfg.labelZh} ${fmt.labelZh} 尚未開放，請稍後再試。`, flags: 64,
-      });
+      const unavail = lang === 'en' ? `❌ ${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)} is not yet available.`
+                    : lang === 'ja' ? `❌ ${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)} はまだ利用できません。`
+                    :                 `❌ ${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)} 尚未開放，請稍後再試。`;
+      await interaction.reply({ content: unavail, flags: 64 });
       return;
     }
 

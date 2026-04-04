@@ -22,12 +22,13 @@ const SITE_CONFIGS = {
   sv: {
     labelZh:    '朱紫 (SV)',
     labelEn:    'Scarlet/Violet',
+    labelJa:    'スカーレット・バイオレット',
     baseUrl:    'https://sv.pokedb.tokyo',
     searchPath: '/article/search',
     color:      0xE63A2E,
     formats: {
-      doubles: { rule: 1, labelZh: '雙打', available: true  },
-      singles: { rule: 0, labelZh: '單打', available: true  },
+      doubles: { rule: 1, labelZh: '雙打', labelEn: 'Doubles', labelJa: 'ダブル', available: true  },
+      singles: { rule: 0, labelZh: '單打', labelEn: 'Singles', labelJa: 'シングル', available: true  },
     },
   },
   // Future game skeleton:
@@ -196,4 +197,13 @@ async function fetchTeamPage(gameId, format, pageNum, season) {
   return data;
 }
 
-module.exports = { fetchTeamPage, SITE_CONFIGS };
+/** Get the localized game label for a given lang ('zh'|'en'|'ja'). */
+function cfgLabel(cfg, lang) {
+  return lang === 'en' ? cfg.labelEn : lang === 'ja' ? cfg.labelJa : cfg.labelZh;
+}
+/** Get the localized format label for a given lang. */
+function fmtLabel(fmt, lang) {
+  return lang === 'en' ? fmt.labelEn : lang === 'ja' ? fmt.labelJa : fmt.labelZh;
+}
+
+module.exports = { fetchTeamPage, SITE_CONFIGS, cfgLabel, fmtLabel };

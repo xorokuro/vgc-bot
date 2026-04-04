@@ -286,38 +286,29 @@ function buildVocabEmbed(entry, category) {
     if (dexEntry && dexEntry.types_en.length) {
       const titleTypes = dexEntry.types_en.map(toTitleType);
 
-      const ja = t => `${TYPE_EMOJI[t] ?? ''} ${translateType(t, 'ja')}`;
+      // Show type name in all three languages (that's the point of /vocab)
+      const typeStr = t =>
+        `${TYPE_EMOJI[t] ?? ''} ${translateType(t, 'ja')} / ${translateType(t, 'zh')}`;
 
-      // Type row: emoji + JA name
-      embed.addFields({ name: 'タイプ / 屬性', value: titleTypes.map(ja).join('   ') });
+      embed.addFields({ name: 'タイプ / 屬性 / Type', value: titleTypes.map(typeStr).join('   ') });
 
-      // Matchups
       const matchups = calcTypeMatchups(titleTypes);
 
       if (matchups.weak4x.length) {
-        embed.addFields({
-          name: '4× 弱点 / 四倍弱點',
-          value: matchups.weak4x.map(ja).join('  '),
-        });
+        embed.addFields({ name: '4× 弱点 / 四倍弱點', value: matchups.weak4x.map(typeStr).join('  ') });
       }
       if (matchups.weak2x.length) {
-        embed.addFields({
-          name: '2× 弱点 / 弱點',
-          value: matchups.weak2x.map(ja).join('  '),
-        });
+        embed.addFields({ name: '2× 弱点 / 弱點',     value: matchups.weak2x.map(typeStr).join('  ') });
       }
       if (matchups.resist2x.length || matchups.resist4x.length) {
         const all = [
-          ...matchups.resist4x.map(t => `${ja(t)} ¼`),
-          ...matchups.resist2x.map(t => `${ja(t)} ½`),
+          ...matchups.resist4x.map(t => `${typeStr(t)} ¼`),
+          ...matchups.resist2x.map(t => `${typeStr(t)} ½`),
         ];
-        embed.addFields({ name: '耐性 / 抗性', value: all.join('  ') });
+        embed.addFields({ name: '耐性 / 抗性 / Resist', value: all.join('  ') });
       }
       if (matchups.immune.length) {
-        embed.addFields({
-          name: '無効 / 免疫',
-          value: matchups.immune.map(ja).join('  '),
-        });
+        embed.addFields({ name: '無効 / 免疫 / Immune', value: matchups.immune.map(typeStr).join('  ') });
       }
     }
   }

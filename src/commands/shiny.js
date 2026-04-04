@@ -81,20 +81,34 @@ module.exports = {
       .setName('pokemon')
       .setDescription('寶可夢名稱（中文、日文、英文均可）')
       .setRequired(true)
-      .setAutocomplete(true)),
+      .setAutocomplete(true))
+    .addStringOption(o => o
+      .setName('lang')
+      .setDescription('顯示語言 / Display language (預設：繁體中文)')
+      .addChoices(
+        { name: '繁體中文', value: 'zh' },
+        { name: 'English',  value: 'en' },
+        { name: '日本語',   value: 'ja' },
+      ))
+    .addBooleanOption(o => o
+      .setName('public')
+      .setDescription('公開顯示 / Show publicly (預設：僅自己可見)')),
 
   async execute(interaction) {
     const query = interaction.options.getString('pokemon');
+    const lang  = interaction.options.getString('lang') ?? 'zh';
+    const pub   = interaction.options.getBoolean('public') ?? false;
     const entry = searchPokemon(query);
 
+    const notFound = lang === 'en' ? 'Not found' : lang === 'ja' ? '見つかりません' : '找不到';
     if (!entry) {
-      await interaction.reply({ content: `❌ 找不到 **${query}**。`, flags: 64 });
+      await interaction.reply({ content: `❌ ${notFound}: **${query}**`, flags: 64 });
       return;
     }
 
-    await interaction.deferReply();
+    await interaction.deferReply({ flags: pub ? undefined : 64 });
 
-    const id       = toSpriteId(entry.en);
+    const id        = toSpriteId(entry.en);
     const normalUrl = `https://play.pokemonshowdown.com/sprites/home/${id}.png`;
     const shinyUrl  = `https://play.pokemonshowdown.com/sprites/home-shiny/${id}.png`;
 
@@ -105,9 +119,12 @@ module.exports = {
         fetchResized(shinyUrl),
       ]);
     } catch {
-      await interaction.editReply({
-        content: `❌ 無法取得 **${entry.zh || entry.en}** 的圖片，可能該寶可夢暫時沒有 HOME 圖片。`,
-      });
+      const noImg = lang === 'en'
+        ? `❌ Could not fetch sprite for **${entry.en}**. HOME sprite may be unavailable.`
+        : lang === 'ja'
+        ? `❌ **${entry.ja || entry.en}** のスプライトを取得できませんでした。`
+        : `❌ 無法取得 **${entry.zh || entry.en}** 的圖片，可能該寶可夢暫時沒有 HOME 圖片。`;
+      await interaction.editReply({ content: noImg });
       return;
     }
 
@@ -126,18 +143,29 @@ module.exports = {
       .png()
       .toBuffer();
 
-    const file  = new AttachmentBuilder(composite, { name: 'shiny.png' });
-    const title = entry.zh
-      ? `✨ ${entry.zh}  /  ${entry.en}`
-      : `✨ ${entry.en}`;
-    const desc  = [entry.ja, entry.ja_hrkt ? `(${entry.ja_hrkt})` : '']
-      .filter(Boolean).join(' ');
+    const file = new AttachmentBuilder(composite, { name: 'shiny.png' });
+
+    const title = lang === 'zh'
+      ? `✨ ${entry.zh || entry.en}  /  ${entry.en}`
+      : lang === 'ja'
+      ? `✨ ${entry.ja || entry.en}  /  ${entry.zh || entry.en}`
+      : `✨ ${entry.en}  /  ${entry.zh || ''}`.replace(/  \/$/, '');
+
+    const footer = lang === 'en' ? 'Left: Normal  |  Right: Shiny'
+                 : lang === 'ja' ? '左：通常形態　|　右：色違い'
+                 :                 '左：通常形態　|　右：異色形態';
+
+    const desc = lang === 'ja'
+      ? [entry.ja, entry.ja_hrkt ? `(${entry.ja_hrkt})` : ''].filter(Boolean).join(' ')
+      : lang === 'en'
+      ? (entry.zh ? `ZH: ${entry.zh}` : '')
+      : [entry.ja, entry.ja_hrkt ? `(${entry.ja_hrkt})` : ''].filter(Boolean).join(' ');
 
     const embed = new EmbedBuilder()
       .setColor(0xFFD700)
       .setTitle(title)
       .setImage('attachment://shiny.png')
-      .setFooter({ text: '左：通常形態　|　右：異色形態' });
+      .setFooter({ text: footer });
 
     if (desc) embed.setDescription(desc);
 

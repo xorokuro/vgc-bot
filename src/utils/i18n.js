@@ -704,6 +704,43 @@ function translateTeraType(jaTypeName, lang) {
   return TYPE_NAMES[lang]?.[enKey] ?? jaTypeName;
 }
 
+// ── Reverse zh→any lookup ──────────────────────────────────────────────────────
+
+let _zhMaps = null;
+
+function _getZhMaps() {
+  if (_zhMaps) return _zhMaps;
+  const tri   = require(path.join(__dirname, '../../data/trilingual.json'));
+  const maps2 = _getMaps();
+  _zhMaps = {};
+  for (const cat of ['pokemon', 'move', 'item', 'ability', 'nature']) {
+    _zhMaps[cat] = {};
+    for (const entry of Object.values(tri[cat] || {})) {
+      const enKey    = (entry.en || '').toLowerCase();
+      const mapEntry = maps2[cat]?.[enKey];
+      const zh       = mapEntry?.zh || entry.zh;
+      if (zh && entry.en) {
+        _zhMaps[cat][zh] = { en: entry.en, ja: mapEntry?.ja || entry.ja || entry.en };
+      }
+    }
+  }
+  return _zhMaps;
+}
+
+/**
+ * Translate a Traditional Chinese name to another language.
+ * Falls back to the Chinese name if no mapping is found.
+ * @param {string} zhName
+ * @param {'pokemon'|'move'|'item'|'ability'|'nature'} category
+ * @param {'en'|'ja'|'zh'} lang
+ */
+function translateFromZh(zhName, category, lang) {
+  if (!zhName || lang === 'zh') return zhName;
+  const entry = _getZhMaps()[category]?.[zhName];
+  if (!entry) return zhName;
+  return lang === 'en' ? entry.en : (entry.ja || zhName);
+}
+
 /**
  * Language choices for slash command options.
  */
@@ -801,6 +838,7 @@ module.exports = {
   translateByDexClass,
   translateItemByJa,
   translateTeraType,
+  translateFromZh,
   LANG_CHOICES,
   getPokemonSearchList,
   memberMatchesPokemonQuery,

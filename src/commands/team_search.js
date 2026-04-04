@@ -19,7 +19,7 @@ const {
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
   StringSelectMenuBuilder, AttachmentBuilder,
 } = require('discord.js');
-const { fetchTeamPage, SITE_CONFIGS }                     = require('../utils/teamScraper');
+const { fetchTeamPage, SITE_CONFIGS, cfgLabel, fmtLabel } = require('../utils/teamScraper');
 const { buildTeamImage }                                   = require('../utils/teamImage');
 const {
   translateByDexClass, translateItemByJa, translateTeraType,
@@ -127,21 +127,25 @@ function buildSearchEmbed(
 
   const seasonTag = season ? ` S${season}` : '';
   const mustLabel = mustQueries.map(q => queryToLabel(q, lang)).join(' + ');
+  const exclSep = lang === 'en' ? '  Exclude: ' : lang === 'ja' ? '　除外：' : '　排除：';
   const exclLabel = excludeQueries.length
-    ? `　排除：${excludeQueries.map(q => queryToLabel(q, lang)).join('、')}`
+    ? `${exclSep}${excludeQueries.map(q => queryToLabel(q, lang)).join(lang === 'en' ? ', ' : '、')}`
     : '';
+  const includeLabel = lang === 'en' ? 'Include' : lang === 'ja' ? '含む' : '包含';
+  const titleSuffix  = lang === 'en' ? 'Team Search' : lang === 'ja' ? 'チーム検索' : '隊伍搜索';
 
   const embed = new EmbedBuilder()
     .setColor(cfg.color)
-    .setTitle(`${cfg.labelZh} ${fmt.labelZh}${seasonTag} 隊伍搜索`)
-    .setDescription(`包含：**${mustLabel}**${exclLabel}`);
+    .setTitle(`${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)}${seasonTag} ${titleSuffix}`)
+    .setDescription(`${includeLabel}：**${mustLabel}**${exclLabel}`);
 
   if (filtered.length === 0) {
-    embed.addFields({
-      name:  '找不到符合條件的隊伍',
-      value: `網站頁 ${batchStart}–${batchEnd} 中沒有匹配的隊伍，請繼續翻頁搜索。`,
-      inline: false,
-    });
+    const noTeam  = lang === 'en' ? 'No teams found'    : lang === 'ja' ? '条件に合うチームなし' : '找不到符合條件的隊伍';
+    const noTeamV = lang === 'en'
+      ? `No matching teams in pages ${batchStart}–${batchEnd}. Continue searching.`
+      : lang === 'ja' ? `ページ ${batchStart}–${batchEnd} に該当チームなし。次のページへ。`
+      : `網站頁 ${batchStart}–${batchEnd} 中沒有匹配的隊伍，請繼續翻頁搜索。`;
+    embed.addFields({ name: noTeam, value: noTeamV, inline: false });
   } else {
     const fields = slice.map(t => {
       const rankStr   = t.rank   != null ? `#${t.rank}` : '—';
@@ -164,9 +168,10 @@ function buildSearchEmbed(
     embed.addFields(fields);
   }
 
-  embed.setFooter({
-    text: `網站頁 ${batchStart}–${batchEnd}/${totalSitePages}　·　找到 ${filtered.length} 支　·　組 ${dp + 1}/${totalDiscPages}`,
-  });
+  const footerPages = lang === 'en' ? `Pages ${batchStart}–${batchEnd}/${totalSitePages}` : lang === 'ja' ? `ページ ${batchStart}–${batchEnd}/${totalSitePages}` : `網站頁 ${batchStart}–${batchEnd}/${totalSitePages}`;
+  const footerFound = lang === 'en' ? `${filtered.length} teams found` : lang === 'ja' ? `${filtered.length} チーム` : `找到 ${filtered.length} 支`;
+  const footerGroup = lang === 'en' ? `Group ${dp + 1}/${totalDiscPages}` : lang === 'ja' ? `グループ ${dp + 1}/${totalDiscPages}` : `組 ${dp + 1}/${totalDiscPages}`;
+  embed.setFooter({ text: `${footerPages}　·　${footerFound}　·　${footerGroup}` });
 
   return { embed, discPage: dp, totalDiscPages, slice };
 }
@@ -198,12 +203,12 @@ function buildNavRow(
   return new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId(prevId)
-      .setLabel('◀ 上組')
+      .setLabel(lang === 'en' ? '◀ Prev' : lang === 'ja' ? '◀ 前グループ' : '◀ 上組')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(atStart),
     new ButtonBuilder()
       .setCustomId(nextId)
-      .setLabel('下組 ▶')
+      .setLabel(lang === 'en' ? 'Next ▶' : lang === 'ja' ? '次グループ ▶' : '下組 ▶')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(atEnd),
   );
@@ -223,7 +228,7 @@ function buildPreviewMenu(slice, gameId, format, batchStart, discPage, pub, lang
   return new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
       .setCustomId(`tms_s_pre|${gameId}|${f}|${batchStart}|${discPage}|${p}|${lang}|${s}|${mustStr}|${exclStr}`)
-      .setPlaceholder('👁 查看隊伍預覽 / Preview a team')
+      .setPlaceholder(lang === 'en' ? '👁 Preview a team' : lang === 'ja' ? '👁 チームをプレビュー' : '👁 查看隊伍預覽')
       .addOptions(options),
   );
 }
@@ -356,11 +361,14 @@ module.exports = {
     const cfg = SITE_CONFIGS[gameId];
     const fmt = cfg?.formats[format];
     if (!cfg || !fmt) {
-      await interaction.reply({ content: '❌ 無效的遊戲或賽制。', flags: 64 });
+      await interaction.reply({ content: '❌ Invalid game or format.', flags: 64 });
       return;
     }
     if (!fmt.available) {
-      await interaction.reply({ content: `❌ ${cfg.labelZh} ${fmt.labelZh} 尚未開放。`, flags: 64 });
+      const unavail = lang === 'en' ? `❌ ${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)} is not yet available.`
+                    : lang === 'ja' ? `❌ ${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)} はまだ利用できません。`
+                    :                 `❌ ${cfgLabel(cfg, lang)} ${fmtLabel(fmt, lang)} 尚未開放。`;
+      await interaction.reply({ content: unavail, flags: 64 });
       return;
     }
 

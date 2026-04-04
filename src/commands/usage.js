@@ -12,10 +12,11 @@ const {
 } = require('../utils/usageData');
 const { TYPE_EMOJI } = require('../utils/buildEmbed');
 const { getTypeWeaknesses } = require('../utils/pokeData');
+const { translateType, translateFromZh, LANG_CHOICES } = require('../utils/i18n');
 
 // ── Static data ───────────────────────────────────────────────────────────────
 
-const zhHant  = require(path.join(__dirname, '../../data/zh-Hant.json'));
+const zhHant   = require(path.join(__dirname, '../../data/zh-Hant.json'));
 const MOVES_DB = require(path.join(__dirname, '../../data/moves_db.json'));
 
 // Chinese type name → English type name (e.g. '妖精' → 'Fairy')
@@ -44,197 +45,310 @@ function parseEmojiObj(str) {
   return m ? { animated: m[1] === 'a', name: m[2], id: m[3] } : null;
 }
 
+// ── Name translation helpers ──────────────────────────────────────────────────
+
+function moveName(zh, lang)    { return translateFromZh(zh, 'move',    lang); }
+function abilityName(zh, lang) { return translateFromZh(zh, 'ability', lang); }
+function natureName(zh, lang)  { return translateFromZh(zh, 'nature',  lang); }
+function pokeName(zh, lang)    { return translateFromZh(zh, 'pokemon', lang); }
+
+function teraTypeName(zh, lang) {
+  if (lang === 'zh') return zh;
+  const en = ZH_TO_EN_TYPE[zh];
+  if (!en) return zh;
+  return translateType(en, lang);
+}
+
+function teraTypeEmoji(zh) { return typeEmoji(zh); }
+
+// ── Localised labels ──────────────────────────────────────────────────────────
+
+const LBL = {
+  zh: {
+    doubles: '雙打', singles: '單打',
+    fmt: (s, f)  => `S${s} ${f}`,
+    overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位',
+    ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
+    move:        '招式', teammate: '隊友',
+    top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
+    winMove: '勝利招式', loseMove: '落敗招式',
+    source:      '資料來源為 Pokémon HOME 級別對戰。',
+    updated:     (t) => `資料更新於: <t:${t}:R>`,
+    footer:      (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
+    rank:        (r) => `排名 #${r}`,
+    moveSel:     '查詢招式詳情...',
+    abilitySel:  '查詢特性詳情...',
+    teraSel:     '查詢太晶屬性相剋...',
+    moveDetail:  (n) => `招式詳情: ${n}`,
+    abilDetail:  (n) => `特性詳情: ${n}`,
+    teraDetail:  (n) => `${n} 太晶屬性相剋`,
+    usage:       (p) => `使用率: **${p}%**`,
+    noData:      '暫無資料', noDataShort: '暫無詳細資料',
+    type: '屬性', category: '分類', power: '威力',
+    weak4: '4× 弱點', weak2: '2× 弱點', resist2: '½× 抗性', resist4: '¼× 抗性', immune: '免疫',
+    noMatchup: '此屬性無特殊相剋關係',
+    abilityCard: (n) => `特性詳情: ${n}`,
+    notFound:    '❌ 資料不存在。',
+    notFoundSeason: (s, f) => `❌ 找不到賽季 ${s} 的${f}資料。`,
+    notFoundPoke: (n) => `❌ 找不到「${n}」的資料。請透過自動補全選擇寶可夢。`,
+    noMatchupFail: '無法查詢此屬性的相剋資訊。',
+    calcFail: '計算失敗。',
+  },
+  en: {
+    doubles: 'Doubles', singles: 'Singles',
+    fmt: (s, f)  => `S${s} ${f}`,
+    overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups',
+    ability:     'Ability', item: 'Held Item', nature: 'Nature', tera: 'Tera Type',
+    move:        'Move', teammate: 'Teammates',
+    top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
+    winMove: 'Win Moves', loseMove: 'Loss Moves',
+    source:      'Data source: Pokémon HOME Ranked Battles.',
+    updated:     (t) => `Updated: <t:${t}:R>`,
+    footer:      (s, f) => `S${s} ${f} · Pokémon HOME Usage`,
+    rank:        (r) => `Rank #${r}`,
+    moveSel:     'Look up move details...',
+    abilitySel:  'Look up ability details...',
+    teraSel:     'Look up tera type matchups...',
+    moveDetail:  (n) => `Move: ${n}`,
+    abilDetail:  (n) => `Ability: ${n}`,
+    teraDetail:  (n) => `${n} Tera Type Matchups`,
+    usage:       (p) => `Usage: **${p}%**`,
+    noData:      'No data', noDataShort: 'No detailed data available',
+    type: 'Type', category: 'Category', power: 'Power',
+    weak4: '4× Weak', weak2: '2× Weak', resist2: '½× Resist', resist4: '¼× Resist', immune: 'Immune',
+    noMatchup: 'No special matchups for this type.',
+    abilityCard: (n) => `Ability: ${n}`,
+    notFound:    '❌ Data not found.',
+    notFoundSeason: (s, f) => `❌ No data for Season ${s} ${f}.`,
+    notFoundPoke: (n) => `❌ No data for "${n}". Please select via autocomplete.`,
+    noMatchupFail: 'Cannot look up matchups for this type.',
+    calcFail: 'Calculation failed.',
+  },
+  ja: {
+    doubles: 'ダブル', singles: 'シングル',
+    fmt: (s, f)  => `S${s} ${f}`,
+    overview:    '概要', builds: '型', moves: '技', matchups: '対面',
+    ability:     '特性', item: '持ち物', nature: '性格', tera: 'テラスタイプ',
+    move:        '技', teammate: '相方',
+    top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
+    winMove: '勝ち技', loseMove: '負け技',
+    source:      'データ出典: Pokémon HOME ランクバトル。',
+    updated:     (t) => `更新: <t:${t}:R>`,
+    footer:      (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
+    rank:        (r) => `ランク #${r}`,
+    moveSel:     'わざの詳細を見る...',
+    abilitySel:  '特性の詳細を見る...',
+    teraSel:     'テラスタイプの相性を見る...',
+    moveDetail:  (n) => `わざ: ${n}`,
+    abilDetail:  (n) => `特性: ${n}`,
+    teraDetail:  (n) => `${n} テラスタイプ相性`,
+    usage:       (p) => `使用率: **${p}%**`,
+    noData:      'データなし', noDataShort: '詳細データなし',
+    type: 'タイプ', category: '分類', power: 'いりょく',
+    weak4: '4× 弱点', weak2: '2× 弱点', resist2: '½× 耐性', resist4: '¼× 耐性', immune: '無効',
+    noMatchup: 'このタイプに特殊な相性はありません。',
+    abilityCard: (n) => `特性: ${n}`,
+    notFound:    '❌ データが存在しません。',
+    notFoundSeason: (s, f) => `❌ シーズン ${s} ${f} のデータが見つかりません。`,
+    notFoundPoke: (n) => `❌ 「${n}」のデータが見つかりません。オートコンプリートで選択してください。`,
+    noMatchupFail: 'このタイプの相性を調べられません。',
+    calcFail: '計算に失敗しました。',
+  },
+};
+
+function fmtLabel(format, lang) { return (LBL[lang] ?? LBL.zh)[format === 'singles' ? 'singles' : 'doubles']; }
+
 // ── Format helpers ────────────────────────────────────────────────────────────
 
-/** "• name\n(usage%)" × n, as shown in the original bot */
 function fmtCol(arr, n, labelFn) {
   if (!arr?.length) return '—';
   return arr.slice(0, n).map(e => `${labelFn(e)}\n(${e.usage_percent}%)`).join('\n');
 }
 
-function fmtAbilities(arr, n = 3) {
-  return fmtCol(arr, n, e => `• ${e.name}`);
-}
-function fmtItems(arr, n = 3) {
-  return fmtCol(arr, n, e => `• ${e.name}`);
-}
-function fmtNatures(arr, n = 3) {
-  return fmtCol(arr, n, e => `• ${e.name}`);
-}
-function fmtTera(arr, n = 3) {
-  return fmtCol(arr, n, e => `${typeEmoji(e.name)} ${e.name}`);
-}
-function fmtMoves(arr, n = 3) {
-  return fmtCol(arr, n, e => `${moveTypeEmoji(e.name)} ${e.name}`);
-}
+function fmtAbilities(arr, n, lang)  { return fmtCol(arr, n, e => `• ${abilityName(e.name, lang)}`); }
+function fmtItems(arr, n, lang)      { return fmtCol(arr, n, e => `• ${e.name}`); } // items stay zh (HOME data)
+function fmtNatures(arr, n, lang)    { return fmtCol(arr, n, e => `• ${natureName(e.name, lang)}`); }
+function fmtTera(arr, n, lang)       { return fmtCol(arr, n, e => `${teraTypeEmoji(e.name)} ${teraTypeName(e.name, lang)}`); }
+function fmtMoves(arr, n, lang)      { return fmtCol(arr, n, e => `${moveTypeEmoji(e.name)} ${moveName(e.name, lang)}`); }
 
 function fmtFullList(arr, labelFn) {
   if (!arr?.length) return '—';
   return arr.map((e, i) => `${i + 1}. ${labelFn(e)} **${e.usage_percent}%**`).join('\n');
 }
 
-function fmtNameList(arr, n = 5) {
+function fmtNameList(arr, n, lang) {
   if (!arr?.length) return '—';
-  return arr.slice(0, n).map((e, i) => `${i + 1}. ${e.full_name}`).join('\n');
+  return arr.slice(0, n).map((e, i) => `${i + 1}. ${pokeName(e.full_name, lang)}`).join('\n');
 }
 
-function relativeTime(data) {
+function relativeTime(data, lang) {
   if (!data?.last_updated) return '';
-  return `資料更新於: <t:${data.last_updated}:R>`;
+  return (LBL[lang] ?? LBL.zh).updated(data.last_updated);
 }
 
-function footer(season, format) {
-  return `S${season} ${format === 'singles' ? '單打' : '雙打'} · Pokémon HOME 使用率`;
+function footer(season, format, lang) {
+  return (LBL[lang] ?? LBL.zh).footer(season, fmtLabel(format, lang));
 }
 
 // ── Embed builders ────────────────────────────────────────────────────────────
 
-function buildOverviewEmbed(entry, season, format, data) {
-  const fmt = format === 'singles' ? '單打' : '雙打';
+function buildOverviewEmbed(entry, season, format, data, lang = 'zh') {
+  const lbl  = LBL[lang] ?? LBL.zh;
+  const fmt  = fmtLabel(format, lang);
+  const name = pokeName(entry.full_name, lang);
   return new EmbedBuilder()
     .setColor(0xEE1515)
-    .setTitle(`S${season} ${fmt} · ${entry.full_name} (排名 #${entry.rank})`)
-    .setDescription(`資料來源為 Pokémon HOME 級別對戰。\n${relativeTime(data)}`)
+    .setTitle(`${lbl.fmt(season, fmt)} · ${name} (${lbl.rank(entry.rank)})`)
+    .setDescription(`${lbl.source}\n${relativeTime(data, lang)}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format) })
+    .setFooter({ text: footer(season, format, lang) })
     .addFields(
-      { name: '特性 (Top 3)',     value: fmtAbilities(entry.abilities,  3), inline: true },
-      { name: '持有道具 (Top 3)', value: fmtItems(entry.held_items,     3), inline: true },
-      { name: '性格 (Top 3)',     value: fmtNatures(entry.natures,      3), inline: true },
-      { name: '太晶屬性 (Top 3)', value: fmtTera(entry.tera_types,      3), inline: true },
-      { name: '常用招式 (Top 3)', value: fmtMoves(entry.moves,          3), inline: true },
-      { name: '常用隊友 (Top 3)', value: fmtNameList(entry.teammates,   3), inline: true },
+      { name: `${lbl.ability} ${lbl.top3}`,  value: fmtAbilities(entry.abilities,  3, lang), inline: true },
+      { name: `${lbl.item} ${lbl.top3}`,     value: fmtItems(entry.held_items,     3, lang), inline: true },
+      { name: `${lbl.nature} ${lbl.top3}`,   value: fmtNatures(entry.natures,      3, lang), inline: true },
+      { name: `${lbl.tera} ${lbl.top3}`,     value: fmtTera(entry.tera_types,      3, lang), inline: true },
+      { name: `${lbl.move} ${lbl.top3}`,     value: fmtMoves(entry.moves,          3, lang), inline: true },
+      { name: `${lbl.teammate} ${lbl.top3}`, value: fmtNameList(entry.teammates,   3, lang), inline: true },
     );
 }
 
-function buildBuildsEmbed(entry, season, format, data) {
-  const fmt = format === 'singles' ? '單打' : '雙打';
+function buildBuildsEmbed(entry, season, format, data, lang = 'zh') {
+  const lbl  = LBL[lang] ?? LBL.zh;
+  const fmt  = fmtLabel(format, lang);
+  const name = pokeName(entry.full_name, lang);
   return new EmbedBuilder()
     .setColor(0x4A90D9)
-    .setTitle(`S${season} ${fmt} · ${entry.full_name} — 配置`)
+    .setTitle(`${lbl.fmt(season, fmt)} · ${name} — ${lbl.builds}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format) })
+    .setFooter({ text: footer(season, format, lang) })
     .addFields(
-      { name: '💎 特性',     value: fmtFullList(entry.abilities,  e => e.name),                   inline: true  },
-      { name: '🌿 性格',     value: fmtFullList(entry.natures,    e => e.name),                   inline: true  },
-      { name: '✨ 太晶屬性', value: fmtFullList(entry.tera_types, e => `${typeEmoji(e.name)} ${e.name}`), inline: true },
-      { name: '🎒 持有道具', value: fmtFullList(entry.held_items, e => e.name),                   inline: false },
+      { name: `💎 ${lbl.ability}`, value: fmtFullList(entry.abilities,  e => abilityName(e.name, lang)),                         inline: true },
+      { name: `🌿 ${lbl.nature}`,  value: fmtFullList(entry.natures,    e => natureName(e.name, lang)),                          inline: true },
+      { name: `✨ ${lbl.tera}`,    value: fmtFullList(entry.tera_types, e => `${teraTypeEmoji(e.name)} ${teraTypeName(e.name, lang)}`), inline: true },
+      { name: `🎒 ${lbl.item}`,    value: fmtFullList(entry.held_items, e => e.name),                                            inline: false },
     );
 }
 
-function buildMovesEmbed(entry, season, format, data) {
-  const fmt = format === 'singles' ? '單打' : '雙打';
+function buildMovesEmbed(entry, season, format, data, lang = 'zh') {
+  const lbl  = LBL[lang] ?? LBL.zh;
+  const fmt  = fmtLabel(format, lang);
+  const name = pokeName(entry.full_name, lang);
   const fmtMoveList = (arr, n) =>
     !arr?.length ? '—' :
     arr.slice(0, n).map((e, i) =>
-      `${i + 1}. ${moveTypeEmoji(e.name)} ${e.name} **${e.usage_percent}%**`,
+      `${i + 1}. ${moveTypeEmoji(e.name)} ${moveName(e.name, lang)} **${e.usage_percent}%**`,
     ).join('\n');
 
   return new EmbedBuilder()
     .setColor(0xEE9900)
-    .setTitle(`S${season} ${fmt} · ${entry.full_name} — 招式`)
+    .setTitle(`${lbl.fmt(season, fmt)} · ${name} — ${lbl.moves}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format) })
+    .setFooter({ text: footer(season, format, lang) })
     .addFields(
-      { name: '🎯 常用招式 (Top 10)', value: fmtMoveList(entry.moves,      10), inline: false },
-      { name: '✅ 勝利招式 (Top 5)',  value: fmtMoveList(entry.win_moves,   5),  inline: true  },
-      { name: '❌ 落敗招式 (Top 5)',  value: fmtMoveList(entry.lose_moves,  5),  inline: true  },
+      { name: `🎯 ${lbl.move} ${lbl.top10}`,   value: fmtMoveList(entry.moves,     10), inline: false },
+      { name: `✅ ${lbl.winMove} ${lbl.top5}`,  value: fmtMoveList(entry.win_moves,  5), inline: true  },
+      { name: `❌ ${lbl.loseMove} ${lbl.top5}`, value: fmtMoveList(entry.lose_moves, 5), inline: true  },
     );
 }
 
-function buildMatchupsEmbed(entry, season, format, data) {
-  const fmt = format === 'singles' ? '單打' : '雙打';
+function buildMatchupsEmbed(entry, season, format, data, lang = 'zh') {
+  const lbl  = LBL[lang] ?? LBL.zh;
+  const fmt  = fmtLabel(format, lang);
+  const name = pokeName(entry.full_name, lang);
   return new EmbedBuilder()
     .setColor(0x57C87A)
-    .setTitle(`S${season} ${fmt} · ${entry.full_name} — 對位`)
+    .setTitle(`${lbl.fmt(season, fmt)} · ${name} — ${lbl.matchups}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format) })
+    .setFooter({ text: footer(season, format, lang) })
     .addFields(
-      { name: '🤝 常見隊友 (Top 5)',  value: fmtNameList(entry.teammates,         5), inline: true },
-      { name: '🏆 較常獲勝 (Top 5)',  value: fmtNameList(entry.most_wins_against, 5), inline: true },
-      { name: '💀 較常落敗 (Top 5)',  value: fmtNameList(entry.most_defeated_by,  5), inline: true },
+      { name: `🤝 ${lbl.teammate} ${lbl.top5}`,        value: fmtNameList(entry.teammates,         5, lang), inline: true },
+      { name: `🏆 ${lbl.winMove} ${lbl.top5}`,          value: fmtNameList(entry.most_wins_against, 5, lang), inline: true },
+      { name: `💀 ${lbl.loseMove} ${lbl.top5}`,         value: fmtNameList(entry.most_defeated_by,  5, lang), inline: true },
     );
 }
 
 // ── Component builders ────────────────────────────────────────────────────────
 
-const TABS = [
-  { id: 'ov', label: '概覽' },
-  { id: 'bd', label: '配置' },
-  { id: 'mv', label: '招式' },
-  { id: 'mt', label: '對位' },
-];
+const TAB_IDS = ['ov', 'bd', 'mv', 'mt'];
 
-function makeTabRow(activeTab, season, format, pokemonName) {
+function tabLabel(id, lang) {
+  const lbl = LBL[lang] ?? LBL.zh;
+  return { ov: lbl.overview, bd: lbl.builds, mv: lbl.moves, mt: lbl.matchups }[id] ?? id;
+}
+
+function makeTabRow(activeTab, season, format, pokemonName, lang) {
   const f = format === 'singles' ? 's' : 'd';
   return new ActionRowBuilder().addComponents(
-    TABS.map(t => new ButtonBuilder()
-      .setCustomId(`up|${t.id}|${season}|${f}|${pokemonName}`)
-      .setLabel(t.label)
-      .setStyle(t.id === activeTab ? ButtonStyle.Primary : ButtonStyle.Secondary)
-      .setDisabled(t.id === activeTab),
+    TAB_IDS.map(t => new ButtonBuilder()
+      .setCustomId(`up|${t}|${season}|${f}|${lang}|${pokemonName}`)
+      .setLabel(tabLabel(t, lang))
+      .setStyle(t === activeTab ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(t === activeTab),
     ),
   );
 }
 
-function makeMoveSelectRow(entry, season, format) {
-  const f = format === 'singles' ? 's' : 'd';
+function makeMoveSelectRow(entry, season, format, lang) {
+  const f    = format === 'singles' ? 's' : 'd';
+  const lbl  = LBL[lang] ?? LBL.zh;
   const moves = (entry.moves ?? []).slice(0, 10);
   if (!moves.length) return null;
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`up_mv_sel|${season}|${f}|${entry.full_name}`)
-    .setPlaceholder('查詢招式詳情...')
+    .setCustomId(`up_mv_sel|${season}|${f}|${lang}|${entry.full_name}`)
+    .setPlaceholder(lbl.moveSel)
     .addOptions(moves.map(m => {
       const dbEntry = MOVES_DB[m.name];
       const enType  = dbEntry?.type ? dbEntry.type.charAt(0).toUpperCase() + dbEntry.type.slice(1) : null;
       const emoji   = enType ? parseEmojiObj(TYPE_EMOJI[enType]) : null;
       const opt = new StringSelectMenuOptionBuilder()
-        .setLabel(`${m.name}  ${m.usage_percent}%`)
-        .setValue(m.name);
+        .setLabel(`${moveName(m.name, lang)}  ${m.usage_percent}%`.slice(0, 100))
+        .setValue(m.name); // keep zh as value (used for DB lookup)
       if (emoji) opt.setEmoji(emoji);
       return opt;
     }));
   return new ActionRowBuilder().addComponents(menu);
 }
 
-function makeAbilitySelectRow(entry, season, format) {
-  const f = format === 'singles' ? 's' : 'd';
+function makeAbilitySelectRow(entry, season, format, lang) {
+  const f         = format === 'singles' ? 's' : 'd';
+  const lbl       = LBL[lang] ?? LBL.zh;
   const abilities = (entry.abilities ?? []).slice(0, 10);
   if (!abilities.length) return null;
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`up_ab_sel|${season}|${f}|${entry.full_name}`)
-    .setPlaceholder('查詢特性詳情...')
+    .setCustomId(`up_ab_sel|${season}|${f}|${lang}|${entry.full_name}`)
+    .setPlaceholder(lbl.abilitySel)
     .addOptions(abilities.map(a =>
       new StringSelectMenuOptionBuilder()
-        .setLabel(`${a.name}  ${a.usage_percent}%`)
-        .setValue(a.name),
+        .setLabel(`${abilityName(a.name, lang)}  ${a.usage_percent}%`.slice(0, 100))
+        .setValue(a.name), // keep zh as value
     ));
   return new ActionRowBuilder().addComponents(menu);
 }
 
-function makeTeraSelectRow(entry, season, format) {
-  const f = format === 'singles' ? 's' : 'd';
+function makeTeraSelectRow(entry, season, format, lang) {
+  const f     = format === 'singles' ? 's' : 'd';
+  const lbl   = LBL[lang] ?? LBL.zh;
   const teras = (entry.tera_types ?? []).slice(0, 10);
   if (!teras.length) return null;
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`up_tr_sel|${season}|${f}|${entry.full_name}`)
-    .setPlaceholder('查詢太晶屬性相剋...')
+    .setCustomId(`up_tr_sel|${season}|${f}|${lang}|${entry.full_name}`)
+    .setPlaceholder(lbl.teraSel)
     .addOptions(teras.map(t => {
-      const emoji = parseEmojiObj(typeEmoji(t.name));
+      const emoji = parseEmojiObj(teraTypeEmoji(t.name));
       const opt = new StringSelectMenuOptionBuilder()
-        .setLabel(`${t.name}  ${t.usage_percent}%`)
-        .setValue(t.name);
+        .setLabel(`${teraTypeName(t.name, lang)}  ${t.usage_percent}%`.slice(0, 100))
+        .setValue(t.name); // keep zh as value
       if (emoji) opt.setEmoji(emoji);
       return opt;
     }));
   return new ActionRowBuilder().addComponents(menu);
 }
 
-function buildComponents(activeTab, entry, season, format) {
-  const rows = [makeTabRow(activeTab, season, format, entry.full_name)];
-  const moveRow  = makeMoveSelectRow(entry, season, format);
-  const abilRow  = makeAbilitySelectRow(entry, season, format);
-  const teraRow  = makeTeraSelectRow(entry, season, format);
+function buildComponents(activeTab, entry, season, format, lang) {
+  const rows = [makeTabRow(activeTab, season, format, entry.full_name, lang)];
+  const moveRow  = makeMoveSelectRow(entry, season, format, lang);
+  const abilRow  = makeAbilitySelectRow(entry, season, format, lang);
+  const teraRow  = makeTeraSelectRow(entry, season, format, lang);
   if (moveRow)  rows.push(moveRow);
   if (abilRow)  rows.push(abilRow);
   if (teraRow)  rows.push(teraRow);
@@ -244,77 +358,91 @@ function buildComponents(activeTab, entry, season, format) {
 // ── Select menu response handlers ─────────────────────────────────────────────
 
 async function handleMoveSelect(interaction) {
-  const moveName = interaction.values[0];
-  const db = MOVES_DB[moveName];
-  const lines = [];
+  const parts    = interaction.customId.split('|');
+  const lang     = parts[3] ?? 'zh';
+  const lbl      = LBL[lang] ?? LBL.zh;
+  const zhMoveName = interaction.values[0];
+  const db       = MOVES_DB[zhMoveName];
+  const dispName = moveName(zhMoveName, lang);
+  const lines    = [];
   if (db?.type && db.type !== 'unknown') {
     const en = db.type.charAt(0).toUpperCase() + db.type.slice(1);
-    lines.push(`**屬性**: ${TYPE_EMOJI[en] ?? ''} ${en}`);
+    lines.push(`**${lbl.type}**: ${TYPE_EMOJI[en] ?? ''} ${translateType(en, lang)}`);
   }
   if (db?.category && db.category !== 'unknown') {
-    const catLabel = { physical: '物理', special: '特殊', status: '變化' }[db.category] ?? db.category;
-    lines.push(`**分類**: ${catLabel}`);
+    const catMap = {
+      physical: { zh: '物理', en: 'Physical', ja: 'ぶつり' },
+      special:  { zh: '特殊', en: 'Special',  ja: 'とくしゅ' },
+      status:   { zh: '變化', en: 'Status',   ja: 'へんか' },
+    };
+    lines.push(`**${lbl.category}**: ${catMap[db.category]?.[lang] ?? db.category}`);
   }
-  if (db?.power) {
-    lines.push(`**威力**: ${db.power}`);
-  }
+  if (db?.power) lines.push(`**${lbl.power}**: ${db.power}`);
   const embed = new EmbedBuilder()
     .setColor(0x5865F2)
-    .setTitle(`招式詳情: ${moveName}`)
-    .setDescription(lines.length ? lines.join('\n') : '暫無詳細資料');
+    .setTitle(lbl.moveDetail(dispName))
+    .setDescription(lines.length ? lines.join('\n') : lbl.noDataShort);
   await interaction.reply({ embeds: [embed], flags: 64 });
 }
 
 async function handleAbilitySelect(interaction) {
-  const [, seasonStr, f, ...nameParts] = interaction.customId.split('|');
-  const pokemonName = nameParts.join('|');
-  const format  = f === 's' ? 'singles' : 'doubles';
-  const season  = parseInt(seasonStr, 10);
-  const abilityName = interaction.values[0];
+  const parts      = interaction.customId.split('|');
+  const seasonStr  = parts[1];
+  const f          = parts[2];
+  const lang       = parts[3] ?? 'zh';
+  const pokemonName = parts.slice(4).join('|');
+  const lbl        = LBL[lang] ?? LBL.zh;
+  const format     = f === 's' ? 'singles' : 'doubles';
+  const season     = parseInt(seasonStr, 10);
+  const zhAbilName = interaction.values[0];
+  const dispName   = abilityName(zhAbilName, lang);
 
   const data  = loadSeasonData(season, format);
   const entry = data ? findPokemon(data, pokemonName) : null;
-  const abil  = entry?.abilities?.find(a => a.name === abilityName);
+  const abil  = entry?.abilities?.find(a => a.name === zhAbilName);
 
   const embed = new EmbedBuilder()
     .setColor(0x5865F2)
-    .setTitle(`特性詳情: ${abilityName}`)
-    .setDescription(abil ? `使用率: **${abil.usage_percent}%**` : '暫無資料');
+    .setTitle(lbl.abilDetail(dispName))
+    .setDescription(abil ? lbl.usage(abil.usage_percent) : lbl.noData);
   await interaction.reply({ embeds: [embed], flags: 64 });
 }
 
 async function handleTeraSelect(interaction) {
+  const parts     = interaction.customId.split('|');
+  const lang      = parts[3] ?? 'zh';
+  const lbl       = LBL[lang] ?? LBL.zh;
   const zhTypeName = interaction.values[0];
-  const enType = ZH_TO_EN_TYPE[zhTypeName];
+  const enType    = ZH_TO_EN_TYPE[zhTypeName];
   if (!enType || enType === '???') {
-    await interaction.reply({ content: '無法查詢此屬性的相剋資訊。', flags: 64 });
+    await interaction.reply({ content: lbl.noMatchupFail, flags: 64 });
     return;
   }
 
-  // getTypeWeaknesses needs a Pokemon name; pass any pokemon and override with teraType
   const matchups = getTypeWeaknesses('Pikachu', enType);
   if (!matchups) {
-    await interaction.reply({ content: '計算失敗。', flags: 64 });
+    await interaction.reply({ content: lbl.calcFail, flags: 64 });
     return;
   }
 
   const fmtTypes = types =>
-    types.length ? types.map(t => `${TYPE_EMOJI[t] ?? ''} ${t}`).join('  ') : '—';
+    types.length ? types.map(t => `${TYPE_EMOJI[t] ?? ''} ${translateType(t, lang)}`).join('  ') : '—';
 
-  const emojiStr = typeEmoji(zhTypeName);
-  const fields = [];
-  if (matchups['4'].length)    fields.push({ name: '4× 弱點', value: fmtTypes(matchups['4']),    inline: true });
-  if (matchups['2'].length)    fields.push({ name: '2× 弱點', value: fmtTypes(matchups['2']),    inline: true });
-  if (matchups['0.5'].length)  fields.push({ name: '½× 抗性', value: fmtTypes(matchups['0.5']),  inline: true });
-  if (matchups['0.25'].length) fields.push({ name: '¼× 抗性', value: fmtTypes(matchups['0.25']), inline: true });
-  if (matchups['0'].length)    fields.push({ name: '免疫',     value: fmtTypes(matchups['0']),    inline: true });
-  if (!fields.length)          fields.push({ name: '相剋',     value: '此屬性無特殊相剋關係',       inline: false });
+  const emojiStr  = teraTypeEmoji(zhTypeName);
+  const dispType  = teraTypeName(zhTypeName, lang);
+  const fields    = [];
+  if (matchups['4'].length)    fields.push({ name: lbl.weak4,    value: fmtTypes(matchups['4']),    inline: true });
+  if (matchups['2'].length)    fields.push({ name: lbl.weak2,    value: fmtTypes(matchups['2']),    inline: true });
+  if (matchups['0.5'].length)  fields.push({ name: lbl.resist2,  value: fmtTypes(matchups['0.5']),  inline: true });
+  if (matchups['0.25'].length) fields.push({ name: lbl.resist4,  value: fmtTypes(matchups['0.25']), inline: true });
+  if (matchups['0'].length)    fields.push({ name: lbl.immune,   value: fmtTypes(matchups['0']),    inline: true });
+  if (!fields.length)          fields.push({ name: lbl.teraDetail(dispType), value: lbl.noMatchup, inline: false });
 
   const embed = new EmbedBuilder()
     .setColor(0xEE1515)
-    .setTitle(`${emojiStr} ${zhTypeName} 太晶屬性相剋`)
+    .setTitle(`${emojiStr} ${lbl.teraDetail(dispType)}`)
     .addFields(...fields)
-    .setFooter({ text: 'Pokémon HOME 使用率 · 太晶屬性相剋' });
+    .setFooter({ text: `Pokémon HOME · ${lbl.tera}` });
   await interaction.reply({ embeds: [embed], flags: 64 });
 }
 
@@ -340,48 +468,54 @@ module.exports = {
       .addChoices(
         { name: '雙打 (Doubles)', value: 'doubles' },
         { name: '單打 (Singles)', value: 'singles' },
-      )),
+      ))
+    .addStringOption(o => o
+      .setName('lang')
+      .setDescription('顯示語言 / Display language (預設：繁體中文)')
+      .addChoices(...LANG_CHOICES)),
 
   async execute(interaction) {
-    const format  = interaction.options.getString('format') ?? 'doubles';
-    const season  = parseInt(interaction.options.getString('season'), 10);
+    const format       = interaction.options.getString('format') ?? 'doubles';
+    const season       = parseInt(interaction.options.getString('season'), 10);
     const pokemonQuery = interaction.options.getString('pokemon');
+    const lang         = interaction.options.getString('lang') ?? 'zh';
+    const lbl          = LBL[lang] ?? LBL.zh;
 
     const data = loadSeasonData(season, format);
     if (!data) {
-      await interaction.reply({ content: `❌ 找不到賽季 ${season} 的${format === 'doubles' ? '雙打' : '單打'}資料。`, flags: 64 });
+      await interaction.reply({ content: lbl.notFoundSeason(season, fmtLabel(format, lang)), flags: 64 });
       return;
     }
     const entry = pokemonQuery ? findPokemon(data, pokemonQuery) : null;
     if (!entry) {
-      await interaction.reply({ content: `❌ 找不到「${pokemonQuery}」的資料。請透過自動補全選擇寶可夢。`, flags: 64 });
+      await interaction.reply({ content: lbl.notFoundPoke(pokemonQuery), flags: 64 });
       return;
     }
 
     await interaction.reply({
-      embeds:     [buildOverviewEmbed(entry, season, format, data)],
-      components: buildComponents('ov', entry, season, format),
+      embeds:     [buildOverviewEmbed(entry, season, format, data, lang)],
+      components: buildComponents('ov', entry, season, format, lang),
     });
   },
 
   async autocomplete(interaction) {
-    const focused    = interaction.options.getFocused(true);
-    const format     = interaction.options.getString('format') ?? 'doubles';
-    const latest     = getLatestSeason();
-    const seasonRaw  = interaction.options.getString('season');
-    const season     = parseInt(seasonRaw ?? String(latest), 10);
+    const focused   = interaction.options.getFocused(true);
+    const format    = interaction.options.getString('format') ?? 'doubles';
+    const latest    = getLatestSeason();
+    const seasonRaw = interaction.options.getString('season');
+    const season    = parseInt(seasonRaw ?? String(latest), 10);
+    const lang      = interaction.options.getString('lang') ?? 'zh';
+    const lbl       = LBL[lang] ?? LBL.zh;
 
     if (focused.name === 'season') {
-      const q       = focused.value.trim();
-      const seasons = getAvailableSeasons().slice().reverse();
-      const filtered = q
-        ? seasons.filter(s => String(s).startsWith(q))
-        : seasons;
+      const q        = focused.value.trim();
+      const seasons  = getAvailableSeasons().slice().reverse();
+      const filtered = q ? seasons.filter(s => String(s).startsWith(q)) : seasons;
+      const seasonLabel = lang === 'en' ? s => `Season ${s}${s === latest ? ' (Latest)' : ''}`
+                        : lang === 'ja' ? s => `シーズン ${s}${s === latest ? ' (最新)' : ''}`
+                        :                 s => `賽季 ${s}${s === latest ? ' (最新)' : ''}`;
       await interaction.respond(
-        filtered.slice(0, 25).map(s => ({
-          name:  `賽季 ${s}${s === latest ? ' (最新)' : ''}`,
-          value: String(s),
-        })),
+        filtered.slice(0, 25).map(s => ({ name: seasonLabel(s), value: String(s) })),
       );
       return;
     }
@@ -408,24 +542,27 @@ module.exports = {
   },
 
   async handleButton(interaction) {
-    const [, tab, seasonStr, f, ...nameParts] = interaction.customId.split('|');
-    const pokemonName = nameParts.join('|');
-    const format = f === 's' ? 'singles' : 'doubles';
-    const season = parseInt(seasonStr, 10);
+    const parts      = interaction.customId.split('|');
+    const tab        = parts[1];
+    const season     = parseInt(parts[2], 10);
+    const format     = parts[3] === 's' ? 'singles' : 'doubles';
+    const lang       = parts[4] ?? 'zh';
+    const pokemonName = parts.slice(5).join('|');
+    const lbl        = LBL[lang] ?? LBL.zh;
 
     const data  = loadSeasonData(season, format);
     const entry = data ? findPokemon(data, pokemonName) : null;
-    if (!entry) { await interaction.reply({ content: '❌ 資料不存在。', flags: 64 }); return; }
+    if (!entry) { await interaction.reply({ content: lbl.notFound, flags: 64 }); return; }
 
     let embed;
-    if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data);
-    else if (tab === 'mv') embed = buildMovesEmbed(entry, season, format, data);
-    else if (tab === 'mt') embed = buildMatchupsEmbed(entry, season, format, data);
-    else                   embed = buildOverviewEmbed(entry, season, format, data);
+    if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data, lang);
+    else if (tab === 'mv') embed = buildMovesEmbed(entry, season, format, data, lang);
+    else if (tab === 'mt') embed = buildMatchupsEmbed(entry, season, format, data, lang);
+    else                   embed = buildOverviewEmbed(entry, season, format, data, lang);
 
     await interaction.update({
       embeds:     [embed],
-      components: buildComponents(tab, entry, season, format),
+      components: buildComponents(tab, entry, season, format, lang),
     });
   },
 
