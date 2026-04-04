@@ -17,6 +17,10 @@ Output: data/scvi_moves_db.json
   level = 0  → learnt on evolution  (also stored in evolution_moves)
   level = -1 → learnt by reminder   (also stored in reminder_moves)
 
+Egg move inheritance:
+  If Bulbasaur learns Ingrain as an egg move, Ivysaur and Venusaur inherit it
+  automatically via the evolves_from_en_name chain in the SCVI db.
+
 Page structure handled:
   • Simple    — section contains a direct div.resp-scroll (no form variants)
   • Tabbed    — section contains a div.tabset-moves-game-form with per-form
@@ -323,6 +327,41 @@ def scrape_species(species_slug: str, session, forms: list) -> dict:
     }
 
 
+# ── Egg move inheritance ──────────────────────────────────────────────────────
+
+def inherit_egg_moves(db: dict, scvi: dict):
+    """
+    Propagate egg moves down evolution chains.
+    If Bulbasaur learns Ingrain as an egg move, Ivysaur and Venusaur inherit it.
+
+    Uses evolves_from_en_name from the SCVI db to walk the chain.
+    Runs multiple passes until no new moves are added (handles 3-stage chains).
+    """
+    print("\nInheriting egg moves down evolution chains...")
+    total_added = 0
+
+    for _pass in range(5):  # max 5 passes (more than enough for any chain)
+        added_this_pass = 0
+        for name_en, entry in scvi.items():
+            pre_evo = entry.get("evolves_from_en_name")
+            if not pre_evo or pre_evo not in db or name_en not in db:
+                continue
+
+            current_eggs = set(db[name_en]["egg_moves"])
+            pre_eggs     = set(db[pre_evo]["egg_moves"])
+            new_moves    = pre_eggs - current_eggs
+
+            if new_moves:
+                db[name_en]["egg_moves"] = sorted(current_eggs | new_moves)
+                added_this_pass += len(new_moves)
+
+        total_added += added_this_pass
+        if added_this_pass == 0:
+            break
+
+    print(f"  Added {total_added} inherited egg moves across all Pokémon.")
+
+
 # ── Validation ────────────────────────────────────────────────────────────────
 
 def validate(scraped: dict, db_moves_en: list) -> str:
@@ -426,6 +465,9 @@ def main():
 
         time.sleep(DELAY)
 
+    # Inherit egg moves down evolution chains
+    inherit_egg_moves(db, scvi)
+
     # Final save
     with OUT_FILE.open("w", encoding="utf-8") as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
@@ -437,7 +479,7 @@ def main():
 
     if warnings:
         print(f"\n{len(warnings)} validation warnings "
-              f"(may indicate form-exclusive moves not in level-up/TM tables):")
+              f"(some may be resolved after egg move inheritance):")
         for w in warnings[:30]:
             print(f"  {w}")
     else:
