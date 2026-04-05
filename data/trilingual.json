@@ -12965,6 +12965,629 @@
       "ja_hrkt": "",
       "zh": "龍聲鼓舞",
       "zh_src": "local"
+    },
+    "sv_triple_arrows": {
+      "en": "Triple Arrows",
+      "ja": "3ぼんのや",
+      "ja_hrkt": "",
+      "zh": "三連箭",
+      "zh_src": "part_sv"
+    },
+    "sv_armor_cannon": {
+      "en": "Armor Cannon",
+      "ja": "アーマーキャノン",
+      "ja_hrkt": "",
+      "zh": "鎧農炮",
+      "zh_src": "part_sv"
+    },
+    "sv_ice_spinner": {
+      "en": "Ice Spinner",
+      "ja": "アイススピナー",
+      "ja_hrkt": "",
+      "zh": "冰旋",
+      "zh_src": "part_sv"
+    },
+    "sv_aqua_cutter": {
+      "en": "Aqua Cutter",
+      "ja": "アクアカッター",
+      "ja_hrkt": "",
+      "zh": "水波刀",
+      "zh_src": "part_sv"
+    },
+    "sv_aqua_step": {
+      "en": "Aqua Step",
+      "ja": "アクアステップ",
+      "ja_hrkt": "",
+      "zh": "流水步",
+      "zh_src": "part_sv"
+    },
+    "sv_collision_course": {
+      "en": "Collision Course",
+      "ja": "アクセルブレイク",
+      "ja_hrkt": "",
+      "zh": "全開猛撲",
+      "zh_src": "part_sv"
+    },
+    "sv_order_up": {
+      "en": "Order Up",
+      "ja": "いっちょうあがり",
+      "ja_hrkt": "",
+      "zh": "上菜",
+      "zh_src": "part_sv"
+    },
+    "sv_electro_drift": {
+      "en": "Electro Drift",
+      "ja": "イナズマドライブ",
+      "ja_hrkt": "",
+      "zh": "閃電猛衝",
+      "zh_src": "part_sv"
+    },
+    "sv_wave_crash": {
+      "en": "Wave Crash",
+      "ja": "ウェーブタックル",
+      "ja_hrkt": "",
+      "zh": "波動衝",
+      "zh_src": "part_sv"
+    },
+    "sv_doodle": {
+      "en": "Doodle",
+      "ja": "うつしえ",
+      "ja_hrkt": "",
+      "zh": "描繪",
+      "zh_src": "part_sv"
+    },
+    "sv_bitter_malice": {
+      "en": "Bitter Malice",
+      "ja": "うらみつらみ",
+      "ja_hrkt": "",
+      "zh": "怨恨重重",
+      "zh_src": "part_sv"
+    },
+    "sv_electro_shot": {
+      "en": "Electro Shot",
+      "ja": "エレクトロビーム",
+      "ja_hrkt": "",
+      "zh": "電光束",
+      "zh_src": "part_sv"
+    },
+    "sv_esper_wing": {
+      "en": "Esper Wing",
+      "ja": "オーラウイング",
+      "ja_hrkt": "",
+      "zh": "氣場之翼",
+      "zh_src": "part_sv"
+    },
+    "sv_tidy_up": {
+      "en": "Tidy Up",
+      "ja": "おかたづけ",
+      "ja_hrkt": "",
+      "zh": "大掃除",
+      "zh_src": "part_sv"
+    },
+    "sv_last_respects": {
+      "en": "Last Respects",
+      "ja": "おはかまいり",
+      "ja_hrkt": "",
+      "zh": "掃墓",
+      "zh_src": "part_sv"
+    },
+    "sv_burning_bulwark": {
+      "en": "Burning Bulwark",
+      "ja": "かえんのまもり",
+      "ja_hrkt": "",
+      "zh": "火焰防守",
+      "zh_src": "part_sv"
+    },
+    "sv_axe_kick": {
+      "en": "Axe Kick",
+      "ja": "かかとおとし",
+      "ja_hrkt": "",
+      "zh": "下壓踢",
+      "zh_src": "part_sv"
+    },
+    "sv_ruination": {
+      "en": "Ruination",
+      "ja": "カタストロフィ",
+      "ja_hrkt": "",
+      "zh": "大災難",
+      "zh_src": "part_sv"
+    },
+    "sv_wildbolt_storm": {
+      "en": "Wildbolt Storm",
+      "ja": "かみなりあらし",
+      "ja_hrkt": "",
+      "zh": "鳴雷風暴",
+      "zh_src": "part_sv"
+    },
+    "sv_stone_axe": {
+      "en": "Stone Axe",
+      "ja": "がんせきアックス",
+      "ja_hrkt": "",
+      "zh": "岩斧",
+      "zh_src": "part_sv"
+    },
+    "sv_fickle_beam": {
+      "en": "Fickle Beam",
+      "ja": "きまぐレーザー",
+      "ja_hrkt": "",
+      "zh": "隨機光",
+      "zh_src": "part_sv"
+    },
+    "sv_glaive_rush": {
+      "en": "Glaive Rush",
+      "ja": "きょけんとつげき",
+      "ja_hrkt": "",
+      "zh": "巨劍突擊",
+      "zh_src": "part_sv"
+    },
+    "sv_mortal_spin": {
+      "en": "Mortal Spin",
+      "ja": "キラースピン",
+      "ja_hrkt": "",
+      "zh": "晶光轉轉",
+      "zh_src": "part_sv"
+    },
+    "sv_trailblaze": {
+      "en": "Trailblaze",
+      "ja": "くさわけ",
+      "ja_hrkt": "",
+      "zh": "起草",
+      "zh_src": "part_sv"
+    },
+    "sv_chloroblast": {
+      "en": "Chloroblast",
+      "ja": "クロロブラスト",
+      "ja_hrkt": "",
+      "zh": "葉綠爆震",
+      "zh_src": "part_sv"
+    },
+    "sv_cold_flare": {
+      "en": "Cold Flare",
+      "ja": "コールドフレア",
+      "ja_hrkt": "",
+      "zh": "冰冷閃焰",
+      "zh_src": "part_sv"
+    },
+    "sv_bleakwind_storm": {
+      "en": "Bleakwind Storm",
+      "ja": "こがらしあらし",
+      "ja_hrkt": "",
+      "zh": "枯葉風暴",
+      "zh_src": "part_sv"
+    },
+    "sv_make_it_rain": {
+      "en": "Make It Rain",
+      "ja": "ゴールドラッシュ",
+      "ja_hrkt": "",
+      "zh": "淘金潮",
+      "zh_src": "part_sv"
+    },
+    "sv_revival_blessing": {
+      "en": "Revival Blessing",
+      "ja": "さいきのいのり",
+      "ja_hrkt": "",
+      "zh": "復生祈禱",
+      "zh_src": "part_sv"
+    },
+    "sv_psychic_noise": {
+      "en": "Psychic Noise",
+      "ja": "サイコノイズ",
+      "ja_hrkt": "",
+      "zh": "精神噪音",
+      "zh_src": "part_sv"
+    },
+    "sv_psyblade": {
+      "en": "Psyblade",
+      "ja": "サイコブレイド",
+      "ja_hrkt": "",
+      "zh": "精神劍",
+      "zh_src": "part_sv"
+    },
+    "sv_chilly_reception": {
+      "en": "Chilly Reception",
+      "ja": "さむいギャグ",
+      "ja_hrkt": "",
+      "zh": "寒冷笑話",
+      "zh_src": "part_sv"
+    },
+    "sv_supercell_slam": {
+      "en": "Supercell Slam",
+      "ja": "サンダーダイブ",
+      "ja_hrkt": "",
+      "zh": "迅雷突襲",
+      "zh_src": "part_sv"
+    },
+    "sv_salt_cure": {
+      "en": "Salt Cure",
+      "ja": "しおづけ",
+      "ja_hrkt": "",
+      "zh": "鹽醃",
+      "zh_src": "part_sv"
+    },
+    "sv_shed_tail": {
+      "en": "Shed Tail",
+      "ja": "しっぽきり",
+      "ja_hrkt": "",
+      "zh": "斷尾",
+      "zh_src": "part_sv"
+    },
+    "sv_matcha_gotcha": {
+      "en": "Matcha Gotcha",
+      "ja": "シャカシャカほう",
+      "ja_hrkt": "",
+      "zh": "刷刷茶砲",
+      "zh_src": "part_sv"
+    },
+    "sv_victory_dance": {
+      "en": "Victory Dance",
+      "ja": "しょうりのまい",
+      "ja_hrkt": "",
+      "zh": "勝利之舞",
+      "zh_src": "part_sv"
+    },
+    "sv_mystical_power": {
+      "en": "Mystical Power",
+      "ja": "しんぴのちから",
+      "ja_hrkt": "",
+      "zh": "神秘力量",
+      "zh_src": "part_sv"
+    },
+    "sv_jet_punch": {
+      "en": "Jet Punch",
+      "ja": "ジェットパンチ",
+      "ja_hrkt": "",
+      "zh": "噴射拳",
+      "zh_src": "part_sv"
+    },
+    "sv_malignant_chain": {
+      "en": "Malignant Chain",
+      "ja": "じゃどくのくさり",
+      "ja_hrkt": "",
+      "zh": "邪毒鎖鏈",
+      "zh_src": "part_sv"
+    },
+    "sv_thunderclap": {
+      "en": "Thunderclap",
+      "ja": "じんらい",
+      "ja_hrkt": "",
+      "zh": "迅雷",
+      "zh_src": "part_sv"
+    },
+    "sv_silk_trap": {
+      "en": "Silk Trap",
+      "ja": "スレッドトラップ",
+      "ja_hrkt": "",
+      "zh": "線阱",
+      "zh_src": "part_sv"
+    },
+    "sv_tachyon_cutter": {
+      "en": "Tachyon Cutter",
+      "ja": "タキオンカッター",
+      "ja_hrkt": "",
+      "zh": "迅子利刃",
+      "zh_src": "part_sv"
+    },
+    "sv_shelter": {
+      "en": "Shelter",
+      "ja": "たてこもる",
+      "ja_hrkt": "",
+      "zh": "閉關",
+      "zh_src": "part_sv"
+    },
+    "sv_raging_fury": {
+      "en": "Raging Fury",
+      "ja": "だいふんげき",
+      "ja_hrkt": "",
+      "zh": "大憤慨",
+      "zh_src": "part_sv"
+    },
+    "sv_twin_beam": {
+      "en": "Twin Beam",
+      "ja": "ツインビーム",
+      "ja_hrkt": "",
+      "zh": "雙光束",
+      "zh_src": "part_sv"
+    },
+    "sv_ivy_cudgel": {
+      "en": "Ivy Cudgel",
+      "ja": "ツタこんぼう",
+      "ja_hrkt": "",
+      "zh": "棘藤棒",
+      "zh_src": "part_sv"
+    },
+    "sv_tera_starstorm": {
+      "en": "Tera Starstorm",
+      "ja": "テラクラスター",
+      "ja_hrkt": "",
+      "zh": "太晶星群",
+      "zh_src": "part_sv"
+    },
+    "sv_tera_blast": {
+      "en": "Tera Blast",
+      "ja": "テラバースト",
+      "ja_hrkt": "",
+      "zh": "太晶爆發",
+      "zh_src": "part_sv"
+    },
+    "sv_gigaton_hammer": {
+      "en": "Gigaton Hammer",
+      "ja": "デカハンマー",
+      "ja_hrkt": "",
+      "zh": "巨力錘",
+      "zh_src": "part_sv"
+    },
+    "sv_double_shock": {
+      "en": "Double Shock",
+      "ja": "でんこうそうげき",
+      "ja_hrkt": "",
+      "zh": "電光雙擊",
+      "zh_src": "part_sv"
+    },
+    "sv_pounce": {
+      "en": "Pounce",
+      "ja": "とびつく",
+      "ja_hrkt": "",
+      "zh": "飛撲",
+      "zh_src": "part_sv"
+    },
+    "sv_flower_trick": {
+      "en": "Flower Trick",
+      "ja": "トリックフラワー",
+      "ja_hrkt": "",
+      "zh": "千變萬花",
+      "zh_src": "part_sv"
+    },
+    "sv_triple_dive": {
+      "en": "Triple Dive",
+      "ja": "トリプルダイブ",
+      "ja_hrkt": "",
+      "zh": "三連鑽",
+      "zh_src": "part_sv"
+    },
+    "sv_barb_barrage": {
+      "en": "Barb Barrage",
+      "ja": "どくばりセンボン",
+      "ja_hrkt": "",
+      "zh": "毒千針",
+      "zh_src": "part_sv"
+    },
+    "sv_kowtow_cleave": {
+      "en": "Kowtow Cleave",
+      "ja": "ドゲザン",
+      "ja_hrkt": "",
+      "zh": "仆斬",
+      "zh_src": "part_sv"
+    },
+    "sv_population_bomb": {
+      "en": "Population Bomb",
+      "ja": "ネズミざん",
+      "ja_hrkt": "",
+      "zh": "鼠數兒",
+      "zh_src": "part_sv"
+    },
+    "sv_sandsear_storm": {
+      "en": "Sandsear Storm",
+      "ja": "ねっさのあらし",
+      "ja_hrkt": "",
+      "zh": "熱沙風暴",
+      "zh_src": "part_sv"
+    },
+    "sv_hard_press": {
+      "en": "Hard Press",
+      "ja": "ハードプレス",
+      "ja_hrkt": "",
+      "zh": "硬壓",
+      "zh_src": "part_sv"
+    },
+    "sv_hydro_steam": {
+      "en": "Hydro Steam",
+      "ja": "ハイドロスチーム",
+      "ja_hrkt": "",
+      "zh": "水蒸氣",
+      "zh_src": "part_sv"
+    },
+    "sv_hyper_drill": {
+      "en": "Hyper Drill",
+      "ja": "ハイパードリル",
+      "ja_hrkt": "",
+      "zh": "強力鑽",
+      "zh_src": "part_sv"
+    },
+    "sv_spicy_extract": {
+      "en": "Spicy Extract",
+      "ja": "ハバネロエキス",
+      "ja_hrkt": "",
+      "zh": "辣椒精華",
+      "zh_src": "part_sv"
+    },
+    "sv_upper_hand": {
+      "en": "Upper Hand",
+      "ja": "はやてがえし",
+      "ja_hrkt": "",
+      "zh": "迅雷突擊",
+      "zh_src": "part_sv"
+    },
+    "sv_springtide_storm": {
+      "en": "Springtide Storm",
+      "ja": "はるのあらし",
+      "ja_hrkt": "",
+      "zh": "陽春風暴",
+      "zh_src": "part_sv"
+    },
+    "sv_psyshield_bash": {
+      "en": "Psyshield Bash",
+      "ja": "バリアーラッシュ",
+      "ja_hrkt": "",
+      "zh": "屏障猛攻",
+      "zh_src": "part_sv"
+    },
+    "sv_power_shift": {
+      "en": "Power Shift",
+      "ja": "パワーシフト",
+      "ja_hrkt": "",
+      "zh": "力量轉移",
+      "zh_src": "part_sv"
+    },
+    "sv_mighty_cleave": {
+      "en": "Mighty Cleave",
+      "ja": "パワフルエッジ",
+      "ja_hrkt": "",
+      "zh": "強力劈",
+      "zh_src": "part_sv"
+    },
+    "sv_ceaseless_edge": {
+      "en": "Ceaseless Edge",
+      "ja": "ひけん・ちえなみ",
+      "ja_hrkt": "",
+      "zh": "秘劍・千重濤",
+      "zh_src": "part_sv"
+    },
+    "sv_infernal_parade": {
+      "en": "Infernal Parade",
+      "ja": "ひゃっきやこう",
+      "ja_hrkt": "",
+      "zh": "群魔亂舞",
+      "zh_src": "part_sv"
+    },
+    "sv_chilling_water": {
+      "en": "Chilling Water",
+      "ja": "ひやみず",
+      "ja_hrkt": "",
+      "zh": "潑冷水",
+      "zh_src": "part_sv"
+    },
+    "sv_mountain_gale": {
+      "en": "Mountain Gale",
+      "ja": "ひょうざんおろし",
+      "ja_hrkt": "",
+      "zh": "冰山風",
+      "zh_src": "part_sv"
+    },
+    "sv_dire_claw": {
+      "en": "Dire Claw",
+      "ja": "フェイタルクロー",
+      "ja_hrkt": "",
+      "zh": "致命爪",
+      "zh_src": "part_sv"
+    },
+    "sv_torch_song": {
+      "en": "Torch Song",
+      "ja": "フレアソング",
+      "ja_hrkt": "",
+      "zh": "閃焰高歌",
+      "zh_src": "part_sv"
+    },
+    "sv_rage_fist": {
+      "en": "Rage Fist",
+      "ja": "ふんどのこぶし",
+      "ja_hrkt": "",
+      "zh": "憤怒之拳",
+      "zh_src": "part_sv"
+    },
+    "sv_headlong_rush": {
+      "en": "Headlong Rush",
+      "ja": "ぶちかまし",
+      "ja_hrkt": "",
+      "zh": "突飛猛撲",
+      "zh_src": "part_sv"
+    },
+    "sv_blood_moon": {
+      "en": "Blood Moon",
+      "ja": "ブラッドムーン",
+      "ja_hrkt": "",
+      "zh": "血月",
+      "zh_src": "part_sv"
+    },
+    "sv_take_heart": {
+      "en": "Take Heart",
+      "ja": "ブレイブチャージ",
+      "ja_hrkt": "",
+      "zh": "勇氣填充",
+      "zh_src": "part_sv"
+    },
+    "sv_spin_out": {
+      "en": "Spin Out",
+      "ja": "ホイールスピン",
+      "ja_hrkt": "",
+      "zh": "疾速轉輪",
+      "zh_src": "part_sv"
+    },
+    "sv_comeuppance": {
+      "en": "Comeuppance",
+      "ja": "ほうふく",
+      "ja_hrkt": "",
+      "zh": "報復",
+      "zh_src": "part_sv"
+    },
+    "sv_lunar_blessing": {
+      "en": "Lunar Blessing",
+      "ja": "みかづきのいのり",
+      "ja_hrkt": "",
+      "zh": "新月祈禱",
+      "zh_src": "part_sv"
+    },
+    "sv_syrup_bomb": {
+      "en": "Syrup Bomb",
+      "ja": "みずあめボム",
+      "ja_hrkt": "",
+      "zh": "糖漿炸彈",
+      "zh_src": "part_sv"
+    },
+    "sv_alluring_voice": {
+      "en": "Alluring Voice",
+      "ja": "みわくのボイス",
+      "ja_hrkt": "",
+      "zh": "魅惑之聲",
+      "zh_src": "part_sv"
+    },
+    "sv_fillet_away": {
+      "en": "Fillet Away",
+      "ja": "みをけずる",
+      "ja_hrkt": "",
+      "zh": "破殼",
+      "zh_src": "part_sv"
+    },
+    "sv_bitter_blade": {
+      "en": "Bitter Blade",
+      "ja": "むねんのつるぎ",
+      "ja_hrkt": "",
+      "zh": "悔念劍",
+      "zh_src": "part_sv"
+    },
+    "sv_forest_s_curse": {
+      "en": "Forest's Curse",
+      "ja": "もりののろい",
+      "ja_hrkt": "",
+      "zh": "森林詛咒",
+      "zh_src": "part_sv"
+    },
+    "sv_temper_flare": {
+      "en": "Temper Flare",
+      "ja": "やけっぱち",
+      "ja_hrkt": "",
+      "zh": "豁出去",
+      "zh_src": "part_sv"
+    },
+    "sv_snowscape": {
+      "en": "Snowscape",
+      "ja": "ゆきげしき",
+      "ja_hrkt": "",
+      "zh": "雪景",
+      "zh_src": "part_sv"
+    },
+    "sv_lumina_crash": {
+      "en": "Lumina Crash",
+      "ja": "ルミナコリジョン",
+      "ja_hrkt": "",
+      "zh": "琉光衝激",
+      "zh_src": "part_sv"
+    },
+    "sv_raging_bull": {
+      "en": "Raging Bull",
+      "ja": "レイジングブル",
+      "ja_hrkt": "",
+      "zh": "怒牛",
+      "zh_src": "part_sv"
     }
   },
   "item": {
