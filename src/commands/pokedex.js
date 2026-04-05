@@ -135,6 +135,12 @@ function loadScviMoves() {
   return _scviMoves;
 }
 
+let _svDetail = null;
+function loadSvDetail() {
+  if (!_svDetail) _svDetail = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
+  return _svDetail;
+}
+
 // ── zh→en move name map (for TM lookup) ──────────────────────────────────────
 let _zhToEnMove = null;
 
@@ -363,6 +369,158 @@ function splitToFields(embed, fieldName, lines) {
     }
   }
   if (current) embed.addFields({ name: first ? fieldName : '\u200b', value: current });
+}
+
+// ── Move select helpers (SCVI) ────────────────────────────────────────────────
+
+const MOVE_SELECT_PLACEHOLDER = {
+  levelup: { zh: '👁 查看升等招式詳情', en: '👁 View level-up move', ja: '👁 昇格技の詳細' },
+  tm:      { zh: '👁 查看 TM 招式詳情', en: '👁 View TM move',       ja: '👁 わざマシン技の詳細' },
+  egg:     { zh: '👁 查看蛋招式詳情',   en: '👁 View egg move',      ja: '👁 タマゴ技の詳細' },
+};
+
+function getMoveListForTab(poke, tab) {
+  const data = loadScviMoves()[poke.name_en];
+  if (!data) return [];
+  if (tab === 'levelup') {
+    return (data.level_up_moves ?? [])
+      .slice()
+      .sort((a, b) => {
+        const la = a.level < 0 ? -2 : a.level === 0 ? -1 : a.level;
+        const lb = b.level < 0 ? -2 : b.level === 0 ? -1 : b.level;
+        return la - lb;
+      })
+      .map(m => ({ en: m.move_en, level: m.level }));
+  }
+  if (tab === 'tm') {
+    return (data.tm_moves ?? [])
+      .slice()
+      .sort((a, b) => a.tm.localeCompare(b.tm))
+      .map(m => ({ en: m.move_en, tm: m.tm }));
+  }
+  if (tab === 'egg') {
+    return (data.egg_moves ?? []).map(en => ({ en }));
+  }
+  return [];
+}
+
+function buildMoveSelectRow(moveList, page, tab, lang, disabled = false) {
+  const slice = moveList.slice(page * 25, page * 25 + 25);
+  if (!slice.length) return null;
+
+  const options = slice.map(m => {
+    const name = moveNameByEn(m.en, lang);
+    let prefix = '';
+    if (tab === 'levelup') {
+      const lv = m.level < 0 ? '回憶' : m.level === 0 ? '進化' : `Lv.${m.level}`;
+      prefix = `[${lv}] `;
+    } else if (tab === 'tm') {
+      prefix = `[TM${m.tm}] `;
+    }
+    return { label: `${prefix}${name}`.slice(0, 100), value: m.en };
+  });
+
+  return new ActionRowBuilder().addComponents(
+    new StringSelectMenuBuilder()
+      .setCustomId('scvi_move_select')
+      .setPlaceholder((MOVE_SELECT_PLACEHOLDER[tab]?.[lang] ?? MOVE_SELECT_PLACEHOLDER[tab]?.zh ?? '👁 查看招式詳情'))
+      .setDisabled(disabled)
+      .addOptions(options),
+  );
+}
+
+function buildMovePageRow(total, page, disabled = false) {
+  if (total <= 25) return null;
+  const totalPages = Math.ceil(total / 25);
+  return new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setCustomId('scvi_move_prev')
+      .setLabel('◀')
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(disabled || page === 0),
+    new ButtonBuilder()
+      .setCustomId('scvi_move_next')
+      .setLabel('▶')
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(disabled || page >= totalPages - 1),
+  );
+}
+
+const MOVE_TYPE_EMOJI = {
+  normal:'⬜', fire:'🔥', water:'💧', electric:'⚡', grass:'🌿', ice:'❄️',
+  fighting:'🥊', poison:'☠️', ground:'🌍', flying:'🌬️', psychic:'🔮', bug:'🐛',
+  rock:'🪨', ghost:'👻', dragon:'🐉', dark:'🌑', steel:'⚙️', fairy:'✨',
+};
+
+function buildMoveDetailEmbed(enHyphen, lang) {
+  const key     = enHyphen.toLowerCase().replace(/-/g, ' ');
+  const d       = loadSvDetail()[key];
+  const tri     = loadTri();
+  const triEntry = Object.values(tri.move || {}).find(m =>
+    m.en?.toLowerCase() === key || m.en?.toLowerCase() === enHyphen.toLowerCase()
+  );
+
+  const zh = triEntry?.zh || d?.name?.zh || enHyphen;
+  const ja = triEntry?.ja || d?.name?.ja || enHyphen;
+  const en = triEntry?.en || d?.name?.en || enHyphen;
+
+  const title = lang === 'zh' ? `${zh}  /  ${en}`
+              : lang === 'ja' ? `${ja}  /  ${zh}`
+              :                 `${en}  /  ${zh}`;
+
+  const embed = new EmbedBuilder().setColor(COLOR).setTitle(`[SV 招式] ${title}`);
+  const names = [];
+  if (zh) names.push(`ZH: ${zh}`);
+  if (en) names.push(`EN: ${en}`);
+  if (ja) names.push(`JA: ${ja}${triEntry?.ja_hrkt ? ` (${triEntry.ja_hrkt})` : ''}`);
+  embed.setDescription(names.join('\n'));
+
+  if (d) {
+    const typeEn  = (d.type?.en || '').toLowerCase();
+    const catEn   = (d.category?.en || '').toLowerCase();
+    const typeLabel = lang === 'zh' ? d.type?.zh : lang === 'ja' ? d.type?.ja : d.type?.en;
+    const catLabel  = lang === 'zh'
+      ? (catEn === 'physical' ? '物理' : catEn === 'special' ? '特殊' : catEn === 'status' ? '變化' : '???')
+      : lang === 'ja'
+      ? (catEn === 'physical' ? 'ぶつり' : catEn === 'special' ? 'とくしゅ' : catEn === 'status' ? 'へんか' : '???')
+      : (catEn.charAt(0).toUpperCase() + catEn.slice(1) || '???');
+
+    const lType   = lang === 'zh' ? '屬性'    : lang === 'ja' ? 'タイプ'      : 'Type';
+    const lCat    = lang === 'zh' ? '分類'    : lang === 'ja' ? '分類'        : 'Category';
+    const lPow    = lang === 'zh' ? '威力'    : lang === 'ja' ? 'いりょく'    : 'Power';
+    const lAcc    = lang === 'zh' ? '命中'    : lang === 'ja' ? 'めいちゅう'  : 'Accuracy';
+    const lTgt    = lang === 'zh' ? '目標'    : lang === 'ja' ? '対象'        : 'Target';
+    const lMech   = lang === 'zh' ? '機制'    : lang === 'ja' ? 'しくみ'      : 'Mechanics';
+    const lEffect = lang === 'zh' ? '效果'    : lang === 'ja' ? '効果'        : 'Effect';
+
+    embed.addFields(
+      { name: lType, value: `${MOVE_TYPE_EMOJI[typeEn] ?? '❓'} ${typeLabel}`, inline: true },
+      { name: lCat,  value: catLabel,                                           inline: true },
+      { name: lPow,  value: d.power !== '—' ? d.power : '—',                  inline: true },
+      { name: lAcc,  value: d.accuracy !== '—' ? `${d.accuracy}%` : '—',      inline: true },
+      { name: 'PP',  value: d.pp !== '—' ? d.pp : '—',                        inline: true },
+      { name: lTgt,  value: d.target?.[lang] || d.target?.en || '—',          inline: true },
+    );
+
+    const lContact = lang === 'zh' ? '直接接觸' : lang === 'ja' ? '直接攻撃' : 'Makes Contact';
+    const lProtect = lang === 'zh' ? '守護招式' : lang === 'ja' ? 'まもる対応' : 'Blocked by Protect';
+    const mechParts = [];
+    if (d.contact) mechParts.push(d.contact === '直○' ? `${lContact}: ✅` : `${lContact}: ❌`);
+    if (d.protect) mechParts.push(d.protect === '守○' ? `${lProtect}: ✅` : `${lProtect}: ❌`);
+    if (mechParts.length) embed.addFields({ name: lMech, value: mechParts.join('  ·  '), inline: false });
+
+    const effectText = lang === 'zh' ? d.effect?.zh : lang === 'ja' ? d.effect?.ja : d.effect?.en;
+    const effectAlt  = lang !== 'en' ? d.effect?.en : d.effect?.zh;
+    const altLabel   = lang !== 'en' ? 'EN' : 'ZH';
+    if (effectText || effectAlt) {
+      const lines = [];
+      if (effectText) lines.push(effectText);
+      if (effectAlt)  lines.push(`-# ${altLabel}: ${effectAlt}`);
+      embed.addFields({ name: lEffect, value: lines.join('\n').slice(0, 1024), inline: false });
+    }
+  }
+
+  return embed;
 }
 
 // ── PLZA page builders ────────────────────────────────────────────────────────
@@ -839,6 +997,7 @@ module.exports = {
     if (gameId === 'scvi') {
       let currentPoke = poke;
       let currentTab  = 'basic';
+      let movePage    = 0;
 
       function getEvoChain(p) {
         return loadScviMoves()[p.name_en]?.evolution_chain ?? null;
@@ -847,7 +1006,16 @@ module.exports = {
       function buildScviComponents(tab, p, disabled = false) {
         const tabRow = buildScviTabRow(tab, lang, disabled);
         const selRow = buildEvoSelectRow(getEvoChain(p), lang, p.name_en, disabled);
-        return selRow ? [tabRow, selRow] : [tabRow];
+        const rows   = selRow ? [tabRow, selRow] : [tabRow];
+
+        if (['levelup', 'tm', 'egg'].includes(tab)) {
+          const moveList   = getMoveListForTab(p, tab);
+          const moveSelRow = buildMoveSelectRow(moveList, movePage, tab, lang, disabled);
+          if (moveSelRow) rows.push(moveSelRow);
+          const pagRow = buildMovePageRow(moveList.length, movePage, disabled);
+          if (pagRow) rows.push(pagRow);
+        }
+        return rows;
       }
 
       async function renderTab(tab, p) {
@@ -871,13 +1039,25 @@ module.exports = {
       });
 
       collector.on('collect', async compInt => {
-        await compInt.deferUpdate();
         try {
+          if (compInt.isStringSelectMenu() && compInt.customId === 'scvi_move_select') {
+            // Show move detail as ephemeral followUp — don't update the main message
+            await compInt.deferUpdate();
+            const detailEmbed = buildMoveDetailEmbed(compInt.values[0], lang);
+            await compInt.followUp({ embeds: [detailEmbed], flags: 64 });
+            return;
+          }
+
+          await compInt.deferUpdate();
+
           if (compInt.isStringSelectMenu() && compInt.customId === 'scvi_evo_member') {
             const newPoke = findPokemonByEn('scvi', compInt.values[0]);
-            if (newPoke) currentPoke = newPoke;
+            if (newPoke) { currentPoke = newPoke; movePage = 0; }
           } else if (compInt.isButton()) {
-            currentTab = compInt.customId.replace('scvi_', '');
+            const btn = compInt.customId.replace('scvi_', '');
+            if (btn === 'move_prev')      { movePage = Math.max(0, movePage - 1); }
+            else if (btn === 'move_next') { movePage++; }
+            else                          { currentTab = btn; movePage = 0; }
           }
           await interaction.editReply(await renderTab(currentTab, currentPoke));
         } catch (err) {
