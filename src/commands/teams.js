@@ -293,9 +293,12 @@ module.exports = {
       return;
     }
 
-    await interaction.deferReply(pub ? {} : { flags: 64 });
+    // Defer ephemerally so no "user used /teams" attribution appears publicly
+    await interaction.deferReply({ flags: 64 });
     try {
-      await interaction.editReply(await renderPage(gameId, format, sitePage, 0, pub, lang, season));
+      const payload = await renderPage(gameId, format, sitePage, 0, pub, lang, season);
+      await interaction.channel.send(payload);
+      await interaction.deleteReply();
     } catch (err) {
       console.error('[teams]', err);
       await interaction.editReply({ content: `❌ 無法載入隊伍資料：${err.message}` });
@@ -406,7 +409,7 @@ module.exports = {
     const offset    = parseInt(interaction.values[0], 10);
     const teamIdx   = discPage * TEAMS_PER_VIEW + offset;
 
-    await interaction.deferReply(pub ? {} : { flags: 64 });
+    await interaction.deferReply({ flags: 64 });
 
     try {
       const { teams } = await fetchTeamPage(gameId, format, sitePage, season);
