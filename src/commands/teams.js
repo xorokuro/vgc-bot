@@ -276,7 +276,7 @@ module.exports = {
     const format   = interaction.options.getString('format')  ?? 'doubles';
     const season   = parseInt(interaction.options.getString('season') ?? '0', 10) || 0;
     const sitePage = interaction.options.getInteger('page')   ?? 1;
-    const pub      = interaction.options.getBoolean('public') ?? false;
+    const pub      = interaction.options.getBoolean('public') ?? true;
     const lang     = interaction.options.getString('lang')    ?? 'zh';
 
     const cfg = SITE_CONFIGS[gameId];
@@ -293,13 +293,9 @@ module.exports = {
       return;
     }
 
-    // Defer ephemerally so no "user used /teams" attribution appears publicly
-    await interaction.deferReply({ flags: 64 });
+    await interaction.deferReply(pub ? {} : { flags: 64 });
     try {
-      const payload = await renderPage(gameId, format, sitePage, 0, pub, lang, season);
-      const channel = interaction.channel ?? await interaction.client.channels.fetch(interaction.channelId);
-      await channel.send(payload);
-      await interaction.deleteReply();
+      await interaction.editReply(await renderPage(gameId, format, sitePage, 0, pub, lang, season));
     } catch (err) {
       console.error('[teams]', err);
       await interaction.editReply({ content: `❌ 無法載入隊伍資料：${err.message}` });
