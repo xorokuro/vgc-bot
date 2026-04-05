@@ -21,6 +21,7 @@ const teamSearchCommand = require('./commands/team_search');
 const shinyCommand      = require('./commands/shiny');
 const searchMiscCommand = require('./commands/search_misc');
 const pokedexCommand    = require('./commands/pokedex');
+const helpCommand       = require('./commands/help');
 const { ui, translateType, translateCategory } = require('./utils/i18n');
 const { startDailyRefresh } = require('./ptcgp/metaScraper');
 
@@ -48,6 +49,7 @@ client.commands.set(teamSearchCommand.data.name, teamSearchCommand);
 client.commands.set(shinyCommand.data.name,      shinyCommand);
 client.commands.set(searchMiscCommand.data.name, searchMiscCommand);
 client.commands.set(pokedexCommand.data.name,    pokedexCommand);
+client.commands.set(helpCommand.data.name,       helpCommand);
 
 // ── Ready ─────────────────────────────────────────────────────────────────────
 client.once(Events.ClientReady, c => {
@@ -269,6 +271,12 @@ client.on(Events.InteractionCreate, async interaction => {
   // ── Select menu: Deck search result ──────────────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId === 'ds_deck') {
     await deckSearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[ds_deck]', e); });
+    return;
+  }
+
+  // ── Button: Help category navigation ─────────────────────────────────────────
+  if (interaction.isButton() && interaction.customId.startsWith('help|')) {
+    await helpCommand.handleButton(interaction).catch(e => { console.error('[help]', e); });
     return;
   }
 
