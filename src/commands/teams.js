@@ -297,7 +297,8 @@ module.exports = {
     await interaction.deferReply({ flags: 64 });
     try {
       const payload = await renderPage(gameId, format, sitePage, 0, pub, lang, season);
-      await interaction.channel.send(payload);
+      const channel = interaction.channel ?? await interaction.client.channels.fetch(interaction.channelId);
+      await channel.send(payload);
       await interaction.deleteReply();
     } catch (err) {
       console.error('[teams]', err);
