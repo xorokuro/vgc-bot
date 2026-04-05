@@ -13,9 +13,19 @@ const {
 } = require('discord.js');
 
 const VALID_LANGS = new Set(['zh', 'en', 'ja']);
-const COLOR_VGC   = 0xE8534A;   // red-ish for VGC
-const COLOR_PTCGP = 0x4A90D9;   // blue-ish for PTCGP
-const COLOR_ALL   = 0x5865F2;   // discord blurple for overview
+const COLOR_VGC   = 0xE8534A;
+const COLOR_PTCGP = 0x4A90D9;
+const COLOR_ALL   = 0x5865F2;
+
+// Custom server emojis
+const E = {
+  title: { id: '1490247691488329758', name: 'oranguru_1' },       // 📖 title
+  all:   { id: '1490247195759345834', name: 'oranguru'   },       // 全部指令 btn
+  vgc:   { id: '1490247169892945930', name: 'vgc'        },       // VGC btn / header
+  ptcgp: { id: '1490244399244906516', name: 'crownrarepokeball' }, // PTCGP btn / header
+  klink: { id: '1490243897463410800', name: 'klink'      },       // ⚙️ params
+};
+const em = e => `<:${e.name}:${e.id}>`;
 
 // ── Command data ──────────────────────────────────────────────────────────────
 const COMMANDS = {
@@ -334,12 +344,12 @@ const COMMANDS = {
 
 // ── Localised UI strings ──────────────────────────────────────────────────────
 const T = {
-  title:       { zh: '📖 指令說明',           en: '📖 Command Guide',         ja: '📖 コマンドガイド'      },
-  vgcHead:     { zh: '🎮 VGC 主系列寶可夢',   en: '🎮 VGC / Main Series',     ja: '🎮 VGC / メインシリーズ' },
-  ptcgpHead:   { zh: '🃏 PTCGP 集換式卡牌',   en: '🃏 PTCGP Card Game',       ja: '🃏 PTCGP カードゲーム'  },
-  btnAll:      { zh: '📋 全部指令',            en: '📋 All Commands',          ja: '📋 全コマンド'          },
-  btnVGC:      { zh: '🎮 VGC 主系列',          en: '🎮 VGC / Main Series',     ja: '🎮 VGC / メイン'        },
-  btnPTCGP:    { zh: '🃏 PTCGP 卡牌',          en: '🃏 PTCGP',                 ja: '🃏 PTCGP'              },
+  title:       { zh: `${em(E.title)} 指令說明`,           en: `${em(E.title)} Command Guide`,         ja: `${em(E.title)} コマンドガイド`      },
+  vgcHead:     { zh: `${em(E.vgc)} VGC 主系列寶可夢`,    en: `${em(E.vgc)} VGC / Main Series`,       ja: `${em(E.vgc)} VGC / メインシリーズ`  },
+  ptcgpHead:   { zh: `${em(E.ptcgp)} PTCGP 集換式卡牌`,  en: `${em(E.ptcgp)} PTCGP Card Game`,       ja: `${em(E.ptcgp)} PTCGP カードゲーム`  },
+  btnAll:      { zh: '全部指令',               en: 'All Commands',             ja: '全コマンド'             },
+  btnVGC:      { zh: 'VGC 主系列',             en: 'VGC / Main Series',        ja: 'VGC / メイン'           },
+  btnPTCGP:    { zh: 'PTCGP 卡牌',             en: 'PTCGP',                    ja: 'PTCGP'                  },
   paramsLabel: { zh: '參數',                   en: 'Options',                  ja: 'オプション'             },
   footer:      {
     zh: '大多數指令支援 lang 選項（繁中 / English / 日本語）· 選項均有自動補全',
@@ -380,7 +390,7 @@ function buildCategoryEmbed(category, lang) {
     const { desc, detail, params } = c[lang];
     embed.addFields({
       name:  `\`${c.cmd}\``,
-      value: `${desc}\n${detail}\n-# ⚙️ ${pLbl}: ${params}`,
+      value: `${desc}\n${detail}\n-# ${em(E.klink)} ${pLbl}: ${params}`,
       inline: false,
     });
   }
@@ -389,17 +399,18 @@ function buildCategoryEmbed(category, lang) {
 
 // ── Navigation buttons ────────────────────────────────────────────────────────
 function buildButtons(view, lang) {
-  const mk = (id, labelKey, active) =>
+  const mk = (id, labelKey, emoji, active) =>
     new ButtonBuilder()
       .setCustomId(`help|${id}|${lang}`)
+      .setEmoji(emoji)
       .setLabel(t(labelKey, lang))
       .setStyle(active ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(active);
 
   return new ActionRowBuilder().addComponents(
-    mk('all',   'btnAll',   view === 'all'),
-    mk('vgc',   'btnVGC',   view === 'vgc'),
-    mk('ptcgp', 'btnPTCGP', view === 'ptcgp'),
+    mk('all',   'btnAll',   E.all,   view === 'all'),
+    mk('vgc',   'btnVGC',   E.vgc,   view === 'vgc'),
+    mk('ptcgp', 'btnPTCGP', E.ptcgp, view === 'ptcgp'),
   );
 }
 
