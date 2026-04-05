@@ -71,7 +71,8 @@ const LBL = {
     ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
     move:        '招式', teammate: '隊友',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
-    winMove: '勝利招式', loseMove: '落敗招式',
+    winMove: '致勝招式', loseMove: '致命招式',
+    winsAgainst: '主要優勢對位', defeatedBy: '主要劣勢對位',
     source:      '資料來源為 Pokémon HOME 級別對戰。',
     updated:     (t) => `資料更新於: <t:${t}:R>`,
     footer:      (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
@@ -102,6 +103,7 @@ const LBL = {
     move:        'Move', teammate: 'Teammates',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: 'Win Moves', loseMove: 'Loss Moves',
+    winsAgainst: 'Top Wins Against', defeatedBy: 'Top Defeated By',
     source:      'Data source: Pokémon HOME Ranked Battles.',
     updated:     (t) => `Updated: <t:${t}:R>`,
     footer:      (s, f) => `S${s} ${f} · Pokémon HOME Usage`,
@@ -132,6 +134,7 @@ const LBL = {
     move:        '技', teammate: '相方',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: '勝ち技', loseMove: '負け技',
+    winsAgainst: '主な勝ち対面', defeatedBy: '主な負け対面',
     source:      'データ出典: Pokémon HOME ランクバトル。',
     updated:     (t) => `更新: <t:${t}:R>`,
     footer:      (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
@@ -261,9 +264,9 @@ function buildMatchupsEmbed(entry, season, format, data, lang = 'zh') {
     .setThumbnail(getSpriteUrl(entry))
     .setFooter({ text: footer(season, format, lang) })
     .addFields(
-      { name: `🤝 ${lbl.teammate} ${lbl.top5}`,        value: fmtNameList(entry.teammates,         5, lang), inline: true },
-      { name: `🏆 ${lbl.winMove} ${lbl.top5}`,          value: fmtNameList(entry.most_wins_against, 5, lang), inline: true },
-      { name: `💀 ${lbl.loseMove} ${lbl.top5}`,         value: fmtNameList(entry.most_defeated_by,  5, lang), inline: true },
+      { name: `🤝 ${lbl.teammate} ${lbl.top5}`,          value: fmtNameList(entry.teammates,         5, lang), inline: true },
+      { name: `✅ ${lbl.winsAgainst} ${lbl.top5}`,      value: fmtNameList(entry.most_wins_against, 5, lang), inline: true },
+      { name: `❌ ${lbl.defeatedBy} ${lbl.top5}`,        value: fmtNameList(entry.most_defeated_by,  5, lang), inline: true },
     );
 }
 

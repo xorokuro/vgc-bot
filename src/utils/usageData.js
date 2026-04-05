@@ -37,8 +37,16 @@ function loadSeasonData(season, format) {
 
 function getSpriteUrl(entry) {
   const id = entry.sprite_id || entry.pid;
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`;
 }
+
+function refreshCache() {
+  _seasons = null;
+  _cache.clear();
+}
+
+// Auto-refresh every 6 hours
+setInterval(refreshCache, 6 * 60 * 60 * 1000);
 
 /**
  * Find a pokemon entry in a loaded season data object by Chinese name.
