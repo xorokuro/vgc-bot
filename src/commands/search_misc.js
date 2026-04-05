@@ -4,12 +4,13 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 // ── Data loading (lazy) ────────────────────────────────────────────────────────
-let _tri = null, _mdb = null, _plza = null;
+let _tri = null, _mdb = null, _plza = null, _svd = null;
 
 function loadData() {
   if (!_tri) _tri   = require(path.join(__dirname, '../../data/trilingual.json'));
   if (!_mdb) _mdb   = require(path.join(__dirname, '../../data/moves_db.json'));
   if (!_plza) _plza = require(path.join(__dirname, '../../data/plza_moves.json'));
+  if (!_svd) _svd   = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
 }
 
 // ── Type / category display ────────────────────────────────────────────────────
@@ -54,21 +55,27 @@ function fmtCat(c, lang) {
 // ── Labels ─────────────────────────────────────────────────────────────────────
 const L = {
   zh: {
-    type: '屬性', category: '分類', power: '威力', cd: '冷卻', effect: '效果',
+    type: '屬性', category: '分類', power: '威力', accuracy: '命中', pp: 'PP',
+    cd: '冷卻', effect: '效果', contact: '直接接觸', protect: '守護招式',
+    target: '目標', mechanics: '機制',
     game_scvi: 'SV', game_plza: 'PLZA',
     no_result: '找不到',
     move: '招式', ability: '特性', item: '道具',
     status: '變化',
   },
   ja: {
-    type: 'タイプ', category: '分類', power: 'いりょく', cd: 'CT', effect: '効果',
+    type: 'タイプ', category: '分類', power: 'いりょく', accuracy: 'めいちゅう', pp: 'PP',
+    cd: 'CT', effect: '効果', contact: '直接攻撃', protect: 'まもる対応',
+    target: '対象', mechanics: 'しくみ',
     game_scvi: 'SV', game_plza: 'PLZA',
     no_result: '見つかりません',
     move: 'わざ', ability: 'とくせい', item: 'どうぐ',
     status: '変化',
   },
   en: {
-    type: 'Type', category: 'Category', power: 'Power', cd: 'Cooldown', effect: 'Effect',
+    type: 'Type', category: 'Category', power: 'Power', accuracy: 'Accuracy', pp: 'PP',
+    cd: 'Cooldown', effect: 'Effect', contact: 'Makes Contact', protect: 'Blocked by Protect',
+    target: 'Target', mechanics: 'Mechanics',
     game_scvi: 'SV', game_plza: 'PLZA',
     no_result: 'Not found',
     move: 'Move', ability: 'Ability', item: 'Item',
@@ -98,6 +105,11 @@ function searchScviMoves(query) {
 function getScviMoveStats(zhName) {
   loadData();
   return _mdb[zhName] ?? null;
+}
+
+function getScviMoveDetail(enName) {
+  loadData();
+  return _svd[enName.toLowerCase()] ?? null;
 }
 
 // ── SCVI ability search ────────────────────────────────────────────────────────
@@ -186,8 +198,8 @@ function itemDisplayName(e, lang) {
 // ── Embed builders ─────────────────────────────────────────────────────────────
 function buildScviMoveEmbed(entry, lang) {
   const lbl    = L[lang];
+  const detail = getScviMoveDetail(entry.en);
   const stats  = getScviMoveStats(entry.zh);
-  const name   = moveDisplayName(entry, lang);
   const title  = lang === 'zh' ? `${entry.zh}  /  ${entry.en}`
                : lang === 'ja' ? `${entry.ja || entry.en}  /  ${entry.zh}`
                :                 `${entry.en}  /  ${entry.zh}`;
@@ -203,10 +215,42 @@ function buildScviMoveEmbed(entry, lang) {
   if (entry.ja) names.push(`JA: ${entry.ja}${entry.ja_hrkt ? ` (${entry.ja_hrkt})` : ''}`);
   embed.setDescription(names.join('\n'));
 
-  if (stats && stats.type && stats.type !== 'unknown') {
+  if (detail) {
+    // Type, Category, Power, Accuracy, PP
+    const typeStr = detail.type[lang] || detail.type.en;
+    const typeEn  = (detail.type.en || '').toLowerCase();
+    const catEn   = (detail.category.en || '').toLowerCase();
     embed.addFields(
-      { name: lbl.type,     value: fmtType(stats.type, lang),     inline: true },
-      { name: lbl.category, value: fmtCat(stats.category, lang),  inline: true },
+      { name: lbl.type,     value: `${TYPE_EMOJI[typeEn] ?? '❓'} ${typeStr}`,           inline: true },
+      { name: lbl.category, value: fmtCat(catEn === 'physical' ? 'physical' : catEn === 'special' ? 'special' : catEn === 'status' ? 'status' : catEn, lang), inline: true },
+      { name: lbl.power,    value: detail.power    !== '—' ? detail.power    : '—', inline: true },
+      { name: lbl.accuracy, value: detail.accuracy !== '—' ? `${detail.accuracy}%` : '—', inline: true },
+      { name: lbl.pp,       value: detail.pp        !== '—' ? detail.pp        : '—', inline: true },
+      { name: lbl.target,   value: detail.target[lang] || detail.target.en,              inline: true },
+    );
+
+    // Mechanics line
+    const mechParts = [];
+    if (detail.contact) mechParts.push(detail.contact === '直○' ? `${lbl.contact}: ✅` : `${lbl.contact}: ❌`);
+    if (detail.protect) mechParts.push(detail.protect === '守○' ? `${lbl.protect}: ✅` : `${lbl.protect}: ❌`);
+    if (mechParts.length) embed.addFields({ name: lbl.mechanics, value: mechParts.join('  ·  '), inline: false });
+
+    // Effect description (trilingual)
+    if (detail.effect?.zh || detail.effect?.en) {
+      const effectLines = [];
+      if (lang === 'zh' && detail.effect.zh) effectLines.push(detail.effect.zh);
+      else if (lang === 'ja' && detail.effect.ja) effectLines.push(detail.effect.ja);
+      else if (detail.effect.en) effectLines.push(detail.effect.en);
+      // Show a second language for reference
+      if (lang !== 'en' && detail.effect.en) effectLines.push(`-# EN: ${detail.effect.en}`);
+      else if (lang !== 'zh' && detail.effect.zh) effectLines.push(`-# ZH: ${detail.effect.zh}`);
+      if (effectLines.length) embed.addFields({ name: lbl.effect, value: effectLines.join('\n').slice(0, 1024), inline: false });
+    }
+  } else if (stats && stats.type && stats.type !== 'unknown') {
+    // Fallback to basic stats if no detailed data
+    embed.addFields(
+      { name: lbl.type,     value: fmtType(stats.type, lang),                              inline: true },
+      { name: lbl.category, value: fmtCat(stats.category, lang),                           inline: true },
       { name: lbl.power,    value: stats.power != null ? String(stats.power) : '—', inline: true },
     );
   }
