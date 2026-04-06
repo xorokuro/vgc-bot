@@ -384,9 +384,17 @@ async function handleCardView(interaction) {
   const card = cardDb.getCard(uid);
   if (!card) return interaction.reply({ content: '❌ Card not found.', flags: 64 });
 
-  // Pick image — try zh_TW first
+  // Pick image — try zh_TW first.
+  // Try resolveImagePath (honours PTCGP_IMAGE_DIR), then fall back to raw relative path
+  // so the lookup works even when the env var is not set (same as deckImage.js).
   const LANG_ORDER = ['zh_TW', 'en_US', 'ja_JP'];
-  const imagePath = LANG_ORDER.map(l => resolveImagePath(card.images?.[l])).find(p => p && fs.existsSync(p));
+  const imagePath = LANG_ORDER.map(l => {
+    const raw = card.images?.[l];
+    if (!raw) return null;
+    const resolved = resolveImagePath(raw);
+    if (resolved && fs.existsSync(resolved)) return resolved;
+    return fs.existsSync(raw) ? raw : null;
+  }).find(Boolean);
   if (!imagePath) return interaction.reply({ content: '⚠ Image not found.', flags: 64 });
 
   await interaction.deferReply({ flags: 64 });
