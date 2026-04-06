@@ -65,7 +65,8 @@ function calcTypeMatchups(types) {
 let _vocabData    = null; // { pokemon, move, item, ability, nature }  —  filtered arrays (all three names present)
 let _searchIndex  = null; // flat array of all entries regardless of missing names, for search
 let _etym         = null; // etymology by dex ID
-let _pokedexMap   = null; // lowercase EN name ↁE{ types_en, types_zh }
+let _pokedexMap   = null; // lowercase EN name → { types_en, types_zh }
+let _svMoves      = null; // moves_sv_detailed.json keyed by lowercase EN name
 
 function loadVocabData() {
   if (_vocabData) return _vocabData;
@@ -223,6 +224,23 @@ function loadPokedexMap() {
   return _pokedexMap;
 }
 
+function loadSvMoves() {
+  if (_svMoves) return _svMoves;
+  const raw = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
+  _svMoves = {};
+  for (const [key, val] of Object.entries(raw)) _svMoves[key.toLowerCase()] = val;
+  return _svMoves;
+}
+
+/** Build wiki hyperlinks for a move (EN name). */
+function moveWikiLinks(enName, zhName, jaName) {
+  const bulbaSlug = enName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('_');
+  const links = [`[Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(bulbaSlug)}_(move))`];
+  if (zhName) links.push(`[52Poke](https://wiki.52poke.com/zh-hant/${encodeURIComponent(zhName + '（招式）')})`);
+  if (jaName) links.push(`[ポケモンWiki](https://wiki.pokemonwiki.com/wiki/${encodeURIComponent(jaName)})`);
+  return links.join('  ·  ');
+}
+
 function randomEntry(category) {
   const data = loadVocabData();
   const pool = category === 'any'
@@ -279,6 +297,41 @@ function buildVocabEmbed(entry, category) {
   if (entry.ja) nameLines.push(`🇯🇵 **日本語** ${entry.ja}${entry.ja_hrkt ? ` (${entry.ja_hrkt})` : ''}`);
   if (entry.zh) nameLines.push(`🇹🇼 **繁體中文** ${entry.zh}`);
   if (nameLines.length) embed.setDescription(nameLines.join('\n'));
+
+  // ── Move detail (Move only) ──────────────────────────────────────────────────
+  if (resolvedCat === 'move') {
+    const svMoves = loadSvMoves();
+    const mv = svMoves[entry.en.toLowerCase()];
+    if (mv) {
+      const CATEGORY_EMOJI = { Physical: '⚔️', Special: '🔮', Status: '💫' };
+      const catEmoji = CATEGORY_EMOJI[mv.category?.en] ?? '';
+      const typeEmoji = TYPE_EMOJI[mv.type?.en] ?? '';
+
+      // Stats line: Type · Category · BP · Acc · PP
+      const power    = mv.power    && mv.power    !== '—' && mv.power    !== '-' ? mv.power    : '—';
+      const accuracy = mv.accuracy && mv.accuracy !== '—' && mv.accuracy !== '-' ? mv.accuracy : '—';
+      const statsVal = [
+        `${typeEmoji} **${mv.type?.ja ?? ''}** / **${mv.type?.zh ?? ''}** / ${mv.type?.en ?? ''}`,
+        `${catEmoji} **${mv.category?.ja ?? ''}** / **${mv.category?.zh ?? ''}** / ${mv.category?.en ?? ''}`,
+        `威力 / BP: **${power}**　命中 / Acc: **${accuracy}**　PP: **${mv.pp ?? '—'}**`,
+      ].join('\n');
+      embed.addFields({ name: 'SV データ / Data', value: statsVal });
+
+      // Effect in all available languages
+      const effectLines = [];
+      if (mv.effect?.zh) effectLines.push(`🇹🇼 ${mv.effect.zh}`);
+      if (mv.effect?.en) effectLines.push(`🇺🇸 ${mv.effect.en}`);
+      if (mv.effect?.ja) effectLines.push(`🇯🇵 ${mv.effect.ja}`);
+      if (effectLines.length) {
+        const effectVal = effectLines.join('\n');
+        embed.addFields({ name: '效果 / Effect', value: effectVal.length > 1024 ? effectVal.slice(0, 1021) + '…' : effectVal });
+      }
+    }
+
+    // Wiki links
+    const links = moveWikiLinks(entry.en, entry.zh, entry.ja);
+    embed.addFields({ name: '🔗 Wiki', value: links });
+  }
 
   // ── Type + weakness info (Pokémon only) ──────────────────────────────────────
   if (resolvedCat === 'pokemon') {
