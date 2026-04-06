@@ -11,6 +11,7 @@
 const fs     = require('fs');
 const sharp  = require('sharp');
 const cardDb = require('./cardDb');
+const { resolveImagePath } = cardDb;
 
 // ── Layout constants ──────────────────────────────────────────────────────────
 
@@ -37,7 +38,13 @@ async function loadCardImage(uid, lang = 'zh') {
   const card = cardDb.getCard(uid);
   if (!card) return null;
   const order   = LANG_ORDERS[lang] ?? LANG_ORDERS.zh;
-  const imgPath = order.map(l => card.images?.[l]).find(p => p && fs.existsSync(p));
+  const imgPath = order.map(l => {
+    const raw = card.images?.[l];
+    if (!raw) return null;
+    const resolved = resolveImagePath(raw);
+    if (resolved && fs.existsSync(resolved)) return resolved;
+    return fs.existsSync(raw) ? raw : null;
+  }).find(Boolean);
   if (!imgPath) return null;
   try {
     return await sharp(imgPath)
