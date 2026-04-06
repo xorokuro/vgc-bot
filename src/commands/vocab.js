@@ -6,7 +6,7 @@ const {
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
 } = require('discord.js');
 const { toID } = require('@smogon/calc');
-const { TYPE_EMOJI } = require('../utils/buildEmbed');
+const { TYPE_EMOJI, CATEGORY_EMOJI } = require('../utils/buildEmbed');
 const { translateType } = require('../utils/i18n');
 
 // ── Type chart (Gen 9) ────────────────────────────────────────────────────────
@@ -303,7 +303,6 @@ function buildVocabEmbed(entry, category) {
     const svMoves = loadSvMoves();
     const mv = svMoves[entry.en.toLowerCase()];
     if (mv) {
-      const CATEGORY_EMOJI = { Physical: '⚔️', Special: '🔮', Status: '💫' };
       const catEmoji = CATEGORY_EMOJI[mv.category?.en] ?? '';
       const typeEmoji = TYPE_EMOJI[mv.type?.en] ?? '';
 
