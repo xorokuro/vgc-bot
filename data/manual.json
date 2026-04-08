@@ -13,8 +13,11 @@
   },
 
   "pokemon": {
-    "nidoran-f": { "en": "Nidoran-F", "ja": "ニドラン♀", "zh": "尼多蘭" },
-    "nidoran-m": { "en": "Nidoran-M", "ja": "ニドラン♂", "zh": "尼多朗" },
+    "nidoran-f":  { "en": "Nidoran-F",  "ja": "ニドラン♀",       "zh": "尼多蘭" },
+    "nidoran-m":  { "en": "Nidoran-M",  "ja": "ニドラン♂",       "zh": "尼多朗" },
+    "farfetchd":      { "en": "Farfetch'd",       "ja": "カモネギ",                   "zh": "大蔥鴨" },
+    "farfetchd-galar": { "en": "Farfetch'd-Galar", "ja": "カモネギ（ガラルのすがた）", "zh": "大蔥鴨（伽勒爾的樣子）" },
+    "sirfetchd":      { "en": "Sirfetch'd",        "ja": "ネギガナイト",               "zh": "蔥遊兵" },
 
     "zacian-crowned":   { "en": "Zacian-Crowned",   "ja": "ザシアン（けんのおう）",  "zh": "蒼響（劍之王）" },
     "zamazenta-crowned": { "en": "Zamazenta-Crowned", "ja": "ザマゼンタ（たてのおう）", "zh": "藏瑪然特（盾之王）" },

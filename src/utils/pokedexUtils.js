@@ -164,8 +164,9 @@ const DEX_LABELS = {
 
 // ── Game label by language ─────────────────────────────────────────────────────
 const GAME_LABELS = {
-  scvi: { zh: '朱紫', ja: 'スカーレット・バイオレット', en: 'Scarlet/Violet' },
-  plza: { zh: '傳說Z-A', ja: 'レジェンズZ-A', en: 'Legends: Z-A' },
+  scvi:     { zh: '朱紫',          ja: 'スカーレット・バイオレット', en: 'Scarlet/Violet' },
+  plza:     { zh: '傳說Z-A',       ja: 'レジェンズZ-A',             en: 'Legends: Z-A' },
+  champion: { zh: 'Pokémon Champion', ja: 'ポケモンChampion',        en: 'Pokémon Champion' },
 };
 
 function gameLabel(gameId, lang) {

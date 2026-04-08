@@ -33,6 +33,11 @@ const POKEDEX_GAMES = {
     hasLevelMoves: true,
     hasTmMoves:    true,
   },
+  champion: {
+    dbFile:  'pokedex_champion_db.json',
+    hasLevelMoves: false,
+    hasTmMoves:    false,
+  },
 };
 
 // ── TM number map (PLZA) ──────────────────────────────────────────────────────
@@ -299,7 +304,7 @@ function searchInDb(gameId, query) {
   if (exact) return exact;
 
   return (
-    entries.find(e => e.name_zh.includes(q)) ??
+    entries.find(e => (e.name_zh || '').includes(q)) ??
     entries.find(e => (e.name_en || '').toLowerCase().includes(qLow)) ??
     null
   );
@@ -336,7 +341,8 @@ function autocompleteForGame(gameId, q) {
   for (const e of entries) {
     const zh = e.name_zh || '';
     const en = (e.name_en || '').toLowerCase();
-    const ja = _zhToJaPoke?.[e.name_zh] || '';
+    // Champion db stores name_ja directly; other dbs look it up via zh→ja map
+    const ja = e.name_ja || _zhToJaPoke?.[e.name_zh] || '';
 
     if (zh.startsWith(q))         startZh.push(e);
     else if (en.startsWith(qLow)) startEn.push(e);
@@ -349,7 +355,7 @@ function autocompleteForGame(gameId, q) {
   return [...startZh, ...startEn, ...startJa, ...hasZh, ...hasEn, ...hasJa]
     .slice(0, 25)
     .map(e => ({
-      name:  `${e.name_zh}  ${e.name_en}`.slice(0, 100),
+      name:  `${e.name_zh || e.name_en}  ${e.name_en}`.slice(0, 100),
       value: e.name_zh || e.name_en,
     }));
 }
@@ -641,6 +647,73 @@ function buildTabRow(currentTab, lang, disabled = false) {
       .setStyle(currentTab === 'tm'      ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(disabled),
   );
+}
+
+// ── Champion page builder ─────────────────────────────────────────────────────
+
+const GAME_ABBR_LABELS = {
+  LGPE: "Let's Go", SWSH: 'Sword/Shield', BDSP: 'Brilliant Diamond/Pearl',
+  LA: 'Legends: Arceus', SV: 'Scarlet/Violet', LZA: 'Legends: Z-A',
+};
+
+const FLAG_LABELS = {
+  'Mega Evolution': '🔮 Mega', 'Gigantamax': '🌀 Gmax', 'Legendary': '⭐ Legendary',
+  'Hisuian Form': '🗾 Hisui', 'Galarian Form': '🌿 Galar', 'Alolan Form': '🌺 Alola',
+  'Paldean Form': '🌍 Paldea',
+};
+
+const CHAMPION_COLOR = 0xD4A017; // gold
+
+function getChampionDisplayName(poke, lang) {
+  if (lang === 'zh') return poke.name_zh || poke.name_en || '';
+  if (lang === 'ja') return poke.name_ja || poke.name_zh || poke.name_en || '';
+  const cap = w => w.charAt(0).toUpperCase() + w.slice(1);
+  return (poke.name_en || '').split('-').map(cap).join('-');
+}
+
+async function buildChampionPage1(poke, lang) {
+  const embed = buildDetailEmbed(poke, lang, CHAMPION_COLOR);
+  embed.setTitle(getChampionDisplayName(poke, lang));
+  embed.setFooter({ text: `${gameLabel('champion', lang)}` });
+
+  // Height / Weight / Exp Group
+  const L = {
+    zh: { height: '身高', weight: '體重', exp: '成長組', games: '登場作品', flags: '特性標記', noGames: '無（僅Champion）' },
+    ja: { height: '高さ', weight: '重さ', exp: '経験値グループ', games: '登場作品', flags: 'フォームタグ', noGames: 'なし（Champion専用）' },
+    en: { height: 'Height', weight: 'Weight', exp: 'Exp. Group', games: 'Compatible Games', flags: 'Form Tags', noGames: 'None (Champion only)' },
+  }[lang] ?? { height: 'Height', weight: 'Weight', exp: 'Exp. Group', games: 'Compatible Games', flags: 'Form Tags', noGames: 'None (Champion only)' };
+
+  const hwParts = [];
+  if (poke.height_m  != null) hwParts.push(`📏 ${L.height}: **${poke.height_m} m**`);
+  if (poke.weight_kg != null) hwParts.push(`⚖️ ${L.weight}: **${poke.weight_kg} kg**`);
+  if (poke.exp_group)         hwParts.push(`🧪 ${L.exp}: ${poke.exp_group}`);
+  if (hwParts.length) embed.addFields({ name: '\u200b', value: hwParts.join('  ·  '), inline: false });
+
+  // Compatible Games
+  const games = poke.compatible_games ?? [];
+  const gamesStr = games.length
+    ? games.map(g => GAME_ABBR_LABELS[g] ?? g).join(', ')
+    : L.noGames;
+  embed.addFields({ name: `🎮 ${L.games}`, value: gamesStr, inline: false });
+
+  // Form Flags (Mega, Legendary, etc.) — skip pure UI flags
+  const SKIP_FLAGS = new Set(['Hide In Number Sort', 'Hide Model', 'Hide Abilities']);
+  const visibleFlags = (poke.flags ?? []).filter(f => !SKIP_FLAGS.has(f));
+  if (visibleFlags.length) {
+    const flagStr = visibleFlags.map(f => FLAG_LABELS[f] ?? f).join('  ·  ');
+    embed.addFields({ name: `✨ ${L.flags}`, value: flagStr, inline: false });
+  }
+
+  const s   = poke.stats ?? {};
+  const bst = poke.bst || Object.values(s).reduce((a, v) => a + (v || 0), 0);
+  try {
+    const imgBuf = await buildStatImage(s, bst, lang);
+    const file   = new AttachmentBuilder(imgBuf, { name: 'stats.png' });
+    embed.setImage('attachment://stats.png');
+    return { embed, file };
+  } catch {
+    return { embed, file: null };
+  }
 }
 
 // ── SCVI page builders ────────────────────────────────────────────────────────
@@ -949,8 +1022,9 @@ module.exports = {
       .setDescription('遊戲版本 / Game version')
       .setRequired(true)
       .addChoices(
-        { name: '朱紫 (Scarlet/Violet)',  value: 'scvi' },
-        { name: '傳說Z-A (Legends: Z-A)', value: 'plza' },
+        { name: '朱紫 (Scarlet/Violet)',       value: 'scvi' },
+        { name: '傳說Z-A (Legends: Z-A)',       value: 'plza' },
+        { name: 'Pokémon Champion (Champion)',  value: 'champion' },
       ))
     .addStringOption(o => o
       .setName('pokemon')
@@ -1069,6 +1143,16 @@ module.exports = {
         try {
           await interaction.editReply({ components: buildScviComponents(currentTab, currentPoke, true) });
         } catch { /* message may have been deleted */ }
+      });
+      return;
+    }
+
+    // ── Champion: single-page view (basic info + height/weight/games) ─────────
+    if (gameId === 'champion') {
+      const { embed, file } = await buildChampionPage1(poke, lang);
+      await interaction.editReply({
+        embeds: [embed],
+        files:  file ? [file] : [],
       });
       return;
     }
