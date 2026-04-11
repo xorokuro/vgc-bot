@@ -107,10 +107,11 @@ module.exports = {
       .addChoices(
         { name: '朱紫 (Scarlet/Violet)',      value: 'scvi' },
         { name: '傳說Z-A (Legends: Z-A)',     value: 'plza' },
+        { name: 'Pokémon Champion',           value: 'champion' },
       ))
     .addStringOption(o => o
       .setName('query')
-      .setDescription('搜尋條件 / Query — e.g. 火系 AND 速度>=100 AND NOT 龍系')
+      .setDescription('搜尋條件 / Query — e.g. 火系 AND s>=100 AND Fake-Out (EN moves: use hyphens)')
       .setRequired(true))
     .addBooleanOption(o => o
       .setName('show_stats')

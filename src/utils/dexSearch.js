@@ -159,6 +159,30 @@ function getStatVal(poke, key) {
   return poke.stats[key] ?? 0;
 }
 
+// ── Champion move ID → English display name ───────────────────────────────────
+// Used by the champion hasMove implementation.
+// e.g. 'darkest-lariat' → 'Darkest Lariat'
+const MOVE_ID_TO_EN = {};
+for (const en of Object.keys(ZH_HANT.moves || {})) {
+  const id = toApiId(en);
+  MOVE_ID_TO_EN[id] = en;
+}
+
+// Lazy-loaded champion moves db: { dex_id_str: [enName, ...] }
+let _championMovesDb = null;
+function loadChampionMovesDb() {
+  if (!_championMovesDb) {
+    try {
+      _championMovesDb = JSON.parse(
+        fs.readFileSync(path.join(__dirname, '../../data/champion_moves_db.json'), 'utf8'),
+      );
+    } catch {
+      _championMovesDb = {};
+    }
+  }
+  return _championMovesDb;
+}
+
 // ── Game configurations ───────────────────────────────────────────────────────
 // To add a new game: add an entry here and place the DB JSON in data/.
 
@@ -188,6 +212,20 @@ const GAME_CONFIGS = {
       return inLv || inTm;
     },
     supportsMethod: true,
+  },
+  champion: {
+    labelZh: 'Champion',
+    labelEn: 'Pokémon Champion',
+    dbFile:  'pokedex_champion_db.json',
+    // Moves stored as English display names in champion_moves_db.json by dex_id
+    hasMove(poke, moveId) {
+      const enName = MOVE_ID_TO_EN[moveId];
+      if (!enName) return false;
+      const db    = loadChampionMovesDb();
+      const moves = db[String(poke.dex_id)] ?? [];
+      return moves.includes(enName);
+    },
+    supportsMethod: false,
   },
 };
 
