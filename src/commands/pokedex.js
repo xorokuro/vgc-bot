@@ -464,11 +464,6 @@ function buildMovePageRow(total, page, disabled = false) {
   );
 }
 
-const MOVE_TYPE_EMOJI = {
-  normal:'⬜', fire:'🔥', water:'💧', electric:'⚡', grass:'🌿', ice:'❄️',
-  fighting:'🥊', poison:'☠️', ground:'🌍', flying:'🌬️', psychic:'🔮', bug:'🐛',
-  rock:'🪨', ghost:'👻', dragon:'🐉', dark:'🌑', steel:'⚙️', fairy:'✨',
-};
 
 function buildMoveDetailEmbed(enHyphen, lang) {
   const key     = enHyphen.toLowerCase().replace(/-/g, ' ');
@@ -512,7 +507,7 @@ function buildMoveDetailEmbed(enHyphen, lang) {
     const lEffect = lang === 'zh' ? '效果'    : lang === 'ja' ? '効果'        : 'Effect';
 
     embed.addFields(
-      { name: lType, value: `${MOVE_TYPE_EMOJI[typeEn] ?? '❓'} ${typeLabel}`, inline: true },
+      { name: lType, value: `${typeEn ? typeEmoji(typeEn) : '❓'} ${typeLabel}`, inline: true },
       { name: lCat,  value: catLabel,                                           inline: true },
       { name: lPow,  value: d.power !== '—' ? d.power : '—',                  inline: true },
       { name: lAcc,  value: d.accuracy !== '—' ? `${d.accuracy}%` : '—',      inline: true },
@@ -741,6 +736,33 @@ const CHAMPION_FOOTER = {
   ja: { p1: '基本情報', p2: '覚えるわざ（出典：Serebii）' },
   en: { p1: 'Basic Info', p2: 'Moves (source: Serebii)' },
 };
+
+// ── Champion form helpers ─────────────────────────────────────────────────────
+
+function findChampionForms(dexId) {
+  return loadDb('champion')
+    .filter(p => p.dex_id === dexId && !(p.flags ?? []).includes('Hide Model'))
+    .sort((a, b) => (a.form_id ?? 0) - (b.form_id ?? 0));
+}
+
+function buildChampionFormsRow(currentNameEn, allForms, lang, disabled = false) {
+  if (!allForms || allForms.length <= 1) return null;
+  const placeholder = lang === 'en' ? '🔀 Switch form'
+                    : lang === 'ja' ? '🔀 フォーム切替'
+                    :                 '🔀 切換形態';
+  const options = allForms.map(f => ({
+    label:   getChampionDisplayName(f, lang).slice(0, 100),
+    value:   f.name_en,
+    default: f.name_en === currentNameEn,
+  }));
+  return new ActionRowBuilder().addComponents(
+    new StringSelectMenuBuilder()
+      .setCustomId('champ_form_select')
+      .setPlaceholder(placeholder)
+      .setDisabled(disabled)
+      .addOptions(options),
+  );
+}
 
 function buildChampionTabRow(currentTab, lang, disabled = false) {
   const lbs = CHAMPION_TAB_LABELS[lang] ?? CHAMPION_TAB_LABELS.zh;
@@ -1099,12 +1121,12 @@ module.exports = {
     .setDescription('查詢寶可夢詳細資料 / Pokémon details: stats, moves, abilities')
     .addStringOption(o => o
       .setName('game')
-      .setDescription('遊戲版本 / Game version')
-      .setRequired(true)
+      .setDescription('遊戲版本 / Game version（預設：Champion）')
+      .setRequired(false)
       .addChoices(
-        { name: '朱紫 (Scarlet/Violet)',       value: 'scvi' },
+        { name: 'Pokémon Champion (預設)',      value: 'champion' },
+        { name: '朱紫 (Scarlet/Violet)',        value: 'scvi' },
         { name: '傳說Z-A (Legends: Z-A)',       value: 'plza' },
-        { name: 'Pokémon Champion (Champion)',  value: 'champion' },
       ))
     .addStringOption(o => o
       .setName('pokemon')
@@ -1127,7 +1149,7 @@ module.exports = {
 
   async execute(interaction) {
     const query  = interaction.options.getString('pokemon');
-    const gameId = interaction.options.getString('game');
+    const gameId = interaction.options.getString('game') ?? 'champion';
     const lang   = interaction.options.getString('lang') ?? 'zh';
     const pub    = interaction.options.getBoolean('public') ?? false;
     const flags  = pub ? undefined : 64;
@@ -1229,46 +1251,53 @@ module.exports = {
 
     // ── Champion: 2-tab interactive view (basic info + moves) ─────────────────
     if (gameId === 'champion') {
-      let currentTab = 'basic';
+      let currentTab  = 'basic';
+      let currentPoke = poke;
+      const allForms  = findChampionForms(poke.dex_id);
 
-      const { embed: champEmbed1, file: champFile1 } = await buildChampionPage1(poke, lang);
-      const champRow = buildChampionTabRow('basic', lang);
-      champEmbed1.setFooter({ text: `${gameLabel('champion', lang)} · ${(CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh).p1}` });
+      function buildChampionComponents(tab, p, disabled = false) {
+        const rows = [buildChampionTabRow(tab, lang, disabled)];
+        const formRow = buildChampionFormsRow(p.name_en, allForms, lang, disabled);
+        if (formRow) rows.push(formRow);
+        return rows;
+      }
 
-      const champMsg = await interaction.editReply({
-        embeds:     [champEmbed1],
-        files:      champFile1 ? [champFile1] : [],
-        components: [champRow],
-      });
+      async function renderChampionTab(tab, p) {
+        if (tab === 'basic') {
+          const { embed, file } = await buildChampionPage1(p, lang);
+          embed.setFooter({ text: `${gameLabel('champion', lang)} · ${(CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh).p1}` });
+          return { embeds: [embed], files: file ? [file] : [], components: buildChampionComponents(tab, p) };
+        }
+        const embed = buildChampionPage2(p, lang);
+        return { embeds: [embed], files: [], components: buildChampionComponents(tab, p) };
+      }
+
+      const champMsg = await interaction.editReply(await renderChampionTab('basic', currentPoke));
 
       const champCollector = champMsg.createMessageComponentCollector({
-        componentType: ComponentType.Button,
         filter: i => i.user.id === interaction.user.id,
         time: 300_000,
       });
 
-      champCollector.on('collect', async btnInt => {
-        await btnInt.deferUpdate();
-        const tab = btnInt.customId.replace('champ_', '');
-        currentTab = tab;
-        const newRow = buildChampionTabRow(tab, lang);
+      champCollector.on('collect', async compInt => {
+        await compInt.deferUpdate();
         try {
-          if (tab === 'basic') {
-            const { embed, file } = await buildChampionPage1(poke, lang);
-            embed.setFooter({ text: `${gameLabel('champion', lang)} · ${(CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh).p1}` });
-            await interaction.editReply({ embeds: [embed], files: file ? [file] : [], components: [newRow] });
-          } else {
-            const embed = buildChampionPage2(poke, lang);
-            await interaction.editReply({ embeds: [embed], files: [], components: [newRow] });
+          if (compInt.isStringSelectMenu() && compInt.customId === 'champ_form_select') {
+            const selected = allForms.find(f => f.name_en === compInt.values[0]);
+            if (selected) currentPoke = selected;
+          } else if (compInt.isButton()) {
+            const tab = compInt.customId.replace('champ_', '');
+            currentTab = tab;
           }
+          await interaction.editReply(await renderChampionTab(currentTab, currentPoke));
         } catch (err) {
-          console.error('[pokedex] champion button error:', err);
+          console.error('[pokedex] champion component error:', err);
         }
       });
 
       champCollector.on('end', async () => {
         try {
-          await interaction.editReply({ components: [buildChampionTabRow(currentTab, lang, true)] });
+          await interaction.editReply({ components: buildChampionComponents(currentTab, currentPoke, true) });
         } catch { /* message may have been deleted */ }
       });
       return;
@@ -1336,10 +1365,10 @@ module.exports = {
   },
 
   async autocomplete(interaction) {
-    const gameId = interaction.options.getString('game');
+    const gameId = interaction.options.getString('game') ?? 'champion';
     const q      = interaction.options.getFocused().trim();
 
-    if (!gameId || !POKEDEX_GAMES[gameId]) {
+    if (!POKEDEX_GAMES[gameId]) {
       await interaction.respond([]);
       return;
     }

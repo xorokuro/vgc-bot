@@ -71,6 +71,21 @@ const STAT_LABELS = {
   en: ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'],
 };
 
+// ── Speed range helpers ────────────────────────────────────────────────────────
+const SPEED_DOUBLE_CONDITIONS = {
+  'chlorophyll':  { zh: '☀️晴天', en: '☀️Sun',            ja: '☀️晴れ' },
+  'swift-swim':   { zh: '🌧️雨天', en: '🌧️Rain',           ja: '🌧️雨' },
+  'sand-rush':    { zh: '🏜️沙暴', en: '🏜️Sand',           ja: '🏜️砂嵐' },
+  'slush-rush':   { zh: '❄️冰雹', en: '❄️Hail',            ja: '❄️あられ' },
+  'surge-surfer': { zh: '⚡電場', en: '⚡Elec. Terrain',    ja: '⚡エレキ' },
+  'unburden':     { zh: '🎒失去道具', en: '🎒Lost item',    ja: '🎒アイテム消失' },
+};
+
+function calcSpeedStat(base, ev, natureMult) {
+  const iv = 31, level = 50;
+  return Math.floor((Math.floor((2 * base + iv + Math.floor(ev / 4)) * level / 100) + 5) * natureMult);
+}
+
 async function buildStatImage(stats, bst, lang = 'zh') {
   const labels = STAT_LABELS[lang] ?? STAT_LABELS.zh;
   const W = 400, H = 258;
@@ -221,7 +236,7 @@ function buildDetailEmbed(poke, lang = 'zh', color = 0x3B4CCA) {
   const spriteId  = (poke.name_en || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
   const spriteUrl = `https://play.pokemonshowdown.com/sprites/home/${spriteId}.png`;
 
-  return new EmbedBuilder()
+  const embed = new EmbedBuilder()
     .setColor(color)
     .setTitle(title)
     .setThumbnail(spriteUrl)
@@ -230,6 +245,32 @@ function buildDetailEmbed(poke, lang = 'zh', color = 0x3B4CCA) {
       { name: `<:abilitypatch:1489985991589761184> ${L.ability}`,  value: abilityLines || '—', inline: false },
       { name: `🛡️ ${L.weakness}`, value: weakRows || L.noWeak, inline: false },
     );
+
+  // Speed range field
+  const spdBase = poke.stats?.speed;
+  if (spdBase != null) {
+    const min = calcSpeedStat(spdBase, 0, 1.0);
+    const mid = calcSpeedStat(spdBase, 252, 1.0);
+    const max = calcSpeedStat(spdBase, 252, 1.1);
+    const rangeStr = lang === 'en' ? `0EV **${min}** → 252EV **${mid}** → +Spd **${max}**`
+                   : lang === 'ja' ? `0EV **${min}** → 252EV **${mid}** → 準速 **${max}**`
+                   :                 `0EV **${min}** → 252EV **${mid}** → +速度 **${max}**`;
+    const lines = [rangeStr];
+    for (const a of abilities) {
+      const cond = SPEED_DOUBLE_CONDITIONS[a.name];
+      if (!cond) continue;
+      const condStr   = cond[lang] || cond.zh;
+      const enKey     = a.name.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+      const abilName  = translate(enKey, 'ability', lang) || enKey;
+      lines.push(`⚡×2 ${abilName} (${condStr}): **${mid * 2}** / **${max * 2}**`);
+    }
+    const spdLabel = lang === 'en' ? '🏃 Speed Range (Lv.50, 31 IVs)'
+                   : lang === 'ja' ? '🏃 素早さ範囲（Lv.50, 31 IV）'
+                   :                 '🏃 速度範圍（Lv.50, 31 IV）';
+    embed.addFields({ name: spdLabel, value: lines.join('\n'), inline: false });
+  }
+
+  return embed;
 }
 
 module.exports = {
@@ -238,6 +279,8 @@ module.exports = {
   calcWeaknesses,
   STAT_KEYS,
   STAT_LABELS,
+  SPEED_DOUBLE_CONDITIONS,
+  calcSpeedStat,
   buildStatImage,
   DEX_LABELS,
   GAME_LABELS,

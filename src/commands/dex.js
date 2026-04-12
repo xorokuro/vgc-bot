@@ -102,12 +102,12 @@ module.exports = {
     .setDescription('搜尋主系列寶可夢 / Search Pokémon by type, stats, moves, abilities')
     .addStringOption(o => o
       .setName('game')
-      .setDescription('遊戲版本 / Game version')
-      .setRequired(true)
+      .setDescription('遊戲版本 / Game version（預設：Champion）')
+      .setRequired(false)
       .addChoices(
+        { name: 'Pokémon Champion (預設)',    value: 'champion' },
         { name: '朱紫 (Scarlet/Violet)',      value: 'scvi' },
         { name: '傳說Z-A (Legends: Z-A)',     value: 'plza' },
-        { name: 'Pokémon Champion',           value: 'champion' },
       ))
     .addStringOption(o => o
       .setName('query')
@@ -129,7 +129,7 @@ module.exports = {
       .setDescription('公開顯示詳細資料（預設：僅自己可見）/ Show detail card publicly')),
 
   async execute(interaction) {
-    const gameId    = interaction.options.getString('game');
+    const gameId    = interaction.options.getString('game') ?? 'champion';
     const rawQuery  = interaction.options.getString('query');
     const showStats = interaction.options.getBoolean('show_stats') ?? false;
     const lang      = interaction.options.getString('lang') ?? 'zh';
