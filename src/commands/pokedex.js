@@ -804,19 +804,35 @@ function buildChampionPage2(poke, lang) {
     return embed;
   }
 
-  const lines = moveList.map(enName => {
+  // Group by category so every line within a section has the same prefix width
+  const physical = [], special = [], status = [];
+  for (const enName of moveList) {
     const info = getMoveInfoByEn(enName);
+    if      (info.category === 'physical') physical.push([enName, info]);
+    else if (info.category === 'special')  special.push([enName, info]);
+    else                                   status.push([enName, info]);
+  }
+
+  function fmtMove([enName, info]) {
     const tEm  = (info.type && info.type !== 'unknown') ? typeEmoji(info.type) : '';
-    const cEm  = info.category === 'physical' ? CATEGORY_EMOJI.Physical
-               : info.category === 'special'  ? CATEGORY_EMOJI.Special
-               : '';
     const name = lang === 'en' ? enName
                : lang === 'ja' ? (info.ja || enName)
                :                 (info.zh || enName);
-    return `${tEm}${cEm} **${name}**`;
-  });
+    return `${tEm} **${name}**`;
+  }
 
-  splitToFields(embed, `⚔️ ${lbs.moves} (${moveList.length})`, lines);
+  const statLabel = lang === 'ja' ? '変化' : lang === 'en' ? 'Status' : '變化';
+
+  const sections = [
+    { header: CATEGORY_EMOJI.Physical, count: physical.length, moves: physical },
+    { header: CATEGORY_EMOJI.Special,  count: special.length,  moves: special  },
+    { header: statLabel,               count: status.length,   moves: status   },
+  ];
+
+  for (const { header, count, moves } of sections) {
+    if (!count) continue;
+    splitToFields(embed, `${header} (${count})`, moves.map(fmtMove));
+  }
   return embed;
 }
 
