@@ -101,6 +101,10 @@ module.exports = {
     .setName('pokemon_search')
     .setDescription('搜尋主系列寶可夢 / Search Pokémon by type, stats, moves, abilities')
     .addStringOption(o => o
+      .setName('query')
+      .setDescription('搜尋條件 / Query — e.g. 火系 AND s>=100 AND Fake-Out (EN moves: use hyphens)')
+      .setRequired(true))
+    .addStringOption(o => o
       .setName('game')
       .setDescription('遊戲版本 / Game version（預設：Champion）')
       .setRequired(false)
@@ -109,10 +113,6 @@ module.exports = {
         { name: '朱紫 (Scarlet/Violet)',      value: 'scvi' },
         { name: '傳說Z-A (Legends: Z-A)',     value: 'plza' },
       ))
-    .addStringOption(o => o
-      .setName('query')
-      .setDescription('搜尋條件 / Query — e.g. 火系 AND s>=100 AND Fake-Out (EN moves: use hyphens)')
-      .setRequired(true))
     .addBooleanOption(o => o
       .setName('show_stats')
       .setDescription('顯示種族值 / Show base stats in results (default: off)'))
