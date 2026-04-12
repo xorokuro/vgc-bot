@@ -366,10 +366,12 @@ function autocompleteForGame(gameId, q) {
 
   return [...startZh, ...startEn, ...startJa, ...hasZh, ...hasEn, ...hasJa]
     .slice(0, 25)
-    .map(e => ({
-      name:  `${e.name_zh || e.name_en}  ${e.name_en}`.slice(0, 100),
-      value: e.name_zh || e.name_en,
-    }));
+    .map(e => {
+      const value = (e.name_zh || e.name_en || '').slice(0, 100);
+      const name  = `${e.name_zh || e.name_en || ''}  ${e.name_en || ''}`.trim().slice(0, 100) || value;
+      return { name: name || '?', value: value || e.name_en || '?' };
+    })
+    .filter(o => o.value && o.value.length >= 1);
 }
 
 // ── Field splitter ────────────────────────────────────────────────────────────
@@ -1365,15 +1367,20 @@ module.exports = {
   },
 
   async autocomplete(interaction) {
-    const gameId = interaction.options.getString('game') ?? 'champion';
-    const q      = interaction.options.getFocused().trim();
+    try {
+      const gameId = interaction.options.getString('game') ?? 'champion';
+      const q      = interaction.options.getFocused().trim();
 
-    if (!POKEDEX_GAMES[gameId]) {
-      await interaction.respond([]);
-      return;
+      if (!POKEDEX_GAMES[gameId]) {
+        await interaction.respond([]);
+        return;
+      }
+
+      const choices = autocompleteForGame(gameId, q);
+      await interaction.respond(choices);
+    } catch (err) {
+      console.error('[pokedex] autocomplete error:', err);
+      try { await interaction.respond([]); } catch { /* too late */ }
     }
-
-    const choices = autocompleteForGame(gameId, q);
-    await interaction.respond(choices);
   },
 };
