@@ -396,6 +396,20 @@ function postProcess(tokens) {
       throw new SyntaxError(`語法錯誤：「${t}」必須緊接在招式名稱之後。`);
     }
 
+    // Type matchup prefix separated from type by a space: "耐 水" → "耐水", "克 水 兼 火" → "克水兼火"
+    const ALL_MATCHUP_PFX = new Set([...BEATS_PFX, ...RESISTS_PFX]);
+    if (ALL_MATCHUP_PFX.has(t) && tokens[i + 1] && resolveType(tokens[i + 1])) {
+      let combined = t + tokens[i + 1];
+      i++;
+      // absorb optional spaced 兼 + type pairs
+      while (tokens[i + 1] === '兼' && tokens[i + 2] && resolveType(tokens[i + 2])) {
+        combined += '兼' + tokens[i + 2];
+        i += 2;
+      }
+      out.push(combined);
+      continue;
+    }
+
     out.push(t);
   }
   return out;
