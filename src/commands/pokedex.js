@@ -728,15 +728,15 @@ async function buildChampionPage1(poke, lang) {
 // ── Champion page 2: move pool ────────────────────────────────────────────────
 
 const CHAMPION_TAB_LABELS = {
-  zh: { basic: '基本資料', moves: '招式學習' },
-  ja: { basic: '基本情報', moves: '覚えるわざ' },
-  en: { basic: 'Basic',   moves: 'Moves' },
+  zh: { basic: '基本資料', atk: '攻擊招式', stat: '變化招式' },
+  ja: { basic: '基本情報', atk: '攻撃わざ', stat: '変化わざ' },
+  en: { basic: 'Basic',   atk: 'Atk Moves', stat: 'Status' },
 };
 
 const CHAMPION_FOOTER = {
-  zh: { p1: '基本資料', p2: '招式學習（來源：Serebii）' },
-  ja: { p1: '基本情報', p2: '覚えるわざ（出典：Serebii）' },
-  en: { p1: 'Basic Info', p2: 'Moves (source: Serebii)' },
+  zh: { p1: '基本資料', p2: '物理／特殊招式（來源：Serebii）', p3: '變化招式（來源：Serebii）' },
+  ja: { p1: '基本情報', p2: '物理／特殊わざ（出典：Serebii）', p3: '変化わざ（出典：Serebii）' },
+  en: { p1: 'Basic Info', p2: 'Physical/Special Moves (Serebii)', p3: 'Status Moves (Serebii)' },
 };
 
 // ── Champion form helpers ─────────────────────────────────────────────────────
@@ -775,36 +775,21 @@ function buildChampionTabRow(currentTab, lang, disabled = false) {
       .setStyle(currentTab === 'basic' ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(disabled),
     new ButtonBuilder()
-      .setCustomId('champ_moves')
-      .setLabel(lbs.moves)
-      .setStyle(currentTab === 'moves' ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setCustomId('champ_atk')
+      .setLabel(lbs.atk)
+      .setStyle(currentTab === 'atk' ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(disabled),
+    new ButtonBuilder()
+      .setCustomId('champ_stat')
+      .setLabel(lbs.stat)
+      .setStyle(currentTab === 'stat' ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(disabled),
   );
 }
 
-function buildChampionPage2(poke, lang) {
-  const ft = CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh;
-  const lbs = CHAMPION_TAB_LABELS[lang] ?? CHAMPION_TAB_LABELS.zh;
-
-  const embed = new EmbedBuilder()
-    .setColor(CHAMPION_COLOR)
-    .setTitle(getChampionDisplayName(poke, lang))
-    .setFooter({ text: `${gameLabel('champion', lang)} · ${ft.p2}` });
-
-  const movesDb = loadChampionMoves();
-  const dexId   = String(poke.dex_id);
-  const moveList = movesDb[dexId];
-
-  const noMovesLabel = lang === 'zh' ? '（此寶可夢暫無招式資料）'
-                     : lang === 'ja' ? '（わざデータなし）'
-                     : '(No move data available)';
-
-  if (!moveList || moveList.length === 0) {
-    embed.addFields({ name: `⚔️ ${lbs.moves}`, value: noMovesLabel });
-    return embed;
-  }
-
-  // Group by category so every line within a section has the same prefix width
+// Shared move helpers for Champion pages
+function _groupChampionMoves(poke) {
+  const moveList = loadChampionMoves()[String(poke.dex_id)] ?? [];
   const physical = [], special = [], status = [];
   for (const enName of moveList) {
     const info = getMoveInfoByEn(enName);
@@ -812,29 +797,80 @@ function buildChampionPage2(poke, lang) {
     else if (info.category === 'special')  special.push([enName, info]);
     else                                   status.push([enName, info]);
   }
+  return { physical, special, status };
+}
 
-  function fmtMove([enName, info]) {
-    const tEm  = (info.type && info.type !== 'unknown') ? typeEmoji(info.type) : '';
-    const name = lang === 'en' ? enName
-               : lang === 'ja' ? (info.ja || enName)
-               :                 (info.zh || enName);
-    return `${tEm} **${name}**`;
+function _fmtChampionMove([enName, info], lang) {
+  const tEm  = (info.type && info.type !== 'unknown') ? typeEmoji(info.type) : '';
+  const name = lang === 'en' ? enName
+             : lang === 'ja' ? (info.ja || enName)
+             :                 (info.zh || enName);
+  return `${tEm} **${name}**`;
+}
+
+// Page 2: Physical + Special moves
+// Section headers are embedded as bold lines inside the content so overflow
+// continuation fields (named \u200b) never split between categories.
+function buildChampionPage2(poke, lang) {
+  const ft  = CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh;
+  const embed = new EmbedBuilder()
+    .setColor(CHAMPION_COLOR)
+    .setTitle(getChampionDisplayName(poke, lang))
+    .setFooter({ text: `${gameLabel('champion', lang)} · ${ft.p2}` });
+
+  const { physical, special } = _groupChampionMoves(poke);
+  const noMovesLabel = lang === 'zh' ? '（此寶可夢暫無招式資料）'
+                     : lang === 'ja' ? '（わざデータなし）'
+                     : '(No move data available)';
+
+  if (!physical.length && !special.length) {
+    embed.addFields({ name: '\u200b', value: noMovesLabel });
+    return embed;
   }
 
   const physLabel = lang === 'ja' ? 'ぶつり' : lang === 'en' ? 'Physical' : '物理';
   const specLabel = lang === 'ja' ? 'とくしゅ' : lang === 'en' ? 'Special' : '特殊';
-  const statLabel = lang === 'ja' ? '変化' : lang === 'en' ? 'Status' : '變化';
 
-  const sections = [
-    { header: `${CATEGORY_EMOJI.Physical} ${physLabel}`, count: physical.length, moves: physical },
-    { header: `${CATEGORY_EMOJI.Special} ${specLabel}`,  count: special.length,  moves: special  },
-    { header: statLabel,                                  count: status.length,   moves: status   },
-  ];
-
-  for (const { header, count, moves } of sections) {
-    if (!count) continue;
-    splitToFields(embed, `${header} (${count})`, moves.map(fmtMove));
+  // Build a unified line list so splitToFields never cuts between categories
+  const lines = [];
+  if (physical.length) {
+    lines.push(`**${CATEGORY_EMOJI.Physical} ${physLabel} (${physical.length})**`);
+    for (const m of physical) lines.push(_fmtChampionMove(m, lang));
   }
+  if (special.length) {
+    if (lines.length) lines.push(''); // visual spacer between sections
+    lines.push(`**${CATEGORY_EMOJI.Special} ${specLabel} (${special.length})**`);
+    for (const m of special) lines.push(_fmtChampionMove(m, lang));
+  }
+
+  splitToFields(embed, '\u200b', lines);
+  return embed;
+}
+
+// Page 3: Status moves
+function buildChampionPage3(poke, lang) {
+  const ft  = CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh;
+  const embed = new EmbedBuilder()
+    .setColor(CHAMPION_COLOR)
+    .setTitle(getChampionDisplayName(poke, lang))
+    .setFooter({ text: `${gameLabel('champion', lang)} · ${ft.p3}` });
+
+  const { status } = _groupChampionMoves(poke);
+  const statLabel  = lang === 'ja' ? '変化' : lang === 'en' ? 'Status' : '變化';
+  const noMovesLabel = lang === 'zh' ? '（此寶可夢暫無變化招式）'
+                     : lang === 'ja' ? '（変化わざなし）'
+                     : '(No status moves)';
+
+  if (!status.length) {
+    embed.addFields({ name: `🔵 ${statLabel}`, value: noMovesLabel });
+    return embed;
+  }
+
+  const lines = [];
+  lines.push(`**🔵 ${statLabel} (${status.length})**`);
+  for (const m of status) lines.push(_fmtChampionMove(m, lang));
+
+  splitToFields(embed, '\u200b', lines);
   return embed;
 }
 
@@ -1288,7 +1324,7 @@ module.exports = {
           embed.setFooter({ text: `${gameLabel('champion', lang)} · ${(CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh).p1}` });
           return { embeds: [embed], files: file ? [file] : [], components: buildChampionComponents(tab, p) };
         }
-        const embed = buildChampionPage2(p, lang);
+        const embed = tab === 'stat' ? buildChampionPage3(p, lang) : buildChampionPage2(p, lang);
         return { embeds: [embed], files: [], components: buildChampionComponents(tab, p) };
       }
 
@@ -1405,6 +1441,7 @@ module.exports = {
   // ── Exports for dex.js handleSelectMenu ──────────────────────────────────────
   buildChampionPage1,
   buildChampionPage2,
+  buildChampionPage3,
   buildChampionTabRow,
   buildChampionFormsRow,
   findChampionForms,

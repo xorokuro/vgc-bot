@@ -11,7 +11,7 @@ const {
   DEX_LABELS, STAT_LABELS, gameLabel,
 } = require('../utils/pokedexUtils');
 const {
-  buildChampionPage1, buildChampionPage2,
+  buildChampionPage1, buildChampionPage2, buildChampionPage3,
   buildChampionTabRow, buildChampionFormsRow,
   findChampionForms, CHAMPION_COLOR, CHAMPION_FOOTER,
   findPokemonByEn,
@@ -229,7 +229,7 @@ module.exports = {
           embed.setFooter({ text: `${gameLabel('champion', lang)} · ${(CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh).p1}` });
           return { embeds: [embed], files: file ? [file] : [], components: buildComponents(tab, p) };
         }
-        const embed = buildChampionPage2(p, lang);
+        const embed = tab === 'stat' ? buildChampionPage3(p, lang) : buildChampionPage2(p, lang);
         return { embeds: [embed], files: [], components: buildComponents(tab, p) };
       }
 
