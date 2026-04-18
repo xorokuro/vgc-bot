@@ -391,6 +391,28 @@ function postProcess(tokens) {
       continue;
     }
 
+    // Multi-word English move name: "Fake Out" → "fake-out", "High Horsepower" → "high-horsepower"
+    // Try joining current + next 1-3 tokens with hyphens (stop at operators/parens)
+    {
+      let found = false;
+      for (let look = 1; look <= 3 && !found; look++) {
+        const peek = tokens[i + look];
+        if (!peek || /^(AND|OR|NOT)$/i.test(peek) || peek === '(' || peek === ')') break;
+        const candidate = [t, ...tokens.slice(i + 1, i + 1 + look)].join('-');
+        const mv2 = resolveMove(candidate);
+        if (mv2) {
+          i += look;
+          let method = 'any';
+          const methodTok = tokens[i + 1];
+          if (methodTok && LEVELUP_KW.has(methodTok)) { method = 'levelup'; i++; }
+          else if (methodTok && TM_KW.has(methodTok)) { method = 'tm'; i++; }
+          out.push(`MOVE:${mv2.id}:${mv2.zh}:${method}`);
+          found = true;
+        }
+      }
+      if (found) continue;
+    }
+
     // Standalone learning method keywords (after non-move token — syntax error)
     if (LEVELUP_KW.has(t) || TM_KW.has(t)) {
       throw new SyntaxError(`語法錯誤：「${t}」必須緊接在招式名稱之後。`);
