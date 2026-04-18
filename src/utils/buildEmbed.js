@@ -57,6 +57,7 @@ const TYPE_EMOJI = {
 const CATEGORY_EMOJI = {
   Physical: '<:physical:1485645307654967526>',
   Special:  '<:special:1485645309538467931>',
+  Status:   '<:status_move:1494931706841534484>',
 };
 
 // Item emojis — fill in emoji IDs after uploading sprites to the dev portal

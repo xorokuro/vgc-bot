@@ -862,12 +862,12 @@ function buildChampionPage3(poke, lang) {
                      : '(No status moves)';
 
   if (!status.length) {
-    embed.addFields({ name: `🔵 ${statLabel}`, value: noMovesLabel });
+    embed.addFields({ name: `${CATEGORY_EMOJI.Status} ${statLabel}`, value: noMovesLabel });
     return embed;
   }
 
   const lines = [];
-  lines.push(`**🔵 ${statLabel} (${status.length})**`);
+  lines.push(`**${CATEGORY_EMOJI.Status} ${statLabel} (${status.length})**`);
   for (const m of status) lines.push(_fmtChampionMove(m, lang));
 
   splitToFields(embed, '\u200b', lines);
