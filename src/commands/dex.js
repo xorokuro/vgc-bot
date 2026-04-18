@@ -10,6 +10,12 @@ const {
   buildStatImage, buildDetailEmbed, getPokeDisplayName,
   DEX_LABELS, STAT_LABELS, gameLabel,
 } = require('../utils/pokedexUtils');
+const {
+  buildChampionPage1, buildChampionPage2,
+  buildChampionTabRow, buildChampionFormsRow,
+  findChampionForms, CHAMPION_COLOR, CHAMPION_FOOTER,
+  findPokemonByEn,
+} = require('./pokedex');
 
 const PAGE_SIZE = 25;
 const COLOR     = 0x3B4CCA;
@@ -202,10 +208,66 @@ module.exports = {
       return;
     }
 
+    const flags = pub ? undefined : 64;
+
+    // ── Champion: full 2-tab interactive view (same as /pokedex) ─────────────
+    if (gameId === 'champion') {
+      let currentTab  = 'basic';
+      let currentPoke = poke;
+      const allForms  = findChampionForms(poke.dex_id);
+
+      function buildComponents(tab, p, disabled = false) {
+        const rows    = [buildChampionTabRow(tab, lang, disabled)];
+        const formRow = buildChampionFormsRow(p.name_en, allForms, lang, disabled);
+        if (formRow) rows.push(formRow);
+        return rows;
+      }
+
+      async function renderTab(tab, p) {
+        if (tab === 'basic') {
+          const { embed, file } = await buildChampionPage1(p, lang);
+          embed.setFooter({ text: `${gameLabel('champion', lang)} · ${(CHAMPION_FOOTER[lang] ?? CHAMPION_FOOTER.zh).p1}` });
+          return { embeds: [embed], files: file ? [file] : [], components: buildComponents(tab, p) };
+        }
+        const embed = buildChampionPage2(p, lang);
+        return { embeds: [embed], files: [], components: buildComponents(tab, p) };
+      }
+
+      await interaction.deferReply({ flags });
+      const msg = await interaction.editReply(await renderTab('basic', currentPoke));
+
+      const collector = msg.createMessageComponentCollector({
+        filter: i => i.user.id === interaction.user.id,
+        time: 300_000,
+      });
+
+      collector.on('collect', async compInt => {
+        await compInt.deferUpdate();
+        try {
+          if (compInt.isStringSelectMenu() && compInt.customId === 'champ_form_select') {
+            const selected = allForms.find(f => f.name_en === compInt.values[0]);
+            if (selected) currentPoke = selected;
+          } else if (compInt.isButton()) {
+            currentTab = compInt.customId.replace('champ_', '');
+          }
+          await interaction.editReply(await renderTab(currentTab, currentPoke));
+        } catch (err) {
+          console.error('[dex_detail] champion component error:', err);
+        }
+      });
+
+      collector.on('end', async () => {
+        try {
+          await interaction.editReply({ components: buildComponents(currentTab, currentPoke, true) });
+        } catch { /* message deleted */ }
+      });
+      return;
+    }
+
+    // ── Other games: static basic info embed ──────────────────────────────────
     const embed = buildDetailEmbed(poke, lang, COLOR);
     const s     = poke.stats ?? {};
     const bst   = Object.values(s).reduce((a, v) => a + (v || 0), 0);
-    const flags = pub ? undefined : 64;
 
     try {
       const imgBuf = await buildStatImage(s, bst, lang);

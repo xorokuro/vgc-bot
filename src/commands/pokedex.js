@@ -821,12 +821,14 @@ function buildChampionPage2(poke, lang) {
     return `${tEm} **${name}**`;
   }
 
+  const physLabel = lang === 'ja' ? 'ぶつり' : lang === 'en' ? 'Physical' : '物理';
+  const specLabel = lang === 'ja' ? 'とくしゅ' : lang === 'en' ? 'Special' : '特殊';
   const statLabel = lang === 'ja' ? '変化' : lang === 'en' ? 'Status' : '變化';
 
   const sections = [
-    { header: CATEGORY_EMOJI.Physical, count: physical.length, moves: physical },
-    { header: CATEGORY_EMOJI.Special,  count: special.length,  moves: special  },
-    { header: statLabel,               count: status.length,   moves: status   },
+    { header: `${CATEGORY_EMOJI.Physical} ${physLabel}`, count: physical.length, moves: physical },
+    { header: `${CATEGORY_EMOJI.Special} ${specLabel}`,  count: special.length,  moves: special  },
+    { header: statLabel,                                  count: status.length,   moves: status   },
   ];
 
   for (const { header, count, moves } of sections) {
@@ -1399,4 +1401,15 @@ module.exports = {
       try { await interaction.respond([]); } catch { /* too late */ }
     }
   },
+
+  // ── Exports for dex.js handleSelectMenu ──────────────────────────────────────
+  buildChampionPage1,
+  buildChampionPage2,
+  buildChampionTabRow,
+  buildChampionFormsRow,
+  findChampionForms,
+  getChampionDisplayName,
+  CHAMPION_COLOR,
+  CHAMPION_FOOTER,
+  findPokemonByEn,
 };
