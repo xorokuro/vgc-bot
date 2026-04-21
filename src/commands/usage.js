@@ -18,8 +18,9 @@ const { translateType, translateFromZh, LANG_CHOICES } = require('../utils/i18n'
 
 // ── Static data ───────────────────────────────────────────────────────────────
 
-const zhHant   = require(path.join(__dirname, '../../data/zh-Hant.json'));
-const MOVES_DB = require(path.join(__dirname, '../../data/moves_db.json'));
+const zhHant    = require(path.join(__dirname, '../../data/zh-Hant.json'));
+const MOVES_DB  = require(path.join(__dirname, '../../data/moves_db.json'));
+const MOVES_SVD = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
 
 // Chinese type name → English type name (e.g. '妖精' → 'Fairy')
 const ZH_TO_EN_TYPE = Object.fromEntries(
@@ -38,6 +39,23 @@ function moveTypeEmoji(zhMoveName) {
   if (!entry?.type || entry.type === 'unknown') return '';
   const en = entry.type.charAt(0).toUpperCase() + entry.type.slice(1);
   return TYPE_EMOJI[en] ?? '';
+}
+
+/** Build a short move spec string for select menu descriptions, e.g. "格鬥・物理・威力120・命中100" */
+function moveSpecDesc(zhMoveName, lang) {
+  const dbEntry = MOVES_DB[zhMoveName];
+  if (!dbEntry?.name_en) return null;
+  const detail = MOVES_SVD[dbEntry.name_en.toLowerCase()];
+  if (!detail) return null;
+  const catMap = { physical: { zh: '物理', en: 'Physical', ja: '物理' },
+                   special:  { zh: '特殊', en: 'Special',  ja: '特殊' },
+                   status:   { zh: '變化', en: 'Status',   ja: '変化' } };
+  const parts = [];
+  if (detail.type)     parts.push(detail.type[lang] ?? detail.type.en);
+  if (detail.category) parts.push(catMap[dbEntry.category]?.[lang] ?? detail.category[lang] ?? detail.category.en);
+  if (detail.power && detail.power !== '—')    parts.push(lang === 'en' ? `Pow ${detail.power}` : `威力${detail.power}`);
+  if (detail.accuracy && detail.accuracy !== '—') parts.push(lang === 'en' ? `Acc ${detail.accuracy}` : `命中${detail.accuracy}`);
+  return parts.join('・').slice(0, 100) || null;
 }
 
 /** Parse '<:name:id>' or '<a:name:id>' into {id, name, animated} for Discord component emoji. */
@@ -355,10 +373,12 @@ function makeMoveSelectRow(entry, season, format, lang, game = 'sv') {
       const dbEntry = MOVES_DB[m.name];
       const enType  = dbEntry?.type ? dbEntry.type.charAt(0).toUpperCase() + dbEntry.type.slice(1) : null;
       const emoji   = enType ? parseEmojiObj(TYPE_EMOJI[enType]) : null;
-      const opt = new StringSelectMenuOptionBuilder()
+      const opt  = new StringSelectMenuOptionBuilder()
         .setLabel(`${moveName(m.name, lang)}  ${m.usage_percent}%`.slice(0, 100))
-        .setValue(m.name); // keep zh as value (used for DB lookup)
+        .setValue(m.name);
       if (emoji) opt.setEmoji(emoji);
+      const desc = moveSpecDesc(m.name, lang);
+      if (desc) opt.setDescription(desc);
       return opt;
     }));
   return new ActionRowBuilder().addComponents(menu);
