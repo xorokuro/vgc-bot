@@ -5484,13 +5484,6 @@
     "type": "dragon",
     "category": "special"
   },
-  "致命爪": {
-    "type": "poison",
-    "category": "physical",
-    "power": 80,
-    "name_en": "Dire Claw",
-    "name_zh": "致命爪"
-  },
   "刷刷茶砲": {
     "type": "grass",
     "category": "special",
@@ -5546,5 +5539,12 @@
     "power": 100,
     "name_en": "Supercell Slam",
     "name_zh": "迅雷突襲"
+  },
+  "剋命爪": {
+    "type": "poison",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Dire Claw",
+    "name_zh": "剋命爪"
   }
 }
