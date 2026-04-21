@@ -9,6 +9,7 @@ const path = require('path');
 const {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
   getChampionSeasons, getLatestChampionSeason, loadChampionData,
+  getChampRegSet,
   getSpriteUrl, findPokemon,
 } = require('../utils/usageData');
 const { TYPE_EMOJI } = require('../utils/buildEmbed');
@@ -73,7 +74,7 @@ const LBL = {
   zh: {
     doubles: '雙打', singles: '單打',
     fmt: (s, f)    => `S${s} ${f}`,
-    fmtChamp: (s, f) => `M-${s} ${f}`,
+    fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
     overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位',
     ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
     move:        '招式', teammate: '隊友',
@@ -84,7 +85,7 @@ const LBL = {
     sourceChamp:   '資料來源為 Pokémon Champions HOME 級別對戰。',
     updated:       (t) => `資料更新於: <t:${t}:R>`,
     footer:        (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
-    footerChamp:   (s, f) => `M-${s} ${f} · Pokémon Champions 使用率`,
+    footerChamp:   (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f} · Pokémon Champions 使用率`,
     rank:        (r) => `排名 #${r}`,
     moveSel:     '查詢招式詳情...',
     abilitySel:  '查詢特性詳情...',
@@ -100,7 +101,7 @@ const LBL = {
     abilityCard: (n) => `特性詳情: ${n}`,
     notFound:    '❌ 資料不存在。',
     notFoundSeason: (s, f) => `❌ 找不到賽季 ${s} 的${f}資料。`,
-    notFoundSeasonChamp: (s, f) => `❌ 找不到 Champions M-${s} 的${f}資料。`,
+    notFoundSeasonChamp: (s, f) => `❌ 找不到 Champions Reg. ${getChampRegSet(s)} · M-${s.slice(1)} 的${f}資料。`,
     notFoundPoke: (n) => `❌ 找不到「${n}」的資料。請透過自動補全選擇寶可夢。`,
     noMatchupFail: '無法查詢此屬性的相剋資訊。',
     calcFail: '計算失敗。',
@@ -108,7 +109,7 @@ const LBL = {
   en: {
     doubles: 'Doubles', singles: 'Singles',
     fmt: (s, f)    => `S${s} ${f}`,
-    fmtChamp: (s, f) => `M-${s} ${f}`,
+    fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
     overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups',
     ability:     'Ability', item: 'Held Item', nature: 'Nature', tera: 'Tera Type',
     move:        'Move', teammate: 'Teammates',
@@ -135,7 +136,7 @@ const LBL = {
     abilityCard: (n) => `Ability: ${n}`,
     notFound:    '❌ Data not found.',
     notFoundSeason: (s, f) => `❌ No data for Season ${s} ${f}.`,
-    notFoundSeasonChamp: (s, f) => `❌ No Champions M-${s} ${f} data.`,
+    notFoundSeasonChamp: (s, f) => `❌ No Champions Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${f} data.`,
     notFoundPoke: (n) => `❌ No data for "${n}". Please select via autocomplete.`,
     noMatchupFail: 'Cannot look up matchups for this type.',
     calcFail: 'Calculation failed.',
@@ -143,7 +144,7 @@ const LBL = {
   ja: {
     doubles: 'ダブル', singles: 'シングル',
     fmt: (s, f)    => `S${s} ${f}`,
-    fmtChamp: (s, f) => `M-${s} ${f}`,
+    fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
     overview:    '概要', builds: '型', moves: '技', matchups: '対面',
     ability:     '特性', item: '持ち物', nature: '性格', tera: 'テラスタイプ',
     move:        '技', teammate: '相方',
@@ -154,7 +155,7 @@ const LBL = {
     sourceChamp:   'データ出典: Pokémon Champions HOME ランクバトル。',
     updated:       (t) => `更新: <t:${t}:R>`,
     footer:        (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
-    footerChamp:   (s, f) => `M-${s} ${f} · Pokémon Champions 使用率`,
+    footerChamp:   (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f} · Pokémon Champions 使用率`,
     rank:        (r) => `ランク #${r}`,
     moveSel:     'わざの詳細を見る...',
     abilitySel:  '特性の詳細を見る...',
@@ -170,7 +171,7 @@ const LBL = {
     abilityCard: (n) => `特性: ${n}`,
     notFound:    '❌ データが存在しません。',
     notFoundSeason: (s, f) => `❌ シーズン ${s} ${f} のデータが見つかりません。`,
-    notFoundSeasonChamp: (s, f) => `❌ Champions M-${s} ${f} のデータが見つかりません。`,
+    notFoundSeasonChamp: (s, f) => `❌ Champions Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${f}のデータが見つかりません。`,
     notFoundPoke: (n) => `❌ 「${n}」のデータが見つかりません。オートコンプリートで選択してください。`,
     noMatchupFail: 'このタイプの相性を調べられません。',
     calcFail: '計算に失敗しました。',
@@ -182,7 +183,11 @@ function fmtLabel(format, lang) { return (LBL[lang] ?? LBL.zh)[format === 'singl
 function fmtTitle(season, format, lang, game) {
   const lbl = LBL[lang] ?? LBL.zh;
   const f = fmtLabel(format, lang);
-  return game === 'champ' ? lbl.fmtChamp(season, f) : lbl.fmt(season, f);
+  if (game === 'champ') {
+    const reg = getChampRegSet(season);
+    return lbl.fmtChamp(reg, season, f);
+  }
+  return lbl.fmt(season, f);
 }
 
 function fmtSource(lang, game) {
@@ -193,7 +198,11 @@ function fmtSource(lang, game) {
 function fmtFooter(season, format, lang, game) {
   const lbl = LBL[lang] ?? LBL.zh;
   const f = fmtLabel(format, lang);
-  return game === 'champ' ? lbl.footerChamp(season, f) : lbl.footer(season, f);
+  if (game === 'champ') {
+    const reg = getChampRegSet(season);
+    return lbl.footerChamp(reg, season, f);
+  }
+  return lbl.footer(season, f);
 }
 
 // ── Format helpers ────────────────────────────────────────────────────────────
@@ -580,9 +589,9 @@ module.exports = {
         const seasons     = getChampionSeasons().slice().reverse();
         const latestChamp = getLatestChampionSeason();
         const filtered    = q ? seasons.filter(s => s.startsWith(q)) : seasons;
-        const champLabel  = lang === 'en' ? s => `Season M-${s.slice(1)}${s === latestChamp ? ' (Latest)' : ''}`
-                          : lang === 'ja' ? s => `シーズン M-${s.slice(1)}${s === latestChamp ? ' (最新)' : ''}`
-                          :                 s => `賽季 M-${s.slice(1)}${s === latestChamp ? ' (最新)' : ''}`;
+        const champLabel  = lang === 'en' ? s => `Reg. ${getChampRegSet(s)} · Season M-${s.slice(1)}${s === latestChamp ? ' (Latest)' : ''}`
+                          : lang === 'ja' ? s => `Reg. ${getChampRegSet(s)} · シーズン M-${s.slice(1)}${s === latestChamp ? ' (最新)' : ''}`
+                          :                 s => `Reg. ${getChampRegSet(s)} · 賽季 M-${s.slice(1)}${s === latestChamp ? ' (最新)' : ''}`;
         await interaction.respond(filtered.slice(0, 25).map(s => ({ name: champLabel(s), value: s })));
       } else {
         const latest      = getLatestSeason();

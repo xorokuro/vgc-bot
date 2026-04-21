@@ -33,6 +33,17 @@ function getChampionSeasons() {
   return _champSeasons;
 }
 
+// Maps a champion season key (e.g. 'm1') to its Regulation Set label (e.g. 'M-A')
+// Update the boundary when a new regulation set launches.
+const CHAMP_REG_SETS = [
+  { upTo: 2, label: 'M-A' },
+  { upTo: Infinity, label: 'M-B' },
+];
+function getChampRegSet(seasonKey) {
+  const n = parseInt(seasonKey.slice(1), 10);
+  return (CHAMP_REG_SETS.find(r => n <= r.upTo) ?? CHAMP_REG_SETS.at(-1)).label;
+}
+
 function getLatestChampionSeason() {
   const s = getChampionSeasons();
   return s[s.length - 1] ?? null;
@@ -106,5 +117,6 @@ function getRankedEntries(data, maxN = 150) {
 module.exports = {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
   getChampionSeasons, getLatestChampionSeason, loadChampionData,
+  getChampRegSet,
   getSpriteUrl, findPokemon, getRankedEntries,
 };
