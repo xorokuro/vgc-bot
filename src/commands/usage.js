@@ -504,12 +504,8 @@ module.exports = {
     .setName('usage')
     .setDescription('查詢 Pokémon HOME 賽季個別寶可夢使用率數據')
     .addStringOption(o => o
-      .setName('game')
-      .setDescription('遊戲版本 / Game (預設：SV)')
-      .addChoices(...GAME_CHOICES))
-    .addStringOption(o => o
       .setName('season')
-      .setDescription('賽季 (請先選擇遊戲與賽季)')
+      .setDescription('賽季 (請先選擇賽季)')
       .setRequired(true)
       .setAutocomplete(true))
     .addStringOption(o => o
@@ -517,6 +513,10 @@ module.exports = {
       .setDescription('寶可夢名稱 (先選賽季，再搜尋寶可夢)')
       .setRequired(true)
       .setAutocomplete(true))
+    .addStringOption(o => o
+      .setName('game')
+      .setDescription('遊戲版本 / Game (預設：SV)')
+      .addChoices(...GAME_CHOICES))
     .addStringOption(o => o
       .setName('format')
       .setDescription('賽制 (預設：雙打)')
