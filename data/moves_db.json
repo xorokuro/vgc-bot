@@ -5483,5 +5483,68 @@
   "隨機光": {
     "type": "dragon",
     "category": "special"
+  },
+  "致命爪": {
+    "type": "poison",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Dire Claw",
+    "name_zh": "致命爪"
+  },
+  "刷刷茶砲": {
+    "type": "grass",
+    "category": "special",
+    "power": 80,
+    "name_en": "Matcha Gotcha",
+    "name_zh": "刷刷茶砲"
+  },
+  "寒冷笑話": {
+    "type": "ice",
+    "category": "status",
+    "power": null,
+    "name_en": "Chilly Reception",
+    "name_zh": "寒冷笑話"
+  },
+  "巨力錘": {
+    "type": "steel",
+    "category": "physical",
+    "power": 160,
+    "name_en": "Gigaton Hammer",
+    "name_zh": "巨力錘"
+  },
+  "怨恨重重": {
+    "type": "ghost",
+    "category": "special",
+    "power": 60,
+    "name_en": "Bitter Malice",
+    "name_zh": "怨恨重重"
+  },
+  "流水步": {
+    "type": "water",
+    "category": "physical",
+    "power": 80,
+    "name_en": "Aqua Step",
+    "name_zh": "流水步"
+  },
+  "群魔亂舞": {
+    "type": "ghost",
+    "category": "special",
+    "power": 60,
+    "name_en": "Infernal Parade",
+    "name_zh": "群魔亂舞"
+  },
+  "迅雷突擊": {
+    "type": "fighting",
+    "category": "physical",
+    "power": 65,
+    "name_en": "Upper Hand",
+    "name_zh": "迅雷突擊"
+  },
+  "迅雷突襲": {
+    "type": "electric",
+    "category": "physical",
+    "power": 100,
+    "name_en": "Supercell Slam",
+    "name_zh": "迅雷突襲"
   }
 }
