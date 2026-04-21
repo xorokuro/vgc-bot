@@ -590,10 +590,11 @@ module.exports = {
       return;
     }
 
-    await interaction.reply({
+    await interaction.deferReply({ flags: 64 });
+    await interaction.deleteReply();
+    await interaction.channel.send({
       embeds:     [buildOverviewEmbed(entry, season, format, data, lang, game)],
       components: buildComponents('ov', entry, season, format, lang, game),
-      flags:      64,
     });
   },
 
