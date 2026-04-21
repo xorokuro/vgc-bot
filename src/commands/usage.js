@@ -504,8 +504,13 @@ module.exports = {
     .setName('usage')
     .setDescription('查詢 Pokémon HOME 賽季個別寶可夢使用率數據')
     .addStringOption(o => o
+      .setName('game')
+      .setDescription('遊戲版本 / Game')
+      .setRequired(true)
+      .addChoices(...GAME_CHOICES))
+    .addStringOption(o => o
       .setName('season')
-      .setDescription('賽季 (請先選擇賽季)')
+      .setDescription('賽季 (請先選擇遊戲)')
       .setRequired(true)
       .setAutocomplete(true))
     .addStringOption(o => o
@@ -513,10 +518,6 @@ module.exports = {
       .setDescription('寶可夢名稱 (先選賽季，再搜尋寶可夢)')
       .setRequired(true)
       .setAutocomplete(true))
-    .addStringOption(o => o
-      .setName('game')
-      .setDescription('遊戲版本 / Game (預設：SV)')
-      .addChoices(...GAME_CHOICES))
     .addStringOption(o => o
       .setName('format')
       .setDescription('賽制 (預設：雙打)')
@@ -530,7 +531,7 @@ module.exports = {
       .addChoices(...LANG_CHOICES)),
 
   async execute(interaction) {
-    const game         = interaction.options.getString('game') ?? 'sv';
+    const game         = interaction.options.getString('game');
     const format       = interaction.options.getString('format') ?? 'doubles';
     const seasonRaw    = interaction.options.getString('season');
     const pokemonQuery = interaction.options.getString('pokemon');
@@ -568,7 +569,7 @@ module.exports = {
 
   async autocomplete(interaction) {
     const focused   = interaction.options.getFocused(true);
-    const game      = interaction.options.getString('game') ?? 'sv';
+    const game      = interaction.options.getString('game') ?? 'sv'; // fallback for autocomplete mid-type
     const format    = interaction.options.getString('format') ?? 'doubles';
     const seasonRaw = interaction.options.getString('season');
     const lang      = interaction.options.getString('lang') ?? 'zh';
