@@ -593,6 +593,7 @@ module.exports = {
     await interaction.reply({
       embeds:     [buildOverviewEmbed(entry, season, format, data, lang, game)],
       components: buildComponents('ov', entry, season, format, lang, game),
+      flags:      64,
     });
   },
 
