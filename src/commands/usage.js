@@ -8,6 +8,7 @@ const {
 const path = require('path');
 const {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
+  getChampionSeasons, getLatestChampionSeason, loadChampionData,
   getSpriteUrl, findPokemon,
 } = require('../utils/usageData');
 const { TYPE_EMOJI } = require('../utils/buildEmbed');
@@ -63,19 +64,27 @@ function teraTypeEmoji(zh) { return typeEmoji(zh); }
 
 // ── Localised labels ──────────────────────────────────────────────────────────
 
+const GAME_CHOICES = [
+  { name: '寶可夢朱/紫 (SV)', value: 'sv' },
+  { name: 'Pokémon Champions', value: 'champ' },
+];
+
 const LBL = {
   zh: {
     doubles: '雙打', singles: '單打',
-    fmt: (s, f)  => `S${s} ${f}`,
+    fmt: (s, f)    => `S${s} ${f}`,
+    fmtChamp: (s, f) => `M-${s} ${f}`,
     overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位',
     ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
     move:        '招式', teammate: '隊友',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: '致勝招式', loseMove: '致命招式',
     winsAgainst: '主要優勢對位', defeatedBy: '主要劣勢對位',
-    source:      '資料來源為 Pokémon HOME 級別對戰。',
-    updated:     (t) => `資料更新於: <t:${t}:R>`,
-    footer:      (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
+    source:        '資料來源為 Pokémon HOME 級別對戰。',
+    sourceChamp:   '資料來源為 Pokémon Champions HOME 級別對戰。',
+    updated:       (t) => `資料更新於: <t:${t}:R>`,
+    footer:        (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
+    footerChamp:   (s, f) => `M-${s} ${f} · Pokémon Champions 使用率`,
     rank:        (r) => `排名 #${r}`,
     moveSel:     '查詢招式詳情...',
     abilitySel:  '查詢特性詳情...',
@@ -91,22 +100,26 @@ const LBL = {
     abilityCard: (n) => `特性詳情: ${n}`,
     notFound:    '❌ 資料不存在。',
     notFoundSeason: (s, f) => `❌ 找不到賽季 ${s} 的${f}資料。`,
+    notFoundSeasonChamp: (s, f) => `❌ 找不到 Champions M-${s} 的${f}資料。`,
     notFoundPoke: (n) => `❌ 找不到「${n}」的資料。請透過自動補全選擇寶可夢。`,
     noMatchupFail: '無法查詢此屬性的相剋資訊。',
     calcFail: '計算失敗。',
   },
   en: {
     doubles: 'Doubles', singles: 'Singles',
-    fmt: (s, f)  => `S${s} ${f}`,
+    fmt: (s, f)    => `S${s} ${f}`,
+    fmtChamp: (s, f) => `M-${s} ${f}`,
     overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups',
     ability:     'Ability', item: 'Held Item', nature: 'Nature', tera: 'Tera Type',
     move:        'Move', teammate: 'Teammates',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: 'Win Moves', loseMove: 'Loss Moves',
     winsAgainst: 'Top Wins Against', defeatedBy: 'Top Defeated By',
-    source:      'Data source: Pokémon HOME Ranked Battles.',
-    updated:     (t) => `Updated: <t:${t}:R>`,
-    footer:      (s, f) => `S${s} ${f} · Pokémon HOME Usage`,
+    source:        'Data source: Pokémon HOME Ranked Battles.',
+    sourceChamp:   'Data source: Pokémon Champions HOME Ranked Battles.',
+    updated:       (t) => `Updated: <t:${t}:R>`,
+    footer:        (s, f) => `S${s} ${f} · Pokémon HOME Usage`,
+    footerChamp:   (s, f) => `M-${s} ${f} · Pokémon Champions Usage`,
     rank:        (r) => `Rank #${r}`,
     moveSel:     'Look up move details...',
     abilitySel:  'Look up ability details...',
@@ -122,22 +135,26 @@ const LBL = {
     abilityCard: (n) => `Ability: ${n}`,
     notFound:    '❌ Data not found.',
     notFoundSeason: (s, f) => `❌ No data for Season ${s} ${f}.`,
+    notFoundSeasonChamp: (s, f) => `❌ No Champions M-${s} ${f} data.`,
     notFoundPoke: (n) => `❌ No data for "${n}". Please select via autocomplete.`,
     noMatchupFail: 'Cannot look up matchups for this type.',
     calcFail: 'Calculation failed.',
   },
   ja: {
     doubles: 'ダブル', singles: 'シングル',
-    fmt: (s, f)  => `S${s} ${f}`,
+    fmt: (s, f)    => `S${s} ${f}`,
+    fmtChamp: (s, f) => `M-${s} ${f}`,
     overview:    '概要', builds: '型', moves: '技', matchups: '対面',
     ability:     '特性', item: '持ち物', nature: '性格', tera: 'テラスタイプ',
     move:        '技', teammate: '相方',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: '勝ち技', loseMove: '負け技',
     winsAgainst: '主な勝ち対面', defeatedBy: '主な負け対面',
-    source:      'データ出典: Pokémon HOME ランクバトル。',
-    updated:     (t) => `更新: <t:${t}:R>`,
-    footer:      (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
+    source:        'データ出典: Pokémon HOME ランクバトル。',
+    sourceChamp:   'データ出典: Pokémon Champions HOME ランクバトル。',
+    updated:       (t) => `更新: <t:${t}:R>`,
+    footer:        (s, f) => `S${s} ${f} · Pokémon HOME 使用率`,
+    footerChamp:   (s, f) => `M-${s} ${f} · Pokémon Champions 使用率`,
     rank:        (r) => `ランク #${r}`,
     moveSel:     'わざの詳細を見る...',
     abilitySel:  '特性の詳細を見る...',
@@ -153,6 +170,7 @@ const LBL = {
     abilityCard: (n) => `特性: ${n}`,
     notFound:    '❌ データが存在しません。',
     notFoundSeason: (s, f) => `❌ シーズン ${s} ${f} のデータが見つかりません。`,
+    notFoundSeasonChamp: (s, f) => `❌ Champions M-${s} ${f} のデータが見つかりません。`,
     notFoundPoke: (n) => `❌ 「${n}」のデータが見つかりません。オートコンプリートで選択してください。`,
     noMatchupFail: 'このタイプの相性を調べられません。',
     calcFail: '計算に失敗しました。',
@@ -160,6 +178,23 @@ const LBL = {
 };
 
 function fmtLabel(format, lang) { return (LBL[lang] ?? LBL.zh)[format === 'singles' ? 'singles' : 'doubles']; }
+
+function fmtTitle(season, format, lang, game) {
+  const lbl = LBL[lang] ?? LBL.zh;
+  const f = fmtLabel(format, lang);
+  return game === 'champ' ? lbl.fmtChamp(season, f) : lbl.fmt(season, f);
+}
+
+function fmtSource(lang, game) {
+  const lbl = LBL[lang] ?? LBL.zh;
+  return game === 'champ' ? lbl.sourceChamp : lbl.source;
+}
+
+function fmtFooter(season, format, lang, game) {
+  const lbl = LBL[lang] ?? LBL.zh;
+  const f = fmtLabel(format, lang);
+  return game === 'champ' ? lbl.footerChamp(season, f) : lbl.footer(season, f);
+}
 
 // ── Format helpers ────────────────────────────────────────────────────────────
 
@@ -189,52 +224,53 @@ function relativeTime(data, lang) {
   return (LBL[lang] ?? LBL.zh).updated(data.last_updated);
 }
 
-function footer(season, format, lang) {
-  return (LBL[lang] ?? LBL.zh).footer(season, fmtLabel(format, lang));
-}
-
 // ── Embed builders ────────────────────────────────────────────────────────────
 
-function buildOverviewEmbed(entry, season, format, data, lang = 'zh') {
+function buildOverviewEmbed(entry, season, format, data, lang = 'zh', game = 'sv') {
   const lbl  = LBL[lang] ?? LBL.zh;
-  const fmt  = fmtLabel(format, lang);
   const name = pokeName(entry.full_name, lang);
+  const fields = [
+    { name: `${lbl.ability} ${lbl.top3}`,  value: fmtAbilities(entry.abilities,  3, lang), inline: true },
+    { name: `${lbl.item} ${lbl.top3}`,     value: fmtItems(entry.held_items,     3, lang), inline: true },
+    { name: `${lbl.nature} ${lbl.top3}`,   value: fmtNatures(entry.natures,      3, lang), inline: true },
+  ];
+  if (game !== 'champ') {
+    fields.push({ name: `${lbl.tera} ${lbl.top3}`, value: fmtTera(entry.tera_types, 3, lang), inline: true });
+  }
+  fields.push(
+    { name: `${lbl.move} ${lbl.top3}`,     value: fmtMoves(entry.moves,          3, lang), inline: true },
+    { name: `${lbl.teammate} ${lbl.top3}`, value: fmtNameList(entry.teammates,   3, lang), inline: true },
+  );
   return new EmbedBuilder()
     .setColor(0xEE1515)
-    .setTitle(`${lbl.fmt(season, fmt)} · ${name} (${lbl.rank(entry.rank)})`)
-    .setDescription(`${lbl.source}\n${relativeTime(data, lang)}`)
+    .setTitle(`${fmtTitle(season, format, lang, game)} · ${name} (${lbl.rank(entry.rank)})`)
+    .setDescription(`${fmtSource(lang, game)}\n${relativeTime(data, lang)}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format, lang) })
-    .addFields(
-      { name: `${lbl.ability} ${lbl.top3}`,  value: fmtAbilities(entry.abilities,  3, lang), inline: true },
-      { name: `${lbl.item} ${lbl.top3}`,     value: fmtItems(entry.held_items,     3, lang), inline: true },
-      { name: `${lbl.nature} ${lbl.top3}`,   value: fmtNatures(entry.natures,      3, lang), inline: true },
-      { name: `${lbl.tera} ${lbl.top3}`,     value: fmtTera(entry.tera_types,      3, lang), inline: true },
-      { name: `${lbl.move} ${lbl.top3}`,     value: fmtMoves(entry.moves,          3, lang), inline: true },
-      { name: `${lbl.teammate} ${lbl.top3}`, value: fmtNameList(entry.teammates,   3, lang), inline: true },
-    );
+    .setFooter({ text: fmtFooter(season, format, lang, game) })
+    .addFields(...fields);
 }
 
-function buildBuildsEmbed(entry, season, format, data, lang = 'zh') {
+function buildBuildsEmbed(entry, season, format, data, lang = 'zh', game = 'sv') {
   const lbl  = LBL[lang] ?? LBL.zh;
-  const fmt  = fmtLabel(format, lang);
   const name = pokeName(entry.full_name, lang);
+  const fields = [
+    { name: `💎 ${lbl.ability}`, value: fmtFullList(entry.abilities, e => abilityName(e.name, lang)), inline: true },
+    { name: `🌿 ${lbl.nature}`,  value: fmtFullList(entry.natures,   e => natureName(e.name, lang)),  inline: true },
+  ];
+  if (game !== 'champ') {
+    fields.push({ name: `✨ ${lbl.tera}`, value: fmtFullList(entry.tera_types, e => `${teraTypeEmoji(e.name)} ${teraTypeName(e.name, lang)}`), inline: true });
+  }
+  fields.push({ name: `🎒 ${lbl.item}`, value: fmtFullList(entry.held_items, e => e.name), inline: false });
   return new EmbedBuilder()
     .setColor(0x4A90D9)
-    .setTitle(`${lbl.fmt(season, fmt)} · ${name} — ${lbl.builds}`)
+    .setTitle(`${fmtTitle(season, format, lang, game)} · ${name} — ${lbl.builds}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format, lang) })
-    .addFields(
-      { name: `💎 ${lbl.ability}`, value: fmtFullList(entry.abilities,  e => abilityName(e.name, lang)),                         inline: true },
-      { name: `🌿 ${lbl.nature}`,  value: fmtFullList(entry.natures,    e => natureName(e.name, lang)),                          inline: true },
-      { name: `✨ ${lbl.tera}`,    value: fmtFullList(entry.tera_types, e => `${teraTypeEmoji(e.name)} ${teraTypeName(e.name, lang)}`), inline: true },
-      { name: `🎒 ${lbl.item}`,    value: fmtFullList(entry.held_items, e => e.name),                                            inline: false },
-    );
+    .setFooter({ text: fmtFooter(season, format, lang, game) })
+    .addFields(...fields);
 }
 
-function buildMovesEmbed(entry, season, format, data, lang = 'zh') {
+function buildMovesEmbed(entry, season, format, data, lang = 'zh', game = 'sv') {
   const lbl  = LBL[lang] ?? LBL.zh;
-  const fmt  = fmtLabel(format, lang);
   const name = pokeName(entry.full_name, lang);
   const fmtMoveList = (arr, n) =>
     !arr?.length ? '—' :
@@ -242,32 +278,37 @@ function buildMovesEmbed(entry, season, format, data, lang = 'zh') {
       `${i + 1}. ${moveTypeEmoji(e.name)} ${moveName(e.name, lang)} **${e.usage_percent}%**`,
     ).join('\n');
 
+  const fields = [{ name: `🎯 ${lbl.move} ${lbl.top10}`, value: fmtMoveList(entry.moves, 10), inline: false }];
+  if (game !== 'champ') {
+    fields.push(
+      { name: `✅ ${lbl.winMove} ${lbl.top5}`,  value: fmtMoveList(entry.win_moves,  5), inline: true },
+      { name: `❌ ${lbl.loseMove} ${lbl.top5}`, value: fmtMoveList(entry.lose_moves, 5), inline: true },
+    );
+  }
   return new EmbedBuilder()
     .setColor(0xEE9900)
-    .setTitle(`${lbl.fmt(season, fmt)} · ${name} — ${lbl.moves}`)
+    .setTitle(`${fmtTitle(season, format, lang, game)} · ${name} — ${lbl.moves}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format, lang) })
-    .addFields(
-      { name: `🎯 ${lbl.move} ${lbl.top10}`,   value: fmtMoveList(entry.moves,     10), inline: false },
-      { name: `✅ ${lbl.winMove} ${lbl.top5}`,  value: fmtMoveList(entry.win_moves,  5), inline: true  },
-      { name: `❌ ${lbl.loseMove} ${lbl.top5}`, value: fmtMoveList(entry.lose_moves, 5), inline: true  },
-    );
+    .setFooter({ text: fmtFooter(season, format, lang, game) })
+    .addFields(...fields);
 }
 
-function buildMatchupsEmbed(entry, season, format, data, lang = 'zh') {
+function buildMatchupsEmbed(entry, season, format, data, lang = 'zh', game = 'sv') {
   const lbl  = LBL[lang] ?? LBL.zh;
-  const fmt  = fmtLabel(format, lang);
   const name = pokeName(entry.full_name, lang);
+  const fields = [{ name: `🤝 ${lbl.teammate} ${lbl.top5}`, value: fmtNameList(entry.teammates, 5, lang), inline: true }];
+  if (game !== 'champ') {
+    fields.push(
+      { name: `✅ ${lbl.winsAgainst} ${lbl.top5}`, value: fmtNameList(entry.most_wins_against, 5, lang), inline: true },
+      { name: `❌ ${lbl.defeatedBy} ${lbl.top5}`,  value: fmtNameList(entry.most_defeated_by,  5, lang), inline: true },
+    );
+  }
   return new EmbedBuilder()
     .setColor(0x57C87A)
-    .setTitle(`${lbl.fmt(season, fmt)} · ${name} — ${lbl.matchups}`)
+    .setTitle(`${fmtTitle(season, format, lang, game)} · ${name} — ${lbl.matchups}`)
     .setThumbnail(getSpriteUrl(entry))
-    .setFooter({ text: footer(season, format, lang) })
-    .addFields(
-      { name: `🤝 ${lbl.teammate} ${lbl.top5}`,          value: fmtNameList(entry.teammates,         5, lang), inline: true },
-      { name: `✅ ${lbl.winsAgainst} ${lbl.top5}`,      value: fmtNameList(entry.most_wins_against, 5, lang), inline: true },
-      { name: `❌ ${lbl.defeatedBy} ${lbl.top5}`,        value: fmtNameList(entry.most_defeated_by,  5, lang), inline: true },
-    );
+    .setFooter({ text: fmtFooter(season, format, lang, game) })
+    .addFields(...fields);
 }
 
 // ── Component builders ────────────────────────────────────────────────────────
@@ -279,11 +320,12 @@ function tabLabel(id, lang) {
   return { ov: lbl.overview, bd: lbl.builds, mv: lbl.moves, mt: lbl.matchups }[id] ?? id;
 }
 
-function makeTabRow(activeTab, season, format, pokemonName, lang) {
+function makeTabRow(activeTab, season, format, pokemonName, lang, game = 'sv') {
   const f = format === 'singles' ? 's' : 'd';
+  const g = game === 'champ' ? 'c' : 'v';
   return new ActionRowBuilder().addComponents(
     TAB_IDS.map(t => new ButtonBuilder()
-      .setCustomId(`up|${t}|${season}|${f}|${lang}|${pokemonName}`)
+      .setCustomId(`up|${t}|${season}|${f}|${lang}|${g}|${pokemonName}`)
       .setLabel(tabLabel(t, lang))
       .setStyle(t === activeTab ? ButtonStyle.Primary : ButtonStyle.Secondary)
       .setDisabled(t === activeTab),
@@ -291,13 +333,14 @@ function makeTabRow(activeTab, season, format, pokemonName, lang) {
   );
 }
 
-function makeMoveSelectRow(entry, season, format, lang) {
+function makeMoveSelectRow(entry, season, format, lang, game = 'sv') {
   const f    = format === 'singles' ? 's' : 'd';
+  const g    = game === 'champ' ? 'c' : 'v';
   const lbl  = LBL[lang] ?? LBL.zh;
   const moves = (entry.moves ?? []).slice(0, 10);
   if (!moves.length) return null;
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`up_mv_sel|${season}|${f}|${lang}|${entry.full_name}`)
+    .setCustomId(`up_mv_sel|${season}|${f}|${lang}|${g}|${entry.full_name}`)
     .setPlaceholder(lbl.moveSel)
     .addOptions(moves.map(m => {
       const dbEntry = MOVES_DB[m.name];
@@ -312,13 +355,14 @@ function makeMoveSelectRow(entry, season, format, lang) {
   return new ActionRowBuilder().addComponents(menu);
 }
 
-function makeAbilitySelectRow(entry, season, format, lang) {
+function makeAbilitySelectRow(entry, season, format, lang, game = 'sv') {
   const f         = format === 'singles' ? 's' : 'd';
+  const g         = game === 'champ' ? 'c' : 'v';
   const lbl       = LBL[lang] ?? LBL.zh;
   const abilities = (entry.abilities ?? []).slice(0, 10);
   if (!abilities.length) return null;
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`up_ab_sel|${season}|${f}|${lang}|${entry.full_name}`)
+    .setCustomId(`up_ab_sel|${season}|${f}|${lang}|${g}|${entry.full_name}`)
     .setPlaceholder(lbl.abilitySel)
     .addOptions(abilities.map(a =>
       new StringSelectMenuOptionBuilder()
@@ -328,13 +372,15 @@ function makeAbilitySelectRow(entry, season, format, lang) {
   return new ActionRowBuilder().addComponents(menu);
 }
 
-function makeTeraSelectRow(entry, season, format, lang) {
+function makeTeraSelectRow(entry, season, format, lang, game = 'sv') {
+  if (game === 'champ') return null;
   const f     = format === 'singles' ? 's' : 'd';
+  const g     = 'v';
   const lbl   = LBL[lang] ?? LBL.zh;
   const teras = (entry.tera_types ?? []).slice(0, 10);
   if (!teras.length) return null;
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`up_tr_sel|${season}|${f}|${lang}|${entry.full_name}`)
+    .setCustomId(`up_tr_sel|${season}|${f}|${lang}|${g}|${entry.full_name}`)
     .setPlaceholder(lbl.teraSel)
     .addOptions(teras.map(t => {
       const emoji = parseEmojiObj(teraTypeEmoji(t.name));
@@ -347,11 +393,11 @@ function makeTeraSelectRow(entry, season, format, lang) {
   return new ActionRowBuilder().addComponents(menu);
 }
 
-function buildComponents(activeTab, entry, season, format, lang) {
-  const rows = [makeTabRow(activeTab, season, format, entry.full_name, lang)];
-  const moveRow  = makeMoveSelectRow(entry, season, format, lang);
-  const abilRow  = makeAbilitySelectRow(entry, season, format, lang);
-  const teraRow  = makeTeraSelectRow(entry, season, format, lang);
+function buildComponents(activeTab, entry, season, format, lang, game = 'sv') {
+  const rows = [makeTabRow(activeTab, season, format, entry.full_name, lang, game)];
+  const moveRow  = makeMoveSelectRow(entry, season, format, lang, game);
+  const abilRow  = makeAbilitySelectRow(entry, season, format, lang, game);
+  const teraRow  = makeTeraSelectRow(entry, season, format, lang, game);
   if (moveRow)  rows.push(moveRow);
   if (abilRow)  rows.push(abilRow);
   if (teraRow)  rows.push(teraRow);
@@ -393,14 +439,16 @@ async function handleAbilitySelect(interaction) {
   const seasonStr  = parts[1];
   const f          = parts[2];
   const lang       = parts[3] ?? 'zh';
-  const pokemonName = parts.slice(4).join('|');
+  const g          = parts[4] ?? 'v';
+  const pokemonName = parts.slice(5).join('|');
   const lbl        = LBL[lang] ?? LBL.zh;
   const format     = f === 's' ? 'singles' : 'doubles';
-  const season     = parseInt(seasonStr, 10);
+  const game       = g === 'c' ? 'champ' : 'sv';
+  const season     = seasonStr;
   const zhAbilName = interaction.values[0];
   const dispName   = abilityName(zhAbilName, lang);
 
-  const data  = loadSeasonData(season, format);
+  const data  = game === 'champ' ? loadChampionData(season, format) : loadSeasonData(parseInt(season, 10), format);
   const entry = data ? findPokemon(data, pokemonName) : null;
   const abil  = entry?.abilities?.find(a => a.name === zhAbilName);
 
@@ -456,8 +504,12 @@ module.exports = {
     .setName('usage')
     .setDescription('查詢 Pokémon HOME 賽季個別寶可夢使用率數據')
     .addStringOption(o => o
+      .setName('game')
+      .setDescription('遊戲版本 / Game (預設：SV)')
+      .addChoices(...GAME_CHOICES))
+    .addStringOption(o => o
       .setName('season')
-      .setDescription('賽季 (請先選擇賽季)')
+      .setDescription('賽季 (請先選擇遊戲與賽季)')
       .setRequired(true)
       .setAutocomplete(true))
     .addStringOption(o => o
@@ -478,17 +530,30 @@ module.exports = {
       .addChoices(...LANG_CHOICES)),
 
   async execute(interaction) {
+    const game         = interaction.options.getString('game') ?? 'sv';
     const format       = interaction.options.getString('format') ?? 'doubles';
-    const season       = parseInt(interaction.options.getString('season'), 10);
+    const seasonRaw    = interaction.options.getString('season');
     const pokemonQuery = interaction.options.getString('pokemon');
     const lang         = interaction.options.getString('lang') ?? 'zh';
     const lbl          = LBL[lang] ?? LBL.zh;
 
-    const data = loadSeasonData(season, format);
-    if (!data) {
-      await interaction.reply({ content: lbl.notFoundSeason(season, fmtLabel(format, lang)), flags: 64 });
-      return;
+    let data, season;
+    if (game === 'champ') {
+      season = seasonRaw;
+      data   = loadChampionData(season, format);
+      if (!data) {
+        await interaction.reply({ content: lbl.notFoundSeasonChamp(season, fmtLabel(format, lang)), flags: 64 });
+        return;
+      }
+    } else {
+      season = parseInt(seasonRaw, 10);
+      data   = loadSeasonData(season, format);
+      if (!data) {
+        await interaction.reply({ content: lbl.notFoundSeason(season, fmtLabel(format, lang)), flags: 64 });
+        return;
+      }
     }
+
     const entry = pokemonQuery ? findPokemon(data, pokemonQuery) : null;
     if (!entry) {
       await interaction.reply({ content: lbl.notFoundPoke(pokemonQuery), flags: 64 });
@@ -496,37 +561,49 @@ module.exports = {
     }
 
     await interaction.reply({
-      embeds:     [buildOverviewEmbed(entry, season, format, data, lang)],
-      components: buildComponents('ov', entry, season, format, lang),
+      embeds:     [buildOverviewEmbed(entry, season, format, data, lang, game)],
+      components: buildComponents('ov', entry, season, format, lang, game),
     });
   },
 
   async autocomplete(interaction) {
     const focused   = interaction.options.getFocused(true);
+    const game      = interaction.options.getString('game') ?? 'sv';
     const format    = interaction.options.getString('format') ?? 'doubles';
-    const latest    = getLatestSeason();
     const seasonRaw = interaction.options.getString('season');
-    const season    = parseInt(seasonRaw ?? String(latest), 10);
     const lang      = interaction.options.getString('lang') ?? 'zh';
-    const lbl       = LBL[lang] ?? LBL.zh;
 
     if (focused.name === 'season') {
-      const q        = focused.value.trim();
-      const seasons  = getAvailableSeasons().slice().reverse();
-      const filtered = q ? seasons.filter(s => String(s).startsWith(q)) : seasons;
-      const seasonLabel = lang === 'en' ? s => `Season ${s}${s === latest ? ' (Latest)' : ''}`
-                        : lang === 'ja' ? s => `シーズン ${s}${s === latest ? ' (最新)' : ''}`
-                        :                 s => `賽季 ${s}${s === latest ? ' (最新)' : ''}`;
-      await interaction.respond(
-        filtered.slice(0, 25).map(s => ({ name: seasonLabel(s), value: String(s) })),
-      );
+      const q = focused.value.trim().toLowerCase();
+      if (game === 'champ') {
+        const seasons     = getChampionSeasons().slice().reverse();
+        const latestChamp = getLatestChampionSeason();
+        const filtered    = q ? seasons.filter(s => s.startsWith(q)) : seasons;
+        const champLabel  = lang === 'en' ? s => `Season M-${s.slice(1)}${s === latestChamp ? ' (Latest)' : ''}`
+                          : lang === 'ja' ? s => `シーズン M-${s.slice(1)}${s === latestChamp ? ' (最新)' : ''}`
+                          :                 s => `賽季 M-${s.slice(1)}${s === latestChamp ? ' (最新)' : ''}`;
+        await interaction.respond(filtered.slice(0, 25).map(s => ({ name: champLabel(s), value: s })));
+      } else {
+        const latest      = getLatestSeason();
+        const seasons     = getAvailableSeasons().slice().reverse();
+        const filtered    = q ? seasons.filter(s => String(s).startsWith(q)) : seasons;
+        const seasonLabel = lang === 'en' ? s => `Season ${s}${s === latest ? ' (Latest)' : ''}`
+                          : lang === 'ja' ? s => `シーズン ${s}${s === latest ? ' (最新)' : ''}`
+                          :                 s => `賽季 ${s}${s === latest ? ' (最新)' : ''}`;
+        await interaction.respond(filtered.slice(0, 25).map(s => ({ name: seasonLabel(s), value: String(s) })));
+      }
       return;
     }
 
     if (focused.name === 'pokemon') {
       if (!seasonRaw) { await interaction.respond([]); return; }
-      const q      = focused.value.toLowerCase();
-      const data   = loadSeasonData(season, format);
+      const q = focused.value.toLowerCase();
+      let data;
+      if (game === 'champ') {
+        data = loadChampionData(seasonRaw, format);
+      } else {
+        data = loadSeasonData(parseInt(seasonRaw, 10), format);
+      }
       if (!data) { await interaction.respond([]); return; }
 
       const entries = Object.values(data)
@@ -547,25 +624,28 @@ module.exports = {
   async handleButton(interaction) {
     const parts      = interaction.customId.split('|');
     const tab        = parts[1];
-    const season     = parseInt(parts[2], 10);
+    const seasonStr  = parts[2];
     const format     = parts[3] === 's' ? 'singles' : 'doubles';
     const lang       = parts[4] ?? 'zh';
-    const pokemonName = parts.slice(5).join('|');
+    const g          = parts[5] ?? 'v';
+    const pokemonName = parts.slice(6).join('|');
     const lbl        = LBL[lang] ?? LBL.zh;
+    const game       = g === 'c' ? 'champ' : 'sv';
+    const season     = game === 'champ' ? seasonStr : parseInt(seasonStr, 10);
 
-    const data  = loadSeasonData(season, format);
+    const data  = game === 'champ' ? loadChampionData(seasonStr, format) : loadSeasonData(season, format);
     const entry = data ? findPokemon(data, pokemonName) : null;
     if (!entry) { await interaction.reply({ content: lbl.notFound, flags: 64 }); return; }
 
     let embed;
-    if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data, lang);
-    else if (tab === 'mv') embed = buildMovesEmbed(entry, season, format, data, lang);
-    else if (tab === 'mt') embed = buildMatchupsEmbed(entry, season, format, data, lang);
-    else                   embed = buildOverviewEmbed(entry, season, format, data, lang);
+    if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data, lang, game);
+    else if (tab === 'mv') embed = buildMovesEmbed(entry, season, format, data, lang, game);
+    else if (tab === 'mt') embed = buildMatchupsEmbed(entry, season, format, data, lang, game);
+    else                   embed = buildOverviewEmbed(entry, season, format, data, lang, game);
 
     await interaction.update({
       embeds:     [embed],
-      components: buildComponents(tab, entry, season, format, lang),
+      components: buildComponents(tab, entry, season, format, lang, game),
     });
   },
 

@@ -5,7 +5,8 @@ const fs   = require('fs');
 
 const DATA_DIR = path.join(__dirname, '../../data');
 
-let _seasons = null;
+let _seasons     = null;
+let _champSeasons = null;
 const _cache = new Map();
 
 function getAvailableSeasons() {
@@ -22,10 +23,38 @@ function getLatestSeason() {
   return s[s.length - 1] ?? null;
 }
 
+// Returns champion season keys like ['m1', 'm2'] sorted by number
+function getChampionSeasons() {
+  if (_champSeasons) return _champSeasons;
+  _champSeasons = fs.readdirSync(DATA_DIR)
+    .filter(d => /^champ_m\d+$/.test(d))
+    .map(d => d.slice(6)) // 'm1', 'm2', ...
+    .sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1)));
+  return _champSeasons;
+}
+
+function getLatestChampionSeason() {
+  const s = getChampionSeasons();
+  return s[s.length - 1] ?? null;
+}
+
 function loadSeasonData(season, format) {
   const key = `${season}_${format}`;
   if (_cache.has(key)) return _cache.get(key);
   const file = path.join(DATA_DIR, `season_${season}`, `${format}.json`);
+  try {
+    const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+    _cache.set(key, data);
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+function loadChampionData(season, format) {
+  const key = `champ_${season}_${format}`;
+  if (_cache.has(key)) return _cache.get(key);
+  const file = path.join(DATA_DIR, `champ_${season}`, `${format}.json`);
   try {
     const data = JSON.parse(fs.readFileSync(file, 'utf8'));
     _cache.set(key, data);
@@ -41,7 +70,8 @@ function getSpriteUrl(entry) {
 }
 
 function refreshCache() {
-  _seasons = null;
+  _seasons      = null;
+  _champSeasons = null;
   _cache.clear();
 }
 
@@ -73,4 +103,8 @@ function getRankedEntries(data, maxN = 150) {
     .slice(0, maxN);
 }
 
-module.exports = { getAvailableSeasons, getLatestSeason, loadSeasonData, getSpriteUrl, findPokemon, getRankedEntries };
+module.exports = {
+  getAvailableSeasons, getLatestSeason, loadSeasonData,
+  getChampionSeasons, getLatestChampionSeason, loadChampionData,
+  getSpriteUrl, findPokemon, getRankedEntries,
+};
