@@ -1279,7 +1279,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "35.2"
+        "usage_percent": "55.2"
       },
       {
         "name": "膽小",
@@ -1484,7 +1484,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "15.0"
+        "usage_percent": "75.0"
       },
       {
         "name": "內斂",
@@ -3108,7 +3108,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "38.0"
+        "usage_percent": "58.0"
       },
       {
         "name": "內斂",
@@ -3911,7 +3911,7 @@
     "natures": [
       {
         "name": "淘氣",
-        "usage_percent": "34.7"
+        "usage_percent": "54.7"
       },
       {
         "name": "固執",
@@ -4500,7 +4500,7 @@
     "abilities": [
       {
         "name": "複製",
-        "usage_percent": "35.2"
+        "usage_percent": "55.2"
       },
       {
         "name": "心靈感應",
@@ -4556,7 +4556,7 @@
     "held_items": [
       {
         "name": "沙奈朵進化石",
-        "usage_percent": "19.8"
+        "usage_percent": "79.8"
       },
       {
         "name": "講究圍巾",
@@ -5728,7 +5728,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "17.3"
+        "usage_percent": "77.3"
       },
       {
         "name": "冷靜",
@@ -7752,7 +7752,7 @@
     "abilities": [
       {
         "name": "鐵拳",
-        "usage_percent": "15.9"
+        "usage_percent": "75.9"
       },
       {
         "name": "無防守",
@@ -7766,7 +7766,7 @@
     "natures": [
       {
         "name": "勇敢",
-        "usage_percent": "36.0"
+        "usage_percent": "56.0"
       },
       {
         "name": "固執",
@@ -8013,7 +8013,7 @@
     "held_items": [
       {
         "name": "文柚果",
-        "usage_percent": "36.2"
+        "usage_percent": "56.2"
       },
       {
         "name": "吃剩的東西",
@@ -8168,7 +8168,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "38.7"
+        "usage_percent": "58.7"
       },
       {
         "name": "膽小",
@@ -10244,7 +10244,7 @@
     "held_items": [
       {
         "name": "心靈香草",
-        "usage_percent": "32.5"
+        "usage_percent": "52.5"
       },
       {
         "name": "文柚果",
@@ -11052,7 +11052,7 @@
     "held_items": [
       {
         "name": "文柚果",
-        "usage_percent": "19.8"
+        "usage_percent": "79.8"
       },
       {
         "name": "吃剩的東西",
@@ -11411,7 +11411,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "13.0"
+        "usage_percent": "73.0"
       },
       {
         "name": "冷靜",
@@ -11821,7 +11821,7 @@
     "natures": [
       {
         "name": "爽朗",
-        "usage_percent": "19.9"
+        "usage_percent": "79.9"
       },
       {
         "name": "固執",
@@ -12227,7 +12227,7 @@
     "natures": [
       {
         "name": "勇敢",
-        "usage_percent": "33.2"
+        "usage_percent": "53.2"
       },
       {
         "name": "固執",
@@ -12820,7 +12820,7 @@
     "abilities": [
       {
         "name": "我行我素",
-        "usage_percent": "33.2"
+        "usage_percent": "53.2"
       },
       {
         "name": "破格",
@@ -14060,7 +14060,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "13.8"
+        "usage_percent": "73.8"
       },
       {
         "name": "勇敢",
@@ -15320,7 +15320,7 @@
     "held_items": [
       {
         "name": "摔角鷹人進化石",
-        "usage_percent": "17.3"
+        "usage_percent": "77.3"
       },
       {
         "name": "白色香草",
@@ -15674,7 +15674,7 @@
     "abilities": [
       {
         "name": "再生力",
-        "usage_percent": "39.5"
+        "usage_percent": "59.5"
       },
       {
         "name": "遲鈍",
@@ -17103,7 +17103,7 @@
     "natures": [
       {
         "name": "冷靜",
-        "usage_percent": "38.5"
+        "usage_percent": "58.5"
       },
       {
         "name": "內斂",
@@ -17509,7 +17509,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "15.9"
+        "usage_percent": "75.9"
       },
       {
         "name": "內斂",
@@ -18120,7 +18120,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "17.4"
+        "usage_percent": "77.4"
       },
       {
         "name": "冷靜",
@@ -18325,7 +18325,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "37.1"
+        "usage_percent": "57.1"
       },
       {
         "name": "內斂",
@@ -18367,7 +18367,7 @@
     "held_items": [
       {
         "name": "講究圍巾",
-        "usage_percent": "39.9"
+        "usage_percent": "59.9"
       },
       {
         "name": "不融冰",
@@ -18936,7 +18936,7 @@
     "natures": [
       {
         "name": "淘氣",
-        "usage_percent": "29.7"
+        "usage_percent": "49.7"
       },
       {
         "name": "慎重",
@@ -20136,7 +20136,7 @@
     "abilities": [
       {
         "name": "持久力",
-        "usage_percent": "38.7"
+        "usage_percent": "58.7"
       },
       {
         "name": "精神力",
@@ -21368,7 +21368,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "17.3"
+        "usage_percent": "77.3"
       },
       {
         "name": "內斂",
@@ -21569,7 +21569,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "39.9"
+        "usage_percent": "59.9"
       },
       {
         "name": "爽朗",
@@ -21935,7 +21935,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "15.8"
+        "usage_percent": "35.8"
       },
       {
         "name": "爽朗",
@@ -22341,7 +22341,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "33.9"
+        "usage_percent": "53.9"
       },
       {
         "name": "爽朗",
@@ -22546,7 +22546,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "39.2"
+        "usage_percent": "59.2"
       },
       {
         "name": "勇敢",
@@ -23947,7 +23947,7 @@
     "abilities": [
       {
         "name": "蟲之預感",
-        "usage_percent": "32.0"
+        "usage_percent": "52.0"
       },
       {
         "name": "狙擊手",
@@ -24397,7 +24397,7 @@
     "held_items": [
       {
         "name": "吃剩的東西",
-        "usage_percent": "34.5"
+        "usage_percent": "54.5"
       },
       {
         "name": "文柚果",
@@ -24757,7 +24757,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "31.5"
+        "usage_percent": "51.5"
       },
       {
         "name": "勇敢",
@@ -25149,7 +25149,7 @@
     "abilities": [
       {
         "name": "除障",
-        "usage_percent": "34.4"
+        "usage_percent": "54.4"
       },
       {
         "name": "冰凍之軀",
@@ -25770,7 +25770,7 @@
     "natures": [
       {
         "name": "爽朗",
-        "usage_percent": "37.2"
+        "usage_percent": "57.2"
       },
       {
         "name": "固執",
@@ -26371,7 +26371,7 @@
     "abilities": [
       {
         "name": "腐蝕",
-        "usage_percent": "38.9"
+        "usage_percent": "58.9"
       },
       {
         "name": "遲鈍",
@@ -26787,7 +26787,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "38.5"
+        "usage_percent": "58.5"
       },
       {
         "name": "爽朗",
@@ -27183,7 +27183,7 @@
     "abilities": [
       {
         "name": "撥雪",
-        "usage_percent": "36.2"
+        "usage_percent": "56.2"
       },
       {
         "name": "悠游自如",
@@ -27197,7 +27197,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "38.4"
+        "usage_percent": "58.4"
       },
       {
         "name": "爽朗",
@@ -29231,7 +29231,7 @@
     "natures": [
       {
         "name": "勇敢",
-        "usage_percent": "38.5"
+        "usage_percent": "58.5"
       },
       {
         "name": "固執",
@@ -29629,7 +29629,7 @@
     "natures": [
       {
         "name": "爽朗",
-        "usage_percent": "30.2"
+        "usage_percent": "50.2"
       },
       {
         "name": "固執",
@@ -30640,7 +30640,7 @@
     "abilities": [
       {
         "name": "結實",
-        "usage_percent": "37.4"
+        "usage_percent": "57.4"
       },
       {
         "name": "隔音",
@@ -31243,7 +31243,7 @@
     "abilities": [
       {
         "name": "電氣引擎",
-        "usage_percent": "15.4"
+        "usage_percent": "75.4"
       },
       {
         "name": "靜電",
@@ -31253,7 +31253,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "34.4"
+        "usage_percent": "54.4"
       },
       {
         "name": "爽朗",
@@ -33462,7 +33462,7 @@
     "abilities": [
       {
         "name": "引爆",
-        "usage_percent": "33.2"
+        "usage_percent": "53.2"
       },
       {
         "name": "惡臭",
@@ -34471,7 +34471,7 @@
     "abilities": [
       {
         "name": "發光",
-        "usage_percent": "34.4"
+        "usage_percent": "54.4"
       },
       {
         "name": "分析",
@@ -34682,7 +34682,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "33.0"
+        "usage_percent": "53.0"
       },
       {
         "name": "膽小",
@@ -34887,7 +34887,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "33.2"
+        "usage_percent": "53.2"
       },
       {
         "name": "爽朗",
@@ -35703,7 +35703,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "36.0"
+        "usage_percent": "56.0"
       },
       {
         "name": "爽朗",
@@ -36716,7 +36716,7 @@
     "natures": [
       {
         "name": "膽小",
-        "usage_percent": "33.4"
+        "usage_percent": "53.4"
       },
       {
         "name": "內斂",
@@ -36917,7 +36917,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "35.0"
+        "usage_percent": "55.0"
       },
       {
         "name": "勇敢",
@@ -37122,7 +37122,7 @@
     "natures": [
       {
         "name": "勇敢",
-        "usage_percent": "30.2"
+        "usage_percent": "50.2"
       },
       {
         "name": "固執",
@@ -37725,7 +37725,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "35.5"
+        "usage_percent": "55.5"
       },
       {
         "name": "膽小",
@@ -37964,7 +37964,7 @@
     "held_items": [
       {
         "name": "講究圍巾",
-        "usage_percent": "32.2"
+        "usage_percent": "52.2"
       },
       {
         "name": "不融冰",
@@ -38119,7 +38119,7 @@
     "natures": [
       {
         "name": "內斂",
-        "usage_percent": "32.5"
+        "usage_percent": "52.5"
       },
       {
         "name": "膽小",
@@ -38760,7 +38760,7 @@
     "held_items": [
       {
         "name": "講究圍巾",
-        "usage_percent": "31.5"
+        "usage_percent": "51.5"
       },
       {
         "name": "神秘水滴",
@@ -39576,7 +39576,7 @@
     "held_items": [
       {
         "name": "講究圍巾",
-        "usage_percent": "32.9"
+        "usage_percent": "52.9"
       },
       {
         "name": "木炭",
@@ -39731,7 +39731,7 @@
     "natures": [
       {
         "name": "爽朗",
-        "usage_percent": "31.2"
+        "usage_percent": "51.2"
       },
       {
         "name": "固執",
@@ -40539,7 +40539,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "37.4"
+        "usage_percent": "57.4"
       },
       {
         "name": "爽朗",
@@ -40730,7 +40730,7 @@
     "abilities": [
       {
         "name": "威嚇",
-        "usage_percent": "36.5"
+        "usage_percent": "56.5"
       },
       {
         "name": "憤怒穴位",
@@ -40744,7 +40744,7 @@
     "natures": [
       {
         "name": "爽朗",
-        "usage_percent": "31.5"
+        "usage_percent": "51.5"
       },
       {
         "name": "固執",
@@ -41389,7 +41389,7 @@
     "held_items": [
       {
         "name": "超能妙喵進化石",
-        "usage_percent": "17.8"
+        "usage_percent": "77.8"
       },
       {
         "name": "氣勢披帶",
@@ -41745,7 +41745,7 @@
     "natures": [
       {
         "name": "固執",
-        "usage_percent": "37.5"
+        "usage_percent": "57.5"
       },
       {
         "name": "爽朗",
@@ -42547,7 +42547,7 @@
     "abilities": [
       {
         "name": "察覺",
-        "usage_percent": "33.2"
+        "usage_percent": "53.2"
       },
       {
         "name": "不眠",
@@ -42766,7 +42766,7 @@
     "natures": [
       {
         "name": "爽朗",
-        "usage_percent": "31.2"
+        "usage_percent": "51.2"
       },
       {
         "name": "固執",
