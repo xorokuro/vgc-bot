@@ -276,8 +276,7 @@ module.exports = {
       const list = zhMoves.map(zh => {
         const en  = translateFromZh(zh, 'move', 'en');
         const ja  = translateFromZh(zh, 'move', 'ja');
-        const emo = moveTypeEmoji(zh);
-        const label = `${emo ? emo + ' ' : ''}${en !== zh ? en + ' / ' : ''}${zh}`.slice(0, 100);
+        const label = (en !== zh ? `${en} / ${zh}` : zh).slice(0, 100);
         return { label, value: zh, searchKey: `${zh} ${en.toLowerCase()} ${ja.toLowerCase()}` };
       });
 
