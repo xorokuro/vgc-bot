@@ -143,7 +143,8 @@ function buildEmbed(zhMove, results, season, format, lang, game) {
     const pos  = String(i + 1).padStart(2, ' ');
     const poke = pokeName(entry.full_name, lang);
     const tier = entry.rank ? ` [#${entry.rank}]` : '';
-    lines.push(`\`${pos}.\` ${poke}${tier} — **${moveUsage.toFixed(1)}%**`);
+    const star = entry.rank && entry.rank <= 50 ? '★ ' : '';
+    lines.push(`\`${pos}.\` ${star}${poke}${tier} — **${moveUsage.toFixed(1)}%**`);
   }
   if (results.length > MAX_SHOWN) {
     lines.push(`*…and ${results.length - MAX_SHOWN} more*`);
