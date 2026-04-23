@@ -1,6 +1,9 @@
 'use strict';
 
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const {
+  SlashCommandBuilder, EmbedBuilder,
+  ActionRowBuilder, ButtonBuilder, ButtonStyle,
+} = require('discord.js');
 const path = require('path');
 const {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
@@ -12,16 +15,13 @@ const { translateFromZh, LANG_CHOICES } = require('../utils/i18n');
 
 const MOVES_DB  = require(path.join(__dirname, '../../data/moves_db.json'));
 const MOVES_SVD = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
-const zhHant    = require(path.join(__dirname, '../../data/zh-Hant.json'));
-
-const ZH_TO_EN_TYPE = Object.fromEntries(
-  Object.entries(zhHant.types).map(([en, zh]) => [zh, en]),
-);
 
 const GAME_CHOICES = [
   { name: '寶可夢朱/紫 (SV)', value: 'sv' },
   { name: 'Pokémon Champions', value: 'champ' },
 ];
+
+const MAX_SHOWN = 20;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -65,11 +65,12 @@ const LBL = {
     notFound:           (n) => `❌ 找不到招式「${n}」。請透過自動補全選擇。`,
     notFoundSeason:     (s, f) => `❌ 找不到賽季 ${s} 的${f}資料。`,
     notFoundSeasonChamp:(s) => `❌ 找不到 Champions M-${s.slice(1)} 的資料。`,
-    footer:             (s, f, count, game) => {
+    footer:             (s, f, count, game, page, totalPages) => {
       const fmt = fmtLabel(f, 'zh');
+      const pg  = totalPages > 1 ? ` · 第 ${page + 1}/${totalPages} 頁` : '';
       return game === 'champ'
-        ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 隻寶可夢使用此招式`
-        : `S${s} ${fmt} · ${count} 隻寶可夢使用此招式`;
+        ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 隻寶可夢使用此招式${pg}`
+        : `S${s} ${fmt} · ${count} 隻寶可夢使用此招式${pg}`;
     },
   },
   en: {
@@ -77,11 +78,12 @@ const LBL = {
     notFound:           (n) => `❌ Move "${n}" not found. Please select via autocomplete.`,
     notFoundSeason:     (s, f) => `❌ No data for Season ${s} ${f}.`,
     notFoundSeasonChamp:(s) => `❌ No Champions M-${s.slice(1)} data.`,
-    footer:             (s, f, count, game) => {
+    footer:             (s, f, count, game, page, totalPages) => {
       const fmt = fmtLabel(f, 'en');
+      const pg  = totalPages > 1 ? ` · Page ${page + 1}/${totalPages}` : '';
       return game === 'champ'
-        ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} Pokémon use this move`
-        : `S${s} ${fmt} · ${count} Pokémon use this move`;
+        ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} Pokémon use this move${pg}`
+        : `S${s} ${fmt} · ${count} Pokémon use this move${pg}`;
     },
   },
   ja: {
@@ -89,11 +91,12 @@ const LBL = {
     notFound:           (n) => `❌ 「${n}」が見つかりません。オートコンプリートで選択してください。`,
     notFoundSeason:     (s, f) => `❌ シーズン ${s} ${f} のデータが見つかりません。`,
     notFoundSeasonChamp:(s) => `❌ Champions M-${s.slice(1)} のデータが見つかりません。`,
-    footer:             (s, f, count, game) => {
+    footer:             (s, f, count, game, page, totalPages) => {
       const fmt = fmtLabel(f, 'ja');
+      const pg  = totalPages > 1 ? ` · ${page + 1}/${totalPages} ページ` : '';
       return game === 'champ'
-        ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 匹がこのわざを使用`
-        : `S${s} ${fmt} · ${count} 匹がこのわざを使用`;
+        ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 匹がこのわざを使用${pg}`
+        : `S${s} ${fmt} · ${count} 匹がこのわざを使用${pg}`;
     },
   },
 };
@@ -122,39 +125,61 @@ function getMovesFromData(data) {
   return [...seen];
 }
 
-// ── Embed ─────────────────────────────────────────────────────────────────────
+// ── Embed + components ────────────────────────────────────────────────────────
 
-const MAX_SHOWN = 20;
-
-function buildEmbed(zhMove, results, season, format, lang, game) {
-  const lbl   = LBL[lang] ?? LBL.zh;
-  const emoji = moveTypeEmoji(zhMove);
-  const mName = moveName(zhMove, lang);
-  const spec  = getMoveSpec(zhMove, lang);
+function buildEmbed(zhMove, results, season, format, lang, game, page) {
+  const lbl        = LBL[lang] ?? LBL.zh;
+  const emoji      = moveTypeEmoji(zhMove);
+  const mName      = moveName(zhMove, lang);
+  const spec       = getMoveSpec(zhMove, lang);
+  const totalPages = Math.ceil(results.length / MAX_SHOWN);
+  const start      = page * MAX_SHOWN;
 
   const title = `${emoji ? emoji + ' ' : ''}${mName}`.slice(0, 256);
 
   const lines = [];
-  if (spec) lines.push(spec, '');
+  if (spec && page === 0) lines.push(spec, '');
 
-  const shown = results.slice(0, MAX_SHOWN);
+  const shown = results.slice(start, start + MAX_SHOWN);
   for (let i = 0; i < shown.length; i++) {
     const { entry, moveUsage } = shown[i];
-    const pos  = String(i + 1).padStart(2, ' ');
+    const pos  = String(start + i + 1).padStart(3, ' ');
     const poke = pokeName(entry.full_name, lang);
     const tier = entry.rank ? ` [#${entry.rank}]` : '';
     const star = entry.rank && entry.rank <= 50 ? '★ ' : '';
     lines.push(`\`${pos}.\` ${star}${poke}${tier} — **${moveUsage.toFixed(1)}%**`);
   }
-  if (results.length > MAX_SHOWN) {
-    lines.push(`*…and ${results.length - MAX_SHOWN} more*`);
-  }
 
   return new EmbedBuilder()
     .setTitle(title)
     .setDescription(lines.join('\n'))
-    .setFooter({ text: lbl.footer(season, format, results.length, game) })
+    .setFooter({ text: lbl.footer(season, format, results.length, game, page, totalPages) })
     .setColor(0x4f86c6);
+}
+
+function buildComponents(page, totalPages, season, format, lang, game, zhMove) {
+  if (totalPages <= 1) return [];
+  const fmt  = format === 'singles' ? 's' : 'd';
+  const g    = game === 'champ' ? 'c' : 'v';
+  const base = `ms_page|PAGE|${season}|${fmt}|${lang}|${g}|${zhMove}`;
+
+  return [new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setCustomId(base.replace('PAGE', page - 1))
+      .setLabel('◀')
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(page === 0),
+    new ButtonBuilder()
+      .setCustomId('ms_noop')
+      .setLabel(`${page + 1} / ${totalPages}`)
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(true),
+    new ButtonBuilder()
+      .setCustomId(base.replace('PAGE', page + 1))
+      .setLabel('▶')
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(page >= totalPages - 1),
+  )];
 }
 
 // ── Command ───────────────────────────────────────────────────────────────────
@@ -221,10 +246,37 @@ module.exports = {
       return;
     }
 
+    const totalPages = Math.ceil(results.length / MAX_SHOWN);
     await interaction.deferReply({ flags: 64 });
     await interaction.deleteReply();
     await interaction.channel.send({
-      embeds: [buildEmbed(zhMove, results, season, format, lang, game)],
+      embeds:     [buildEmbed(zhMove, results, season, format, lang, game, 0)],
+      components: buildComponents(0, totalPages, season, format, lang, game, zhMove),
+    });
+  },
+
+  async handleButton(interaction) {
+    const parts  = interaction.customId.split('|');
+    const page   = parseInt(parts[1], 10);
+    const season = parts[2];
+    const format = parts[3] === 's' ? 'singles' : 'doubles';
+    const lang   = parts[4];
+    const game   = parts[5] === 'c' ? 'champ' : 'sv';
+    const zhMove = parts.slice(6).join('|');
+
+    const data = game === 'champ'
+      ? loadChampionData(season, format)
+      : loadSeasonData(parseInt(season, 10), format);
+
+    if (!data) { await interaction.reply({ content: '❌', flags: 64 }); return; }
+
+    const results    = findPokemonByMove(data, zhMove);
+    const totalPages = Math.ceil(results.length / MAX_SHOWN);
+    const safePage   = Math.max(0, Math.min(page, totalPages - 1));
+
+    await interaction.update({
+      embeds:     [buildEmbed(zhMove, results, game === 'champ' ? season : parseInt(season, 10), format, lang, game, safePage)],
+      components: buildComponents(safePage, totalPages, game === 'champ' ? season : parseInt(season, 10), format, lang, game, zhMove),
     });
   },
 
@@ -264,7 +316,6 @@ module.exports = {
     if (focused.name === 'move') {
       const q = focused.value.toLowerCase();
 
-      // Prefer moves that actually appear in the chosen season data
       let zhMoves;
       if (seasonRaw) {
         const d = game === 'champ'

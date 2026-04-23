@@ -204,6 +204,12 @@ client.on(Events.InteractionCreate, async interaction => {
     return;
   }
 
+  // ── Button: Move search pagination ───────────────────────────────────────────
+  if (interaction.isButton() && interaction.customId.startsWith('ms_page|')) {
+    await movesearchCommand.handleButton(interaction).catch(e => { console.error('[ms_page]', e); });
+    return;
+  }
+
   // ── Select menu: HOME usage detail dropdowns ──────────────────────────────────
   if (interaction.isStringSelectMenu() && /^up_(mv|ab|tr)_sel\|/.test(interaction.customId)) {
     await usageCommand.handleSelectMenu(interaction).catch(e => { console.error('[up_sel]', e); });
