@@ -326,8 +326,12 @@ module.exports = {
       if (!zhMoves) zhMoves = Object.keys(MOVES_DB);
 
       const list = zhMoves.map(zh => {
-        const en  = translateFromZh(zh, 'move', 'en');
-        const ja  = translateFromZh(zh, 'move', 'ja');
+        let en = translateFromZh(zh, 'move', 'en');
+        let ja = translateFromZh(zh, 'move', 'ja');
+        // Fallback: some game-data zh names differ from the official Traditional Chinese,
+        // so the reverse map has no hit — use moves_db English name instead.
+        if (en === zh && MOVES_DB[zh]?.name_en) en = MOVES_DB[zh].name_en;
+        if (ja === zh && MOVES_DB[zh]?.name_en) ja = MOVES_DB[zh].name_en;
         const label = (en !== zh ? `${en} / ${zh}` : zh).slice(0, 100);
         return { label, value: zh, searchKey: `${zh} ${en.toLowerCase()} ${ja.toLowerCase()}` };
       });
