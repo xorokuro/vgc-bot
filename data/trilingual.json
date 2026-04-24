@@ -8406,7 +8406,7 @@
       "en": "Conversion 2",
       "ja": "テクスチャー２",
       "ja_hrkt": "",
-      "zh": "紋理2",
+      "zh": "紋理２",
       "zh_src": "local"
     },
     "177": {
@@ -12403,7 +12403,7 @@
       "en": "Stuff Cheeks",
       "ja": "ほおばる",
       "ja_hrkt": "",
-      "zh": "大口吞",
+      "zh": "大快朵頤",
       "zh_src": "local"
     },
     "748": {
@@ -12998,14 +12998,14 @@
       "en": "Aqua Step",
       "ja": "アクアステップ",
       "ja_hrkt": "",
-      "zh": "流水步",
+      "zh": "流水旋舞",
       "zh_src": "part_sv"
     },
     "sv_collision_course": {
       "en": "Collision Course",
       "ja": "アクセルブレイク",
       "ja_hrkt": "",
-      "zh": "全開猛撲",
+      "zh": "全開猛撞",
       "zh_src": "part_sv"
     },
     "sv_order_up": {
@@ -13040,7 +13040,7 @@
       "en": "Bitter Malice",
       "ja": "うらみつらみ",
       "ja_hrkt": "",
-      "zh": "怨恨重重",
+      "zh": "冤冤相報",
       "zh_src": "part_sv"
     },
     "sv_electro_shot": {
@@ -13075,7 +13075,7 @@
       "en": "Burning Bulwark",
       "ja": "かえんのまもり",
       "ja_hrkt": "",
-      "zh": "火焰防守",
+      "zh": "火焰守護",
       "zh_src": "part_sv"
     },
     "sv_axe_kick": {
@@ -13187,14 +13187,14 @@
       "en": "Chilly Reception",
       "ja": "さむいギャグ",
       "ja_hrkt": "",
-      "zh": "寒冷笑話",
+      "zh": "冷笑話",
       "zh_src": "part_sv"
     },
     "sv_supercell_slam": {
       "en": "Supercell Slam",
       "ja": "サンダーダイブ",
       "ja_hrkt": "",
-      "zh": "迅雷突襲",
+      "zh": "閃電強襲",
       "zh_src": "part_sv"
     },
     "sv_salt_cure": {
@@ -13215,7 +13215,7 @@
       "en": "Matcha Gotcha",
       "ja": "シャカシャカほう",
       "ja_hrkt": "",
-      "zh": "刷刷茶砲",
+      "zh": "刷刷茶炮",
       "zh_src": "part_sv"
     },
     "sv_victory_dance": {
@@ -13229,7 +13229,7 @@
       "en": "Mystical Power",
       "ja": "しんぴのちから",
       "ja_hrkt": "",
-      "zh": "神秘力量",
+      "zh": "神秘之力",
       "zh_src": "part_sv"
     },
     "sv_jet_punch": {
@@ -13327,7 +13327,7 @@
       "en": "Pounce",
       "ja": "とびつく",
       "ja_hrkt": "",
-      "zh": "飛撲",
+      "zh": "蟲撲",
       "zh_src": "part_sv"
     },
     "sv_flower_trick": {
@@ -13404,7 +13404,7 @@
       "en": "Upper Hand",
       "ja": "はやてがえし",
       "ja_hrkt": "",
-      "zh": "迅雷突擊",
+      "zh": "快手還擊",
       "zh_src": "part_sv"
     },
     "sv_springtide_storm": {
@@ -13425,14 +13425,14 @@
       "en": "Power Shift",
       "ja": "パワーシフト",
       "ja_hrkt": "",
-      "zh": "力量轉移",
+      "zh": "力量轉換",
       "zh_src": "part_sv"
     },
     "sv_mighty_cleave": {
       "en": "Mighty Cleave",
       "ja": "パワフルエッジ",
       "ja_hrkt": "",
-      "zh": "強力劈",
+      "zh": "強刃攻擊",
       "zh_src": "part_sv"
     },
     "sv_ceaseless_edge": {
@@ -13516,7 +13516,7 @@
       "en": "Comeuppance",
       "ja": "ほうふく",
       "ja_hrkt": "",
-      "zh": "報復",
+      "zh": "復仇",
       "zh_src": "part_sv"
     },
     "sv_lunar_blessing": {
@@ -13537,14 +13537,14 @@
       "en": "Alluring Voice",
       "ja": "みわくのボイス",
       "ja_hrkt": "",
-      "zh": "魅惑之聲",
+      "zh": "魅誘之聲",
       "zh_src": "part_sv"
     },
     "sv_fillet_away": {
       "en": "Fillet Away",
       "ja": "みをけずる",
       "ja_hrkt": "",
-      "zh": "破殼",
+      "zh": "甩肉",
       "zh_src": "part_sv"
     },
     "sv_bitter_blade": {

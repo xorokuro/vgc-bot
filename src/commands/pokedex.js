@@ -209,6 +209,7 @@ function getEnMoveMap() {
   if (_enMoveMap) return _enMoveMap;
   const tri    = loadTri();
   const db     = loadMovesDb();
+  const hant   = require(path.join(__dirname, '../../data/zh-Hant.json'));
   _enMoveMap   = {};
 
   // zh→{type,category} from moves_db
@@ -226,6 +227,13 @@ function getEnMoveMap() {
       category: info.category || 'unknown',
     };
   });
+
+  // Apply official Traditional Chinese overrides
+  Object.entries(hant.moves || {}).forEach(([enName, zhName]) => {
+    const enKey = enName.toLowerCase();
+    if (_enMoveMap[enKey]) _enMoveMap[enKey].zh = zhName;
+  });
+
   return _enMoveMap;
 }
 
