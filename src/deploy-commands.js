@@ -11,6 +11,7 @@ const metaPocketCommand = require('./commands/meta_pocket');
 const cardMetaCommand   = require('./commands/card_meta');
 const usageCommand      = require('./commands/usage');
 const movesearchCommand = require('./commands/movesearch');
+const typesearchCommand = require('./commands/typesearch');
 const topCommand        = require('./commands/top');
 const deckSearchCommand = require('./commands/deck_search');
 const pokemonSearchCommand = require('./commands/dex');
@@ -34,6 +35,7 @@ const commands = [
   cardMetaCommand.data.toJSON(),
   usageCommand.data.toJSON(),
   movesearchCommand.data.toJSON(),
+  typesearchCommand.data.toJSON(),
   topCommand.data.toJSON(),
   deckSearchCommand.data.toJSON(),
   pokemonSearchCommand.data.toJSON(),

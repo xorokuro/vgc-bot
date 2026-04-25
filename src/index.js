@@ -14,6 +14,7 @@ const metaPocketCommand = require('./commands/meta_pocket');
 const cardMetaCommand   = require('./commands/card_meta');
 const usageCommand      = require('./commands/usage');
 const movesearchCommand = require('./commands/movesearch');
+const typesearchCommand = require('./commands/typesearch');
 const topCommand        = require('./commands/top');
 const deckSearchCommand = require('./commands/deck_search');
 const pokemonSearchCommand = require('./commands/dex');
@@ -43,6 +44,7 @@ client.commands.set(metaPocketCommand.data.name, metaPocketCommand);
 client.commands.set(cardMetaCommand.data.name,   cardMetaCommand);
 client.commands.set(usageCommand.data.name,      usageCommand);
 client.commands.set(movesearchCommand.data.name, movesearchCommand);
+client.commands.set(typesearchCommand.data.name, typesearchCommand);
 client.commands.set(topCommand.data.name,        topCommand);
 client.commands.set(deckSearchCommand.data.name, deckSearchCommand);
 client.commands.set(pokemonSearchCommand.data.name, pokemonSearchCommand);
@@ -207,6 +209,12 @@ client.on(Events.InteractionCreate, async interaction => {
   // ── Button: Move search pagination ───────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('ms_page|')) {
     await movesearchCommand.handleButton(interaction).catch(e => { console.error('[ms_page]', e); });
+    return;
+  }
+
+  // ── Button: Type search pagination ───────────────────────────────────────────
+  if (interaction.isButton() && interaction.customId.startsWith('ts_page|')) {
+    await typesearchCommand.handleButton(interaction).catch(e => { console.error('[ts_page]', e); });
     return;
   }
 

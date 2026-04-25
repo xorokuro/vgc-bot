@@ -189,19 +189,17 @@ module.exports = {
     .setName('movesearch')
     .setDescription('查詢使用某招式最多的寶可夢排名 / Rank Pokémon by move usage frequency')
     .addStringOption(o => o
-      .setName('game')
-      .setDescription('遊戲版本 / Game version')
-      .setRequired(true)
-      .addChoices(...GAME_CHOICES))
-    .addStringOption(o => o
-      .setName('season')
-      .setDescription('賽季 / Season')
-      .setRequired(true)
-      .setAutocomplete(true))
-    .addStringOption(o => o
       .setName('move')
       .setDescription('招式名稱 (中/英/日) / Move name (zh/en/ja)')
       .setRequired(true)
+      .setAutocomplete(true))
+    .addStringOption(o => o
+      .setName('game')
+      .setDescription('遊戲版本 / Game version (預設：Champions)')
+      .addChoices(...GAME_CHOICES))
+    .addStringOption(o => o
+      .setName('season')
+      .setDescription('賽季 / Season (預設：最新)')
       .setAutocomplete(true))
     .addStringOption(o => o
       .setName('format')
@@ -216,8 +214,8 @@ module.exports = {
       .addChoices(...LANG_CHOICES)),
 
   async execute(interaction) {
-    const game      = interaction.options.getString('game');
-    const seasonRaw = interaction.options.getString('season');
+    const game      = interaction.options.getString('game') ?? 'champ';
+    const seasonRaw = interaction.options.getString('season') ?? (game === 'champ' ? getLatestChampionSeason() : String(getLatestSeason()));
     const zhMove    = interaction.options.getString('move');
     const format    = interaction.options.getString('format') ?? 'doubles';
     const lang      = interaction.options.getString('lang') ?? 'zh';
@@ -282,7 +280,7 @@ module.exports = {
 
   async autocomplete(interaction) {
     const focused   = interaction.options.getFocused(true);
-    const game      = interaction.options.getString('game') ?? 'sv';
+    const game      = interaction.options.getString('game') ?? 'champ';
     const format    = interaction.options.getString('format') ?? 'doubles';
     const seasonRaw = interaction.options.getString('season');
     const lang      = interaction.options.getString('lang') ?? 'zh';

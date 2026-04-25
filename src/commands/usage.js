@@ -533,19 +533,17 @@ module.exports = {
     .setName('usage')
     .setDescription('查詢 Pokémon HOME 賽季個別寶可夢使用率數據')
     .addStringOption(o => o
-      .setName('game')
-      .setDescription('遊戲版本 / Game')
-      .setRequired(true)
-      .addChoices(...GAME_CHOICES))
-    .addStringOption(o => o
-      .setName('season')
-      .setDescription('賽季 (請先選擇遊戲)')
+      .setName('pokemon')
+      .setDescription('寶可夢名稱 / Pokémon name')
       .setRequired(true)
       .setAutocomplete(true))
     .addStringOption(o => o
-      .setName('pokemon')
-      .setDescription('寶可夢名稱 (先選賽季，再搜尋寶可夢)')
-      .setRequired(true)
+      .setName('game')
+      .setDescription('遊戲版本 / Game (預設：Champions)')
+      .addChoices(...GAME_CHOICES))
+    .addStringOption(o => o
+      .setName('season')
+      .setDescription('賽季 / Season (預設：最新)')
       .setAutocomplete(true))
     .addStringOption(o => o
       .setName('format')
@@ -560,9 +558,9 @@ module.exports = {
       .addChoices(...LANG_CHOICES)),
 
   async execute(interaction) {
-    const game         = interaction.options.getString('game');
+    const game         = interaction.options.getString('game') ?? 'champ';
     const format       = interaction.options.getString('format') ?? 'doubles';
-    const seasonRaw    = interaction.options.getString('season');
+    const seasonRaw    = interaction.options.getString('season') ?? (game === 'champ' ? getLatestChampionSeason() : String(getLatestSeason()));
     const pokemonQuery = interaction.options.getString('pokemon');
     const lang         = interaction.options.getString('lang') ?? 'zh';
     const lbl          = LBL[lang] ?? LBL.zh;
@@ -600,7 +598,7 @@ module.exports = {
 
   async autocomplete(interaction) {
     const focused   = interaction.options.getFocused(true);
-    const game      = interaction.options.getString('game') ?? 'sv'; // fallback for autocomplete mid-type
+    const game      = interaction.options.getString('game') ?? 'champ';
     const format    = interaction.options.getString('format') ?? 'doubles';
     const seasonRaw = interaction.options.getString('season');
     const lang      = interaction.options.getString('lang') ?? 'zh';
@@ -628,13 +626,13 @@ module.exports = {
     }
 
     if (focused.name === 'pokemon') {
-      if (!seasonRaw) { await interaction.respond([]); return; }
+      const effectiveSeason = seasonRaw ?? (game === 'champ' ? getLatestChampionSeason() : String(getLatestSeason()));
       const q = focused.value.toLowerCase();
       let data;
       if (game === 'champ') {
-        data = loadChampionData(seasonRaw, format);
+        data = loadChampionData(effectiveSeason, format);
       } else {
-        data = loadSeasonData(parseInt(seasonRaw, 10), format);
+        data = loadSeasonData(parseInt(effectiveSeason, 10), format);
       }
       if (!data) { await interaction.respond([]); return; }
 
