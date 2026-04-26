@@ -132,20 +132,24 @@ module.exports = {
       ))
     .addBooleanOption(o => o
       .setName('public')
-      .setDescription('公開顯示詳細資料（預設：僅自己可見）/ Show detail card publicly')),
+      .setDescription('公開顯示詳細資料（預設：僅自己可見）/ Show detail card publicly'))
+    .addBooleanOption(o => o
+      .setName('include_status_moves')
+      .setDescription('招式屬性搜尋含變化招式（預設：僅攻擊招式）/ Include status moves in type-move filters (default: off)')),
 
   async execute(interaction) {
-    const gameId    = interaction.options.getString('game') ?? 'champion';
-    const rawQuery  = interaction.options.getString('query');
-    const showStats = interaction.options.getBoolean('show_stats') ?? false;
-    const lang      = interaction.options.getString('lang') ?? 'zh';
-    const pub       = interaction.options.getBoolean('public') ?? false;
+    const gameId        = interaction.options.getString('game') ?? 'champion';
+    const rawQuery      = interaction.options.getString('query');
+    const showStats     = interaction.options.getBoolean('show_stats') ?? false;
+    const lang          = interaction.options.getString('lang') ?? 'zh';
+    const pub           = interaction.options.getBoolean('public') ?? false;
+    const includeStatus = interaction.options.getBoolean('include_status_moves') ?? false;
 
     await interaction.deferReply();
 
     let results, query;
     try {
-      ({ results, query } = searchPokemon(rawQuery, gameId));
+      ({ results, query } = searchPokemon(rawQuery, gameId, { includeStatus }));
     } catch (err) {
       await interaction.editReply({ content: `❌ ${err.message}` });
       return;

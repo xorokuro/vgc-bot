@@ -680,7 +680,7 @@ function parseTypeMatchup(term) {
 
 const MEGA_TERMS = new Set(['mega', 'MEGA', '超級進化', '超進化', '可超進化', '可超級進化', 'Mega']);
 
-function evalOperand(poke, token, cfg) {
+function evalOperand(poke, token, cfg, opts = {}) {
   // ── STAT comparison ──────────────────────────────────────────────────────
   if (token.startsWith('STAT:')) {
     const [, statA, op, valStr] = token.split(':');
@@ -696,7 +696,10 @@ function evalOperand(poke, token, cfg) {
 
   // ── TYPEMOVE check ──────────────────────────────────────────────────────
   if (token.startsWith('TYPEMOVE:')) {
-    const [, typeEn, category] = token.split(':');
+    const [, typeEn, rawCat] = token.split(':');
+    // 'any' = bare 招式/moves/技 with no explicit category.
+    // Default to attacking only; become all-inclusive when includeStatus is set.
+    const category = rawCat === 'any' ? (opts.includeStatus ? 'any' : 'attacking') : rawCat;
     return cfg.hasMoveOfTypeCategory ? cfg.hasMoveOfTypeCategory(poke, typeEn, category) : false;
   }
 
@@ -751,7 +754,7 @@ function evalOperand(poke, token, cfg) {
 }
 
 // ── RPN evaluator ─────────────────────────────────────────────────────────────
-function evalRPN(poke, rpn, cfg) {
+function evalRPN(poke, rpn, cfg, opts = {}) {
   const stack = [];
   for (const t of rpn) {
     if (t === 'AND') {
@@ -763,7 +766,7 @@ function evalRPN(poke, rpn, cfg) {
     } else if (t === 'NOT') {
       stack.push(!stack.pop());
     } else {
-      stack.push(evalOperand(poke, t, cfg));
+      stack.push(evalOperand(poke, t, cfg, opts));
     }
   }
   return stack[0] ?? false;
@@ -771,25 +774,29 @@ function evalRPN(poke, rpn, cfg) {
 
 // ── Public search function ────────────────────────────────────────────────────
 /**
- * @param {string} rawQuery  User's search string
- * @param {string} gameId    One of the keys in GAME_CONFIGS
+ * @param {string} rawQuery          User's search string
+ * @param {string} gameId            One of the keys in GAME_CONFIGS
+ * @param {object} [opts]
+ * @param {boolean} [opts.includeStatus=false]
+ *   When false (default): bare 招式/moves/技 type-move tokens match attacking
+ *   moves only (physical + special). When true: they match all moves of that type.
  * @returns {{ results: object[], query: string }}
  * @throws {SyntaxError} on invalid query syntax
  */
-function searchPokemon(rawQuery, gameId) {
+function searchPokemon(rawQuery, gameId, opts = {}) {
   const cfg = GAME_CONFIGS[gameId];
   if (!cfg) throw new Error(`Unknown game: ${gameId}`);
 
   const q = normalizeQuery(rawQuery);
   if (!q) return { results: [], query: rawQuery };
 
-  const raw    = tokenize(q);
-  const proc   = postProcess(raw);
+  const raw     = tokenize(q);
+  const proc    = postProcess(raw);
   const withAnd = insertImplicitAnd(proc);
-  const rpn    = shuntingYard(withAnd);
+  const rpn     = shuntingYard(withAnd);
 
   const db      = loadDb(gameId);
-  const results = db.filter(poke => evalRPN(poke, rpn, cfg));
+  const results = db.filter(poke => evalRPN(poke, rpn, cfg, opts));
 
   return { results, query: q };
 }
