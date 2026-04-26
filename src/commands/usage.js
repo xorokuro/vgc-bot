@@ -18,9 +18,10 @@ const { translateType, translateFromZh, LANG_CHOICES } = require('../utils/i18n'
 
 // ── Static data ───────────────────────────────────────────────────────────────
 
-const zhHant    = require(path.join(__dirname, '../../data/zh-Hant.json'));
-const MOVES_DB  = require(path.join(__dirname, '../../data/moves_db.json'));
-const MOVES_SVD = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
+const zhHant         = require(path.join(__dirname, '../../data/zh-Hant.json'));
+const MOVES_DB       = require(path.join(__dirname, '../../data/moves_db.json'));
+const MOVES_SVD      = require(path.join(__dirname, '../../data/moves_sv_detailed.json'));
+const CHAMP_MOVES_DB = require(path.join(__dirname, '../../data/champion_moves_db.json'));
 
 // Chinese type name → English type name (e.g. '妖精' → 'Fairy')
 const ZH_TO_EN_TYPE = Object.fromEntries(
@@ -93,7 +94,7 @@ const LBL = {
     doubles: '雙打', singles: '單打',
     fmt: (s, f)    => `S${s} ${f}`,
     fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
-    overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位',
+    overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位', movepool: '招式庫',
     ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
     move:        '招式', teammate: '隊友',
     baseStats: '📊 種族值',
@@ -129,7 +130,7 @@ const LBL = {
     doubles: 'Doubles', singles: 'Singles',
     fmt: (s, f)    => `S${s} ${f}`,
     fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
-    overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups',
+    overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups', movepool: 'Move Pool',
     ability:     'Ability', item: 'Held Item', nature: 'Nature', tera: 'Tera Type',
     move:        'Move', teammate: 'Teammates',
     baseStats: '📊 Base Stats',
@@ -165,7 +166,7 @@ const LBL = {
     doubles: 'ダブル', singles: 'シングル',
     fmt: (s, f)    => `S${s} ${f}`,
     fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
-    overview:    '概要', builds: '型', moves: '技', matchups: '対面',
+    overview:    '概要', builds: '型', moves: '技', matchups: '対面', movepool: 'わざ一覧',
     ability:     '特性', item: '持ち物', nature: '性格', tera: 'テラスタイプ',
     move:        '技', teammate: '相方',
     baseStats: '📊 種族値',
@@ -359,20 +360,94 @@ function buildMatchupsEmbed(entry, season, format, data, lang = 'zh', game = 'sv
     .addFields(...fields);
 }
 
+// ── Movepool embed (Champion only) ────────────────────────────────────────────
+
+function champMovepoolName(enName, lang) {
+  if (lang === 'zh') return zhHant.moves?.[enName] ?? enName;
+  if (lang === 'ja') return MOVES_SVD[enName.toLowerCase()]?.name?.ja ?? enName;
+  return enName;
+}
+
+function champMovepoolEmoji(enName) {
+  const data = MOVES_SVD[enName.toLowerCase()];
+  const typeEn = data?.type?.en;
+  return typeEn ? (TYPE_EMOJI[typeEn] ?? '') : '';
+}
+
+function movepoolField(moves, lang, limit = 1020) {
+  if (!moves.length) return '—';
+  const items = moves.map(en => `${champMovepoolEmoji(en)} ${champMovepoolName(en, lang)}`);
+  const lines = [];
+  let len = 0;
+  for (let i = 0; i < items.length; i++) {
+    const sep  = lines.length ? ', ' : '';
+    const chunk = sep + items[i];
+    if (len + chunk.length > limit) {
+      lines.push(`…+${items.length - i} more`);
+      break;
+    }
+    lines.push(chunk);
+    len += chunk.length;
+  }
+  return lines.join('') || '—';
+}
+
+function buildMovepoolEmbed(entry, season, format, lang = 'zh', game = 'champ') {
+  const lbl     = LBL[lang] ?? LBL.zh;
+  const name    = pokeName(entry.full_name, lang);
+  const dexData = getBaseStats(entry);
+  const dexId   = dexData?.dex_id ?? null;
+  const allMoves = dexId != null ? (CHAMP_MOVES_DB[String(dexId)] ?? []) : [];
+
+  const physical = [], special = [], status = [], unknown = [];
+  for (const en of allMoves) {
+    const data = MOVES_SVD[en.toLowerCase()];
+    const cat  = data?.category?.en?.toLowerCase();
+    if      (cat === 'physical') physical.push(en);
+    else if (cat === 'special')  special.push(en);
+    else if (cat === 'status')   status.push(en);
+    else                         unknown.push(en);
+  }
+
+  const catLabel = {
+    zh: { p: '⚔️ 物理招式', s: '✨ 特殊招式', t: '🔄 變化招式', u: '❓ 其他' },
+    en: { p: '⚔️ Physical', s: '✨ Special',  t: '🔄 Status',   u: '❓ Other' },
+    ja: { p: '⚔️ 物理',     s: '✨ 特殊',     t: '🔄 変化',     u: '❓ その他' },
+  }[lang] ?? { p: '⚔️ Physical', s: '✨ Special', t: '🔄 Status', u: '❓ Other' };
+
+  const fields = [];
+  if (physical.length) fields.push({ name: `${catLabel.p} (${physical.length})`, value: movepoolField(physical, lang), inline: false });
+  if (special.length)  fields.push({ name: `${catLabel.s} (${special.length})`,  value: movepoolField(special,  lang), inline: false });
+  if (status.length)   fields.push({ name: `${catLabel.t} (${status.length})`,   value: movepoolField(status,   lang), inline: false });
+  if (unknown.length)  fields.push({ name: `${catLabel.u} (${unknown.length})`,  value: movepoolField(unknown,  lang), inline: false });
+  if (!fields.length)  fields.push({ name: lbl.noData, value: '—', inline: false });
+
+  return new EmbedBuilder()
+    .setColor(0x7B68EE)
+    .setTitle(`${fmtTitle(season, format, lang, game)} · ${name} — ${lbl.movepool}`)
+    .setDescription(`${name} · ${lbl.movepool} · ${allMoves.length} ${lang === 'en' ? 'moves' : lang === 'ja' ? 'わざ' : '招式'}`)
+    .setThumbnail(getSpriteUrl(entry))
+    .setFooter({ text: fmtFooter(season, format, lang, game) })
+    .addFields(...fields);
+}
+
 // ── Component builders ────────────────────────────────────────────────────────
 
-const TAB_IDS = ['ov', 'bd', 'mv', 'mt'];
+// Champion has 5 tabs (adds Move Pool); SV has 4
+const TAB_IDS_SV   = ['ov', 'bd', 'mv', 'mt'];
+const TAB_IDS_CHAMP = ['ov', 'bd', 'mv', 'mt', 'mp'];
 
 function tabLabel(id, lang) {
   const lbl = LBL[lang] ?? LBL.zh;
-  return { ov: lbl.overview, bd: lbl.builds, mv: lbl.moves, mt: lbl.matchups }[id] ?? id;
+  return { ov: lbl.overview, bd: lbl.builds, mv: lbl.moves, mt: lbl.matchups, mp: lbl.movepool }[id] ?? id;
 }
 
 function makeTabRow(activeTab, season, format, pokemonName, lang, game = 'sv') {
-  const f = format === 'singles' ? 's' : 'd';
-  const g = game === 'champ' ? 'c' : 'v';
+  const f    = format === 'singles' ? 's' : 'd';
+  const g    = game === 'champ' ? 'c' : 'v';
+  const tabs = game === 'champ' ? TAB_IDS_CHAMP : TAB_IDS_SV;
   return new ActionRowBuilder().addComponents(
-    TAB_IDS.map(t => new ButtonBuilder()
+    tabs.map(t => new ButtonBuilder()
       .setCustomId(`up|${t}|${season}|${f}|${lang}|${g}|${pokemonName}`)
       .setLabel(tabLabel(t, lang))
       .setStyle(t === activeTab ? ButtonStyle.Primary : ButtonStyle.Secondary)
@@ -445,12 +520,14 @@ function makeTeraSelectRow(entry, season, format, lang, game = 'sv') {
 
 function buildComponents(activeTab, entry, season, format, lang, game = 'sv') {
   const rows = [makeTabRow(activeTab, season, format, entry.full_name, lang, game)];
-  const moveRow  = makeMoveSelectRow(entry, season, format, lang, game);
-  const abilRow  = makeAbilitySelectRow(entry, season, format, lang, game);
-  const teraRow  = makeTeraSelectRow(entry, season, format, lang, game);
-  if (moveRow)  rows.push(moveRow);
-  if (abilRow)  rows.push(abilRow);
-  if (teraRow)  rows.push(teraRow);
+  if (activeTab !== 'mp') {
+    const moveRow = makeMoveSelectRow(entry, season, format, lang, game);
+    const abilRow = makeAbilitySelectRow(entry, season, format, lang, game);
+    const teraRow = makeTeraSelectRow(entry, season, format, lang, game);
+    if (moveRow) rows.push(moveRow);
+    if (abilRow) rows.push(abilRow);
+    if (teraRow) rows.push(teraRow);
+  }
   return rows;
 }
 
@@ -692,6 +769,7 @@ module.exports = {
     if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data, lang, game);
     else if (tab === 'mv') embed = buildMovesEmbed(entry, season, format, data, lang, game);
     else if (tab === 'mt') embed = buildMatchupsEmbed(entry, season, format, data, lang, game);
+    else if (tab === 'mp') embed = buildMovepoolEmbed(entry, season, format, lang, game);
     else                   embed = buildOverviewEmbed(entry, season, format, data, lang, game);
 
     await interaction.update({
