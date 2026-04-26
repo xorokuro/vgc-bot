@@ -12,7 +12,7 @@ const {
   getChampRegSet,
   getSpriteUrl, findPokemon, getBaseStats,
 } = require('../utils/usageData');
-const { TYPE_EMOJI } = require('../utils/buildEmbed');
+const { TYPE_EMOJI, CATEGORY_EMOJI } = require('../utils/buildEmbed');
 const { getTypeWeaknesses } = require('../utils/pokeData');
 const { translateType, translateFromZh, LANG_CHOICES } = require('../utils/i18n');
 
@@ -409,11 +409,14 @@ function buildMovepoolEmbed(entry, season, format, lang = 'zh', game = 'champ') 
     else                         unknown.push(en);
   }
 
+  const CP = CATEGORY_EMOJI.Physical ?? '⚔️';
+  const CS = CATEGORY_EMOJI.Special  ?? '✨';
+  const CT = CATEGORY_EMOJI.Status   ?? '🔄';
   const catLabel = {
-    zh: { p: '⚔️ 物理招式', s: '✨ 特殊招式', t: '🔄 變化招式', u: '❓ 其他' },
-    en: { p: '⚔️ Physical', s: '✨ Special',  t: '🔄 Status',   u: '❓ Other' },
-    ja: { p: '⚔️ 物理',     s: '✨ 特殊',     t: '🔄 変化',     u: '❓ その他' },
-  }[lang] ?? { p: '⚔️ Physical', s: '✨ Special', t: '🔄 Status', u: '❓ Other' };
+    zh: { p: `${CP} 物理招式`, s: `${CS} 特殊招式`, t: `${CT} 變化招式`, u: '❓ 其他' },
+    en: { p: `${CP} Physical`, s: `${CS} Special`,  t: `${CT} Status`,   u: '❓ Other' },
+    ja: { p: `${CP} 物理`,     s: `${CS} 特殊`,     t: `${CT} 変化`,     u: '❓ その他' },
+  }[lang] ?? { p: `${CP} Physical`, s: `${CS} Special`, t: `${CT} Status`, u: '❓ Other' };
 
   const fields = [];
   if (physical.length) fields.push({ name: `${catLabel.p} (${physical.length})`, value: movepoolField(physical, lang), inline: false });
