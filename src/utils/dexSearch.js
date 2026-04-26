@@ -254,9 +254,14 @@ const MOVE_CAT_SUFFIXES = [
   ['特殊技', 'special'],
   ['変化技', 'status'],
   ['攻撃技', 'attacking'],
-  ['攻擊招', 'attacking'],   // abbreviated (no 式)
+  ['攻擊招', 'attacking'],   // abbreviated — no 式
+  ['物理招', 'physical'],
+  ['特殊招', 'special'],
+  ['變化招', 'status'],
+  ['輔助招', 'status'],
   ['招式', 'any'],
   ['技', 'any'],
+  ['招', 'any'],             // shortest abbreviated form
 ];
 
 // Category keywords valid immediately after a resolved type token (1 or 2 tokens)
@@ -275,7 +280,14 @@ const MOVE_CAT_TOKENS = new Map([
   ['特殊技', 'special'],
   ['変化技', 'status'],
   ['攻撃技', 'attacking'],
+  ['攻擊招', 'attacking'],
+  ['物理招', 'physical'],
+  ['特殊招', 'special'],
+  ['變化招', 'status'],
+  ['輔助招', 'status'],
+  ['招式', 'any'],
   ['技', 'any'],
+  ['招', 'any'],
   // English
   ['attacking', 'attacking'],
   ['physical', 'physical'],
