@@ -88,35 +88,71 @@ const COMMANDS = {
       cmd: '/usage',
       zh: {
         desc:   '查詢個別寶可夢的使用率詳情',
-        detail: '顯示招式、道具、特性、夥伴的使用率分布（Pokémon HOME 數據）',
-        params: 'season · pokemon · format · lang',
+        detail: '概覽分頁顯示種族值；Builds / 招式 / 對位分頁；Champion 專屬「招式庫」分頁可瀏覽可學習的完整招式（依物理 / 特殊 / 變化分類）',
+        params: 'pokemon · game · season · format · lang',
       },
       en: {
         desc:   'Individual Pokémon usage breakdown from HOME',
-        detail: 'Move / item / ability / partner usage percentages',
-        params: 'season · pokemon · format · lang',
+        detail: 'Overview shows base stats; tabs for Builds / Moves / Matchups; Champion adds a Move Pool tab showing all learnable moves grouped by Physical / Special / Status',
+        params: 'pokemon · game · season · format · lang',
       },
       ja: {
         desc:   '個別ポケモンの使用率詳細（Pokémon HOME）',
-        detail: '技・持ち物・特性・パートナーの使用率内訳',
-        params: 'season · pokemon · format · lang',
+        detail: '概要タブに種族値表示；Builds / 技 / 対面タブ；Champions専用「わざ一覧」タブで習得可能技を物理 / 特殊 / 変化別に表示',
+        params: 'pokemon · game · season · format · lang',
+      },
+    },
+    {
+      cmd: '/movesearch',
+      zh: {
+        desc:   '依招式搜尋上榜寶可夢的使用率',
+        detail: '輸入招式名稱，顯示使用此招式的寶可夢排名與使用率；下拉選單可快速查看種族值與熱門招式',
+        params: 'move · game · format · season · lang',
+      },
+      en: {
+        desc:   'Find Pokémon that use a specific move (usage data)',
+        detail: 'Shows ranked Pokémon + usage %; select from the dropdown for a quick-info card with base stats & top moves',
+        params: 'move · game · format · season · lang',
+      },
+      ja: {
+        desc:   '特定の技を使うポケモンを使用率から検索',
+        detail: '技名を入力してランキングと使用率を表示；ドロップダウンで種族値・人気技をすぐ確認',
+        params: 'move · game · format · season · lang',
+      },
+    },
+    {
+      cmd: '/typesearch',
+      zh: {
+        desc:   '依屬性搜尋上榜寶可夢的使用率',
+        detail: '輸入屬性名稱，顯示帶有該屬性的寶可夢排名與使用率；下拉選單可快速查看種族值與熱門招式',
+        params: 'type · game · format · season · lang',
+      },
+      en: {
+        desc:   'Find Pokémon of a specific type (usage data)',
+        detail: 'Shows ranked Pokémon of that type + usage %; select from the dropdown for a quick-info card with base stats & top moves',
+        params: 'type · game · format · season · lang',
+      },
+      ja: {
+        desc:   '特定タイプのポケモンを使用率から検索',
+        detail: 'タイプ名を入力してランキングと使用率を表示；ドロップダウンで種族値・人気技をすぐ確認',
+        params: 'type · game · format · season · lang',
       },
     },
     {
       cmd: '/pokedex',
       zh: {
         desc:   '查詢寶可夢種族值、招式列表、特性',
-        detail: '支援朱紫 SV（含 DLC），顯示完整圖鑑資料與精靈圖',
+        detail: '支援朱紫 SV（含 DLC）及 Pokémon Champions，顯示完整圖鑑資料與精靈圖',
         params: 'game · pokemon · lang · public',
       },
       en: {
         desc:   'Pokémon stats, move list & abilities',
-        detail: 'Supports SV + DLC; shows full Pokédex entry with sprite',
+        detail: 'Supports SV + DLC and Pokémon Champions; shows full Pokédex entry with sprite',
         params: 'game · pokemon · lang · public',
       },
       ja: {
         desc:   'ポケモンの種族値・技リスト・特性を表示',
-        detail: 'SV＋DLC対応、フル図鑑データ＋スプライト',
+        detail: 'SV＋DLC & Pokémon Champions対応、フル図鑑データ＋スプライト',
         params: 'game · pokemon · lang · public',
       },
     },
@@ -124,18 +160,18 @@ const COMMANDS = {
       cmd: '/pokemon_search',
       zh: {
         desc:   '依屬性、種族值、招式、特性篩選寶可夢',
-        detail: '支援複雜查詢，例如：`火系 AND 速度>=100 AND NOT 龍系`',
-        params: 'game · query · show_stats · lang · public',
+        detail: '支援複雜查詢，例如：`火系 AND 速度>=100 AND NOT 龍系`；也支援招式屬性分類篩選，如 `超能攻擊招式`、`惡系物理招式`、`dragon attacking moves`',
+        params: 'query · game · show_stats · lang · public',
       },
       en: {
         desc:   'Filter Pokémon by type, stats, moves, or abilities',
-        detail: 'Supports complex queries, e.g. `Fire AND speed>=100 AND NOT Dragon`',
-        params: 'game · query · show_stats · lang · public',
+        detail: 'Complex queries: `Fire AND speed>=100 AND NOT Dragon`; also supports type+category move filters: `psychic attacking`, `dark physical moves`, `fire status`',
+        params: 'query · game · show_stats · lang · public',
       },
       ja: {
         desc:   'タイプ・種族値・技・特性でポケモンを絞り込む',
-        detail: '複合クエリ対応：例 `炎 AND 素早さ>=100 AND NOT ドラゴン`',
-        params: 'game · query · show_stats · lang · public',
+        detail: '複合クエリ対応：`炎 AND 素早さ>=100 AND NOT ドラゴン`；技タイプ×分類の絞り込みも可能：`超能攻撃技`・`悪物理技`・`dragon attacking`',
+        params: 'query · game · show_stats · lang · public',
       },
     },
     {
