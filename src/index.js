@@ -65,6 +65,20 @@ client.once(Events.ClientReady, c => {
   startDailyRefresh(['B2b']);
 });
 
+// Reply with an ephemeral error card so the user sees what went wrong instead
+// of Discord's generic "Interaction failed" banner.
+async function replyErr(interaction, tag, e) {
+  console.error(`[${tag}]`, e);
+  try {
+    const payload = { content: `❌ \`[${tag}]\` ${e.message}`, flags: 64 };
+    if (interaction.deferred || interaction.replied) {
+      await interaction.followUp(payload);
+    } else {
+      await interaction.reply(payload);
+    }
+  } catch { /* interaction already timed out — nothing we can do */ }
+}
+
 // ── Interaction handler ───────────────────────────────────────────────────────
 client.on(Events.InteractionCreate, async interaction => {
 
@@ -118,49 +132,49 @@ client.on(Events.InteractionCreate, async interaction => {
 
   // ── Button: Meta pocket pagination ───────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('mp_page|')) {
-    await metaPocketCommand.handleButton(interaction).catch(e => { console.error('[mp_page]', e); });
+    await metaPocketCommand.handleButton(interaction).catch(e => replyErr(interaction, 'mp_page', e));
     return;
   }
 
   // ── Button: Meta pocket jump to page ─────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('mp_jump|')) {
-    await metaPocketCommand.handleJumpButton(interaction).catch(e => { console.error('[mp_jump]', e); });
+    await metaPocketCommand.handleJumpButton(interaction).catch(e => replyErr(interaction, 'mp_jump', e));
     return;
   }
 
   // ── Modal: Meta pocket jump submit ────────────────────────────────────────────
   if (interaction.isModalSubmit() && interaction.customId.startsWith('mp_jump_modal|')) {
-    await metaPocketCommand.handleJumpModal(interaction).catch(e => { console.error('[mp_jump_modal]', e); });
+    await metaPocketCommand.handleJumpModal(interaction).catch(e => replyErr(interaction, 'mp_jump_modal', e));
     return;
   }
 
   // ── Select menu: Meta pocket deck detail ──────────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId.startsWith('mp_deck|')) {
-    await metaPocketCommand.handleSelectMenu(interaction).catch(e => { console.error('[mp_deck]', e); });
+    await metaPocketCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'mp_deck', e));
     return;
   }
 
   // ── Select menu: Meta pocket card image viewer ─────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId === 'mp_cardview') {
-    await metaPocketCommand.handleCardView(interaction).catch(e => { console.error('[mp_cardview]', e); });
+    await metaPocketCommand.handleCardView(interaction).catch(e => replyErr(interaction, 'mp_cardview', e));
     return;
   }
 
   // ── Button: Card meta search ─────────────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('cm_search|')) {
-    await cardMetaCommand.handleButton(interaction).catch(e => { console.error('[cm_search]', e); });
+    await cardMetaCommand.handleButton(interaction).catch(e => replyErr(interaction, 'cm_search', e));
     return;
   }
 
   // ── Button: Card meta result pagination ──────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('cm_page|')) {
-    await cardMetaCommand.handlePageButton(interaction).catch(e => { console.error('[cm_page]', e); });
+    await cardMetaCommand.handlePageButton(interaction).catch(e => replyErr(interaction, 'cm_page', e));
     return;
   }
 
   // ── Select menu: Card meta deck detail ───────────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId === 'cm_deck') {
-    await cardMetaCommand.handleSelectMenu(interaction).catch(e => { console.error('[cm_deck]', e); });
+    await cardMetaCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'cm_deck', e));
     return;
   }
 
@@ -196,115 +210,115 @@ client.on(Events.InteractionCreate, async interaction => {
 
   // ── Button: HOME top rankings pagination ──────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('tp|')) {
-    await topCommand.handleButton(interaction).catch(e => { console.error('[tp]', e); });
+    await topCommand.handleButton(interaction).catch(e => replyErr(interaction, 'tp', e));
     return;
   }
 
   // ── Button: HOME usage detail tabs ───────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('up|')) {
-    await usageCommand.handleButton(interaction).catch(e => { console.error('[up]', e); });
+    await usageCommand.handleButton(interaction).catch(e => replyErr(interaction, 'up', e));
     return;
   }
 
   // ── Button: Move search pagination ───────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('ms_page|')) {
-    await movesearchCommand.handleButton(interaction).catch(e => { console.error('[ms_page]', e); });
+    await movesearchCommand.handleButton(interaction).catch(e => replyErr(interaction, 'ms_page', e));
     return;
   }
 
   // ── Button: Type search pagination ───────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('ts_page|')) {
-    await typesearchCommand.handleButton(interaction).catch(e => { console.error('[ts_page]', e); });
+    await typesearchCommand.handleButton(interaction).catch(e => replyErr(interaction, 'ts_page', e));
     return;
   }
 
   // ── Select menu: HOME usage detail dropdowns ──────────────────────────────────
   if (interaction.isStringSelectMenu() && /^up_(mv|ab|tr)_sel\|/.test(interaction.customId)) {
-    await usageCommand.handleSelectMenu(interaction).catch(e => { console.error('[up_sel]', e); });
+    await usageCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'up_sel', e));
     return;
   }
 
   // ── Select menu: Move search Pokémon quick-info ───────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId.startsWith('ms_poke_sel|')) {
-    await movesearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[ms_poke_sel]', e); });
+    await movesearchCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'ms_poke_sel', e));
     return;
   }
 
   // ── Select menu: Type search Pokémon quick-info ───────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId.startsWith('ts_poke_sel|')) {
-    await typesearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[ts_poke_sel]', e); });
+    await typesearchCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'ts_poke_sel', e));
     return;
   }
 
   // ── Button: Deck search confirm ──────────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('ds_search|')) {
-    await deckSearchCommand.handleButton(interaction).catch(e => { console.error('[ds_search]', e); });
+    await deckSearchCommand.handleButton(interaction).catch(e => replyErr(interaction, 'ds_search', e));
     return;
   }
 
   // ── Button: Deck search result pagination ────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('ds_page|')) {
-    await deckSearchCommand.handlePageButton(interaction).catch(e => { console.error('[ds_page]', e); });
+    await deckSearchCommand.handlePageButton(interaction).catch(e => replyErr(interaction, 'ds_page', e));
     return;
   }
 
   // ── Button: Teams navigation ─────────────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('tms|')) {
-    await teamsCommand.handleButton(interaction).catch(e => { console.error('[tms]', e); });
+    await teamsCommand.handleButton(interaction).catch(e => replyErr(interaction, 'tms', e));
     return;
   }
 
   // ── Button: Teams jump to page ────────────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('tms_jump|')) {
-    await teamsCommand.handleJumpButton(interaction).catch(e => { console.error('[tms_jump]', e); });
+    await teamsCommand.handleJumpButton(interaction).catch(e => replyErr(interaction, 'tms_jump', e));
     return;
   }
 
   // ── Modal: Teams jump submit ──────────────────────────────────────────────────
   if (interaction.isModalSubmit() && interaction.customId.startsWith('tms_jump_modal|')) {
-    await teamsCommand.handleJumpModal(interaction).catch(e => { console.error('[tms_jump_modal]', e); });
+    await teamsCommand.handleJumpModal(interaction).catch(e => replyErr(interaction, 'tms_jump_modal', e));
     return;
   }
 
   // ── Select menu: Teams preview ────────────────────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId.startsWith('tms_preview|')) {
-    await teamsCommand.handlePreview(interaction).catch(e => { console.error('[tms_preview]', e); });
+    await teamsCommand.handlePreview(interaction).catch(e => replyErr(interaction, 'tms_preview', e));
     return;
   }
 
   // ── Button: Team search navigation ────────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('tms_s|')) {
-    await teamSearchCommand.handleButton(interaction).catch(e => { console.error('[tms_s]', e); });
+    await teamSearchCommand.handleButton(interaction).catch(e => replyErr(interaction, 'tms_s', e));
     return;
   }
 
   // ── Select menu: Team search preview ─────────────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId.startsWith('tms_s_pre|')) {
-    await teamSearchCommand.handlePreview(interaction).catch(e => { console.error('[tms_s_pre]', e); });
+    await teamSearchCommand.handlePreview(interaction).catch(e => replyErr(interaction, 'tms_s_pre', e));
     return;
   }
 
   // ── Button: Dex search result pagination ─────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('dex_page|')) {
-    await pokemonSearchCommand.handlePageButton(interaction).catch(e => { console.error('[dex_page]', e); });
+    await pokemonSearchCommand.handlePageButton(interaction).catch(e => replyErr(interaction, 'dex_page', e));
     return;
   }
 
   // ── Select menu: Pokémon search detail card ───────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId.startsWith('dex_detail|')) {
-    await pokemonSearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[dex_detail]', e); });
+    await pokemonSearchCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'dex_detail', e));
     return;
   }
 
   // ── Select menu: Deck search result ──────────────────────────────────────────
   if (interaction.isStringSelectMenu() && interaction.customId === 'ds_deck') {
-    await deckSearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[ds_deck]', e); });
+    await deckSearchCommand.handleSelectMenu(interaction).catch(e => replyErr(interaction, 'ds_deck', e));
     return;
   }
 
   // ── Button: Help category navigation ─────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('help|')) {
-    await helpCommand.handleButton(interaction).catch(e => { console.error('[help]', e); });
+    await helpCommand.handleButton(interaction).catch(e => replyErr(interaction, 'help', e));
     return;
   }
 
