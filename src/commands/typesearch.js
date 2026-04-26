@@ -3,17 +3,20 @@
 const {
   SlashCommandBuilder, EmbedBuilder,
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
+  StringSelectMenuBuilder, StringSelectMenuOptionBuilder,
 } = require('discord.js');
 const path = require('path');
 const {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
   getChampionSeasons, getLatestChampionSeason, loadChampionData,
   getChampRegSet,
+  getSpriteUrl, findPokemon, getBaseStats,
 } = require('../utils/usageData');
 const { TYPE_EMOJI } = require('../utils/buildEmbed');
 const { translateFromZh, translateType, LANG_CHOICES } = require('../utils/i18n');
 
-const POKEDEX = require(path.join(__dirname, '../../data/pokedex_db.json'));
+const POKEDEX  = require(path.join(__dirname, '../../data/pokedex_db.json'));
+const MOVES_DB = require(path.join(__dirname, '../../data/moves_db.json'));
 
 const ALL_TYPES = [
   'Normal','Fire','Water','Electric','Grass','Ice','Fighting','Poison',
@@ -80,6 +83,10 @@ const LBL = {
         ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 隻${typeLabel}系寶可夢${pg}`
         : `S${s} ${fmt} · ${count} 隻${typeLabel}系寶可夢${pg}`;
     },
+    rank:       (r) => `排名 #${r}`,
+    selectPoke: '查看寶可夢詳情...',
+    baseStats:  '📊 種族值',
+    topMoves:   '🎯 常用招式 (Top 3)',
   },
   en: {
     noResults:           (t) => `❌ No ${t}-type Pokémon found in this season's data.`,
@@ -93,6 +100,10 @@ const LBL = {
         ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} ${typeLabel}-type Pokémon${pg}`
         : `S${s} ${fmt} · ${count} ${typeLabel}-type Pokémon${pg}`;
     },
+    rank:       (r) => `Rank #${r}`,
+    selectPoke: 'View Pokémon details...',
+    baseStats:  '📊 Base Stats',
+    topMoves:   '🎯 Top Moves (Top 3)',
   },
   ja: {
     noResults:           (t) => `❌ 「${t}」タイプのポケモンがシーズンデータに見つかりません。`,
@@ -106,6 +117,10 @@ const LBL = {
         ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 匹の${typeLabel}タイプ${pg}`
         : `S${s} ${fmt} · ${count} 匹の${typeLabel}タイプ${pg}`;
     },
+    rank:       (r) => `ランク #${r}`,
+    selectPoke: 'ポケモンの詳細...',
+    baseStats:  '📊 種族値',
+    topMoves:   '🎯 よく使う技 (Top 3)',
   },
 };
 
@@ -124,6 +139,53 @@ function findPokemonByType(data, typeKey) {
   }
   results.sort((a, b) => a.entry.rank - b.entry.rank);
   return results;
+}
+
+// ── Quick-info embed (shown when user picks a Pokémon from the select menu) ───
+
+function moveTypeEmoji(zhMoveName) {
+  const entry = MOVES_DB[zhMoveName];
+  if (!entry?.type || entry.type === 'unknown') return '';
+  const en = entry.type.charAt(0).toUpperCase() + entry.type.slice(1);
+  return TYPE_EMOJI[en] ?? '';
+}
+
+function buildQuickInfoEmbed(entry, season, format, lang, game) {
+  const lbl  = LBL[lang] ?? LBL.zh;
+  const name = pokeName(entry.full_name, lang);
+  const dex  = getBaseStats(entry);
+
+  const typeStr = dex?.types_en
+    ? dex.types_en.map(t => TYPE_EMOJI[t.charAt(0).toUpperCase() + t.slice(1)] ?? '').join(' ')
+    : typeEmojis(entry.types ?? []);
+
+  const fields = [];
+
+  if (dex?.stats) {
+    const s   = dex.stats;
+    const bst = dex.bst ?? (s.hp + s.attack + s.defense + s['special-attack'] + s['special-defense'] + s.speed);
+    const lbls = { zh: ['HP','攻','防','特攻','特防','速'], en: ['HP','Atk','Def','SpA','SpD','Spe'], ja: ['HP','攻','防','特攻','特防','素早'] };
+    const l   = lbls[lang] ?? lbls.en;
+    const vals = [s.hp, s.attack, s.defense, s['special-attack'], s['special-defense'], s.speed];
+    fields.push({ name: lbl.baseStats, value: l.map((n, i) => `${n} **${vals[i]}**`).join(' · ') + ` · BST **${bst}**`, inline: false });
+  }
+
+  const top3 = (entry.moves ?? []).slice(0, 3)
+    .map(m => `${moveTypeEmoji(m.name)} ${translateFromZh(m.name, 'move', lang)} **${m.usage_percent}%**`)
+    .join('\n') || '—';
+  fields.push({ name: lbl.topMoves, value: top3, inline: false });
+
+  const seasonLabel = game === 'champ'
+    ? `Reg. ${getChampRegSet(season)} · M-${String(season).slice(1)} ${fmtLabel(format, lang)}`
+    : `S${season} ${fmtLabel(format, lang)}`;
+
+  return new EmbedBuilder()
+    .setTitle(`${typeStr ? typeStr + ' ' : ''}${name}`.slice(0, 256))
+    .setDescription(lbl.rank(entry.rank))
+    .setThumbnail(getSpriteUrl(entry))
+    .setColor(0x4f86c6)
+    .addFields(...fields)
+    .setFooter({ text: seasonLabel });
 }
 
 // ── Embed + components ────────────────────────────────────────────────────────
@@ -154,29 +216,54 @@ function buildEmbed(typeKey, results, season, format, lang, game, page) {
     .setColor(0x4f86c6);
 }
 
-function buildComponents(page, totalPages, season, format, lang, game, typeKey) {
-  if (totalPages <= 1) return [];
-  const fmt  = format === 'singles' ? 's' : 'd';
-  const g    = game === 'champ' ? 'c' : 'v';
-  const base = `ts_page|PAGE|${season}|${fmt}|${lang}|${g}|${typeKey}`;
+function buildPokeSelectRow(results, page, season, format, lang, game, typeKey) {
+  const lbl   = LBL[lang] ?? LBL.zh;
+  const start = page * MAX_SHOWN;
+  const shown = results.slice(start, start + MAX_SHOWN);
+  if (!shown.length) return null;
+  const fmt = format === 'singles' ? 's' : 'd';
+  const g   = game === 'champ' ? 'c' : 'v';
+  const menu = new StringSelectMenuBuilder()
+    .setCustomId(`ts_poke_sel|${season}|${fmt}|${lang}|${g}|${typeKey}`)
+    .setPlaceholder(lbl.selectPoke)
+    .addOptions(shown.map(({ entry, types }) =>
+      new StringSelectMenuOptionBuilder()
+        .setLabel(pokeName(entry.full_name, lang).slice(0, 100))
+        .setDescription(`#${entry.rank ?? '?'} · ${typeEmojis(types)}`.slice(0, 100))
+        .setValue(entry.full_name),
+    ));
+  return new ActionRowBuilder().addComponents(menu);
+}
 
-  return [new ActionRowBuilder().addComponents(
-    new ButtonBuilder()
-      .setCustomId(base.replace('PAGE', page - 1))
-      .setLabel('◀')
-      .setStyle(ButtonStyle.Secondary)
-      .setDisabled(page === 0),
-    new ButtonBuilder()
-      .setCustomId('ts_noop')
-      .setLabel(`${page + 1} / ${totalPages}`)
-      .setStyle(ButtonStyle.Secondary)
-      .setDisabled(true),
-    new ButtonBuilder()
-      .setCustomId(base.replace('PAGE', page + 1))
-      .setLabel('▶')
-      .setStyle(ButtonStyle.Secondary)
-      .setDisabled(page >= totalPages - 1),
-  )];
+function buildComponents(page, totalPages, season, format, lang, game, typeKey, results) {
+  const rows = [];
+  if (totalPages > 1) {
+    const fmt  = format === 'singles' ? 's' : 'd';
+    const g    = game === 'champ' ? 'c' : 'v';
+    const base = `ts_page|PAGE|${season}|${fmt}|${lang}|${g}|${typeKey}`;
+    rows.push(new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId(base.replace('PAGE', page - 1))
+        .setLabel('◀')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(page === 0),
+      new ButtonBuilder()
+        .setCustomId('ts_noop')
+        .setLabel(`${page + 1} / ${totalPages}`)
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(true),
+      new ButtonBuilder()
+        .setCustomId(base.replace('PAGE', page + 1))
+        .setLabel('▶')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(page >= totalPages - 1),
+    ));
+  }
+  if (results) {
+    const selectRow = buildPokeSelectRow(results, page, season, format, lang, game, typeKey);
+    if (selectRow) rows.push(selectRow);
+  }
+  return rows;
 }
 
 // ── Command ───────────────────────────────────────────────────────────────────
@@ -252,7 +339,7 @@ module.exports = {
     await interaction.deleteReply();
     await interaction.channel.send({
       embeds:     [buildEmbed(typeKey, results, season, format, lang, game, 0)],
-      components: buildComponents(0, totalPages, season, format, lang, game, typeKey),
+      components: buildComponents(0, totalPages, season, format, lang, game, typeKey, results),
     });
   },
 
@@ -278,8 +365,29 @@ module.exports = {
 
     await interaction.update({
       embeds:     [buildEmbed(typeKey, results, s, format, lang, game, safePage)],
-      components: buildComponents(safePage, totalPages, s, format, lang, game, typeKey),
+      components: buildComponents(safePage, totalPages, s, format, lang, game, typeKey, results),
     });
+  },
+
+  async handleSelectMenu(interaction) {
+    const parts   = interaction.customId.split('|');
+    const season  = parts[1];
+    const format  = parts[2] === 's' ? 'singles' : 'doubles';
+    const lang    = parts[3];
+    const game    = parts[4] === 'c' ? 'champ' : 'sv';
+    const typeKey = parts[5];
+    const zhPoke  = interaction.values[0];
+
+    const data = game === 'champ'
+      ? loadChampionData(season, format)
+      : loadSeasonData(parseInt(season, 10), format);
+    if (!data) { await interaction.reply({ content: '❌', flags: 64 }); return; }
+
+    const entry = findPokemon(data, zhPoke);
+    if (!entry) { await interaction.reply({ content: '❌', flags: 64 }); return; }
+
+    const s = game === 'champ' ? season : parseInt(season, 10);
+    await interaction.reply({ embeds: [buildQuickInfoEmbed(entry, s, format, lang, game)], flags: 64 });
   },
 
   async autocomplete(interaction) {

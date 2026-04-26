@@ -4,6 +4,7 @@ const path = require('path');
 const fs   = require('fs');
 
 const DATA_DIR = path.join(__dirname, '../../data');
+const CHAMP_DB = require(path.join(DATA_DIR, 'pokedex_champion_db.json'));
 
 let _seasons     = null;
 let _champSeasons = null;
@@ -106,6 +107,21 @@ function findPokemon(data, query) {
   return null;
 }
 
+/**
+ * Look up base stats for a usage-data entry using its pid+form fields.
+ * Falls back to a base-name match for alternate-form PIDs (e.g. Rotom appliances).
+ */
+function getBaseStats(entry) {
+  if (!entry) return null;
+  const direct = CHAMP_DB[`${entry.pid}-${entry.form ?? 0}`];
+  if (direct?.stats) return direct;
+  const baseName = entry.full_name?.split(' ')[0];
+  if (!baseName) return null;
+  return Object.values(CHAMP_DB).find(d => d.name_zh === baseName && d.stats)
+      ?? Object.values(CHAMP_DB).find(d => d.name_zh?.startsWith(baseName) && d.stats)
+      ?? null;
+}
+
 /** Returns all pokemon entries sorted by rank (filters out metadata keys). */
 function getRankedEntries(data, maxN = 150) {
   return Object.values(data)
@@ -118,5 +134,5 @@ module.exports = {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
   getChampionSeasons, getLatestChampionSeason, loadChampionData,
   getChampRegSet,
-  getSpriteUrl, findPokemon, getRankedEntries,
+  getSpriteUrl, findPokemon, getRankedEntries, getBaseStats,
 };

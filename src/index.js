@@ -224,6 +224,18 @@ client.on(Events.InteractionCreate, async interaction => {
     return;
   }
 
+  // ── Select menu: Move search Pokémon quick-info ───────────────────────────────
+  if (interaction.isStringSelectMenu() && interaction.customId.startsWith('ms_poke_sel|')) {
+    await movesearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[ms_poke_sel]', e); });
+    return;
+  }
+
+  // ── Select menu: Type search Pokémon quick-info ───────────────────────────────
+  if (interaction.isStringSelectMenu() && interaction.customId.startsWith('ts_poke_sel|')) {
+    await typesearchCommand.handleSelectMenu(interaction).catch(e => { console.error('[ts_poke_sel]', e); });
+    return;
+  }
+
   // ── Button: Deck search confirm ──────────────────────────────────────────────
   if (interaction.isButton() && interaction.customId.startsWith('ds_search|')) {
     await deckSearchCommand.handleButton(interaction).catch(e => { console.error('[ds_search]', e); });

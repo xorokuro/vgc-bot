@@ -3,12 +3,14 @@
 const {
   SlashCommandBuilder, EmbedBuilder,
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
+  StringSelectMenuBuilder, StringSelectMenuOptionBuilder,
 } = require('discord.js');
 const path = require('path');
 const {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
   getChampionSeasons, getLatestChampionSeason, loadChampionData,
   getChampRegSet,
+  getSpriteUrl, findPokemon, getBaseStats,
 } = require('../utils/usageData');
 const { TYPE_EMOJI } = require('../utils/buildEmbed');
 const { translateFromZh, LANG_CHOICES } = require('../utils/i18n');
@@ -72,6 +74,10 @@ const LBL = {
         ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 隻寶可夢使用此招式${pg}`
         : `S${s} ${fmt} · ${count} 隻寶可夢使用此招式${pg}`;
     },
+    rank:        (r) => `排名 #${r}`,
+    selectPoke:  '查看寶可夢詳情...',
+    baseStats:   '📊 種族值',
+    topMoves:    '🎯 常用招式 (Top 3)',
   },
   en: {
     noResults:          (n) => `❌ No Pokémon found using "${n}" in this season.`,
@@ -85,6 +91,10 @@ const LBL = {
         ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} Pokémon use this move${pg}`
         : `S${s} ${fmt} · ${count} Pokémon use this move${pg}`;
     },
+    rank:        (r) => `Rank #${r}`,
+    selectPoke:  'View Pokémon details...',
+    baseStats:   '📊 Base Stats',
+    topMoves:    '🎯 Top Moves (Top 3)',
   },
   ja: {
     noResults:          (n) => `❌ 「${n}」を使うポケモンがシーズンデータに見つかりません。`,
@@ -98,6 +108,10 @@ const LBL = {
         ? `Reg. ${getChampRegSet(s)} · M-${s.slice(1)} ${fmt} · ${count} 匹がこのわざを使用${pg}`
         : `S${s} ${fmt} · ${count} 匹がこのわざを使用${pg}`;
     },
+    rank:        (r) => `ランク #${r}`,
+    selectPoke:  'ポケモンの詳細...',
+    baseStats:   '📊 種族値',
+    topMoves:    '🎯 よく使う技 (Top 3)',
   },
 };
 
@@ -123,6 +137,46 @@ function getMovesFromData(data) {
     for (const m of entry.moves) { if (m.name) seen.add(m.name); }
   }
   return [...seen];
+}
+
+// ── Quick-info embed (shown when user picks a Pokémon from the select menu) ───
+
+function buildQuickInfoEmbed(entry, season, format, lang, game) {
+  const lbl  = LBL[lang] ?? LBL.zh;
+  const name = pokeName(entry.full_name, lang);
+  const dex  = getBaseStats(entry);
+
+  const typeEmojis = dex?.types_en
+    ? dex.types_en.map(t => TYPE_EMOJI[t.charAt(0).toUpperCase() + t.slice(1)] ?? '').join(' ')
+    : '';
+
+  const fields = [];
+
+  if (dex?.stats) {
+    const s   = dex.stats;
+    const bst = dex.bst ?? (s.hp + s.attack + s.defense + s['special-attack'] + s['special-defense'] + s.speed);
+    const lbls = { zh: ['HP','攻','防','特攻','特防','速'], en: ['HP','Atk','Def','SpA','SpD','Spe'], ja: ['HP','攻','防','特攻','特防','素早'] };
+    const l   = lbls[lang] ?? lbls.en;
+    const vals = [s.hp, s.attack, s.defense, s['special-attack'], s['special-defense'], s.speed];
+    fields.push({ name: lbl.baseStats, value: l.map((n, i) => `${n} **${vals[i]}**`).join(' · ') + ` · BST **${bst}**`, inline: false });
+  }
+
+  const top3 = (entry.moves ?? []).slice(0, 3)
+    .map(m => `${moveTypeEmoji(m.name)} ${moveName(m.name, lang)} **${m.usage_percent}%**`)
+    .join('\n') || '—';
+  fields.push({ name: lbl.topMoves, value: top3, inline: false });
+
+  const seasonLabel = game === 'champ'
+    ? `Reg. ${getChampRegSet(season)} · M-${String(season).slice(1)} ${fmtLabel(format, lang)}`
+    : `S${season} ${fmtLabel(format, lang)}`;
+
+  return new EmbedBuilder()
+    .setTitle(`${typeEmojis ? typeEmojis + ' ' : ''}${name}`.slice(0, 256))
+    .setDescription(lbl.rank(entry.rank))
+    .setThumbnail(getSpriteUrl(entry))
+    .setColor(0x4f86c6)
+    .addFields(...fields)
+    .setFooter({ text: seasonLabel });
 }
 
 // ── Embed + components ────────────────────────────────────────────────────────
@@ -157,29 +211,54 @@ function buildEmbed(zhMove, results, season, format, lang, game, page) {
     .setColor(0x4f86c6);
 }
 
-function buildComponents(page, totalPages, season, format, lang, game, zhMove) {
-  if (totalPages <= 1) return [];
-  const fmt  = format === 'singles' ? 's' : 'd';
-  const g    = game === 'champ' ? 'c' : 'v';
-  const base = `ms_page|PAGE|${season}|${fmt}|${lang}|${g}|${zhMove}`;
+function buildPokeSelectRow(results, page, season, format, lang, game, zhMove) {
+  const lbl   = LBL[lang] ?? LBL.zh;
+  const start = page * MAX_SHOWN;
+  const shown = results.slice(start, start + MAX_SHOWN);
+  if (!shown.length) return null;
+  const fmt = format === 'singles' ? 's' : 'd';
+  const g   = game === 'champ' ? 'c' : 'v';
+  const menu = new StringSelectMenuBuilder()
+    .setCustomId(`ms_poke_sel|${season}|${fmt}|${lang}|${g}|${zhMove}`)
+    .setPlaceholder(lbl.selectPoke)
+    .addOptions(shown.map(({ entry, moveUsage }, i) =>
+      new StringSelectMenuOptionBuilder()
+        .setLabel(pokeName(entry.full_name, lang).slice(0, 100))
+        .setDescription(`#${entry.rank ?? '?'} · ${moveUsage.toFixed(1)}%`.slice(0, 100))
+        .setValue(entry.full_name),
+    ));
+  return new ActionRowBuilder().addComponents(menu);
+}
 
-  return [new ActionRowBuilder().addComponents(
-    new ButtonBuilder()
-      .setCustomId(base.replace('PAGE', page - 1))
-      .setLabel('◀')
-      .setStyle(ButtonStyle.Secondary)
-      .setDisabled(page === 0),
-    new ButtonBuilder()
-      .setCustomId('ms_noop')
-      .setLabel(`${page + 1} / ${totalPages}`)
-      .setStyle(ButtonStyle.Secondary)
-      .setDisabled(true),
-    new ButtonBuilder()
-      .setCustomId(base.replace('PAGE', page + 1))
-      .setLabel('▶')
-      .setStyle(ButtonStyle.Secondary)
-      .setDisabled(page >= totalPages - 1),
-  )];
+function buildComponents(page, totalPages, season, format, lang, game, zhMove, results) {
+  const rows = [];
+  if (totalPages > 1) {
+    const fmt  = format === 'singles' ? 's' : 'd';
+    const g    = game === 'champ' ? 'c' : 'v';
+    const base = `ms_page|PAGE|${season}|${fmt}|${lang}|${g}|${zhMove}`;
+    rows.push(new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId(base.replace('PAGE', page - 1))
+        .setLabel('◀')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(page === 0),
+      new ButtonBuilder()
+        .setCustomId('ms_noop')
+        .setLabel(`${page + 1} / ${totalPages}`)
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(true),
+      new ButtonBuilder()
+        .setCustomId(base.replace('PAGE', page + 1))
+        .setLabel('▶')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(page >= totalPages - 1),
+    ));
+  }
+  if (results) {
+    const selectRow = buildPokeSelectRow(results, page, season, format, lang, game, zhMove);
+    if (selectRow) rows.push(selectRow);
+  }
+  return rows;
 }
 
 // ── Command ───────────────────────────────────────────────────────────────────
@@ -249,7 +328,7 @@ module.exports = {
     await interaction.deleteReply();
     await interaction.channel.send({
       embeds:     [buildEmbed(zhMove, results, season, format, lang, game, 0)],
-      components: buildComponents(0, totalPages, season, format, lang, game, zhMove),
+      components: buildComponents(0, totalPages, season, format, lang, game, zhMove, results),
     });
   },
 
@@ -272,10 +351,32 @@ module.exports = {
     const totalPages = Math.ceil(results.length / MAX_SHOWN);
     const safePage   = Math.max(0, Math.min(page, totalPages - 1));
 
+    const s = game === 'champ' ? season : parseInt(season, 10);
     await interaction.update({
-      embeds:     [buildEmbed(zhMove, results, game === 'champ' ? season : parseInt(season, 10), format, lang, game, safePage)],
-      components: buildComponents(safePage, totalPages, game === 'champ' ? season : parseInt(season, 10), format, lang, game, zhMove),
+      embeds:     [buildEmbed(zhMove, results, s, format, lang, game, safePage)],
+      components: buildComponents(safePage, totalPages, s, format, lang, game, zhMove, results),
     });
+  },
+
+  async handleSelectMenu(interaction) {
+    const parts  = interaction.customId.split('|');
+    const season = parts[1];
+    const format = parts[2] === 's' ? 'singles' : 'doubles';
+    const lang   = parts[3];
+    const game   = parts[4] === 'c' ? 'champ' : 'sv';
+    const zhMove = parts.slice(5).join('|');
+    const zhPoke = interaction.values[0];
+
+    const data = game === 'champ'
+      ? loadChampionData(season, format)
+      : loadSeasonData(parseInt(season, 10), format);
+    if (!data) { await interaction.reply({ content: '❌', flags: 64 }); return; }
+
+    const entry = findPokemon(data, zhPoke);
+    if (!entry) { await interaction.reply({ content: '❌', flags: 64 }); return; }
+
+    const s = game === 'champ' ? season : parseInt(season, 10);
+    await interaction.reply({ embeds: [buildQuickInfoEmbed(entry, s, format, lang, game)], flags: 64 });
   },
 
   async autocomplete(interaction) {

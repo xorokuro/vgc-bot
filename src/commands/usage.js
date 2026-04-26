@@ -10,7 +10,7 @@ const {
   getAvailableSeasons, getLatestSeason, loadSeasonData,
   getChampionSeasons, getLatestChampionSeason, loadChampionData,
   getChampRegSet,
-  getSpriteUrl, findPokemon,
+  getSpriteUrl, findPokemon, getBaseStats,
 } = require('../utils/usageData');
 const { TYPE_EMOJI } = require('../utils/buildEmbed');
 const { getTypeWeaknesses } = require('../utils/pokeData');
@@ -96,6 +96,7 @@ const LBL = {
     overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位',
     ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
     move:        '招式', teammate: '隊友',
+    baseStats: '📊 種族值',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: '致勝招式', loseMove: '致命招式',
     winsAgainst: '主要優勢對位', defeatedBy: '主要劣勢對位',
@@ -131,6 +132,7 @@ const LBL = {
     overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups',
     ability:     'Ability', item: 'Held Item', nature: 'Nature', tera: 'Tera Type',
     move:        'Move', teammate: 'Teammates',
+    baseStats: '📊 Base Stats',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: 'Win Moves', loseMove: 'Loss Moves',
     winsAgainst: 'Top Wins Against', defeatedBy: 'Top Defeated By',
@@ -166,6 +168,7 @@ const LBL = {
     overview:    '概要', builds: '型', moves: '技', matchups: '対面',
     ability:     '特性', item: '持ち物', nature: '性格', tera: 'テラスタイプ',
     move:        '技', teammate: '相方',
+    baseStats: '📊 種族値',
     top3: '(Top 3)', top5: '(Top 5)', top10: '(Top 10)',
     winMove: '勝ち技', loseMove: '負け技',
     winsAgainst: '主な勝ち対面', defeatedBy: '主な負け対面',
@@ -251,16 +254,34 @@ function relativeTime(data, lang) {
   return (LBL[lang] ?? LBL.zh).updated(data.last_updated);
 }
 
+function fmtBaseStats(entry, lang) {
+  const dex = getBaseStats(entry);
+  if (!dex?.stats) return null;
+  const s = dex.stats;
+  const bst = dex.bst ?? (s.hp + s.attack + s.defense + s['special-attack'] + s['special-defense'] + s.speed);
+  const labels = {
+    zh: ['HP', '攻', '防', '特攻', '特防', '速'],
+    en: ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'],
+    ja: ['HP', '攻', '防', '特攻', '特防', '素早'],
+  };
+  const l = labels[lang] ?? labels.en;
+  const vals = [s.hp, s.attack, s.defense, s['special-attack'], s['special-defense'], s.speed];
+  return l.map((n, i) => `${n} **${vals[i]}**`).join(' · ') + ` · BST **${bst}**`;
+}
+
 // ── Embed builders ────────────────────────────────────────────────────────────
 
 function buildOverviewEmbed(entry, season, format, data, lang = 'zh', game = 'sv') {
   const lbl  = LBL[lang] ?? LBL.zh;
   const name = pokeName(entry.full_name, lang);
-  const fields = [
+  const fields = [];
+  const statsLine = fmtBaseStats(entry, lang);
+  if (statsLine) fields.push({ name: lbl.baseStats, value: statsLine, inline: false });
+  fields.push(
     { name: `${lbl.ability} ${lbl.top3}`,  value: fmtAbilities(entry.abilities,  3, lang), inline: true },
     { name: `${lbl.item} ${lbl.top3}`,     value: fmtItems(entry.held_items,     3, lang), inline: true },
     { name: `${lbl.nature} ${lbl.top3}`,   value: fmtNatures(entry.natures,      3, lang), inline: true },
-  ];
+  );
   if (game !== 'champ') {
     fields.push({ name: `${lbl.tera} ${lbl.top3}`, value: fmtTera(entry.tera_types, 3, lang), inline: true });
   }
