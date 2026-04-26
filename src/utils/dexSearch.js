@@ -621,4 +621,10 @@ function searchPokemon(rawQuery, gameId) {
   return { results, query: q };
 }
 
-module.exports = { searchPokemon, GAME_CONFIGS };
+/** Look up a single Pokémon by its numeric dex_id + form_id from the game's DB. */
+function findPokeByIds(gameId, dexId, formId) {
+  const entries = loadDb(gameId);
+  return entries.find(p => p.dex_id === dexId && (p.form_id ?? 0) === formId) ?? null;
+}
+
+module.exports = { searchPokemon, GAME_CONFIGS, findPokeByIds };

@@ -5,7 +5,7 @@ const {
   ActionRowBuilder, ButtonBuilder, ButtonStyle,
   StringSelectMenuBuilder,
 } = require('discord.js');
-const { searchPokemon, GAME_CONFIGS } = require('../utils/dexSearch');
+const { searchPokemon, GAME_CONFIGS, findPokeByIds } = require('../utils/dexSearch');
 const {
   buildStatImage, buildDetailEmbed, getPokeDisplayName,
   DEX_LABELS, STAT_LABELS, gameLabel,
@@ -67,7 +67,7 @@ function buildDetailMenu(slice, gameId, lang, pub) {
   const L       = DEX_LABELS[lang] ?? DEX_LABELS.zh;
   const options = slice.map((p, i) => ({
     label: getPokeDisplayName(p, lang).slice(0, 100) || `#${i}`,
-    value: p.name_en || String(i),
+    value: `${p.dex_id ?? i}-${p.form_id ?? 0}`,
   }));
   return new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
@@ -196,15 +196,15 @@ module.exports = {
     const gameId = parts[1];
     const lang   = parts[2] ?? 'zh';
     const pub    = parts[3] === '1';
-    const nameEn = interaction.values[0];
+    const selVal = interaction.values[0];
     const cfg    = GAME_CONFIGS[gameId];
     if (!cfg) { await interaction.reply({ content: '❌ Invalid game.', flags: 64 }); return; }
 
-    const { results } = searchPokemon(nameEn, gameId);
-    const poke = results.find(p => p.name_en === nameEn);
+    const [dexIdStr, formIdStr] = selVal.split('-');
+    const poke = findPokeByIds(gameId, parseInt(dexIdStr, 10), parseInt(formIdStr, 10));
 
     if (!poke) {
-      await interaction.reply({ content: `❌ ${nameEn} not found.`, flags: 64 });
+      await interaction.reply({ content: `❌ Pokémon not found (${selVal}).`, flags: 64 });
       return;
     }
 
