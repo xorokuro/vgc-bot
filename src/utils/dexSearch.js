@@ -17,6 +17,11 @@
  *   十萬伏特           knows Thunderbolt (any method)
  *   十萬伏特 升等學    learns Thunderbolt by level-up   (PLZA only)
  *   十萬伏特 TM學      learns Thunderbolt via TM        (PLZA only)
+ *   超能攻擊招式       knows any Psychic-type attacking move (physical or special)
+ *   惡系物理招式       knows any Dark-type physical move
+ *   fire special moves knows any Fire-type special move
+ *   psychic status     knows any Psychic-type status move
+ *   dragon moves       knows any Dragon-type move (any category)
  *   mega               is a Mega form
  *   AND / OR / NOT     logical operators
  *   ( )                grouping
@@ -111,7 +116,7 @@ Object.assign(ZH_TO_TYPE, {
   '飛': 'flying',   '飛系': 'flying',
   '靈': 'ghost',    '靈系': 'ghost',
   '格': 'fighting', '格鬥系': 'fighting',
-  '超': 'psychic',  '超能': 'psychic',  '超能力系': 'psychic',
+  '超': 'psychic',  '超能': 'psychic',  '超能系': 'psychic',  '超能力系': 'psychic',
   '龍': 'dragon',   '龍系': 'dragon',
   '惡': 'dark',     '惡系': 'dark',
   '妖': 'fairy',    '妖精系': 'fairy',
@@ -183,6 +188,119 @@ function loadChampionMovesDb() {
   return _championMovesDb;
 }
 
+// Lazy-loaded moves detail db (SV): { "move name": { type:{en,zh,ja}, category:{en,zh,ja}, ... } }
+// Keys use lowercase with spaces ("swords dance") and with hyphens ("will-o-wisp") — both indexed.
+let _moveDetailDb = null;
+function loadMoveDetailDb() {
+  if (!_moveDetailDb) {
+    try {
+      const raw = JSON.parse(
+        fs.readFileSync(path.join(__dirname, '../../data/moves_sv_detailed.json'), 'utf8'),
+      );
+      _moveDetailDb = {};
+      for (const [k, v] of Object.entries(raw)) {
+        _moveDetailDb[k] = v;
+        _moveDetailDb[k.replace(/ /g, '-')] = v;
+        if (v.name?.en) _moveDetailDb[v.name.en.toLowerCase()] = v;
+      }
+    } catch { _moveDetailDb = {}; }
+  }
+  return _moveDetailDb;
+}
+
+// Lazy-loaded PLZA moves db: { zh_name: { type, category, ... } }
+let _plzaMoveDb = null;
+function loadPlzaMoveDb() {
+  if (!_plzaMoveDb) {
+    try {
+      _plzaMoveDb = JSON.parse(
+        fs.readFileSync(path.join(__dirname, '../../data/plza_moves.json'), 'utf8'),
+      );
+    } catch { _plzaMoveDb = {}; }
+  }
+  return _plzaMoveDb;
+}
+
+// ── Type+category move helpers ────────────────────────────────────────────────
+// category arg: 'physical' | 'special' | 'attacking' | 'status' | 'any'
+
+function matchesMoveType(moveData, typeEn) {
+  if (!moveData) return false;
+  if (typeEn === 'any') return true;
+  const t = (moveData.type?.en || moveData.type || '').toLowerCase();
+  return t === typeEn;
+}
+
+function matchesMoveCategory(moveData, category) {
+  if (!moveData) return false;
+  if (category === 'any') return true;
+  const cat = (moveData.category?.en || moveData.category || '').toLowerCase();
+  if (category === 'attacking') return cat === 'physical' || cat === 'special';
+  return cat === category;
+}
+
+// Category suffix patterns for single glued tokens (zh/ja): longest first
+const MOVE_CAT_SUFFIXES = [
+  ['物理攻擊招式', 'physical'],
+  ['特殊攻擊招式', 'special'],
+  ['攻擊招式', 'attacking'],
+  ['物理招式', 'physical'],
+  ['特殊招式', 'special'],
+  ['變化招式', 'status'],
+  ['輔助招式', 'status'],
+  ['狀態招式', 'status'],
+  ['攻撃招式', 'attacking'], // ja simplified kanji
+  ['物理技', 'physical'],
+  ['特殊技', 'special'],
+  ['変化技', 'status'],
+  ['攻撃技', 'attacking'],
+  ['攻擊招', 'attacking'],   // abbreviated (no 式)
+  ['招式', 'any'],
+  ['技', 'any'],
+];
+
+// Category keywords valid immediately after a resolved type token (1 or 2 tokens)
+const MOVE_CAT_TOKENS = new Map([
+  ['攻擊招式', 'attacking'],
+  ['物理攻擊招式', 'physical'],
+  ['特殊攻擊招式', 'special'],
+  ['物理招式', 'physical'],
+  ['特殊招式', 'special'],
+  ['變化招式', 'status'],
+  ['輔助招式', 'status'],
+  ['狀態招式', 'status'],
+  ['招式', 'any'],
+  ['攻撃招式', 'attacking'],
+  ['物理技', 'physical'],
+  ['特殊技', 'special'],
+  ['変化技', 'status'],
+  ['攻撃技', 'attacking'],
+  ['技', 'any'],
+  // English
+  ['attacking', 'attacking'],
+  ['physical', 'physical'],
+  ['special', 'special'],
+  ['status', 'status'],
+  ['moves', 'any'],
+  ['attacking moves', 'attacking'],
+  ['physical moves', 'physical'],
+  ['special moves', 'special'],
+  ['status moves', 'status'],
+  ['all moves', 'any'],
+]);
+
+// Try to parse a single glued token as TYPE+CATEGORY (e.g. 超能攻擊招式)
+function parseTypeMoveToken(token) {
+  for (const [suffix, cat] of MOVE_CAT_SUFFIXES) {
+    if (token.length > suffix.length && token.endsWith(suffix)) {
+      const prefix = token.slice(0, -suffix.length);
+      const typeEn = resolveType(prefix);
+      if (typeEn) return { typeEn, cat };
+    }
+  }
+  return null;
+}
+
 // ── Game configurations ───────────────────────────────────────────────────────
 // To add a new game: add an entry here and place the DB JSON in data/.
 
@@ -194,6 +312,13 @@ const GAME_CONFIGS = {
     // All moves in one flat list (PokéAPI IDs)
     hasMove(poke, moveId, _method) {
       return (poke.moves_en || []).includes(moveId);
+    },
+    hasMoveOfTypeCategory(poke, typeEn, category) {
+      const db = loadMoveDetailDb();
+      return (poke.moves_en || []).some(id => {
+        const data = db[id];
+        return matchesMoveType(data, typeEn) && matchesMoveCategory(data, category);
+      });
     },
     supportsMethod: false,   // no level-up / TM distinction
   },
@@ -210,6 +335,17 @@ const GAME_CONFIGS = {
       if (method === 'levelup') return inLv;
       if (method === 'tm')      return inTm;
       return inLv || inTm;
+    },
+    hasMoveOfTypeCategory(poke, typeEn, category) {
+      const db = loadPlzaMoveDb();
+      const allMoves = [
+        ...(poke['Level Up Moves'] || []).map(m => m.move_zh),
+        ...(poke['TM Learn'] || []),
+      ];
+      return allMoves.some(zh => {
+        const data = db[zh];
+        return matchesMoveType(data, typeEn) && matchesMoveCategory(data, category);
+      });
     },
     supportsMethod: true,
   },
@@ -239,6 +375,15 @@ const GAME_CONFIGS = {
       const db    = loadChampionMovesDb();
       const moves = db[String(poke.dex_id)] ?? [];
       return moves.includes(enName);
+    },
+    hasMoveOfTypeCategory(poke, typeEn, category) {
+      const champDb  = loadChampionMovesDb();
+      const detailDb = loadMoveDetailDb();
+      const moves    = champDb[String(poke.dex_id)] ?? [];
+      return moves.some(enName => {
+        const data = detailDb[enName.toLowerCase()];
+        return matchesMoveType(data, typeEn) && matchesMoveCategory(data, category);
+      });
     },
     supportsMethod: false,
   },
@@ -377,6 +522,28 @@ function postProcess(tokens) {
           i += 2;
           continue;
         }
+      }
+    }
+
+    // Type+category move search: 超能攻擊招式 / psychic attacking moves
+    {
+      const tm = parseTypeMoveToken(t);
+      if (tm) { out.push(`TYPEMOVE:${tm.typeEn}:${tm.cat}`); continue; }
+    }
+    {
+      const typeEn = resolveType(t);
+      if (typeEn) {
+        const n1 = tokens[i + 1];
+        const n2 = n1 !== undefined ? tokens[i + 2] : undefined;
+        if (n1 !== undefined && n2 !== undefined) {
+          const cat2 = MOVE_CAT_TOKENS.get(`${n1} ${n2}`);
+          if (cat2) { out.push(`TYPEMOVE:${typeEn}:${cat2}`); i += 2; continue; }
+        }
+        if (n1 !== undefined) {
+          const cat1 = MOVE_CAT_TOKENS.get(n1);
+          if (cat1) { out.push(`TYPEMOVE:${typeEn}:${cat1}`); i++; continue; }
+        }
+        // No category token follows — fall through (plain type filter)
       }
     }
 
@@ -525,6 +692,12 @@ function evalOperand(poke, token, cfg) {
     if (op === '<=') return a <= b;
     if (op === '=')  return a === b;
     return false;
+  }
+
+  // ── TYPEMOVE check ──────────────────────────────────────────────────────
+  if (token.startsWith('TYPEMOVE:')) {
+    const [, typeEn, category] = token.split(':');
+    return cfg.hasMoveOfTypeCategory ? cfg.hasMoveOfTypeCategory(poke, typeEn, category) : false;
   }
 
   // ── MOVE check ───────────────────────────────────────────────────────────
