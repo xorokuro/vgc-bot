@@ -374,7 +374,7 @@ function champMovepoolEmoji(enName) {
   return typeEn ? (TYPE_EMOJI[typeEn] ?? '') : '';
 }
 
-function movepoolField(moves, lang, limit = 1020) {
+function movepoolField(moves, lang, limit = 1010) {
   if (!moves.length) return '—';
   const items = moves.map(en => `${champMovepoolEmoji(en)} ${champMovepoolName(en, lang)}`);
   const lines = [];
@@ -399,31 +399,26 @@ function buildMovepoolEmbed(entry, season, format, lang = 'zh', game = 'champ') 
   const dexId   = dexData?.dex_id ?? null;
   const allMoves = dexId != null ? (CHAMP_MOVES_DB[String(dexId)] ?? []) : [];
 
-  const physical = [], special = [], status = [], unknown = [];
+  const attacking = [], status = [];
   for (const en of allMoves) {
     const data = MOVES_SVD[en.toLowerCase()];
     const cat  = data?.category?.en?.toLowerCase();
-    if      (cat === 'physical') physical.push(en);
-    else if (cat === 'special')  special.push(en);
-    else if (cat === 'status')   status.push(en);
-    else                         unknown.push(en);
+    if (cat === 'status') status.push(en);
+    else                  attacking.push(en);
   }
 
-  const CP = CATEGORY_EMOJI.Physical ?? '⚔️';
-  const CS = CATEGORY_EMOJI.Special  ?? '✨';
+  const CA = CATEGORY_EMOJI.Physical ?? '⚔️';
   const CT = CATEGORY_EMOJI.Status   ?? '🔄';
   const catLabel = {
-    zh: { p: `${CP} 物理招式`, s: `${CS} 特殊招式`, t: `${CT} 變化招式`, u: '❓ 其他' },
-    en: { p: `${CP} Physical`, s: `${CS} Special`,  t: `${CT} Status`,   u: '❓ Other' },
-    ja: { p: `${CP} 物理`,     s: `${CS} 特殊`,     t: `${CT} 変化`,     u: '❓ その他' },
-  }[lang] ?? { p: `${CP} Physical`, s: `${CS} Special`, t: `${CT} Status`, u: '❓ Other' };
+    zh: { a: `${CA} 攻擊招式`, t: `${CT} 變化招式` },
+    en: { a: `${CA} Attacking`, t: `${CT} Status` },
+    ja: { a: `${CA} 攻撃わざ`,  t: `${CT} 変化わざ` },
+  }[lang] ?? { a: `${CA} Attacking`, t: `${CT} Status` };
 
   const fields = [];
-  if (physical.length) fields.push({ name: `${catLabel.p} (${physical.length})`, value: movepoolField(physical, lang), inline: false });
-  if (special.length)  fields.push({ name: `${catLabel.s} (${special.length})`,  value: movepoolField(special,  lang), inline: false });
-  if (status.length)   fields.push({ name: `${catLabel.t} (${status.length})`,   value: movepoolField(status,   lang), inline: false });
-  if (unknown.length)  fields.push({ name: `${catLabel.u} (${unknown.length})`,  value: movepoolField(unknown,  lang), inline: false });
-  if (!fields.length)  fields.push({ name: lbl.noData, value: '—', inline: false });
+  if (attacking.length) fields.push({ name: `${catLabel.a} (${attacking.length})`, value: movepoolField(attacking, lang), inline: false });
+  if (status.length)    fields.push({ name: `${catLabel.t} (${status.length})`,    value: movepoolField(status,    lang), inline: false });
+  if (!fields.length)   fields.push({ name: lbl.noData, value: '—', inline: false });
 
   return new EmbedBuilder()
     .setColor(0x7B68EE)
@@ -753,6 +748,8 @@ module.exports = {
   },
 
   async handleButton(interaction) {
+    await interaction.deferUpdate();
+
     const parts      = interaction.customId.split('|');
     const tab        = parts[1];
     const seasonStr  = parts[2];
@@ -766,7 +763,7 @@ module.exports = {
 
     const data  = game === 'champ' ? loadChampionData(seasonStr, format) : loadSeasonData(season, format);
     const entry = data ? findPokemon(data, pokemonName) : null;
-    if (!entry) { await interaction.reply({ content: lbl.notFound, flags: 64 }); return; }
+    if (!entry) { await interaction.followUp({ content: lbl.notFound, flags: 64 }); return; }
 
     let embed;
     if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data, lang, game);
@@ -775,7 +772,7 @@ module.exports = {
     else if (tab === 'mp') embed = buildMovepoolEmbed(entry, season, format, lang, game);
     else                   embed = buildOverviewEmbed(entry, season, format, data, lang, game);
 
-    await interaction.update({
+    await interaction.editReply({
       embeds:     [embed],
       components: buildComponents(tab, entry, season, format, lang, game),
     });
