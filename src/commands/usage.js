@@ -95,6 +95,7 @@ const LBL = {
     fmt: (s, f)    => `S${s} ${f}`,
     fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
     overview:    '概覽', builds: '配置', moves: '招式', matchups: '對位', movepool: '招式庫',
+    mpAttacking: '攻擊招式', mpStatus: '變化招式',
     ability:     '特性', item: '持有道具', nature: '性格', tera: '太晶屬性',
     move:        '招式', teammate: '隊友',
     baseStats: '📊 種族值',
@@ -131,6 +132,7 @@ const LBL = {
     fmt: (s, f)    => `S${s} ${f}`,
     fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
     overview:    'Overview', builds: 'Builds', moves: 'Moves', matchups: 'Matchups', movepool: 'Move Pool',
+    mpAttacking: 'Attacking', mpStatus: 'Status',
     ability:     'Ability', item: 'Held Item', nature: 'Nature', tera: 'Tera Type',
     move:        'Move', teammate: 'Teammates',
     baseStats: '📊 Base Stats',
@@ -167,6 +169,7 @@ const LBL = {
     fmt: (s, f)    => `S${s} ${f}`,
     fmtChamp: (reg, s, f) => `Reg. ${reg} · M-${s.slice(1)} ${f}`,
     overview:    '概要', builds: '型', moves: '技', matchups: '対面', movepool: 'わざ一覧',
+    mpAttacking: '攻撃わざ', mpStatus: '変化わざ',
     ability:     '特性', item: '持ち物', nature: '性格', tera: 'テラスタイプ',
     move:        '技', teammate: '相方',
     baseStats: '📊 種族値',
@@ -392,7 +395,7 @@ function movepoolField(moves, lang, limit = 1010) {
   return lines.join('') || '—';
 }
 
-function buildMovepoolEmbed(entry, season, format, lang = 'zh', game = 'champ') {
+function buildMovepoolEmbed(entry, season, format, lang = 'zh', game = 'champ', filter = 'attacking') {
   const lbl     = LBL[lang] ?? LBL.zh;
   const name    = pokeName(entry.full_name, lang);
   const dexData = getBaseStats(entry);
@@ -416,14 +419,21 @@ function buildMovepoolEmbed(entry, season, format, lang = 'zh', game = 'champ') 
   }[lang] ?? { a: `${CA} Attacking`, t: `${CT} Status` };
 
   const fields = [];
-  if (attacking.length) fields.push({ name: `${catLabel.a} (${attacking.length})`, value: movepoolField(attacking, lang), inline: false });
-  if (status.length)    fields.push({ name: `${catLabel.t} (${status.length})`,    value: movepoolField(status,    lang), inline: false });
-  if (!fields.length)   fields.push({ name: lbl.noData, value: '—', inline: false });
+  if (filter === 'status') {
+    if (status.length)    fields.push({ name: `${catLabel.t} (${status.length})`, value: movepoolField(status, lang), inline: false });
+  } else {
+    if (attacking.length) fields.push({ name: `${catLabel.a} (${attacking.length})`, value: movepoolField(attacking, lang), inline: false });
+  }
+  if (!fields.length) fields.push({ name: lbl.noData, value: '—', inline: false });
+
+  const displayCount = filter === 'status' ? status.length : attacking.length;
+  const moveWord     = lang === 'en' ? 'moves' : lang === 'ja' ? 'わざ' : '招式';
+  const filterLabel  = filter === 'status' ? lbl.mpStatus : lbl.mpAttacking;
 
   return new EmbedBuilder()
     .setColor(0x7B68EE)
     .setTitle(`${fmtTitle(season, format, lang, game)} · ${name} — ${lbl.movepool}`)
-    .setDescription(`${name} · ${lbl.movepool} · ${allMoves.length} ${lang === 'en' ? 'moves' : lang === 'ja' ? 'わざ' : '招式'}`)
+    .setDescription(`${name} · ${filterLabel} · ${displayCount} ${moveWord}`)
     .setThumbnail(getSpriteUrl(entry))
     .setFooter({ text: fmtFooter(season, format, lang, game) })
     .addFields(...fields);
@@ -441,16 +451,35 @@ function tabLabel(id, lang) {
 }
 
 function makeTabRow(activeTab, season, format, pokemonName, lang, game = 'sv') {
-  const f    = format === 'singles' ? 's' : 'd';
-  const g    = game === 'champ' ? 'c' : 'v';
-  const tabs = game === 'champ' ? TAB_IDS_CHAMP : TAB_IDS_SV;
+  const f       = format === 'singles' ? 's' : 'd';
+  const g       = game === 'champ' ? 'c' : 'v';
+  const tabs    = game === 'champ' ? TAB_IDS_CHAMP : TAB_IDS_SV;
+  const mainTab = (activeTab === 'mpa' || activeTab === 'mps') ? 'mp' : activeTab;
   return new ActionRowBuilder().addComponents(
     tabs.map(t => new ButtonBuilder()
       .setCustomId(`up|${t}|${season}|${f}|${lang}|${g}|${pokemonName}`)
       .setLabel(tabLabel(t, lang))
-      .setStyle(t === activeTab ? ButtonStyle.Primary : ButtonStyle.Secondary)
-      .setDisabled(t === activeTab),
+      .setStyle(t === mainTab ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(t === mainTab),
     ),
+  );
+}
+
+function makeMpSubTabRow(activeSubTab, season, format, pokemonName, lang, game) {
+  const f   = format === 'singles' ? 's' : 'd';
+  const g   = game === 'champ' ? 'c' : 'v';
+  const lbl = LBL[lang] ?? LBL.zh;
+  return new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setCustomId(`up|mpa|${season}|${f}|${lang}|${g}|${pokemonName}`)
+      .setLabel(lbl.mpAttacking)
+      .setStyle(activeSubTab === 'mpa' ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(activeSubTab === 'mpa'),
+    new ButtonBuilder()
+      .setCustomId(`up|mps|${season}|${f}|${lang}|${g}|${pokemonName}`)
+      .setLabel(lbl.mpStatus)
+      .setStyle(activeSubTab === 'mps' ? ButtonStyle.Primary : ButtonStyle.Secondary)
+      .setDisabled(activeSubTab === 'mps'),
   );
 }
 
@@ -518,7 +547,9 @@ function makeTeraSelectRow(entry, season, format, lang, game = 'sv') {
 
 function buildComponents(activeTab, entry, season, format, lang, game = 'sv') {
   const rows = [makeTabRow(activeTab, season, format, entry.full_name, lang, game)];
-  if (activeTab !== 'mp') {
+  if (activeTab === 'mpa' || activeTab === 'mps') {
+    rows.push(makeMpSubTabRow(activeTab, season, format, entry.full_name, lang, game));
+  } else if (activeTab !== 'mp') {
     const moveRow = makeMoveSelectRow(entry, season, format, lang, game);
     const abilRow = makeAbilitySelectRow(entry, season, format, lang, game);
     const teraRow = makeTeraSelectRow(entry, season, format, lang, game);
@@ -751,7 +782,8 @@ module.exports = {
     await interaction.deferUpdate();
 
     const parts      = interaction.customId.split('|');
-    const tab        = parts[1];
+    const rawTab     = parts[1];
+    const tab        = rawTab === 'mp' ? 'mpa' : rawTab;
     const seasonStr  = parts[2];
     const format     = parts[3] === 's' ? 'singles' : 'doubles';
     const lang       = parts[4] ?? 'zh';
@@ -769,7 +801,8 @@ module.exports = {
     if      (tab === 'bd') embed = buildBuildsEmbed(entry, season, format, data, lang, game);
     else if (tab === 'mv') embed = buildMovesEmbed(entry, season, format, data, lang, game);
     else if (tab === 'mt') embed = buildMatchupsEmbed(entry, season, format, data, lang, game);
-    else if (tab === 'mp') embed = buildMovepoolEmbed(entry, season, format, lang, game);
+    else if (tab === 'mpa') embed = buildMovepoolEmbed(entry, season, format, lang, game, 'attacking');
+    else if (tab === 'mps') embed = buildMovepoolEmbed(entry, season, format, lang, game, 'status');
     else                   embed = buildOverviewEmbed(entry, season, format, data, lang, game);
 
     await interaction.editReply({
