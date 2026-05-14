@@ -54,7 +54,7 @@ const TYPE_CHART = {
   Dragon:   { Dragon: 2, Steel: 0.5, Fairy: 0 },
   Dark:     { Fighting: 0.5, Psychic: 2, Ghost: 2, Dark: 0.5, Fairy: 0.5 },
   Steel:    { Fire: 0.5, Water: 0.5, Electric: 0.5, Ice: 2, Rock: 2, Steel: 0.5, Fairy: 2 },
-  Fairy:    { Fighting: 2, Poison: 0.5, Bug: 0.5, Dragon: 2, Dark: 2, Steel: 0.5 },
+  Fairy:    { Fighting: 2, Poison: 0.5, Fire: 0.5, Dragon: 2, Dark: 2, Steel: 0.5 },
 };
 
 function cap(s) { return s ? s[0].toUpperCase() + s.slice(1).toLowerCase() : ''; }
