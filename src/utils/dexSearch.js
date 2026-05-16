@@ -629,7 +629,9 @@ function insertImplicitAnd(tokens) {
     if (i + 1 < tokens.length) {
       const next = tokens[i + 1];
       const tIsOperand    = t    !== 'AND' && t    !== 'OR' && t    !== 'NOT' && t    !== '(';
-      const nextIsOperand = next !== 'AND' && next !== 'OR' && next !== 'NOT' && next !== ')';
+      // NOT starts a compound operand group (NOT <operand>), so treat it like an operand
+      // for the purpose of inserting AND — e.g. "電系 not 電網" → "電系 AND NOT 電網"
+      const nextIsOperand = next !== 'AND' && next !== 'OR' && next !== ')';
       if (tIsOperand && nextIsOperand) out.push('AND');
     }
   }
