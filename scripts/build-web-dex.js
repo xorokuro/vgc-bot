@@ -34,6 +34,11 @@ const roster = new Set(JSON.parse(fs.readFileSync(path.join(DATA, 'champion_rost
 // Tri-lingual overrides for Champions-specific custom abilities/moves (optional).
 let overrides = { abilities: {}, moves: {} };
 try { overrides = JSON.parse(fs.readFileSync(path.join(DATA, 'champion_overrides.json'), 'utf8')); } catch {}
+// Extra battle-distinct forms + tri-lingual form-name overrides (optional).
+let forms = { include: [], names: {} };
+try { forms = JSON.parse(fs.readFileSync(path.join(DATA, 'champion_forms.json'), 'utf8')); } catch {}
+const includeForms = new Set(forms.include || []);
+const formNames    = forms.names || {};
 const tri    = JSON.parse(fs.readFileSync(path.join(DATA, 'trilingual.json'), 'utf8'));
 const zhHant = JSON.parse(fs.readFileSync(path.join(DATA, 'zh-Hant.json'), 'utf8'));
 const movesD = JSON.parse(fs.readFileSync(path.join(DATA, 'moves_sv_detailed.json'), 'utf8'));
@@ -116,7 +121,8 @@ const usedAbilities = new Set();
 const pokemon = [];
 
 for (const e of Object.values(champ)) {
-  if (!roster.has(e.dex_id + ':' + formKey(e))) continue;
+  const formId = e.dex_id + ':' + e.form_name;
+  if (!roster.has(e.dex_id + ':' + formKey(e)) && !includeForms.has(formId)) continue;
 
   // Learnset is keyed by national dex id; all forms inherit the base list
   // (same behaviour as the bot's champion search).
@@ -132,16 +138,19 @@ for (const e of Object.values(champ)) {
   abilities.forEach(a => usedAbilities.add(a.id));
 
   const s = e.stats || {};
+  // Tri-lingual name override for this form (drops the grey English form label).
+  const nameOv = formNames[formId];
+  const name = {
+    en: (nameOv && nameOv.en) || e.name_en || String(e.dex_id),
+    zh: (nameOv && nameOv.zh) || e.name_zh || e.name_en || '',
+    ja: (nameOv && nameOv.ja) || e.name_ja || e.name_en || '',
+  };
   pokemon.push({
     dex: e.dex_id,
     species_id: e.dex_id,
-    form: e.form_name || null,
+    form: nameOv ? null : (e.form_name || null),
     isDefault: e.form_id === 0,
-    name: {
-      en: e.name_en || String(e.dex_id),
-      zh: e.name_zh || e.name_en || '',
-      ja: e.name_ja || e.name_en || '',
-    },
+    name,
     types: e.types_en || [],
     abilities,
     moves: moveIds,

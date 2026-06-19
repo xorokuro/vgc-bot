@@ -1,0 +1,36 @@
+{
+  "_comment": "Pokémon Champions multi-form handling for the web dex. Serebii's list page shows one sprite per Pokémon, so battle-distinct alternate forms are added here. 'include' = extra forms to add to the roster (keyed <dex>:<form_name>). 'names' = full tri-lingual display name overrides per <dex>:<form_name>; when present, the grey English form sub-label is dropped. In-battle transformations (Castform weather, Aegislash Blade, Ash-Greninja, Palafin Hero) are intentionally NOT included — you build the base form.",
+  "include": [
+    "479:Heat Rotom",
+    "479:Wash Rotom",
+    "479:Frost Rotom",
+    "479:Fan Rotom",
+    "479:Mow Rotom",
+    "745:Midnight Form",
+    "745:Dusk Form",
+    "711:Small Variety",
+    "711:Large Variety",
+    "711:Jumbo Variety",
+    "678:Female",
+    "902:Female"
+  ],
+  "names": {
+    "745:Midday Form":   { "en": "Lycanroc (Midday Form)",   "zh": "鬃岩狼人（白晝的樣子）", "ja": "ルガルガン（まひるのすがた）" },
+    "745:Midnight Form": { "en": "Lycanroc (Midnight Form)", "zh": "鬃岩狼人（黑夜的樣子）", "ja": "ルガルガン（まよなかのすがた）" },
+    "745:Dusk Form":     { "en": "Lycanroc (Dusk Form)",     "zh": "鬃岩狼人（黃昏的樣子）", "ja": "ルガルガン（たそがれのすがた）" },
+
+    "479:Heat Rotom":    { "en": "Heat Rotom",  "zh": "加熱洛托姆", "ja": "ヒートロトム" },
+    "479:Wash Rotom":    { "en": "Wash Rotom",  "zh": "清洗洛托姆", "ja": "ウォッシュロトム" },
+    "479:Frost Rotom":   { "en": "Frost Rotom", "zh": "結冰洛托姆", "ja": "フロストロトム" },
+    "479:Fan Rotom":     { "en": "Fan Rotom",   "zh": "旋轉洛托姆", "ja": "スピンロトム" },
+    "479:Mow Rotom":     { "en": "Mow Rotom",   "zh": "切割洛托姆", "ja": "カットロトム" },
+
+    "711:Medium Variety": { "en": "Gourgeist (Medium Variety)", "zh": "南瓜怪人（中顆種）", "ja": "パンプジン（ふつうサイズ）" },
+    "711:Small Variety":  { "en": "Gourgeist (Small Variety)",  "zh": "南瓜怪人（小顆種）", "ja": "パンプジン（ちいさいサイズ）" },
+    "711:Large Variety":  { "en": "Gourgeist (Large Variety)",  "zh": "南瓜怪人（大顆種）", "ja": "パンプジン（おおきいサイズ）" },
+    "711:Jumbo Variety":  { "en": "Gourgeist (Jumbo Variety)",  "zh": "南瓜怪人（巨顆種）", "ja": "パンプジン（とくだいサイズ）" },
+
+    "902:Male":   { "en": "Basculegion (Male)",   "zh": "幽尾玄魚♂", "ja": "イダイトウ♂" },
+    "902:Female": { "en": "Basculegion (Female)", "zh": "幽尾玄魚♀", "ja": "イダイトウ♀" }
+  }
+}
