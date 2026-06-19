@@ -173,6 +173,30 @@ for (const en of Object.keys(ZH_HANT.moves || {})) {
   MOVE_ID_TO_EN[id] = en;
 }
 
+// ── Pokémon Champions custom abilities/moves (data/champion_overrides.json) ────
+// Single source of truth shared with the web tool build (scripts/build-web-dex.js)
+// and the display layer (i18n.js). Lets the bot resolve their EN/ZH/JA names.
+try {
+  const champOv = require('../../data/champion_overrides.json');
+  for (const e of Object.values(champOv.abilities || {})) {
+    if (!e || !e.en) continue;
+    const id = toApiId(e.en);
+    EN_TO_ABILITY_ID[e.en.toLowerCase()] = id;
+    EN_TO_ABILITY_ID[id] = id;
+    if (e.zh) ZH_TO_ABILITY_ID[e.zh] = id;
+    if (e.ja) ZH_TO_ABILITY_ID[e.ja] = id; // ja names are non-latin, so the ZH map is fine
+  }
+  for (const e of Object.values(champOv.moves || {})) {
+    if (!e || !e.en) continue;
+    const id = toApiId(e.en);
+    EN_TO_MOVE_ID[e.en.toLowerCase()] = id;
+    EN_TO_MOVE_ID[id] = id;
+    MOVE_ID_TO_EN[id] = e.en;
+    if (e.zh) { ZH_TO_MOVE_ID[e.zh] = id; if (!MOVE_ID_TO_ZH[id]) MOVE_ID_TO_ZH[id] = e.zh; }
+    if (e.ja) ZH_TO_MOVE_ID[e.ja] = id;
+  }
+} catch { /* champion_overrides.json not present — fine */ }
+
 // Lazy-loaded champion moves db: { dex_id_str: [enName, ...] }
 let _championMovesDb = null;
 function loadChampionMovesDb() {

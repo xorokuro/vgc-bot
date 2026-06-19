@@ -584,6 +584,21 @@ function _getMaps() {
     }
   } catch { /* manual.json not found */ }
 
+  // Layer 4: champion_overrides.json — Pokémon Champions custom abilities/moves.
+  // Keyed for lookup by the English display name (lowercased), like the other layers.
+  try {
+    const champ = require(path.join(__dirname, '../../data/champion_overrides.json'));
+    const SECT = { ability: 'abilities', move: 'moves' };
+    for (const [cat, key] of Object.entries(SECT)) {
+      const section = champ[key];
+      if (!section) continue;
+      for (const entry of Object.values(section)) {
+        if (!entry || !entry.en) continue;
+        _maps[cat][entry.en.toLowerCase()] = { ja: entry.ja || entry.en, zh: entry.zh || entry.en };
+      }
+    }
+  } catch { /* champion_overrides.json not found */ }
+
   return _maps;
 }
 
