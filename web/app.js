@@ -212,9 +212,18 @@
     render(res.results);
   }
 
-  function spriteUrl(p) {
-    const base = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
-    return base + (p.species_id || p.dex) + '.png';
+  const PS_HOME = 'https://play.pokemonshowdown.com/sprites/home/';
+  const ARTWORK = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+  // Form sprite → base-species sprite → official artwork → hide.
+  function attachSprite(img, p) {
+    const chain = [
+      p.sprite ? PS_HOME + p.sprite + '.png' : null,
+      p.spriteBase ? PS_HOME + p.spriteBase + '.png' : null,
+      ARTWORK + (p.species_id || p.dex) + '.png',
+    ].filter(Boolean);
+    let i = 0;
+    img.onerror = () => { i++; if (i < chain.length) img.src = chain[i]; else img.style.visibility = 'hidden'; };
+    img.src = chain[0];
   }
 
   function render(list) {
@@ -236,8 +245,7 @@
   function card(p) {
     const el = document.createElement('div'); el.className = 'card';
     const top = document.createElement('div'); top.className = 'top';
-    const img = document.createElement('img'); img.loading = 'lazy'; img.src = spriteUrl(p);
-    img.onerror = () => { img.style.visibility = 'hidden'; };
+    const img = document.createElement('img'); img.loading = 'lazy'; attachSprite(img, p);
     const info = document.createElement('div');
     const dex = document.createElement('div'); dex.className = 'dex'; dex.textContent = '#' + p.dex;
     const nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = state.lang === 'en' ? titleCase(pokeName(p)) : pokeName(p);

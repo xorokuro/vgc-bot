@@ -39,6 +39,10 @@ let forms = { include: [], names: {} };
 try { forms = JSON.parse(fs.readFileSync(path.join(DATA, 'champion_forms.json'), 'utf8')); } catch {}
 const includeForms = new Set(forms.include || []);
 const formNames    = forms.names || {};
+const dropForms    = new Set(forms.drop || []);
+
+// Pokémon Showdown HOME sprite slug (toID + form rules). Falls back to base species.
+function toID(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
 const tri    = JSON.parse(fs.readFileSync(path.join(DATA, 'trilingual.json'), 'utf8'));
 const zhHant = JSON.parse(fs.readFileSync(path.join(DATA, 'zh-Hant.json'), 'utf8'));
 const movesD = JSON.parse(fs.readFileSync(path.join(DATA, 'moves_sv_detailed.json'), 'utf8'));
@@ -115,6 +119,45 @@ for (const v of Object.values(movesD)) {
   };
 }
 
+// Base species name per dex (form 0, with any "(Form)" descriptor stripped) → sprite slug base.
+const baseNameByDex = {};
+for (const e of Object.values(champ)) {
+  if (e.form_id === 0 || !baseNameByDex[e.dex_id]) {
+    baseNameByDex[e.dex_id] = (e.name_en || '').replace(/\s*\(.*\)\s*$/, '');
+  }
+}
+function spriteSlug(e) {
+  const base = toID(baseNameByDex[e.dex_id] || e.name_en);
+  const fn = (e.form_name || '').toLowerCase();
+  if (e.form_id === 0 || !fn) return base;
+  if (fn.includes('mega')) {
+    if (fn.includes(' x') || fn.endsWith('-x')) return base + '-megax';
+    if (fn.includes(' y') || fn.endsWith('-y')) return base + '-megay';
+    return base + '-mega';
+  }
+  if (fn.includes('alola')) return base + '-alola';
+  if (fn.includes('galar')) return base + '-galar';
+  if (fn.includes('hisui')) return base + '-hisui';
+  if (fn.includes('paldea')) {
+    if (fn.includes('blaze')) return base + '-paldeablaze';
+    if (fn.includes('aqua'))  return base + '-paldeaaqua';
+    return base + '-paldeacombat';
+  }
+  if (fn.includes('eternal')) return base + '-eternal';
+  if (fn.includes('heat'))  return 'rotom-heat';
+  if (fn.includes('wash'))  return 'rotom-wash';
+  if (fn.includes('frost')) return 'rotom-frost';
+  if (fn.includes('fan'))   return 'rotom-fan';
+  if (fn.includes('mow'))   return 'rotom-mow';
+  if (fn.includes('midnight')) return base + '-midnight';
+  if (fn.includes('dusk'))     return base + '-dusk';
+  if (fn.includes('small')) return base + '-small';
+  if (fn.includes('large')) return base + '-large';
+  if (fn.includes('jumbo')) return base + '-super';
+  if (fn === 'female') return base + '-f';
+  return base; // default/in-battle forms share the base sprite
+}
+
 // ── Walk the roster, collecting used moves / abilities ─────────────────────────
 const usedMoves = new Set();      // move ids
 const usedAbilities = new Set();
@@ -145,11 +188,20 @@ for (const e of Object.values(champ)) {
     zh: (nameOv && nameOv.zh) || e.name_zh || e.name_en || '',
     ja: (nameOv && nameOv.ja) || e.name_ja || e.name_en || '',
   };
+  // Drop redundant single/default-form suffixes: "Castform (Normal)" -> "Castform".
+  const dropped = dropForms.has(formId);
+  if (dropped) {
+    name.en = name.en.replace(/\s*\([^)]*\)\s*$/, '');
+    name.zh = name.zh.replace(/（[^）]*）\s*$/, '').replace(/\s*\([^)]*\)\s*$/, '');
+    name.ja = name.ja.replace(/（[^）]*）\s*$/, '').replace(/\s*\([^)]*\)\s*$/, '');
+  }
   pokemon.push({
     dex: e.dex_id,
     species_id: e.dex_id,
-    form: nameOv ? null : (e.form_name || null),
+    form: (nameOv || dropped) ? null : (e.form_name || null),
     isDefault: e.form_id === 0,
+    sprite: spriteSlug(e),
+    spriteBase: toID(baseNameByDex[e.dex_id] || e.name_en),
     name,
     types: e.types_en || [],
     abilities,

@@ -31,6 +31,38 @@
     "711:Jumbo Variety":  { "en": "Gourgeist (Jumbo Variety)",  "zh": "南瓜怪人（巨顆種）", "ja": "パンプジン（とくだいサイズ）" },
 
     "902:Male":   { "en": "Basculegion (Male)",   "zh": "幽尾玄魚♂", "ja": "イダイトウ♂" },
-    "902:Female": { "en": "Basculegion (Female)", "zh": "幽尾玄魚♀", "ja": "イダイトウ♀" }
-  }
+    "902:Female": { "en": "Basculegion (Female)", "zh": "幽尾玄魚♀", "ja": "イダイトウ♀" },
+
+    "59:Hisuian Form":  { "zh": "風速狗（洗翠的樣子）" },
+    "157:Hisuian Form": { "zh": "火暴獸（洗翠的樣子）" },
+    "503:Hisuian Form": { "zh": "大劍鬼（洗翠的樣子）" },
+    "571:Hisuian Form": { "zh": "索羅亞克（洗翠的樣子）" },
+    "706:Hisuian Form": { "zh": "黏美龍（洗翠的樣子）" },
+    "713:Hisuian Form": { "zh": "冰岩怪（洗翠的樣子）" },
+    "724:Hisuian Form": { "zh": "狙射樹梟（洗翠的樣子）" },
+
+    "80:Galarian Form":  { "zh": "呆殼獸（伽勒爾的樣子）" },
+    "199:Galarian Form": { "zh": "呆呆王（伽勒爾的樣子）" },
+    "618:Galarian Form": { "zh": "泥巴魚（伽勒爾的樣子）" },
+
+    "128:Paldean Form / Combat Breed": { "zh": "肯泰羅（帕底亞的樣子 鬥戰種）" },
+    "128:Paldean Form / Blaze Breed":  { "zh": "肯泰羅（帕底亞的樣子 火熾種）" },
+    "128:Paldean Form / Aqua Breed":   { "zh": "肯泰羅（帕底亞的樣子 水瀾種）" },
+
+    "670:Eternal Flower": { "zh": "花葉蒂（永恆之花）" }
+  },
+  "drop": [
+    "351:Normal",
+    "666:Icy Snow Pattern",
+    "671:Red Flower",
+    "676:Natural Form",
+    "681:Shield Forme",
+    "778:Disguised Form",
+    "855:Phony Form",
+    "869:Vanilla Cream",
+    "877:Full Belly Mode",
+    "925:Family of Three",
+    "964:Zero Form",
+    "1013:Unremarkable Form"
+  ]
 }
