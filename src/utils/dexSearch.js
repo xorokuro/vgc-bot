@@ -554,7 +554,10 @@ function postProcess(tokens) {
           const cat1 = MOVE_CAT_TOKENS.get(n1);
           if (cat1) { out.push(`TYPEMOVE:${typeEn}:${cat1}`); i++; continue; }
         }
-        // No category token follows — fall through (plain type filter)
+        // No category token follows — emit a TYPE filter and short-circuit, so a
+        // type that is also a move name (e.g. "psychic") isn't swallowed by the
+        // move resolution below.
+        out.push(`TYPE:${typeEn}`); continue;
       }
     }
 
@@ -720,6 +723,11 @@ function evalOperand(poke, token, cfg, opts = {}) {
   if (token.startsWith('MOVE:')) {
     const [, moveId, , method] = token.split(':');
     return cfg.hasMove(poke, moveId, method);
+  }
+
+  // ── Explicit TYPE token (from a bare type word) ──────────────────────────
+  if (token.startsWith('TYPE:')) {
+    return (poke.types_en || []).includes(token.slice(5));
   }
 
   // ── Mega check ───────────────────────────────────────────────────────────
