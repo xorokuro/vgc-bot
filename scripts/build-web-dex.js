@@ -31,6 +31,9 @@ const OUT  = path.join(__dirname, '../web/data.js');
 const champ  = JSON.parse(fs.readFileSync(path.join(DATA, 'pokedex_champion_db.json'), 'utf8'));
 const cMoves = JSON.parse(fs.readFileSync(path.join(DATA, 'champion_moves_db.json'), 'utf8'));
 const roster = new Set(JSON.parse(fs.readFileSync(path.join(DATA, 'champion_roster.json'), 'utf8')));
+// Tri-lingual overrides for Champions-specific custom abilities/moves (optional).
+let overrides = { abilities: {}, moves: {} };
+try { overrides = JSON.parse(fs.readFileSync(path.join(DATA, 'champion_overrides.json'), 'utf8')); } catch {}
 const tri    = JSON.parse(fs.readFileSync(path.join(DATA, 'trilingual.json'), 'utf8'));
 const zhHant = JSON.parse(fs.readFileSync(path.join(DATA, 'zh-Hant.json'), 'utf8'));
 const movesD = JSON.parse(fs.readFileSync(path.join(DATA, 'moves_sv_detailed.json'), 'utf8'));
@@ -174,6 +177,25 @@ for (const id of usedAbilities) {
   };
 }
 
+// ── Apply Champions custom overrides (highest priority) ────────────────────────
+let ovApplied = 0, ovUnused = 0;
+for (const [id, v] of Object.entries(overrides.abilities || {})) {
+  if (!abilities[id]) { ovUnused++; continue; }
+  if (v.en) abilities[id].en = v.en;
+  if (v.zh) abilities[id].zh = v.zh;
+  if (v.ja) abilities[id].ja = v.ja;
+  ovApplied++;
+}
+for (const [id, v] of Object.entries(overrides.moves || {})) {
+  if (!moves[id]) { ovUnused++; continue; }
+  if (v.en) moves[id].en = v.en;
+  if (v.zh) moves[id].zh = v.zh;
+  if (v.ja) moves[id].ja = v.ja;
+  if (v.type) moves[id].type = v.type;
+  if (v.cat)  moves[id].cat  = v.cat;
+  ovApplied++;
+}
+
 const bundle = {
   meta: {
     game: 'champion',
@@ -195,3 +217,6 @@ console.log(`✅  web/data.js written — ${kb} KB  (Pokémon Champions roster)`
 console.log(`    pokemon: ${pokemon.length}  moves: ${bundle.meta.counts.moves}  abilities: ${bundle.meta.counts.abilities}`);
 const noType = Object.keys(moves).filter(id => !moves[id].type).length;
 console.log(`    moves without type/category data (type-cat filter can't match them): ${noType}`);
+console.log(`    custom overrides applied: ${ovApplied}${ovUnused ? `  (${ovUnused} unused — not in roster)` : ''}`);
+const stillFb = Object.keys(abilities).filter(id => abilities[id].zh === abilities[id].en).length;
+console.log(`    abilities still untranslated (zh==en): ${stillFb}`);

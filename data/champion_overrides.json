@@ -1,0 +1,10 @@
+{
+  "_comment": "Tri-lingual overrides for Pokémon Champions custom abilities/moves that are not in the standard translation files (zh-Hant.json / trilingual.json). Keyed by toApiId(English name). Merged by scripts/build-web-dex.js (highest priority). Add new custom entries here as the game adds them.",
+  "abilities": {
+    "dragonize":      { "en": "Dragonize",      "zh": "龍皮膚",   "ja": "ドラゴンスキン" },
+    "mega-sol":       { "en": "Mega Sol",        "zh": "超級日光", "ja": "メガソーラー" },
+    "piercing-drill": { "en": "Piercing Drill",  "zh": "貫穿鑽",   "ja": "かんつうドリル" },
+    "spicy-spray":    { "en": "Spicy Spray",      "zh": "辣椒噴發", "ja": "とびだすハバネロ" }
+  },
+  "moves": {}
+}
