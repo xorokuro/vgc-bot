@@ -43,6 +43,16 @@
   const moveName = id => (DEX.moves[id] ? DEX.moves[id][state.lang] || DEX.moves[id].en : id);
   const abilName = id => (DEX.abilities[id] ? DEX.abilities[id][state.lang] || DEX.abilities[id].en : id);
   const titleCase = s => s.replace(/(^|[\s-])\w/g, m => m.toUpperCase());
+  // Colour a base stat by value (red low → teal high), like standard stat bars.
+  function statColor(v) {
+    if (v < 50)  return '#fb5b5b';
+    if (v < 70)  return '#f9774b';
+    if (v < 90)  return '#f9a825';
+    if (v < 110) return '#dcc94b';
+    if (v < 130) return '#9acb3c';
+    if (v < 150) return '#5ad19a';
+    return '#34c6c6';
+  }
 
   // name (any lang) -> id maps, for autocomplete resolution
   function buildNameIndex(dict) {
@@ -248,7 +258,9 @@
       const v = p.stats[k];
       const bk = document.createElement('span'); bk.className = 'bk'; bk.textContent = T().stat[k];
       const bt = document.createElement('span'); bt.className = 'bt';
-      const bf = document.createElement('span'); bf.className = 'bf'; bf.style.width = Math.min(100, v / 200 * 100) + '%';
+      const bf = document.createElement('span'); bf.className = 'bf';
+      bf.style.width = Math.min(100, v / 200 * 100) + '%';
+      bf.style.background = statColor(v);
       bt.appendChild(bf);
       const bv = document.createElement('span'); bv.className = 'bv'; bv.textContent = v;
       bars.append(bk, bt, bv);
