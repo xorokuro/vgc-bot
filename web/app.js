@@ -102,7 +102,7 @@
       });
       const inp = document.createElement('input'); inp.type = 'number'; inp.min = '0'; inp.placeholder = '–';
       const cur = state.stats[k] || {};
-      sel.value = cur.op || ''; inp.value = cur.val != null ? cur.val : '';
+      sel.value = cur.op || '>='; inp.value = cur.val != null ? cur.val : '';
       const update = () => {
         if (sel.value && inp.value !== '') state.stats[k] = { op: sel.value, val: Number(inp.value) };
         else delete state.stats[k];
