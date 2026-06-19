@@ -41,6 +41,20 @@ When a regulation update changes the roster, refresh `champion_roster.json` from
 Serebii, then re-run the build. To target a different game instead, point the
 script at another `pokedex_*_db.json`.
 
+## Sprites
+
+Form-accurate HOME-style sprites are bundled in `web/sprites/<slug>.png` (the
+slug is each entry's `sprite` / `spriteBase`), so the tool is fully offline.
+Refresh them after a rebuild with:
+
+```bash
+node scripts/fetch-champion-sprites.js          # only downloads missing files
+```
+
+Source per form: **Pokémon HOME (Showdown)** for official forms; **Serebii's
+Champions dex** for the fan-made Mega Evolutions (which exist nowhere else).
+At runtime the card falls back form sprite → base species → remote HOME → hidden.
+
 ## Modes
 
 - **Simple filters** (default): type chips, move/ability autocomplete chips, a

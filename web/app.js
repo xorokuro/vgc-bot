@@ -213,13 +213,12 @@
   }
 
   const PS_HOME = 'https://play.pokemonshowdown.com/sprites/home/';
-  const ARTWORK = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
-  // Form sprite → base-species sprite → official artwork → hide.
+  // Bundled local sprites (web/sprites/) first → base species → remote HOME → hide.
   function attachSprite(img, p) {
     const chain = [
-      p.sprite ? PS_HOME + p.sprite + '.png' : null,
+      p.sprite ? 'sprites/' + p.sprite + '.png' : null,
+      p.spriteBase ? 'sprites/' + p.spriteBase + '.png' : null,
       p.spriteBase ? PS_HOME + p.spriteBase + '.png' : null,
-      ARTWORK + (p.species_id || p.dex) + '.png',
     ].filter(Boolean);
     let i = 0;
     img.onerror = () => { i++; if (i < chain.length) img.src = chain[i]; else img.style.visibility = 'hidden'; };
