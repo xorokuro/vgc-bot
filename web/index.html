@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VGC Pokédex Filter</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1 id="t-title">VGC Pokédex Filter</h1>
+      <div class="sub" id="t-subtitle"></div>
+    </div>
+    <div class="langbar" id="langbar"></div>
+  </header>
+
+  <div class="panel">
+    <div class="modebar">
+      <label class="switch">
+        <input type="checkbox" id="advToggle" />
+        <span class="track"></span>
+        <span id="t-advancedToggle">Complex query</span>
+      </label>
+      <label class="switch" style="gap:8px">
+        <input type="checkbox" id="includeStatus" />
+        <span class="track"></span>
+        <span id="t-includeStatus">Bare "moves" include status</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- SIMPLE -->
+  <div class="panel" id="simple">
+    <div class="row">
+      <h2 id="t-types">Types</h2>
+      <div class="types" id="typeChips"></div>
+      <div class="hint" id="t-typesHint"></div>
+    </div>
+    <div class="row">
+      <h2 id="t-moves">Knows moves</h2>
+      <div class="flex">
+        <input type="text" id="moveInput" list="moveList" style="min-width:240px" />
+        <datalist id="moveList"></datalist>
+      </div>
+      <div class="chips" id="moveChips"></div>
+      <div class="hint" id="t-movesHint"></div>
+    </div>
+    <div class="row">
+      <h2 id="t-abilities">Abilities</h2>
+      <div class="flex">
+        <input type="text" id="abilInput" list="abilList" style="min-width:240px" />
+        <datalist id="abilList"></datalist>
+      </div>
+      <div class="chips" id="abilChips"></div>
+      <div class="hint" id="t-abilitiesHint"></div>
+    </div>
+    <div class="row">
+      <h2 id="t-moveType">Knows a move of type / category</h2>
+      <div class="flex">
+        <select id="mtType"></select>
+        <select id="mtCat"></select>
+      </div>
+    </div>
+    <div class="row">
+      <h2 id="t-stats">Base stats</h2>
+      <div class="statgrid" id="statGrid"></div>
+    </div>
+  </div>
+
+  <!-- ADVANCED -->
+  <div class="panel hidden" id="advanced">
+    <div class="row">
+      <h2 id="t-advancedMode">Advanced query</h2>
+      <textarea id="advInput" placeholder=""></textarea>
+    </div>
+    <div class="row">
+      <h2 id="t-helpTitle">Syntax</h2>
+      <div class="help" id="helpBox"></div>
+    </div>
+  </div>
+
+  <div class="flex" style="margin-top:16px">
+    <button class="btn" id="searchBtn">Search</button>
+    <button class="btn ghost" id="resetBtn">Reset</button>
+  </div>
+
+  <div class="results-head">
+    <span class="count" id="resCount">0</span>
+    <span id="t-results">results</span>
+    <span class="qline" id="qline"></span>
+  </div>
+  <div class="grid" id="results"></div>
+
+  <div class="calcstub" id="calcStub">⚔️ <span id="t-calcStub">Damage calc — coming soon</span></div>
+</div>
+
+<script src="data.js"></script>
+<script src="i18n.js"></script>
+<script src="search.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
