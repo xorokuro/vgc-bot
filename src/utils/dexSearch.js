@@ -389,6 +389,7 @@ const GAME_CONFIGS = {
     labelZh: 'Champion',
     labelEn: 'Pokémon Champion',
     dbFile:  'pokedex_champion_db.json',
+    dedupeCosmetic: true,   // drop Vivillon patterns, Furfrou trims, etc. (battle-identical)
     // Only dex IDs confirmed in the Champion roster (Serebii pokemonchampions/pokemon.shtml)
     dexIdFilter: new Set([
       3,6,9,15,18,24,25,26,36,38,45,59,65,68,71,80,94,115,121,127,
@@ -435,6 +436,23 @@ function loadDb(gameId) {
   // Convert to array for uniform iteration; apply dex roster filter if defined
   let entries = Object.values(data);
   if (cfg.dexIdFilter) entries = entries.filter(p => cfg.dexIdFilter.has(p.dex_id));
+
+  // Drop cosmetic-only alternate forms (same types/stats/abilities as the base):
+  // Vivillon patterns, Furfrou trims, Alcremie creams, Florges colours, etc.
+  // Megas / regionals / Rotom appliances / Lycanroc forms etc. are battle-distinct → kept.
+  if (cfg.dedupeCosmetic) {
+    const baseByDex = {};
+    for (const e of entries) {
+      if ((e.form_id ?? 0) === 0 && !baseByDex[e.dex_id]) baseByDex[e.dex_id] = e;
+    }
+    const sig = e => JSON.stringify([e.types_en, e.stats, (e.abilities || []).map(a => a.name).sort()]);
+    entries = entries.filter(e => {
+      if ((e.form_id ?? 0) === 0) return true;
+      const base = baseByDex[e.dex_id];
+      return !base || sig(e) !== sig(base);
+    });
+  }
+
   _dbCache[gameId] = entries;
   console.log(`[dex] Loaded ${_dbCache[gameId].length} entries for ${gameId}`);
   return _dbCache[gameId];
