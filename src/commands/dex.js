@@ -62,7 +62,7 @@ function buildEmbed(results, gameId, query, page, showStats, lang = 'zh') {
 }
 
 // ── Dropdown ──────────────────────────────────────────────────────────────────
-function buildDetailMenu(slice, gameId, lang, pub) {
+function buildDetailMenu(slice, gameId, lang, pub, userId = '') {
   if (!slice.length) return null;
   const L       = DEX_LABELS[lang] ?? DEX_LABELS.zh;
   const options = slice.map((p, i) => ({
@@ -71,7 +71,7 @@ function buildDetailMenu(slice, gameId, lang, pub) {
   }));
   return new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
-      .setCustomId(`dex_detail|${gameId}|${lang}|${pub ? '1' : '0'}`)
+      .setCustomId(`dex_detail|${gameId}|${lang}|${pub ? '1' : '0'}|${userId}`)
       .setPlaceholder(`🔎 ${L.details}`)
       .addOptions(options),
   );
@@ -93,10 +93,10 @@ function makeNavRow(page, totalPages, cacheId, lang) {
   );
 }
 
-function pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub) {
+function pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub, userId = '') {
   const rows = [];
   if (totalPages > 1) rows.push(makeNavRow(page, totalPages, cacheId, lang));
-  const menu = buildDetailMenu(slice, gameId, lang, pub);
+  const menu = buildDetailMenu(slice, gameId, lang, pub, userId);
   if (menu) rows.push(menu);
   return rows;
 }
@@ -132,7 +132,7 @@ module.exports = {
       ))
     .addBooleanOption(o => o
       .setName('public')
-      .setDescription('公開顯示詳細資料（預設：僅自己可見）/ Show detail card publicly'))
+      .setDescription('點開詳細資料時公開顯示（預設：僅自己可見）/ Show the detail card publicly (default: only you)'))
     .addBooleanOption(o => o
       .setName('include_status_moves')
       .setDescription('招式屬性搜尋含變化招式（預設：僅攻擊招式）/ Include status moves in type-move filters (default: off)')),
@@ -145,7 +145,9 @@ module.exports = {
     const pub           = interaction.options.getBoolean('public') ?? false;
     const includeStatus = interaction.options.getBoolean('include_status_moves') ?? false;
 
-    await interaction.deferReply();
+    // Acknowledge privately (ephemeral). We post the actual results as a normal
+    // channel message below, so there's no "X used /pokemon_search" attribution.
+    await interaction.deferReply({ flags: 64 });
 
     let results, query;
     try {
@@ -165,14 +167,21 @@ module.exports = {
     }
 
     const cacheId    = interaction.id;
+    const userId     = interaction.user.id;
     const totalPages = Math.ceil(results.length / PAGE_SIZE);
-    cacheStore(cacheId, { results, gameId, query, showStats, lang, pub });
+    cacheStore(cacheId, { results, gameId, query, showStats, lang, pub, userId });
 
     const { embed, slice } = buildEmbed(results, gameId, query, 0, showStats, lang);
-    await interaction.editReply({
-      embeds:     [embed],
-      components: pageComponents(slice, gameId, 0, totalPages, cacheId, lang, pub),
-    });
+    const components = pageComponents(slice, gameId, 0, totalPages, cacheId, lang, pub, userId);
+    try {
+      // Public message with no command attribution. Only the invoker may use
+      // the follow-up controls (enforced in handlePageButton/handleSelectMenu).
+      await interaction.channel.send({ embeds: [embed], components });
+      await interaction.deleteReply();
+    } catch {
+      // Fallback (e.g. bot lacks Send-Messages here): show privately to invoker.
+      await interaction.editReply({ embeds: [embed], components });
+    }
   },
 
   async handlePageButton(interaction) {
@@ -186,12 +195,16 @@ module.exports = {
       return;
     }
 
-    const { results, gameId, query, showStats, lang = 'zh', pub = false } = cached;
+    const { results, gameId, query, showStats, lang = 'zh', pub = false, userId } = cached;
+    if (userId && interaction.user.id !== userId) {
+      await interaction.reply({ content: '🔒 只有使用指令的人可以操作這些結果 / Only the person who ran the command can use these controls.', flags: 64 });
+      return;
+    }
     const totalPages       = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
     const { embed, slice } = buildEmbed(results, gameId, query, page, showStats, lang);
     await interaction.update({
       embeds:     [embed],
-      components: pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub),
+      components: pageComponents(slice, gameId, page, totalPages, cacheId, lang, pub, userId),
     });
   },
 
@@ -200,6 +213,11 @@ module.exports = {
     const gameId = parts[1];
     const lang   = parts[2] ?? 'zh';
     const pub    = parts[3] === '1';
+    const ownerId = parts[4];
+    if (ownerId && interaction.user.id !== ownerId) {
+      await interaction.reply({ content: '🔒 只有使用指令的人可以查看詳細資料 / Only the person who ran the command can open details.', flags: 64 });
+      return;
+    }
     const selVal = interaction.values[0];
     const cfg    = GAME_CONFIGS[gameId];
     if (!cfg) { await interaction.reply({ content: '❌ Invalid game.', flags: 64 }); return; }
