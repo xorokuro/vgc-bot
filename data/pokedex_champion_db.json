@@ -575,350 +575,6 @@
       "LZA"
     ]
   },
-  "25-1": {
-    "name_en": "Pikachu (Original Cap)",
-    "name_zh": "皮卡丘（Original Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 1,
-    "form_name": "Original Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-2": {
-    "name_en": "Pikachu (Hoenn Cap)",
-    "name_zh": "皮卡丘（Hoenn Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 2,
-    "form_name": "Hoenn Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-3": {
-    "name_en": "Pikachu (Sinnoh Cap)",
-    "name_zh": "皮卡丘（Sinnoh Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 3,
-    "form_name": "Sinnoh Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-4": {
-    "name_en": "Pikachu (Unova Cap)",
-    "name_zh": "皮卡丘（Unova Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 4,
-    "form_name": "Unova Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-5": {
-    "name_en": "Pikachu (Kalos Cap)",
-    "name_zh": "皮卡丘（Kalos Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 5,
-    "form_name": "Kalos Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-6": {
-    "name_en": "Pikachu (Alola Cap)",
-    "name_zh": "皮卡丘（Alola Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 6,
-    "form_name": "Alola Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-7": {
-    "name_en": "Pikachu (Partner Cap)",
-    "name_zh": "皮卡丘（Partner Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 7,
-    "form_name": "Partner Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "25-9": {
-    "name_en": "Pikachu (World Cap)",
-    "name_zh": "皮卡丘（World Cap）",
-    "name_ja": "ピカチュウ",
-    "dex_id": 25,
-    "form_id": 9,
-    "form_name": "World Cap",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "electric"
-    ],
-    "types_zh": [
-      "電"
-    ],
-    "abilities": [
-      {
-        "name": "static",
-        "is_hidden": false
-      },
-      {
-        "name": "lightning-rod",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "bst": 320,
-    "height_m": 0.4,
-    "weight_kg": 6,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
   "26-0": {
     "name_en": "Raichu",
     "name_zh": "雷丘",
@@ -1366,7 +1022,7 @@
   },
   "59-1": {
     "name_en": "Arcanine (Hisuian Form)",
-    "name_zh": "風速狗（Hisuian Form）",
+    "name_zh": "風速狗（洗翠的樣子）",
     "name_ja": "ウインディ",
     "dex_id": 59,
     "form_id": 1,
@@ -1734,7 +1390,7 @@
   },
   "80-2": {
     "name_en": "Slowbro (Galarian Form)",
-    "name_zh": "呆殼獸（Galarian Form）",
+    "name_zh": "呆殼獸（伽勒爾的樣子）",
     "name_ja": "ヤドラン",
     "dex_id": 80,
     "form_id": 2,
@@ -2192,7 +1848,7 @@
   },
   "128-1": {
     "name_en": "Tauros (Paldean Form / Combat Breed)",
-    "name_zh": "肯泰羅（Paldean Form / Combat Breed）",
+    "name_zh": "肯泰羅（帕底亞的樣子 鬥戰種）",
     "name_ja": "ケンタロス",
     "dex_id": 128,
     "form_id": 1,
@@ -2239,7 +1895,7 @@
   },
   "128-2": {
     "name_en": "Tauros (Paldean Form / Blaze Breed)",
-    "name_zh": "肯泰羅（Paldean Form / Blaze Breed）",
+    "name_zh": "肯泰羅（帕底亞的樣子 火熾種）",
     "name_ja": "ケンタロス",
     "dex_id": 128,
     "form_id": 2,
@@ -2288,7 +1944,7 @@
   },
   "128-3": {
     "name_en": "Tauros (Paldean Form / Aqua Breed)",
-    "name_zh": "肯泰羅（Paldean Form / Aqua Breed）",
+    "name_zh": "肯泰羅（帕底亞的樣子 水瀾種）",
     "name_ja": "ケンタロス",
     "dex_id": 128,
     "form_id": 3,
@@ -2960,7 +2616,7 @@
   },
   "157-1": {
     "name_en": "Typhlosion (Hisuian Form)",
-    "name_zh": "火爆獸（Hisuian Form）",
+    "name_zh": "火暴獸（洗翠的樣子）",
     "name_ja": "バクフーン",
     "dex_id": 157,
     "form_id": 1,
@@ -3455,7 +3111,7 @@
   },
   "199-1": {
     "name_en": "Slowking (Galarian Form)",
-    "name_zh": "呆呆王（Galarian Form）",
+    "name_zh": "呆呆王（伽勒爾的樣子）",
     "name_ja": "ヤドキング",
     "dex_id": 199,
     "form_id": 1,
@@ -3684,57 +3340,6 @@
     "compatible_games": [
       "SWSH",
       "BDSP",
-      "SV",
-      "LZA"
-    ]
-  },
-  "211-1": {
-    "name_en": "Qwilfish (Hisuian Form)",
-    "name_zh": "千針魚（Hisuian Form）",
-    "name_ja": "ハリーセン",
-    "dex_id": 211,
-    "form_id": 1,
-    "form_name": "Hisuian Form",
-    "flags": [
-      "Hisuian Form",
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "dark",
-      "poison"
-    ],
-    "types_zh": [
-      "惡",
-      "毒"
-    ],
-    "abilities": [
-      {
-        "name": "poison-point",
-        "is_hidden": false
-      },
-      {
-        "name": "swift-swim",
-        "is_hidden": false
-      },
-      {
-        "name": "intimidate",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 95,
-      "defense": 85,
-      "special-attack": 55,
-      "special-defense": 55,
-      "speed": 85
-    },
-    "bst": 440,
-    "height_m": 0.5,
-    "weight_kg": 3.9,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LA",
       "SV",
       "LZA"
     ]
@@ -5405,8 +5010,8 @@
     ]
   },
   "351-0": {
-    "name_en": "Castform (Normal)",
-    "name_zh": "飄浮泡泡（Normal）",
+    "name_en": "Castform",
+    "name_zh": "飄浮泡泡",
     "name_ja": "ポワルン",
     "dex_id": 351,
     "form_id": 0,
@@ -5417,132 +5022,6 @@
     ],
     "types_zh": [
       "一般"
-    ],
-    "abilities": [
-      {
-        "name": "forecast",
-        "is_hidden": false
-      },
-      {
-        "name": "forecast",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 70,
-      "attack": 70,
-      "defense": 70,
-      "special-attack": 70,
-      "special-defense": 70,
-      "speed": 70
-    },
-    "bst": 420,
-    "height_m": 0.3,
-    "weight_kg": 0.8,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "BDSP"
-    ]
-  },
-  "351-1": {
-    "name_en": "Castform (Sunny Form)",
-    "name_zh": "飄浮泡泡（Sunny Form）",
-    "name_ja": "ポワルン",
-    "dex_id": 351,
-    "form_id": 1,
-    "form_name": "Sunny Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fire"
-    ],
-    "types_zh": [
-      "火"
-    ],
-    "abilities": [
-      {
-        "name": "forecast",
-        "is_hidden": false
-      },
-      {
-        "name": "forecast",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 70,
-      "attack": 70,
-      "defense": 70,
-      "special-attack": 70,
-      "special-defense": 70,
-      "speed": 70
-    },
-    "bst": 420,
-    "height_m": 0.3,
-    "weight_kg": 0.8,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "BDSP"
-    ]
-  },
-  "351-2": {
-    "name_en": "Castform (Rainy Form)",
-    "name_zh": "飄浮泡泡（Rainy Form）",
-    "name_ja": "ポワルン",
-    "dex_id": 351,
-    "form_id": 2,
-    "form_name": "Rainy Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "water"
-    ],
-    "types_zh": [
-      "水"
-    ],
-    "abilities": [
-      {
-        "name": "forecast",
-        "is_hidden": false
-      },
-      {
-        "name": "forecast",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 70,
-      "attack": 70,
-      "defense": 70,
-      "special-attack": 70,
-      "special-defense": 70,
-      "speed": 70
-    },
-    "bst": 420,
-    "height_m": 0.3,
-    "weight_kg": 0.8,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "BDSP"
-    ]
-  },
-  "351-3": {
-    "name_en": "Castform (Snowy Form)",
-    "name_zh": "飄浮泡泡（Snowy Form）",
-    "name_ja": "ポワルン",
-    "dex_id": 351,
-    "form_id": 3,
-    "form_name": "Snowy Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "ice"
-    ],
-    "types_zh": [
-      "冰"
     ],
     "abilities": [
       {
@@ -7413,9 +6892,9 @@
     ]
   },
   "479-1": {
-    "name_en": "Rotom (Heat Rotom)",
-    "name_zh": "洛托姆（Heat Rotom）",
-    "name_ja": "ロトム",
+    "name_en": "Heat Rotom",
+    "name_zh": "加熱洛托姆",
+    "name_ja": "ヒートロトム",
     "dex_id": 479,
     "form_id": 1,
     "form_name": "Heat Rotom",
@@ -7461,9 +6940,9 @@
     ]
   },
   "479-2": {
-    "name_en": "Rotom (Wash Rotom)",
-    "name_zh": "洛托姆（Wash Rotom）",
-    "name_ja": "ロトム",
+    "name_en": "Wash Rotom",
+    "name_zh": "清洗洛托姆",
+    "name_ja": "ウォッシュロトム",
     "dex_id": 479,
     "form_id": 2,
     "form_name": "Wash Rotom",
@@ -7509,9 +6988,9 @@
     ]
   },
   "479-3": {
-    "name_en": "Rotom (Frost Rotom)",
-    "name_zh": "洛托姆（Frost Rotom）",
-    "name_ja": "ロトム",
+    "name_en": "Frost Rotom",
+    "name_zh": "結冰洛托姆",
+    "name_ja": "フロストロトム",
     "dex_id": 479,
     "form_id": 3,
     "form_name": "Frost Rotom",
@@ -7557,9 +7036,9 @@
     ]
   },
   "479-4": {
-    "name_en": "Rotom (Fan Rotom)",
-    "name_zh": "洛托姆（Fan Rotom）",
-    "name_ja": "ロトム",
+    "name_en": "Fan Rotom",
+    "name_zh": "旋轉洛托姆",
+    "name_ja": "スピンロトム",
     "dex_id": 479,
     "form_id": 4,
     "form_name": "Fan Rotom",
@@ -7605,9 +7084,9 @@
     ]
   },
   "479-5": {
-    "name_en": "Rotom (Mow Rotom)",
-    "name_zh": "洛托姆（Mow Rotom）",
-    "name_ja": "ロトム",
+    "name_en": "Mow Rotom",
+    "name_zh": "切割洛托姆",
+    "name_ja": "カットロトム",
     "dex_id": 479,
     "form_id": 5,
     "form_name": "Mow Rotom",
@@ -7820,7 +7299,7 @@
   },
   "503-1": {
     "name_en": "Samurott (Hisuian Form)",
-    "name_zh": "大劍鬼（Hisuian Form）",
+    "name_zh": "大劍鬼（洗翠的樣子）",
     "name_ja": "ダイケンキ",
     "dex_id": 503,
     "form_id": 1,
@@ -8741,7 +8220,7 @@
   },
   "571-1": {
     "name_en": "Zoroark (Hisuian Form)",
-    "name_zh": "索羅亞克（Hisuian Form）",
+    "name_zh": "索羅亞克（洗翠的樣子）",
     "name_ja": "ゾロアーク",
     "dex_id": 571,
     "form_id": 1,
@@ -9182,7 +8661,7 @@
   },
   "618-1": {
     "name_en": "Stunfisk (Galarian Form)",
-    "name_zh": "泥巴魚（Galarian Form）",
+    "name_zh": "泥巴魚（伽勒爾的樣子）",
     "name_ja": "マッギョ",
     "dex_id": 618,
     "form_id": 1,
@@ -9618,94 +9097,6 @@
       "LZA"
     ]
   },
-  "658-1": {
-    "name_en": "Greninja",
-    "name_zh": "甲賀忍蛙",
-    "name_ja": "ゲッコウガ",
-    "dex_id": 658,
-    "form_id": 1,
-    "form_name": null,
-    "flags": [
-      "Hide In Number Sort",
-      "Hide In All Form Sort"
-    ],
-    "types_en": [
-      "water",
-      "dark"
-    ],
-    "types_zh": [
-      "水",
-      "惡"
-    ],
-    "abilities": [
-      {
-        "name": "battle-bond",
-        "is_hidden": false
-      },
-      {
-        "name": "battle-bond",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 72,
-      "attack": 95,
-      "defense": 67,
-      "special-attack": 103,
-      "special-defense": 71,
-      "speed": 122
-    },
-    "bst": 530,
-    "height_m": 1.5,
-    "weight_kg": 40,
-    "exp_group": "Medium Slow",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "658-2": {
-    "name_en": "Greninja (Ash-Greninja)",
-    "name_zh": "甲賀忍蛙（Ash-Greninja）",
-    "name_ja": "ゲッコウガ",
-    "dex_id": 658,
-    "form_id": 2,
-    "form_name": "Ash-Greninja",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "water",
-      "dark"
-    ],
-    "types_zh": [
-      "水",
-      "惡"
-    ],
-    "abilities": [
-      {
-        "name": "battle-bond",
-        "is_hidden": false
-      },
-      {
-        "name": "battle-bond",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 72,
-      "attack": 145,
-      "defense": 67,
-      "special-attack": 153,
-      "special-defense": 71,
-      "speed": 132
-    },
-    "bst": 640,
-    "height_m": 1.5,
-    "weight_kg": 40,
-    "exp_group": "Medium Slow",
-    "compatible_games": []
-  },
   "658-3": {
     "name_en": "Greninja-Mega",
     "name_zh": "甲賀忍蛙（超級進化）",
@@ -9841,944 +9232,13 @@
     ]
   },
   "666-0": {
-    "name_en": "Vivillon (Icy Snow Pattern)",
-    "name_zh": "彩粉蝶（Icy Snow Pattern）",
+    "name_en": "Vivillon",
+    "name_zh": "彩粉蝶",
     "name_ja": "ビビヨン",
     "dex_id": 666,
     "form_id": 0,
-    "form_name": "Icy Snow Pattern",
+    "form_name": null,
     "flags": [],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-1": {
-    "name_en": "Vivillon (Polar Pattern)",
-    "name_zh": "彩粉蝶（Polar Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 1,
-    "form_name": "Polar Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-2": {
-    "name_en": "Vivillon (Tundra Pattern)",
-    "name_zh": "彩粉蝶（Tundra Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 2,
-    "form_name": "Tundra Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-3": {
-    "name_en": "Vivillon (Continental Pattern)",
-    "name_zh": "彩粉蝶（Continental Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 3,
-    "form_name": "Continental Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-4": {
-    "name_en": "Vivillon (Garden Pattern)",
-    "name_zh": "彩粉蝶（Garden Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 4,
-    "form_name": "Garden Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-5": {
-    "name_en": "Vivillon (Elegant Pattern)",
-    "name_zh": "彩粉蝶（Elegant Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 5,
-    "form_name": "Elegant Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-6": {
-    "name_en": "Vivillon (Meadow Pattern)",
-    "name_zh": "彩粉蝶（Meadow Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 6,
-    "form_name": "Meadow Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-7": {
-    "name_en": "Vivillon (Modern Pattern)",
-    "name_zh": "彩粉蝶（Modern Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 7,
-    "form_name": "Modern Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-8": {
-    "name_en": "Vivillon (Marine Pattern)",
-    "name_zh": "彩粉蝶（Marine Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 8,
-    "form_name": "Marine Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-9": {
-    "name_en": "Vivillon (Archipelago Pattern)",
-    "name_zh": "彩粉蝶（Archipelago Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 9,
-    "form_name": "Archipelago Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-10": {
-    "name_en": "Vivillon (High Plains Pattern)",
-    "name_zh": "彩粉蝶（High Plains Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 10,
-    "form_name": "High Plains Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-11": {
-    "name_en": "Vivillon (Sandstorm Pattern)",
-    "name_zh": "彩粉蝶（Sandstorm Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 11,
-    "form_name": "Sandstorm Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-12": {
-    "name_en": "Vivillon (River Pattern)",
-    "name_zh": "彩粉蝶（River Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 12,
-    "form_name": "River Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-13": {
-    "name_en": "Vivillon (Monsoon Pattern)",
-    "name_zh": "彩粉蝶（Monsoon Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 13,
-    "form_name": "Monsoon Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-14": {
-    "name_en": "Vivillon (Savanna Pattern)",
-    "name_zh": "彩粉蝶（Savanna Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 14,
-    "form_name": "Savanna Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-15": {
-    "name_en": "Vivillon (Sun Pattern)",
-    "name_zh": "彩粉蝶（Sun Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 15,
-    "form_name": "Sun Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-16": {
-    "name_en": "Vivillon (Ocean Pattern)",
-    "name_zh": "彩粉蝶（Ocean Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 16,
-    "form_name": "Ocean Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-17": {
-    "name_en": "Vivillon (Jungle Pattern)",
-    "name_zh": "彩粉蝶（Jungle Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 17,
-    "form_name": "Jungle Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-18": {
-    "name_en": "Vivillon (Fancy Pattern)",
-    "name_zh": "彩粉蝶（Fancy Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 18,
-    "form_name": "Fancy Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "bug",
-      "flying"
-    ],
-    "types_zh": [
-      "蟲",
-      "飛行"
-    ],
-    "abilities": [
-      {
-        "name": "shield-dust",
-        "is_hidden": false
-      },
-      {
-        "name": "compound-eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "friend-guard",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 80,
-      "attack": 52,
-      "defense": 50,
-      "special-attack": 90,
-      "special-defense": 50,
-      "speed": 89
-    },
-    "bst": 411,
-    "height_m": 1.2,
-    "weight_kg": 17,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "666-19": {
-    "name_en": "Vivillon (Poké Ball Pattern)",
-    "name_zh": "彩粉蝶（Poké Ball Pattern）",
-    "name_ja": "ビビヨン",
-    "dex_id": 666,
-    "form_id": 19,
-    "form_name": "Poké Ball Pattern",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "bug",
       "flying"
@@ -10905,222 +9365,9 @@
     "exp_group": "Medium Slow",
     "compatible_games": []
   },
-  "670-0": {
-    "name_en": "Floette (Red Flower)",
-    "name_zh": "花葉蒂（Red Flower）",
-    "name_ja": "フラエッテ",
-    "dex_id": 670,
-    "form_id": 0,
-    "form_name": "Red Flower",
-    "flags": [],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 54,
-      "attack": 45,
-      "defense": 47,
-      "special-attack": 75,
-      "special-defense": 98,
-      "speed": 52
-    },
-    "bst": 371,
-    "height_m": 0.2,
-    "weight_kg": 0.9,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "670-1": {
-    "name_en": "Floette (Yellow Flower)",
-    "name_zh": "花葉蒂（Yellow Flower）",
-    "name_ja": "フラエッテ",
-    "dex_id": 670,
-    "form_id": 1,
-    "form_name": "Yellow Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 54,
-      "attack": 45,
-      "defense": 47,
-      "special-attack": 75,
-      "special-defense": 98,
-      "speed": 52
-    },
-    "bst": 371,
-    "height_m": 0.2,
-    "weight_kg": 0.9,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "670-2": {
-    "name_en": "Floette (Orange Flower)",
-    "name_zh": "花葉蒂（Orange Flower）",
-    "name_ja": "フラエッテ",
-    "dex_id": 670,
-    "form_id": 2,
-    "form_name": "Orange Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 54,
-      "attack": 45,
-      "defense": 47,
-      "special-attack": 75,
-      "special-defense": 98,
-      "speed": 52
-    },
-    "bst": 371,
-    "height_m": 0.2,
-    "weight_kg": 0.9,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "670-3": {
-    "name_en": "Floette (Blue Flower)",
-    "name_zh": "花葉蒂（Blue Flower）",
-    "name_ja": "フラエッテ",
-    "dex_id": 670,
-    "form_id": 3,
-    "form_name": "Blue Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 54,
-      "attack": 45,
-      "defense": 47,
-      "special-attack": 75,
-      "special-defense": 98,
-      "speed": 52
-    },
-    "bst": 371,
-    "height_m": 0.2,
-    "weight_kg": 0.9,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "670-4": {
-    "name_en": "Floette (White Flower)",
-    "name_zh": "花葉蒂（White Flower）",
-    "name_ja": "フラエッテ",
-    "dex_id": 670,
-    "form_id": 4,
-    "form_name": "White Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 54,
-      "attack": 45,
-      "defense": 47,
-      "special-attack": 75,
-      "special-defense": 98,
-      "speed": 52
-    },
-    "bst": 371,
-    "height_m": 0.2,
-    "weight_kg": 0.9,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
   "670-5": {
     "name_en": "Floette (Eternal Flower)",
-    "name_zh": "花葉蒂（Eternal Flower）",
+    "name_zh": "花葉蒂（永恆之花）",
     "name_ja": "フラエッテ",
     "dex_id": 670,
     "form_id": 5,
@@ -11160,227 +9407,14 @@
       "LZA"
     ]
   },
-  "670-6": {
-    "name_en": "Floette-Mega",
-    "name_zh": "花葉蒂（超級進化）",
-    "name_ja": "フラエッテ（メガシンカ）",
-    "dex_id": 670,
-    "form_id": 6,
-    "form_name": "Mega Floette",
-    "flags": [
-      "Mega Evolution",
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "fairy-aura",
-        "is_hidden": false
-      },
-      {
-        "name": "fairy-aura",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 74,
-      "attack": 85,
-      "defense": 87,
-      "special-attack": 155,
-      "special-defense": 148,
-      "speed": 102
-    },
-    "bst": 651,
-    "height_m": 0.2,
-    "weight_kg": 100.8,
-    "exp_group": "Medium Fast",
-    "compatible_games": []
-  },
   "671-0": {
-    "name_en": "Florges (Red Flower)",
-    "name_zh": "花潔夫人（Red Flower）",
+    "name_en": "Florges",
+    "name_zh": "花潔夫人",
     "name_ja": "フラージェス",
     "dex_id": 671,
     "form_id": 0,
-    "form_name": "Red Flower",
+    "form_name": null,
     "flags": [],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 78,
-      "attack": 65,
-      "defense": 68,
-      "special-attack": 112,
-      "special-defense": 154,
-      "speed": 75
-    },
-    "bst": 552,
-    "height_m": 1.1,
-    "weight_kg": 10,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "671-1": {
-    "name_en": "Florges (Yellow Flower)",
-    "name_zh": "花潔夫人（Yellow Flower）",
-    "name_ja": "フラージェス",
-    "dex_id": 671,
-    "form_id": 1,
-    "form_name": "Yellow Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 78,
-      "attack": 65,
-      "defense": 68,
-      "special-attack": 112,
-      "special-defense": 154,
-      "speed": 75
-    },
-    "bst": 552,
-    "height_m": 1.1,
-    "weight_kg": 10,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "671-2": {
-    "name_en": "Florges (Orange Flower)",
-    "name_zh": "花潔夫人（Orange Flower）",
-    "name_ja": "フラージェス",
-    "dex_id": 671,
-    "form_id": 2,
-    "form_name": "Orange Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 78,
-      "attack": 65,
-      "defense": 68,
-      "special-attack": 112,
-      "special-defense": 154,
-      "speed": 75
-    },
-    "bst": 552,
-    "height_m": 1.1,
-    "weight_kg": 10,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "671-3": {
-    "name_en": "Florges (Blue Flower)",
-    "name_zh": "花潔夫人（Blue Flower）",
-    "name_ja": "フラージェス",
-    "dex_id": 671,
-    "form_id": 3,
-    "form_name": "Blue Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "flower-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "symbiosis",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 78,
-      "attack": 65,
-      "defense": 68,
-      "special-attack": 112,
-      "special-defense": 154,
-      "speed": 75
-    },
-    "bst": 552,
-    "height_m": 1.1,
-    "weight_kg": 10,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV",
-      "LZA"
-    ]
-  },
-  "671-4": {
-    "name_en": "Florges (White Flower)",
-    "name_zh": "花潔夫人（White Flower）",
-    "name_ja": "フラージェス",
-    "dex_id": 671,
-    "form_id": 4,
-    "form_name": "White Flower",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "fairy"
     ],
@@ -11462,391 +9496,13 @@
     ]
   },
   "676-0": {
-    "name_en": "Furfrou (Natural Form)",
-    "name_zh": "多麗米亞（Natural Form）",
+    "name_en": "Furfrou",
+    "name_zh": "多麗米亞",
     "name_ja": "トリミアン",
     "dex_id": 676,
     "form_id": 0,
-    "form_name": "Natural Form",
+    "form_name": null,
     "flags": [],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-1": {
-    "name_en": "Furfrou (Heart Trim)",
-    "name_zh": "多麗米亞（Heart Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 1,
-    "form_name": "Heart Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-2": {
-    "name_en": "Furfrou (Star Trim)",
-    "name_zh": "多麗米亞（Star Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 2,
-    "form_name": "Star Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-3": {
-    "name_en": "Furfrou (Diamond Trim)",
-    "name_zh": "多麗米亞（Diamond Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 3,
-    "form_name": "Diamond Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-4": {
-    "name_en": "Furfrou (Debutante Trim)",
-    "name_zh": "多麗米亞（Debutante Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 4,
-    "form_name": "Debutante Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-5": {
-    "name_en": "Furfrou (Matron Trim)",
-    "name_zh": "多麗米亞（Matron Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 5,
-    "form_name": "Matron Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-6": {
-    "name_en": "Furfrou (Dandy Trim)",
-    "name_zh": "多麗米亞（Dandy Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 6,
-    "form_name": "Dandy Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-7": {
-    "name_en": "Furfrou (La Reine Trim)",
-    "name_zh": "多麗米亞（La Reine Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 7,
-    "form_name": "La Reine Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-8": {
-    "name_en": "Furfrou (Kabuki Trim)",
-    "name_zh": "多麗米亞（Kabuki Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 8,
-    "form_name": "Kabuki Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "fur-coat",
-        "is_hidden": false
-      },
-      {
-        "name": "fur-coat",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 75,
-      "attack": 80,
-      "defense": 60,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 102
-    },
-    "bst": 472,
-    "height_m": 1.2,
-    "weight_kg": 28,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "LZA"
-    ]
-  },
-  "676-9": {
-    "name_en": "Furfrou (Pharaoh Trim)",
-    "name_zh": "多麗米亞（Pharaoh Trim）",
-    "name_ja": "トリミアン",
-    "dex_id": 676,
-    "form_id": 9,
-    "form_name": "Pharaoh Trim",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "normal"
     ],
@@ -12056,8 +9712,8 @@
     "compatible_games": []
   },
   "681-0": {
-    "name_en": "Aegislash (Shield Forme)",
-    "name_zh": "堅盾劍怪（Shield Forme）",
+    "name_en": "Aegislash",
+    "name_zh": "堅盾劍怪",
     "name_ja": "ギルガルド",
     "dex_id": 681,
     "form_id": 0,
@@ -12087,51 +9743,6 @@
       "defense": 140,
       "special-attack": 50,
       "special-defense": 140,
-      "speed": 60
-    },
-    "bst": 500,
-    "height_m": 1.7,
-    "weight_kg": 53,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "LZA"
-    ]
-  },
-  "681-1": {
-    "name_en": "Aegislash (Blade Forme)",
-    "name_zh": "堅盾劍怪（Blade Forme）",
-    "name_ja": "ギルガルド",
-    "dex_id": 681,
-    "form_id": 1,
-    "form_name": "Blade Forme",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "steel",
-      "ghost"
-    ],
-    "types_zh": [
-      "鋼",
-      "幽靈"
-    ],
-    "abilities": [
-      {
-        "name": "stance-change",
-        "is_hidden": false
-      },
-      {
-        "name": "stance-change",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 60,
-      "attack": 140,
-      "defense": 50,
-      "special-attack": 140,
-      "special-defense": 50,
       "speed": 60
     },
     "bst": 500,
@@ -12893,7 +10504,7 @@
   },
   "706-1": {
     "name_en": "Goodra (Hisuian Form)",
-    "name_zh": "黏美龍（Hisuian Form）",
+    "name_zh": "黏美龍（洗翠的樣子）",
     "name_ja": "ヌメルゴン",
     "dex_id": 706,
     "form_id": 1,
@@ -13036,8 +10647,8 @@
   },
   "711-0": {
     "name_en": "Gourgeist (Medium Variety)",
-    "name_zh": "南瓜怪人（Medium Variety）",
-    "name_ja": "パンプジン",
+    "name_zh": "南瓜怪人（中顆種）",
+    "name_ja": "パンプジン（ふつうサイズ）",
     "dex_id": 711,
     "form_id": 0,
     "form_name": "Medium Variety",
@@ -13083,8 +10694,8 @@
   },
   "711-1": {
     "name_en": "Gourgeist (Small Variety)",
-    "name_zh": "南瓜怪人（Small Variety）",
-    "name_ja": "パンプジン",
+    "name_zh": "南瓜怪人（小顆種）",
+    "name_ja": "パンプジン（ちいさいサイズ）",
     "dex_id": 711,
     "form_id": 1,
     "form_name": "Small Variety",
@@ -13132,8 +10743,8 @@
   },
   "711-2": {
     "name_en": "Gourgeist (Large Variety)",
-    "name_zh": "南瓜怪人（Large Variety）",
-    "name_ja": "パンプジン",
+    "name_zh": "南瓜怪人（大顆種）",
+    "name_ja": "パンプジン（おおきいサイズ）",
     "dex_id": 711,
     "form_id": 2,
     "form_name": "Large Variety",
@@ -13181,8 +10792,8 @@
   },
   "711-3": {
     "name_en": "Gourgeist (Jumbo Variety)",
-    "name_zh": "南瓜怪人（Jumbo Variety）",
-    "name_ja": "パンプジン",
+    "name_zh": "南瓜怪人（巨顆種）",
+    "name_ja": "パンプジン（とくだいサイズ）",
     "dex_id": 711,
     "form_id": 3,
     "form_name": "Jumbo Variety",
@@ -13276,7 +10887,7 @@
   },
   "713-1": {
     "name_en": "Avalugg (Hisuian Form)",
-    "name_zh": "冰岩怪（Hisuian Form）",
+    "name_zh": "冰岩怪（洗翠的樣子）",
     "name_ja": "クレベース",
     "dex_id": 713,
     "form_id": 1,
@@ -13418,7 +11029,7 @@
   },
   "724-1": {
     "name_en": "Decidueye (Hisuian Form)",
-    "name_zh": "狙射樹梟（Hisuian Form）",
+    "name_zh": "狙射樹梟（洗翠的樣子）",
     "name_ja": "ジュナイパー",
     "dex_id": 724,
     "form_id": 1,
@@ -13686,8 +11297,8 @@
   },
   "745-0": {
     "name_en": "Lycanroc (Midday Form)",
-    "name_zh": "鬃岩狼人（Midday Form）",
-    "name_ja": "ルガルガン",
+    "name_zh": "鬃岩狼人（白晝的樣子）",
+    "name_ja": "ルガルガン（まひるのすがた）",
     "dex_id": 745,
     "form_id": 0,
     "form_name": "Midday Form",
@@ -13731,8 +11342,8 @@
   },
   "745-1": {
     "name_en": "Lycanroc (Midnight Form)",
-    "name_zh": "鬃岩狼人（Midnight Form）",
-    "name_ja": "ルガルガン",
+    "name_zh": "鬃岩狼人（黑夜的樣子）",
+    "name_ja": "ルガルガン（まよなかのすがた）",
     "dex_id": 745,
     "form_id": 1,
     "form_name": "Midnight Form",
@@ -13778,8 +11389,8 @@
   },
   "745-2": {
     "name_en": "Lycanroc (Dusk Form)",
-    "name_zh": "鬃岩狼人（Dusk Form）",
-    "name_ja": "ルガルガン",
+    "name_zh": "鬃岩狼人（黃昏的樣子）",
+    "name_ja": "ルガルガン（たそがれのすがた）",
     "dex_id": 745,
     "form_id": 2,
     "form_name": "Dusk Form",
@@ -14131,59 +11742,13 @@
     ]
   },
   "778-0": {
-    "name_en": "Mimikyu (Disguised Form)",
-    "name_zh": "謎擬Ｑ（Disguised Form）",
+    "name_en": "Mimikyu",
+    "name_zh": "謎擬Ｑ",
     "name_ja": "ミミッキュ",
     "dex_id": 778,
     "form_id": 0,
     "form_name": "Disguised Form",
     "flags": [],
-    "types_en": [
-      "ghost",
-      "fairy"
-    ],
-    "types_zh": [
-      "幽靈",
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "disguise",
-        "is_hidden": false
-      },
-      {
-        "name": "disguise",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 55,
-      "attack": 90,
-      "defense": 80,
-      "special-attack": 50,
-      "special-defense": 105,
-      "speed": 96
-    },
-    "bst": 476,
-    "height_m": 0.2,
-    "weight_kg": 0.7,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV",
-      "LZA"
-    ]
-  },
-  "778-1": {
-    "name_en": "Mimikyu (Busted Form)",
-    "name_zh": "謎擬Ｑ（Busted Form）",
-    "name_ja": "ミミッキュ",
-    "dex_id": 778,
-    "form_id": 1,
-    "form_name": "Busted Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "ghost",
       "fairy"
@@ -14545,56 +12110,13 @@
     ]
   },
   "855-0": {
-    "name_en": "Polteageist (Phony Form)",
-    "name_zh": "怖思壺（Phony Form）",
+    "name_en": "Polteageist",
+    "name_zh": "怖思壺",
     "name_ja": "ポットデス",
     "dex_id": 855,
     "form_id": 0,
     "form_name": "Phony Form",
     "flags": [],
-    "types_en": [
-      "ghost"
-    ],
-    "types_zh": [
-      "幽靈"
-    ],
-    "abilities": [
-      {
-        "name": "weak-armor",
-        "is_hidden": false
-      },
-      {
-        "name": "cursed-body",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 60,
-      "attack": 65,
-      "defense": 65,
-      "special-attack": 134,
-      "special-defense": 114,
-      "speed": 70
-    },
-    "bst": 508,
-    "height_m": 0.2,
-    "weight_kg": 0.4,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "855-1": {
-    "name_en": "Polteageist (Antique Form)",
-    "name_zh": "怖思壺（Antique Form）",
-    "name_ja": "ポットデス",
-    "dex_id": 855,
-    "form_id": 1,
-    "form_name": "Antique Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "ghost"
     ],
@@ -14766,356 +12288,12 @@
     ]
   },
   "869-0": {
-    "name_en": "Alcremie (Vanilla Cream)",
-    "name_zh": "霜奶仙（Vanilla Cream）",
+    "name_en": "Alcremie",
+    "name_zh": "霜奶仙",
     "name_ja": "マホイップ",
     "dex_id": 869,
     "form_id": 0,
-    "form_name": "Vanilla Cream",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-1": {
-    "name_en": "Alcremie (Ruby Cream)",
-    "name_zh": "霜奶仙（Ruby Cream）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 1,
-    "form_name": "Ruby Cream",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-2": {
-    "name_en": "Alcremie (Matcha Cream)",
-    "name_zh": "霜奶仙（Matcha Cream）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 2,
-    "form_name": "Matcha Cream",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-3": {
-    "name_en": "Alcremie (Mint Cream)",
-    "name_zh": "霜奶仙（Mint Cream）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 3,
-    "form_name": "Mint Cream",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-4": {
-    "name_en": "Alcremie (Lemon Cream)",
-    "name_zh": "霜奶仙（Lemon Cream）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 4,
-    "form_name": "Lemon Cream",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-5": {
-    "name_en": "Alcremie (Salted Cream)",
-    "name_zh": "霜奶仙（Salted Cream）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 5,
-    "form_name": "Salted Cream",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-6": {
-    "name_en": "Alcremie (Ruby Swirl)",
-    "name_zh": "霜奶仙（Ruby Swirl）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 6,
-    "form_name": "Ruby Swirl",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-7": {
-    "name_en": "Alcremie (Caramel Swirl)",
-    "name_zh": "霜奶仙（Caramel Swirl）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 7,
-    "form_name": "Caramel Swirl",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "fairy"
-    ],
-    "types_zh": [
-      "妖精"
-    ],
-    "abilities": [
-      {
-        "name": "sweet-veil",
-        "is_hidden": false
-      },
-      {
-        "name": "aroma-veil",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 75,
-      "special-attack": 110,
-      "special-defense": 121,
-      "speed": 64
-    },
-    "bst": 495,
-    "height_m": 0.3,
-    "weight_kg": 0.5,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV"
-    ]
-  },
-  "869-8": {
-    "name_en": "Alcremie (Rainbow Swirl)",
-    "name_zh": "霜奶仙（Rainbow Swirl）",
-    "name_ja": "マホイップ",
-    "dex_id": 869,
-    "form_id": 8,
-    "form_name": "Rainbow Swirl",
+    "form_name": null,
     "flags": [
       "Hide In Number Sort"
     ],
@@ -15233,59 +12411,13 @@
     "compatible_games": []
   },
   "877-0": {
-    "name_en": "Morpeko (Full Belly Mode)",
-    "name_zh": "莫魯貝可（Full Belly Mode）",
+    "name_en": "Morpeko",
+    "name_zh": "莫魯貝可",
     "name_ja": "モルペコ",
     "dex_id": 877,
     "form_id": 0,
     "form_name": "Full Belly Mode",
     "flags": [],
-    "types_en": [
-      "electric",
-      "dark"
-    ],
-    "types_zh": [
-      "電",
-      "惡"
-    ],
-    "abilities": [
-      {
-        "name": "hunger-switch",
-        "is_hidden": false
-      },
-      {
-        "name": "hunger-switch",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 58,
-      "attack": 95,
-      "defense": 58,
-      "special-attack": 70,
-      "special-defense": 58,
-      "speed": 97
-    },
-    "bst": 436,
-    "height_m": 0.3,
-    "weight_kg": 3,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SWSH",
-      "SV",
-      "LZA"
-    ]
-  },
-  "877-1": {
-    "name_en": "Morpeko (Hangry Mode)",
-    "name_zh": "莫魯貝可（Hangry Mode）",
-    "name_ja": "モルペコ",
-    "dex_id": 877,
-    "form_id": 1,
-    "form_name": "Hangry Mode",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "electric",
       "dark"
@@ -15466,8 +12598,8 @@
   },
   "902-0": {
     "name_en": "Basculegion (Male)",
-    "name_zh": "幽尾玄魚（Male）",
-    "name_ja": "イダイトウ",
+    "name_zh": "幽尾玄魚♂",
+    "name_ja": "イダイトウ♂",
     "dex_id": 902,
     "form_id": 0,
     "form_name": "Male",
@@ -15512,7 +12644,7 @@
     ]
   },
   "902-1": {
-    "name_en": "Basculegion-F",
+    "name_en": "Basculegion (Female)",
     "name_zh": "幽尾玄魚♀",
     "name_ja": "イダイトウ♀",
     "dex_id": 902,
@@ -15782,8 +12914,8 @@
     ]
   },
   "925-0": {
-    "name_en": "Maushold (Family of Three)",
-    "name_zh": "一家鼠（Family of Three）",
+    "name_en": "Maushold",
+    "name_zh": "一家鼠",
     "name_ja": "イッカネズミ",
     "dex_id": 925,
     "form_id": 0,
@@ -15820,52 +12952,6 @@
     "bst": 470,
     "height_m": 0.3,
     "weight_kg": 2.3,
-    "exp_group": "Fast",
-    "compatible_games": [
-      "SV"
-    ]
-  },
-  "925-1": {
-    "name_en": "Maushold (Family of Four)",
-    "name_zh": "一家鼠（Family of Four）",
-    "name_ja": "イッカネズミ",
-    "dex_id": 925,
-    "form_id": 1,
-    "form_name": "Family of Four",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "normal"
-    ],
-    "types_zh": [
-      "一般"
-    ],
-    "abilities": [
-      {
-        "name": "friend-guard",
-        "is_hidden": false
-      },
-      {
-        "name": "cheek-pouch",
-        "is_hidden": false
-      },
-      {
-        "name": "technician",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 74,
-      "attack": 75,
-      "defense": 70,
-      "special-attack": 65,
-      "special-defense": 75,
-      "speed": 111
-    },
-    "bst": 470,
-    "height_m": 0.3,
-    "weight_kg": 2.8,
     "exp_group": "Fast",
     "compatible_games": [
       "SV"
@@ -16228,8 +13314,8 @@
     ]
   },
   "964-0": {
-    "name_en": "Palafin (Zero Form)",
-    "name_zh": "海豚俠（Zero Form）",
+    "name_en": "Palafin",
+    "name_zh": "海豚俠",
     "name_ja": "イルカマン",
     "dex_id": 964,
     "form_id": 0,
@@ -16262,48 +13348,6 @@
     "bst": 457,
     "height_m": 1.3,
     "weight_kg": 60.2,
-    "exp_group": "Slow",
-    "compatible_games": [
-      "SV"
-    ]
-  },
-  "964-1": {
-    "name_en": "Palafin (Hero Form)",
-    "name_zh": "海豚俠（Hero Form）",
-    "name_ja": "イルカマン",
-    "dex_id": 964,
-    "form_id": 1,
-    "form_name": "Hero Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
-    "types_en": [
-      "water"
-    ],
-    "types_zh": [
-      "水"
-    ],
-    "abilities": [
-      {
-        "name": "zero-to-hero",
-        "is_hidden": false
-      },
-      {
-        "name": "zero-to-hero",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 100,
-      "attack": 160,
-      "defense": 97,
-      "special-attack": 106,
-      "special-defense": 87,
-      "speed": 100
-    },
-    "bst": 650,
-    "height_m": 1.8,
-    "weight_kg": 97.4,
     "exp_group": "Slow",
     "compatible_games": [
       "SV"
@@ -16659,57 +13703,13 @@
     ]
   },
   "1013-0": {
-    "name_en": "Sinistcha (Unremarkable Form)",
-    "name_zh": "來悲粗茶（Unremarkable Form）",
+    "name_en": "Sinistcha",
+    "name_zh": "來悲粗茶",
     "name_ja": "ヤバソチャ",
     "dex_id": 1013,
     "form_id": 0,
     "form_name": "Unremarkable Form",
     "flags": [],
-    "types_en": [
-      "grass",
-      "ghost"
-    ],
-    "types_zh": [
-      "草",
-      "幽靈"
-    ],
-    "abilities": [
-      {
-        "name": "hospitality",
-        "is_hidden": false
-      },
-      {
-        "name": "heatproof",
-        "is_hidden": true
-      }
-    ],
-    "stats": {
-      "hp": 71,
-      "attack": 60,
-      "defense": 106,
-      "special-attack": 121,
-      "special-defense": 80,
-      "speed": 70
-    },
-    "bst": 508,
-    "height_m": 0.2,
-    "weight_kg": 2.2,
-    "exp_group": "Medium Fast",
-    "compatible_games": [
-      "SV"
-    ]
-  },
-  "1013-1": {
-    "name_en": "Sinistcha (Masterpiece Form)",
-    "name_zh": "來悲粗茶（Masterpiece Form）",
-    "name_ja": "ヤバソチャ",
-    "dex_id": 1013,
-    "form_id": 1,
-    "form_name": "Masterpiece Form",
-    "flags": [
-      "Hide In Number Sort"
-    ],
     "types_en": [
       "grass",
       "ghost"
