@@ -404,13 +404,13 @@ const GAME_CONFIGS = {
       887,899,900,902,903,904,908,911,914,925,934,936,937,939,952,956,959,964,968,970,
       972,979,981,983,1000,1013,1018,1019,
     ]),
-    // Moves stored as English display names in champion_moves_db.json by dex_id
+    // Moves stored as English display names in champion_moves_db.json by dex_id.
+    // Compare by api id (toApiId) rather than exact display string so that any
+    // Serebii↔zh-Hant casing/hyphen difference (e.g. "Will-O-Wisp") still matches.
     hasMove(poke, moveId) {
-      const enName = MOVE_ID_TO_EN[moveId];
-      if (!enName) return false;
       const db    = loadChampionMovesDb();
       const moves = db[String(poke.dex_id)] ?? [];
-      return moves.includes(enName);
+      return moves.some(n => toApiId(n) === moveId);
     },
     hasMoveOfTypeCategory(poke, typeEn, category) {
       const champDb  = loadChampionMovesDb();

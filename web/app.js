@@ -54,6 +54,17 @@
     return '#34c6c6';
   }
 
+  // Real-stat range at Lv. 50.
+  //   min = 0 IV, 0 EV, hindering nature (×0.9 for non-HP)
+  //   max = 31 IV, 252 EV, boosting nature (×1.1 for non-HP)
+  const LEVEL = 50;
+  function statRange(base, isHP) {
+    const lo = Math.floor((2 * base) * LEVEL / 100);              // 0 IV / 0 EV
+    const hi = Math.floor((2 * base + 31 + 63) * LEVEL / 100);    // 31 IV / 252 EV
+    if (isHP) return [lo + LEVEL + 10, hi + LEVEL + 10];
+    return [Math.floor((lo + 5) * 0.9), Math.floor((hi + 5) * 1.1)];
+  }
+
   // name (any lang) -> id maps, for autocomplete resolution
   function buildNameIndex(dict) {
     const m = {};
@@ -243,6 +254,7 @@
 
   function card(p) {
     const el = document.createElement('div'); el.className = 'card';
+    el.onclick = () => openMoveModal(p);
     const top = document.createElement('div'); top.className = 'top';
     const img = document.createElement('img'); img.loading = 'lazy'; attachSprite(img, p);
     const info = document.createElement('div');
@@ -270,13 +282,62 @@
       bf.style.background = statColor(v);
       bt.appendChild(bf);
       const bv = document.createElement('span'); bv.className = 'bv'; bv.textContent = v;
-      bars.append(bk, bt, bv);
+      const [lo, hi] = statRange(v, k === 'hp');
+      const br = document.createElement('span'); br.className = 'br';
+      br.textContent = lo + '–' + hi;
+      br.title = T().lv50Range;
+      bars.append(bk, bt, bv, br);
     }
     el.appendChild(bars);
+    const lvl = document.createElement('div'); lvl.className = 'lvlnote'; lvl.title = T().lv50Range;
+    el.appendChild(lvl);
     const bst = document.createElement('div'); bst.className = 'bst'; bst.innerHTML = `${T().bst}: <b>${p.bst}</b>`;
     el.appendChild(bst);
     return el;
   }
+
+  // ── Move learnset modal ───────────────────────────────────────────────────
+  function openMoveModal(p) {
+    $('mmDex').textContent = '#' + p.dex;
+    $('mmName').textContent = state.lang === 'en' ? titleCase(pokeName(p)) : pokeName(p);
+    const formEl = $('mmForm');
+    if (p.form) { formEl.textContent = p.form; formEl.style.display = ''; } else { formEl.style.display = 'none'; }
+    attachSprite($('mmSprite'), p);
+
+    const body = $('mmBody'); body.innerHTML = '';
+    const ids = (p.moves || []).filter(id => DEX.moves[id]);
+    if (!ids.length) {
+      body.innerHTML = `<div class="modal-empty">${T().noResults}</div>`;
+    } else {
+      // Group by category (physical / special / status), each sorted by localized name.
+      const groups = { physical: [], special: [], status: [] };
+      for (const id of ids) {
+        const cat = DEX.moves[id].cat;
+        (groups[cat] || (groups.status)).push(id);
+      }
+      for (const cat of ['physical', 'special', 'status']) {
+        const list = groups[cat];
+        if (!list.length) continue;
+        list.sort((a, b) => moveName(a).localeCompare(moveName(b)));
+        const g = document.createElement('div'); g.className = 'movegroup';
+        const h = document.createElement('h3'); h.textContent = `${T().cat[cat]} · ${list.length}`;
+        g.appendChild(h);
+        const ml = document.createElement('div'); ml.className = 'movelist';
+        for (const id of list) {
+          const type = DEX.moves[id].type;
+          const pill = document.createElement('span'); pill.className = 'movepill';
+          const dot = document.createElement('span'); dot.className = 'dot';
+          dot.style.background = TYPE_COLORS[type] || 'var(--muted)';
+          dot.title = typeName(type);
+          const nm = document.createElement('span'); nm.textContent = moveName(id);
+          pill.append(dot, nm); ml.appendChild(pill);
+        }
+        g.appendChild(ml); body.appendChild(g);
+      }
+    }
+    $('moveModal').classList.remove('hidden');
+  }
+  function closeMoveModal() { $('moveModal').classList.add('hidden'); }
 
   // ── Wire inputs ───────────────────────────────────────────────────────────
   function addMove() {
@@ -306,6 +367,9 @@
     $('advInput').addEventListener('input', () => { clearTimeout(advTimer); advTimer = setTimeout(runSearch, 300); });
     $('searchBtn').onclick = runSearch;
     $('resetBtn').onclick = reset;
+    $('mmClose').onclick = closeMoveModal;
+    $('moveModal').addEventListener('click', e => { if (e.target === $('moveModal')) closeMoveModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMoveModal(); });
   }
 
   function reset() {

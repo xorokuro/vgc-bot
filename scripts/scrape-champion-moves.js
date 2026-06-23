@@ -130,7 +130,7 @@ function slugVariants(slug) {
  */
 function parseMoves(html) {
   const moves = [];
-  const re = /href="\/attackdex-champions\/[a-z0-9]+\.shtml"[^>]*>([^<]+)<\/a>/gi;
+  const re = /href="\/attackdex-champions\/[a-z0-9-]+\.shtml"[^>]*>([^<]+)<\/a>/gi;
   let m;
   while ((m = re.exec(html)) !== null) {
     const name = m[1].trim();

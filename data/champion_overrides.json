@@ -4,9 +4,13 @@
     "dragonize":      { "en": "Dragonize",      "zh": "龍皮膚",   "ja": "ドラゴンスキン" },
     "mega-sol":       { "en": "Mega Sol",        "zh": "超級日光", "ja": "メガソーラー" },
     "piercing-drill": { "en": "Piercing Drill",  "zh": "貫穿鑽",   "ja": "かんつうドリル" },
-    "spicy-spray":    { "en": "Spicy Spray",      "zh": "辣椒噴發", "ja": "とびだすハバネロ" },
-    "eelevate":       { "en": "Eelevate",        "zh": "鰻鰻高升", "ja": "うなぎのぼり" },
-    "fire-mane":      { "en": "Fire Mane",        "zh": "火焰鬃毛", "ja": "ほのおのたてがみ" }
+    "spicy-spray":    { "en": "Spicy Spray",      "zh": "辣椒噴發", "ja": "とびだすハバネロ" }
   },
-  "moves": {}
+  "moves": {
+    "trick-or-treat": { "type": "ghost",    "cat": "status" },
+    "storm-throw":    { "type": "fighting", "cat": "physical" },
+    "snap-trap":      { "type": "grass",    "cat": "physical" },
+    "light-of-ruin":  { "type": "fairy",    "cat": "special" },
+    "electrify":      { "type": "electric", "cat": "status" }
+  }
 }
